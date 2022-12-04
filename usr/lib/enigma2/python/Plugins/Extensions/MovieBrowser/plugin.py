@@ -1,27 +1,32 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-#20221204 Lululla edit: language, config, minor fix 
+# 20221204 Lululla edit: language, config, minor fix 
 from . import _
 
 from Components.ActionMap import ActionMap
-from Components.config import config, configfile, ConfigClock, ConfigDirectory
-from Components.config import ConfigSlider, ConfigSubsection, ConfigSelection
+from Components.config import config, configfile, ConfigClock
+from Components.config import ConfigSlider, ConfigSubsection
+from Components.config import ConfigSelection, ConfigDirectory
 from Components.config import getConfigListEntry
 from Components.ConfigList import ConfigListScreen
 from Components.FileList import FileList
 from Components.Label import Label
 from Components.Language import language
 from Components.MenuList import MenuList
-from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaTest
+from Components.MultiContent import MultiContentEntryText
+from Components.MultiContent import MultiContentEntryPixmapAlphaTest
 from Components.Pixmap import Pixmap, MultiPixmap
 from Components.ProgressBar import ProgressBar
 from Components.ScrollLabel import ScrollLabel
 from Components.ServiceEventTracker import ServiceEventTracker
-from enigma import addFont, eConsoleAppContainer, eListboxPythonMultiContent, ePoint
-from enigma import eServiceReference, eTimer, getDesktop, gFont, iPlayableService
+from enigma import addFont, eConsoleAppContainer
+from enigma import eListboxPythonMultiContent, ePoint
+from enigma import eServiceReference, eTimer
+from enigma import getDesktop, gFont, iPlayableService
 from enigma import iServiceInformation, loadPic, loadPNG
-from enigma import RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP
+from enigma import RT_HALIGN_LEFT, RT_HALIGN_RIGHT
+from enigma import RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP
 from Plugins.Plugin import PluginDescriptor
 from re import search, sub
 from Screens.ChannelSelection import ChannelSelection
@@ -408,13 +413,13 @@ class movieBrowserMetrix(Screen):
         if config.plugins.moviebrowser.fhd.value == 'yes':
             if getDesktop(0).size().width() == 1920:
                 self.fhd = True
-                # try:
-                    # gMainDC.getInstance().setResolution(1280, 720)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1280, 720))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+                try:
+                    gMainDC.getInstance().setResolution(1280, 720)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1280, 720))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
@@ -691,7 +696,7 @@ class movieBrowserMetrix(Screen):
             # if self.language == '&language=de':
                 # self.session.openWithCallback(self.reset_return, MessageBox, 'Die Movie Browser Datenbank wird jetzt neu erstellt. Je nach Anzahl der Filme kann dies mehrere Minuten dauern.\n\nSollte sich das Plugin nach einigen Minuten automatisch beenden, starten Sie das Plugin erneut und f\xc3\xbchren Sie ein manuelles Datenbank Update durch (Video Taste).\n\nSoll die Datenbank jetzt erstellt werden?', MessageBox.TYPE_YESNO)
             # else:
-                # self.session.openWithCallback(self.reset_return, MessageBox, 'The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?', MessageBox.TYPE_YESNO)
+            self.session.openWithCallback(self.reset_return, MessageBox, 'The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?', MessageBox.TYPE_YESNO)
         # elif self.language == '&language=de':
             # self.session.openWithCallback(self.first_return, MessageBox, 'Bevor die Datenbank neu erstellt wird, \xc3\xbcberpr\xc3\xbcfen Sie Ihre Einstellungen im Setup des Plugins:\n\n- Kontrollieren Sie den Pfad zum Film Ordner\n- \xc3\x9cberpr\xc3\xbcfen Sie Ihre Spracheinstellung: TMDb/TheTVDb Sprache\n- \xc3\x84ndern Sie den Cache Ordner auf Ihre Festplatte.', MessageBox.TYPE_YESNO)
         # else:
@@ -702,17 +707,17 @@ class movieBrowserMetrix(Screen):
             open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset', 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
-
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -731,15 +736,14 @@ class movieBrowserMetrix(Screen):
             self.resetTimer.callback.append(self.database_return(True))
             self.resetTimer.start(500, True)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
-
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -3099,7 +3103,8 @@ class movieBrowserMetrix(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
         if self.ready is True:
@@ -3186,19 +3191,20 @@ class movieBrowserMetrix(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            
+        if self.fhd is True:
+            try:
+                gMainDC.getInstance().setResolution(1920, 1080)
+                desktop = getDesktop(0)
+                desktop.resize(eSize(1920, 1080))
+            except:
+                import traceback
+                traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
-            self.close()
+        self.close()
 
 
 class movieBrowserBackdrop(Screen):
@@ -3349,17 +3355,18 @@ class movieBrowserBackdrop(Screen):
             }
             self.skin = applySkinVars(movieBrowserBackdrop.skin, self.dict)
         Screen.__init__(self, session)
+
         self.fhd = False
         if config.plugins.moviebrowser.fhd.value == 'yes':
             if getDesktop(0).size().width() == 1920:
                 self.fhd = True
-                # try:
-                    # gMainDC.getInstance().setResolution(1280, 720)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1280, 720))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+                try:
+                    gMainDC.getInstance().setResolution(1280, 720)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1280, 720))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
@@ -3616,16 +3623,17 @@ class movieBrowserBackdrop(Screen):
             open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset', 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
@@ -3645,14 +3653,14 @@ class movieBrowserBackdrop(Screen):
             self.resetTimer.callback.append(self.database_return(True))
             self.resetTimer.start(500, True)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
@@ -5836,7 +5844,8 @@ class movieBrowserBackdrop(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
         if self.ready is True:
@@ -5918,14 +5927,15 @@ class movieBrowserBackdrop(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
@@ -6098,13 +6108,13 @@ class movieBrowserPosterwall(Screen):
         if config.plugins.moviebrowser.fhd.value == 'yes':
             if getDesktop(0).size().width() == 1920:
                 self.fhd = True
-                # try:
-                    # gMainDC.getInstance().setResolution(1280, 720)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1280, 720))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+                try:
+                    gMainDC.getInstance().setResolution(1280, 720)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1280, 720))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
@@ -6352,6 +6362,7 @@ class movieBrowserPosterwall(Screen):
             self.openTimer = eTimer()
             self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
+
         return
 
     def openInfo(self):
@@ -6370,16 +6381,17 @@ class movieBrowserPosterwall(Screen):
             open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset', 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
@@ -6399,14 +6411,14 @@ class movieBrowserPosterwall(Screen):
             self.resetTimer.callback.append(self.database_return(True))
             self.resetTimer.start(500, True)
         else:
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
@@ -8997,7 +9009,8 @@ class movieBrowserPosterwall(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            self.session.openWithCallback(self.close, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
         if self.ready is True:
@@ -9087,18 +9100,19 @@ class movieBrowserPosterwall(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # if self.fhd is True:
-                # try:
-                    # gMainDC.getInstance().setResolution(1920, 1080)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1920, 1080))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+            
+            if self.fhd is True:
+                try:
+                    gMainDC.getInstance().setResolution(1920, 1080)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1920, 1080))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
-            # f = open('/proc/stb/video/alpha', 'w')
-            # f.write('%i' % config.av.osd_alpha.value)
-            # f.close()
+                # f = open('/proc/stb/video/alpha', 'w')
+                # f.write('%i' % config.av.osd_alpha.value)
+                # f.close()
             self.close()
 
 
@@ -10549,6 +10563,16 @@ class movieControlList(Screen):
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
+            
+        if self.fhd is True:
+            try:
+                gMainDC.getInstance().setResolution(1920, 1080)
+                desktop = getDesktop(0)
+                desktop.resize(eSize(1920, 1080))
+            except:
+                import traceback
+                traceback.print_exc()
+            
         if self.log is True:
             self.log = False
             self['log'].hide()
@@ -12750,13 +12774,13 @@ class switchStart(Screen):
         if config.plugins.moviebrowser.fhd.value == 'yes':
             if getDesktop(0).size().width() == 1920:
                 self.fhd = True
-                # try:
-                    # gMainDC.getInstance().setResolution(1280, 720)
-                    # desktop = getDesktop(0)
-                    # desktop.resize(eSize(1280, 720))
-                # except:
-                    # import traceback
-                    # traceback.print_exc()
+                try:
+                    gMainDC.getInstance().setResolution(1280, 720)
+                    desktop = getDesktop(0)
+                    desktop.resize(eSize(1280, 720))
+                except:
+                    import traceback
+                    traceback.print_exc()
 
         self['select_1'] = Pixmap()
         self['select_2'] = Pixmap()
@@ -12857,14 +12881,14 @@ class switchStart(Screen):
                 self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, ':Top:::', ':Top:::')
 
     def quit(self):
-        # if self.fhd is True:
-            # try:
-                # gMainDC.getInstance().setResolution(1920, 1080)
-                # desktop = getDesktop(0)
-                # desktop.resize(eSize(1920, 1080))
-            # except:
-                # import traceback
-                # traceback.print_exc()
+        if self.fhd is True:
+            try:
+                gMainDC.getInstance().setResolution(1920, 1080)
+                desktop = getDesktop(0)
+                desktop.resize(eSize(1920, 1080))
+            except:
+                import traceback
+                traceback.print_exc()
 
         self.close()
 
@@ -13634,6 +13658,7 @@ class searchYouTube(Screen):
             os.remove(self.poster3)
         if fileExists(self.poster4):
             os.remove(self.poster4)
+            
         self.close()
 
 
@@ -13690,13 +13715,13 @@ class helpScreen(Screen):
 
 class movieBrowserConfig(ConfigListScreen, Screen):
     skin = """
-    <screen position="center,center" size="1100,666" backgroundColor="#20000000" title="Movie Browser Setup">
+    <screen name="movieBowserConfig" title="Movie Browser Setup" position="center,center" size="1100,665" backgroundColor="#20000000" flags="wfNoBorder">
         <ePixmap position="13,2" size="530,25" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/pic/setup/logoConfig.png" alphatest="blend" zPosition="1" />
         <eLabel position="9,32" size="1050,3" backgroundColor="green" />
         <!--
         <ePixmap position="9,37" size="512,1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/pic/setup/seperator.png" alphatest="off" zPosition="1" />
         -->
-        <widget name="config" position="12,38" size="1068,314" itemHeight="45" scrollbarMode="showOnDemand" zPosition="1" />
+        <widget name="config" position="12,38" size="1068,314" itemHeight="40" scrollbarMode="showOnDemand" zPosition="1" />
         <eLabel position="9,359" size="1050,3" backgroundColor="green" />
         <!--
         <ePixmap position="9,344" size="1090,1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/pic/setup/seperator.png" alphatest="off" zPosition="1" />
@@ -13717,6 +13742,19 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.dict = {'font': font}
         self.skin = applySkinVars(movieBrowserConfig.skin, self.dict)
         Screen.__init__(self, session)
+        
+        # self.fhd = False
+        # if config.plugins.moviebrowser.fhd.value == 'yes':
+            # if getDesktop(0).size().width() == 1920:
+                # self.fhd = True
+                # try:
+                    # gMainDC.getInstance().setResolution(1280, 720)
+                    # desktop = getDesktop(0)
+                    # desktop.resize(eSize(1280, 720))
+                # except:
+                    # import traceback
+                    # traceback.print_exc()
+
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
         self.cachefolder = config.plugins.moviebrowser.cachefolder.value
@@ -14096,6 +14134,15 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.session.openWithCallback(self.close, movieBrowserBackdrop, 0, config.plugins.moviebrowser.filter.value, config.plugins.moviebrowser.filter.value)
         else:
             self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, config.plugins.moviebrowser.filter.value, config.plugins.moviebrowser.filter.value)
+
+        # if self.fhd is True:
+            # try:
+                # gMainDC.getInstance().setResolution(1920, 1080)
+                # desktop = getDesktop(0)
+                # desktop.resize(eSize(1920, 1080))
+            # except:
+                # import traceback
+                # traceback.print_exc()
 
 
 class FolderSelection(Screen):

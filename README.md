@@ -8,4 +8,4 @@ Depends: python-pyopenssl python-textutils python-misc
 http://www.kashmir-plugins.de
 
 
-[img]https://github.com/Belfagor2005/MovieBrowser/blob/main/screenshot/screenmovie.jpg[/img]
+<img src="https://github.com/Belfagor2005/MovieBrowser/blob/main/screenshot/screenmovie.jpg">

@@ -1,0 +1,7 @@
+#!/bin/sh
+FILE=/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/Movie_Browser.png
+DIR=/usr/lib/enigma2/python/Plugins/Extensions/navibar/icons
+if [ -d "$DIR" ]; then
+		mv -n "$FILE" "$DIR"
+fi
+echo "Movie Browser successfully installed!"

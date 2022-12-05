@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# 20221204 Lululla edit: language, config, minor fix 
+# 20221204 Lululla edit: language, config, minor fix
 from . import _
 
 from Components.ActionMap import ActionMap
@@ -128,52 +128,6 @@ else:
         ('ru', 'Russian')
     ])
 
-# if config.plugins.moviebrowser.language.value == 'de':
-    # config.plugins.moviebrowser.filter = ConfigSelection(default=':::Movie:Top:::', choices=[(':::Movie:Top:::', 'Filme'), (':::Series:Top:::', 'Serien'), (':Top:::', 'Filme & Serien')])
-    # config.plugins.moviebrowser.sortorder = ConfigSelection(default='date_reverse', choices=[
-        # ('date_reverse', 'Film Erstellungsdatum Absteigend'),
-        # ('date', 'Film Erstellungsdatum Aufsteigend'),
-        # ('name', 'Film Titel A-Z'),
-        # ('name_reverse', 'Film Titel Z-A'),
-        # ('rating_reverse', 'Film Rating 10-0'),
-        # ('rating', 'Film Rating 0-10'),
-        # ('year_reverse', 'Film Erscheinungsdatum Absteigend'),
-        # ('year', 'Film Erscheinungsdatum Aufsteigend'),
-        # ('runtime_reverse', 'Film Laufzeit Absteigend'),
-        # ('runtime', 'Film Laufzeit Aufsteigend'),
-        # ('folder', 'Film Ordner Aufsteigend'),
-        # ('folder_reverse', 'Film Ordner Absteigend')
-    # ])
-
-    # config.plugins.moviebrowser.backdrops = ConfigSelection(default='info', choices=[('info', 'Info Taste'), ('auto', 'Automatisch'), ('hide', 'Ausblenden')])
-    # config.plugins.moviebrowser.m1v = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.download = ConfigSelection(default='update', choices=[('access', 'Beim ersten Zugriff'), ('update', 'Beim Datenbank Update')])
-    # if config.plugins.moviebrowser.m1v.value == 'yes':
-        # config.plugins.moviebrowser.showtv = ConfigSelection(default='hide', choices=[('show', 'Anzeigen'), ('hide', 'Ausblenden')])
-    # else:
-        # config.plugins.moviebrowser.showtv = ConfigSelection(default='show', choices=[('show', 'Anzeigen'), ('hide', 'Ausblenden')])
-    # config.plugins.moviebrowser.showswitch = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.showmenu = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.videobutton = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.lastmovie = ConfigSelection(default='yes', choices=[('yes', 'Ja'), ('no', 'Nein'), ('folder', 'Ordner Auswahl')])
-    # config.plugins.moviebrowser.lastfilter = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.showfolder = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.autocheck = ConfigSelection(default='yes', choices=[('yes', 'Ja'), ('no', 'Nein')])
-    # config.plugins.moviebrowser.paypal = ConfigSelection(default='yes', choices=[('yes', 'Ja'), ('no', 'Nein')])
-    # config.plugins.moviebrowser.font = ConfigSelection(default='yes', choices=[('yes', 'Ja'), ('no', 'Nein')])
-    # deskWidth = getDesktop(0).size().width()
-    # if deskWidth >= 1280:
-        # config.plugins.moviebrowser.plugin_size = ConfigSelection(default='full', choices=[('full', '1280x720'), ('normal', '1024x576')])
-    # else:
-        # config.plugins.moviebrowser.plugin_size = ConfigSelection(default='normal', choices=[('full', '1280x720'), ('normal', '1024x576')])
-    # config.plugins.moviebrowser.fhd = ConfigSelection(default='no', choices=[('yes', 'Ja'), ('no', 'Nein')])
-    # if config.plugins.moviebrowser.fhd.value == 'yes':
-        # from enigma import eSize, gMainDC
-    # config.plugins.moviebrowser.plotfull = ConfigSelection(default='hide', choices=[('hide', 'Info Taste'), ('show', 'Automatisch')])
-    # config.plugins.moviebrowser.timerupdate = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-    # config.plugins.moviebrowser.hideupdate = ConfigSelection(default='yes', choices=[('yes', 'Ja'), ('no', 'Nein')])
-    # config.plugins.moviebrowser.reset = ConfigSelection(default='no', choices=[('no', 'Nein'), ('yes', 'Ja')])
-# else:
 config.plugins.moviebrowser.filter = ConfigSelection(default=':::Movie:Top:::', choices=[(':::Movie:Top:::', _('Movies')), (':::Series:Top:::', _('Series')), (':Top:::', _('Movies & Series'))])
 config.plugins.moviebrowser.sortorder = ConfigSelection(default='date_reverse', choices=[
     ('date_reverse', _('Movie Creation Date Descending')),
@@ -471,16 +425,6 @@ class movieBrowserMetrix(Screen):
         self['ddd2'].hide()
         self['seen'] = Pixmap()
         self['seen'].hide()
-        # if self.language == '&language=de':
-            # self['Director'] = Label('Regie:')
-            # self['Actors'] = Label('Darsteller:')
-            # self['Year'] = Label('Jahr:')
-            # self['Runtime'] = Label('Laufzeit:')
-            # self['Country'] = Label('Land:')
-            # self['text1'] = Label('Hilfe')
-            # self['text2'] = Label(_('Update'))
-            # self['text3'] = Label('Editieren')
-        # else:
         self['Director'] = Label(_('Director:'))
         self['Actors'] = Label(_('Actors:'))
         self['Year'] = Label(_('Years:'))
@@ -605,7 +549,7 @@ class movieBrowserMetrix(Screen):
 
     def onLayoutFinished(self):
         if config.plugins.moviebrowser.autocheck.value == 'yes':
-            self.version = '3.7rc3'
+            self.version = '3.7rc4'
             self.link = 'https://sites.google.com/site/kashmirplugins/home/movie-browser'
 
         if fileExists(self.database):
@@ -693,13 +637,8 @@ class movieBrowserMetrix(Screen):
 
     def openInfo(self):
         if fileExists('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset'):
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.reset_return, MessageBox, 'Die Movie Browser Datenbank wird jetzt neu erstellt. Je nach Anzahl der Filme kann dies mehrere Minuten dauern.\n\nSollte sich das Plugin nach einigen Minuten automatisch beenden, starten Sie das Plugin erneut und f\xc3\xbchren Sie ein manuelles Datenbank Update durch (Video Taste).\n\nSoll die Datenbank jetzt erstellt werden?', MessageBox.TYPE_YESNO)
-            # else:
             self.session.openWithCallback(self.reset_return, MessageBox, 'The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?', MessageBox.TYPE_YESNO)
-        # elif self.language == '&language=de':
-            # self.session.openWithCallback(self.first_return, MessageBox, 'Bevor die Datenbank neu erstellt wird, \xc3\xbcberpr\xc3\xbcfen Sie Ihre Einstellungen im Setup des Plugins:\n\n- Kontrollieren Sie den Pfad zum Film Ordner\n- \xc3\x9cberpr\xc3\xbcfen Sie Ihre Spracheinstellung: TMDb/TheTVDb Sprache\n- \xc3\x84ndern Sie den Cache Ordner auf Ihre Festplatte.', MessageBox.TYPE_YESNO)
-        # else:
+        else:
             self.session.openWithCallback(self.first_return, MessageBox, _('Before the Database will be rebuild, check your settings in the setup of the plugin:\n\n- Check the path to the Movie Folder\n- Check your TMDb/TheTVDb Language\n- Change the Cache Folder to your hard disk drive.'), MessageBox.TYPE_YESNO)
 
     def first_return(self, answer):
@@ -874,10 +813,7 @@ class movieBrowserMetrix(Screen):
 
                 f.close()
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.namelist.append('<Liste der Film Ordner>')
-                    # else:
-                    self.namelist.append('<List of Movie Folder>')
+                    self.namelist.append(_('<List of Movie Folder>'))
                     self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
                     self.datelist.append('')
                     res = []
@@ -937,12 +873,7 @@ class movieBrowserMetrix(Screen):
         if self.showfolder is True:
             res = ['']
             if self.backcolor is True:
-                # if self.language == '&language=de':
-                    # res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text='<Liste der Film Ordner>'))
-                # else:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
-            # elif self.language == '&language=de':
-                # res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text='<Liste der Film Ordner>'))
+                res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
             else:
                 res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
             movies.append(res)
@@ -990,13 +921,6 @@ class movieBrowserMetrix(Screen):
         self.totalItem = len(movies)
         if self.showfolder is True:
             self.totalMovies -= 1
-        # if self.language == '&language=de':
-            # free = 'freier Speicher'
-            # folder = 'Film Ordner'
-            # movies = 'FILME'
-            # series = 'SERIEN'
-            # episodes = 'EPISODEN'
-        # else:
         free = _('free Space')
         folder = _('Movie Folder')
         movies = _('MOVIES')
@@ -1044,13 +968,6 @@ class movieBrowserMetrix(Screen):
 
     def updateDatabase(self):
         if self.ready is True:
-            # if self.language == '&language=de':
-                # if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.openWithCallback(self.database_return, MessageBox, '\nMovie Browser Datenbank aktualisieren?', MessageBox.TYPE_YESNO)
-                # elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.open(MessageBox, '\nFilm Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.moviefolder.value), MessageBox.TYPE_ERROR)
-                # else:
-                    # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.cachefolder.value), MessageBox.TYPE_ERROR)
             if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
                 self.session.openWithCallback(self.database_return, MessageBox, '\nUpdate Movie Browser Database?', MessageBox.TYPE_YESNO)
             elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
@@ -1103,34 +1020,15 @@ class movieBrowserMetrix(Screen):
             self.startupdate = False
             self.makeMovieBrowserTimer.callback.append(self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden:\nIhre Datenbank ist aktuell.', MessageBox.TYPE_INFO)
-            # else:
             self.session.open(MessageBox, _('\nNo new Movies or Series found:\nYour Database is up to date.'), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif found == 0:
-            # if self.language == '&language=de':
-                # if orphaned == 1:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
             if orphaned == 1:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             else:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.' % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.') % str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
@@ -1143,28 +1041,6 @@ class movieBrowserMetrix(Screen):
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif orphaned == 1:
-                    # if seriescount == 0:
-                        # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # elif moviecount == 0:
-                        # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # else:
-                        # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
@@ -1237,8 +1113,6 @@ class movieBrowserMetrix(Screen):
                             sref = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + filename)
                             sref.setName(self.namelist[self.index])
                             self.session.open(MoviePlayer, sref)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
@@ -1246,20 +1120,14 @@ class movieBrowserMetrix(Screen):
                             from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
                             if fileExists(filename):
                                 self.session.open(DVDPlayer, dvd_filelist=[filename])
-                            # elif self.language == '&language=de':
-                                # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                             else:
                                 self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nDas DVD Player Plugin ist nicht installiert.', MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nDVD Player Plugin not installed.'), MessageBox.TYPE_ERROR)
                     elif fileExists(filename):
                         sref = eServiceReference('4097:0:0:0:0:0:0:0:0:0:' + filename)
                         sref.setName(self.namelist[self.index])
                         self.session.open(MoviePlayer, sref)
-                    # elif self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                     else:
                         self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
@@ -1398,9 +1266,6 @@ class movieBrowserMetrix(Screen):
             try:
                 content = self.contentlist[self.index]
                 if content == 'Series:Top':
-                    # if self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nTMDb Film Update Fehler:\nSerien Ordner', MessageBox.TYPE_ERROR)
-                    # else:
                     self.session.open(MessageBox, ('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
@@ -1429,11 +1294,7 @@ class movieBrowserMetrix(Screen):
                 output = urlopen(request, timeout=10).read()
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
-
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TMDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -1446,14 +1307,8 @@ class movieBrowserMetrix(Screen):
         poster = re.findall('"poster_path":"(.*?)"', output)
         id = re.findall('"id":(.*?),', output)
         country = re.findall('"backdrop(.*?)_path"', output)
-        if self.language == '&language=de':
-            titel = 'TMDb Ergebnisse'
-        else:
-            titel = 'TMDb Results'
+        titel = _('TMDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TMDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             self.session.openWithCallback(self.makeTMDbUpdate, moviesList, titel, rating, year, titles, poster, id, country, True, False)
@@ -1524,11 +1379,7 @@ class movieBrowserMetrix(Screen):
                 output = urlopen(request, timeout=10).read()
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
-
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TheTVDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nThe TVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -1590,15 +1441,8 @@ class movieBrowserMetrix(Screen):
                 country.append(Country[0])
             except IndexError:
                 country.append(' ')
-
-        # if self.language == '&language=de':
-            # titel = 'TheTVDb Ergebnisse'
-        # else:
-        titel = 'TheTVDb Results'
+        titel = _('TheTVDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TheTVDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo The TVDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             content = self.contentlist[self.index]
@@ -1657,13 +1501,6 @@ class movieBrowserMetrix(Screen):
                 name = self.namelist[self.index]
                 movie = self.movielist[self.index]
                 content = self.contentlist[self.index]
-                # if self.language == '&language=de':
-                    # if movie == config.plugins.moviebrowser.moviefolder.value + '...':
-                        # self.session.open(MessageBox, '\nDie Liste der Film Ordner kann nicht gel\xc3\xb6scht werden.', MessageBox.TYPE_ERROR)
-                    # elif content == 'Series:Top':
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\nAlle %s Eintr\xc3\xa4ge werden aus der Datenbank, aber nicht aus dem Film Ordner gel\xc3\xb6scht.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                    # else:
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\n%s wird aus der Datenbank und aus dem Film Ordner gel\xc3\xb6scht!\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
                 if movie == config.plugins.moviebrowser.moviefolder.value + '...':
                     self.session.open(MessageBox, _('\nThe List of Movie Folder can not be deleted.'), MessageBox.TYPE_ERROR)
                 elif content == 'Series:Top':
@@ -1742,9 +1579,6 @@ class movieBrowserMetrix(Screen):
         if self.ready is True and self.content != ':::Series:Top:::':
             try:
                 name = self.namelist[self.index]
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.blacklist_return, MessageBox, '\n%s wird aus der Datenbank gel\xc3\xb6scht und in die Blacklist aufgenommen, so dass der Film bei zuk\xc3\xbcnftigen Datenbank Aktualisierungen ignoriert wird.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                # else:
                 self.session.openWithCallback(self.blacklist_return, MessageBox, _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name, MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -1897,9 +1731,6 @@ class movieBrowserMetrix(Screen):
         self['green'].show()
         self['red'].show()
         self['text1'].setText('YouTube')
-        # if self.language == '&language=de':
-            # self['text2'].setText('Ansichten')
-        # else:
         self['text2'].setText('Style')
 
     def showInfo(self):
@@ -1934,11 +1765,6 @@ class movieBrowserMetrix(Screen):
         self['help'].show()
         self['pvr'].show()
         self['text'].show()
-        # if self.language == '&language=de':
-            # self['text1'].setText('Hilfe')
-            # self['text2'].setText('Update')
-            # self['text3'].setText('Editieren')
-        # else:
         self['text1'].setText('Help')
         self['text2'].setText('Update')
         self['text3'].setText('Edit')
@@ -2187,7 +2013,6 @@ class movieBrowserMetrix(Screen):
                 else:
                     if pythonVer == 3:
                         bannerurl = bannerurl.encode()
-
                     getPage(bannerurl).addCallback(self.getBanner, banner).addErrback(self.downloadError)
             else:
                 self['banner'].hide()
@@ -2552,9 +2377,6 @@ class movieBrowserMetrix(Screen):
         if self.ready is True:
             content = self.contentlist[self.index]
             if content == 'Series:Top':
-                # if self.language == '&language=de':
-                    # self.session.open(MessageBox, 'Serien Ordner: Keine Info m\xc3\xb6glich', MessageBox.TYPE_ERROR)
-                # else:
                 self.session.open(MessageBox, _('Series Folder: No Info possible'), MessageBox.TYPE_ERROR)
                 return
             self.movies = []
@@ -2569,10 +2391,7 @@ class movieBrowserMetrix(Screen):
                             pass
 
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.movies.append(('<Liste der Film Ordner>', config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
-                    # else:
-                    self.movies.append((_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
+                    self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -2710,11 +2529,7 @@ class movieBrowserMetrix(Screen):
                     self.folders.append(folder)
                     if len(folder) > max:
                         max = len(folder)
-
             self.folders.sort()
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.filter_return, filterList, self.folders, 'Film Ordner Auswahl', filter, len(self.folders), max)
-            # else:
             self.session.openWithCallback(self.filter_return, filterList, self.folders, _('Movie Folder Selection'), filter, len(self.folders), max)
         return
 
@@ -2761,10 +2576,6 @@ class movieBrowserMetrix(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.genres, 'Genre Auswahl', filter, len(self.genres), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.genres, _('Genre Selection'), filter, len(self.genres), max)
         return
 
@@ -2811,10 +2622,6 @@ class movieBrowserMetrix(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.actors, 'Darsteller Auswahl', filter, len(self.actors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.actors, _('Actor Selection'), filter, len(self.actors), max)
         return
 
@@ -2861,10 +2668,6 @@ class movieBrowserMetrix(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.directors, 'Regisseur Auswahl', filter, len(self.directors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.directors, _('Director Selection'), filter, len(self.directors), max)
         return
 
@@ -3128,7 +2931,6 @@ class movieBrowserMetrix(Screen):
                 # f = open('/proc/stb/video/alpha', 'w')
                 # f.write('%i' % (config.plugins.moviebrowser.transparency.value * count / 40))
                 # f.close()
-
         else:
             self.hideflag = True
             # count = 0
@@ -3191,7 +2993,7 @@ class movieBrowserMetrix(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            
+
         if self.fhd is True:
             try:
                 gMainDC.getInstance().setResolution(1920, 1080)
@@ -3200,7 +3002,6 @@ class movieBrowserMetrix(Screen):
             except:
                 import traceback
                 traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -3414,13 +3215,6 @@ class movieBrowserBackdrop(Screen):
         self['name'] = Label()
         self['seen'] = Pixmap()
         self['seen'].hide()
-        # if self.language == '&language=de':
-            # self['Director'] = Label('Regie:')
-            # self['Actors'] = Label('Darsteller:')
-            # self['Year'] = Label('Jahr:')
-            # self['Runtime'] = Label('Laufzeit:')
-            # self['Country'] = Label('Land:')
-        # else:
         self['Director'] = Label(_('Director:'))
         self['Actors'] = Label(_('Actors:'))
         self['Year'] = Label(_('Years:'))
@@ -3609,12 +3403,7 @@ class movieBrowserBackdrop(Screen):
 
     def openInfo(self):
         if fileExists('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset'):
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.reset_return, MessageBox, 'Die Movie Browser Datenbank wird jetzt neu erstellt. Je nach Anzahl der Filme kann dies mehrere Minuten dauern.\n\nSollte sich das Plugin nach einigen Minuten automatisch beenden, starten Sie das Plugin erneut und f\xc3\xbchren Sie ein manuelles Datenbank Update durch (Video Taste).\n\nSoll die Datenbank jetzt erstellt werden?', MessageBox.TYPE_YESNO)
-            # else:
-                self.session.openWithCallback(self.reset_return, MessageBox, _('The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?'), MessageBox.TYPE_YESNO)
-        # elif self.language == '&language=de':
-            # self.session.openWithCallback(self.first_return, MessageBox, 'Bevor die Datenbank neu erstellt wird, \xc3\xbcberpr\xc3\xbcfen Sie Ihre Einstellungen im Setup des Plugins:\n\n- Kontrollieren Sie den Pfad zum Film Ordner\n- \xc3\x9cberpr\xc3\xbcfen Sie Ihre Spracheinstellung: TMDb/TheTVDb Sprache\n- \xc3\x84ndern Sie den Cache Ordner auf Ihre Festplatte.', MessageBox.TYPE_YESNO)
+            self.session.openWithCallback(self.reset_return, MessageBox, _('The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?'), MessageBox.TYPE_YESNO)
         else:
             self.session.openWithCallback(self.first_return, MessageBox, _('Before the Database will be rebuild, check your settings in the setup of the plugin:\n\n- Check the path to the Movie Folder\n- Check your TMDb/TheTVDb Language\n- Change the Cache Folder to your hard disk drive.'), MessageBox.TYPE_YESNO)
 
@@ -3634,7 +3423,6 @@ class movieBrowserBackdrop(Screen):
                 except:
                     import traceback
                     traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -3661,7 +3449,6 @@ class movieBrowserBackdrop(Screen):
                 except:
                     import traceback
                     traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -3792,10 +3579,7 @@ class movieBrowserBackdrop(Screen):
 
                 f.close()
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.namelist.append('<Liste der Film Ordner>')
-                    # else:
-                    self.namelist.append('<List of Movie Folder>')
+                    self.namelist.append(_('<List of Movie Folder>'))
                     self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
                     self.datelist.append('')
                     res = []
@@ -3850,13 +3634,6 @@ class movieBrowserBackdrop(Screen):
 
     def updateDatabase(self):
         if self.ready is True:
-            # if self.language == '&language=de':
-                # if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.openWithCallback(self.database_return, MessageBox, '\nMovie Browser Datenbank aktualisieren?', MessageBox.TYPE_YESNO)
-                # elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.open(MessageBox, '\nFilm Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.moviefolder.value), MessageBox.TYPE_ERROR)
-                # else:
-                    # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.cachefolder.value), MessageBox.TYPE_ERROR)
             if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
                 self.session.openWithCallback(self.database_return, MessageBox, '\nUpdate Movie Browser Database?', MessageBox.TYPE_YESNO)
             elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
@@ -3902,34 +3679,15 @@ class movieBrowserBackdrop(Screen):
             self.startupdate = False
             self.makeMovieBrowserTimer.callback.append(self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden:\nIhre Datenbank ist aktuell.', MessageBox.TYPE_INFO)
-            # else:
             self.session.open(MessageBox, _('\nNo new Movies or Series found:\nYour Database is up to date.'), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif found == 0:
-            # if self.language == '&language=de':
-                # if orphaned == 1:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
             if orphaned == 1:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             else:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.' % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.') % str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
@@ -3942,28 +3700,6 @@ class movieBrowserBackdrop(Screen):
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif orphaned == 1:
-                    # if seriescount == 0:
-                        # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # elif moviecount == 0:
-                        # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # else:
-                        # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
@@ -4030,8 +3766,6 @@ class movieBrowserBackdrop(Screen):
                             sref = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + filename)
                             sref.setName(self.namelist[self.index])
                             self.session.open(MoviePlayer, sref)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
@@ -4039,20 +3773,14 @@ class movieBrowserBackdrop(Screen):
                             from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
                             if fileExists(filename):
                                 self.session.open(DVDPlayer, dvd_filelist=[filename])
-                            # elif self.language == '&language=de':
-                                # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                             else:
                                 self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nDas DVD Player Plugin ist nicht installiert.', MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nDVD Player Plugin not installed.'), MessageBox.TYPE_ERROR)
                     elif fileExists(filename):
                         sref = eServiceReference('4097:0:0:0:0:0:0:0:0:0:' + filename)
                         sref.setName(self.namelist[self.index])
                         self.session.open(MoviePlayer, sref)
-                    # elif self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                     else:
                         self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
@@ -4191,9 +3919,6 @@ class movieBrowserBackdrop(Screen):
             try:
                 content = self.contentlist[self.index]
                 if content == 'Series:Top':
-                    # if self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nTMDb Film Update Fehler:\nSerien Ordner', MessageBox.TYPE_ERROR)
-                    # else:
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
@@ -4222,11 +3947,7 @@ class movieBrowserBackdrop(Screen):
                 output = urlopen(request, timeout=10).read()
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
-
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TMDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -4239,14 +3960,8 @@ class movieBrowserBackdrop(Screen):
         poster = re.findall('"poster_path":"(.*?)"', output)
         id = re.findall('"id":(.*?),', output)
         country = re.findall('"backdrop(.*?)_path"', output)
-        if self.language == '&language=de':
-            titel = 'TMDb Ergebnisse'
-        else:
-            titel = 'TMDb Results'
+        titel = _('TMDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TMDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             self.session.openWithCallback(self.makeTMDbUpdate, moviesList, titel, rating, year, titles, poster, id, country, True, False)
@@ -4318,9 +4033,6 @@ class movieBrowserBackdrop(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TheTVDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nThe TVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -4381,15 +4093,8 @@ class movieBrowserBackdrop(Screen):
                 country.append(Country[0])
             except IndexError:
                 country.append(' ')
-
-        # if self.language == '&language=de':
-            # titel = 'TheTVDb Ergebnisse'
-        # else:
-        titel = 'TheTVDb Results'
+        titel = _('TheTVDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TheTVDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo The TVDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             content = self.contentlist[self.index]
@@ -4411,7 +4116,6 @@ class movieBrowserBackdrop(Screen):
                     banner = banner[1]
                 except IndexError:
                     return
-
                 bannernew = new
                 database = open(self.database).read()
                 database = database.replace(banner, bannernew)
@@ -4441,13 +4145,6 @@ class movieBrowserBackdrop(Screen):
                 name = self.namelist[self.index]
                 movie = self.movielist[self.index]
                 content = self.contentlist[self.index]
-                # if self.language == '&language=de':
-                    # if movie == config.plugins.moviebrowser.moviefolder.value + '...':
-                        # self.session.open(MessageBox, '\nDie Liste der Film Ordner kann nicht gel\xc3\xb6scht werden.', MessageBox.TYPE_ERROR)
-                    # elif content == 'Series:Top':
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\nAlle %s Eintr\xc3\xa4ge werden aus der Datenbank, aber nicht aus dem Film Ordner gel\xc3\xb6scht.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                    # else:
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\n%s wird aus der Datenbank und aus dem Film Ordner gel\xc3\xb6scht!\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
                 if movie == config.plugins.moviebrowser.moviefolder.value + '...':
                     self.session.open(MessageBox, _('\nThe List of Movie Folder can not be deleted.'), MessageBox.TYPE_ERROR)
                 elif content == 'Series:Top':
@@ -4526,9 +4223,6 @@ class movieBrowserBackdrop(Screen):
         if self.ready is True and self.content != ':::Series:Top:::':
             try:
                 name = self.namelist[self.index]
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.blacklist_return, MessageBox, '\n%s wird aus der Datenbank gel\xc3\xb6scht und in die Blacklist aufgenommen, so dass der Film bei zuk\xc3\xbcnftigen Datenbank Aktualisierungen ignoriert wird.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                # else:
                 self.session.openWithCallback(self.blacklist_return, MessageBox, _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name, MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -4637,7 +4331,6 @@ class movieBrowserBackdrop(Screen):
                         self.showBackdrops(self.index)
                     except IndexError:
                         pass
-
                 try:
                     self.makePlot(self.index)
                 except IndexError:
@@ -5268,9 +4961,6 @@ class movieBrowserBackdrop(Screen):
         if self.ready is True:
             content = self.contentlist[self.index]
             if content == 'Series:Top':
-                # if self.language == '&language=de':
-                    # self.session.open(MessageBox, 'Serien Ordner: Keine Info m\xc3\xb6glich', MessageBox.TYPE_ERROR)
-                # else:
                 self.session.open(MessageBox, _('Series Folder: No Info possible'), MessageBox.TYPE_ERROR)
                 return
             self.movies = []
@@ -5285,10 +4975,7 @@ class movieBrowserBackdrop(Screen):
                             pass
 
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.movies.append(('<Liste der Film Ordner>', config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
-                    # else:
-                    self.movies.append(('<List of Movie Folder>', config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
+                    self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -5390,11 +5077,7 @@ class movieBrowserBackdrop(Screen):
                     self.folders.append(folder)
                     if len(folder) > max:
                         max = len(folder)
-
             self.folders.sort()
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.filter_return, filterList, self.folders, 'Film Ordner Auswahl', filter, len(self.folders), max)
-            # else:
             self.session.openWithCallback(self.filter_return, filterList, self.folders, _('Movie Folder Selection'), filter, len(self.folders), max)
         return
 
@@ -5442,10 +5125,6 @@ class movieBrowserBackdrop(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.genres, 'Genre Auswahl', filter, len(self.genres), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.genres, _('Genre Selection'), filter, len(self.genres), max)
         return
 
@@ -5493,10 +5172,6 @@ class movieBrowserBackdrop(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.actors, 'Darsteller Auswahl', filter, len(self.actors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.actors, _('Actor Selection'), filter, len(self.actors), max)
         return
 
@@ -5544,10 +5219,6 @@ class movieBrowserBackdrop(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.directors, 'Regisseur Auswahl', filter, len(self.directors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.directors, _('Director Selection'), filter, len(self.directors), max)
         return
 
@@ -5869,7 +5540,6 @@ class movieBrowserBackdrop(Screen):
                 # f = open('/proc/stb/video/alpha', 'w')
                 # f.write('%i' % (config.plugins.moviebrowser.transparency.value * count / 40))
                 # f.close()
-
         else:
             self.hideflag = True
             # count = 0
@@ -5927,7 +5597,7 @@ class movieBrowserBackdrop(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            
+
             if self.fhd is True:
                 try:
                     gMainDC.getInstance().setResolution(1920, 1080)
@@ -5936,7 +5606,6 @@ class movieBrowserBackdrop(Screen):
                 except:
                     import traceback
                     traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -6208,13 +5877,6 @@ class movieBrowserPosterwall(Screen):
         self['2name'] = Label()
         self['2seen'] = Pixmap()
         self['2seen'].hide()
-        # if self.language == '&language=de':
-            # self['2Director'] = Label('Regie:')
-            # self['2Actors'] = Label('Darsteller:')
-            # self['2Year'] = Label('Jahr:')
-            # self['2Runtime'] = Label('Laufzeit:')
-            # self['2Country'] = Label('Land:')
-        # else:
         self['2Director'] = Label(_('Director:'))
         self['2Actors'] = Label(_('Actors:'))
         self['2Year'] = Label(_('Years:'))
@@ -6367,12 +6029,7 @@ class movieBrowserPosterwall(Screen):
 
     def openInfo(self):
         if fileExists('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset'):
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.reset_return, MessageBox, 'Die Movie Browser Datenbank wird jetzt neu erstellt. Je nach Anzahl der Filme kann dies mehrere Minuten dauern.\n\nSollte sich das Plugin nach einigen Minuten automatisch beenden, starten Sie das Plugin erneut und f\xc3\xbchren Sie ein manuelles Datenbank Update durch (Video Taste).\n\nSoll die Datenbank jetzt erstellt werden?', MessageBox.TYPE_YESNO)
-            # else:
             self.session.openWithCallback(self.reset_return, MessageBox, _('The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n\nIf the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n\nRebuild the Database now?'), MessageBox.TYPE_YESNO)
-        # elif self.language == '&language=de':
-            # self.session.openWithCallback(self.first_return, MessageBox, 'Bevor die Datenbank neu erstellt wird, \xc3\xbcberpr\xc3\xbcfen Sie Ihre Einstellungen im Setup des Plugins:\n\n- Kontrollieren Sie den Pfad zum Film Ordner\n- \xc3\x9cberpr\xc3\xbcfen Sie Ihre Spracheinstellung: TMDb/TheTVDb Sprache\n- \xc3\x84ndern Sie den Cache Ordner auf Ihre Festplatte.', MessageBox.TYPE_YESNO)
         else:
             self.session.openWithCallback(self.first_return, MessageBox, _('Before the Database will be rebuild, check your settings in the setup of the plugin:\n\n- Check the path to the Movie Folder\n- Check your TMDb/TheTVDb Language\n- Change the Cache Folder to your hard disk drive.'), MessageBox.TYPE_YESNO)
 
@@ -6392,7 +6049,6 @@ class movieBrowserPosterwall(Screen):
                 except:
                     import traceback
                     traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -6419,7 +6075,6 @@ class movieBrowserPosterwall(Screen):
                 except:
                     import traceback
                     traceback.print_exc()
-
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -6550,10 +6205,7 @@ class movieBrowserPosterwall(Screen):
 
                 f.close()
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.namelist.append('<Liste der Film Ordner>')
-                    # else:
-                    self.namelist.append('<List of Movie Folder>')
+                    self.namelist.append(_('<List of Movie Folder>'))
                     self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
                     self.datelist.append('')
                     res = []
@@ -6616,13 +6268,6 @@ class movieBrowserPosterwall(Screen):
 
     def updateDatabase(self):
         if self.ready is True:
-            # if self.language == '&language=de':
-                # if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.openWithCallback(self.database_return, MessageBox, '\nMovie Browser Datenbank aktualisieren?', MessageBox.TYPE_YESNO)
-                # elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
-                    # self.session.open(MessageBox, '\nFilm Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.moviefolder.value), MessageBox.TYPE_ERROR)
-                # else:
-                    # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Aktualisierung abgebrochen.' % str(config.plugins.moviebrowser.cachefolder.value), MessageBox.TYPE_ERROR)
             if os.path.exists(config.plugins.moviebrowser.moviefolder.value) and os.path.exists(config.plugins.moviebrowser.cachefolder.value):
                 self.session.openWithCallback(self.database_return, MessageBox, _('\nUpdate Movie Browser Database?'), MessageBox.TYPE_YESNO)
             elif os.path.exists(config.plugins.moviebrowser.cachefolder.value):
@@ -6672,34 +6317,15 @@ class movieBrowserPosterwall(Screen):
             self.startupdate = False
             self.makeMovieBrowserTimer.callback.append(self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden:\nIhre Datenbank ist aktuell.', MessageBox.TYPE_INFO)
-            # else:
             self.session.open(MessageBox, _('\nNo new Movies or Series found:\nYour Database is up to date.'), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif found == 0:
-            # if self.language == '&language=de':
-                # if orphaned == 1:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\nKeine neuen Filme oder Serien gefunden.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % str(orphaned), MessageBox.TYPE_INFO)
             if orphaned == 1:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             else:
                 self.session.open(MessageBox, _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.' % str(moviecount), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.' % str(seriescount), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.' % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.') % str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
@@ -6712,28 +6338,6 @@ class movieBrowserPosterwall(Screen):
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
-            # if self.language == '&language=de':
-                # if moviecount == 1 and seriescount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0 and orphaned == 1:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 1 and seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Film in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 1 and moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serie in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif orphaned == 1:
-                    # if seriescount == 0:
-                        # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # elif moviecount == 0:
-                        # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                    # else:
-                        # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaister Datenbank Eintrag gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif seriescount == 0:
-                    # self.session.open(MessageBox, '\n%s Filme in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
-                # elif moviecount == 0:
-                    # self.session.open(MessageBox, '\n%s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
-                # else:
-                    # self.session.open(MessageBox, '\n%s Filme und %s Serien in die Datenbank importiert.\n%s verwaiste Datenbank Eintr\xc3\xa4ge gel\xc3\xb6scht.' % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(MessageBox, _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
@@ -6810,8 +6414,6 @@ class movieBrowserPosterwall(Screen):
                             sref = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + filename)
                             sref.setName(self.namelist[self.index])
                             self.session.open(MoviePlayer, sref)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
@@ -6819,20 +6421,14 @@ class movieBrowserPosterwall(Screen):
                             from Plugins.Extensions.DVDPlayer.plugin import DVDPlayer
                             if fileExists(filename):
                                 self.session.open(DVDPlayer, dvd_filelist=[filename])
-                            # elif self.language == '&language=de':
-                                # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                             else:
                                 self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
-                        # elif self.language == '&language=de':
-                            # self.session.open(MessageBox, '\nDas DVD Player Plugin ist nicht installiert.', MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(MessageBox, _('\nDVD Player Plugin not installed.'), MessageBox.TYPE_ERROR)
                     elif fileExists(filename):
                         sref = eServiceReference('4097:0:0:0:0:0:0:0:0:0:' + filename)
                         sref.setName(self.namelist[self.index])
                         self.session.open(MoviePlayer, sref)
-                    # elif self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nFilmdatei %s nicht verf\xc3\xbcgbar.' % filename, MessageBox.TYPE_ERROR)
                     else:
                         self.session.open(MessageBox, _('\nMovie file %s not available.') % filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
@@ -6987,9 +6583,6 @@ class movieBrowserPosterwall(Screen):
             try:
                 content = self.contentlist[self.index]
                 if content == 'Series:Top':
-                    # if self.language == '&language=de':
-                        # self.session.open(MessageBox, '\nTMDb Film Update Fehler:\nSerien Ordner', MessageBox.TYPE_ERROR)
-                    # else:
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
@@ -7019,9 +6612,6 @@ class movieBrowserPosterwall(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TMDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -7034,14 +6624,8 @@ class movieBrowserPosterwall(Screen):
         poster = re.findall('"poster_path":"(.*?)"', output)
         id = re.findall('"id":(.*?),', output)
         country = re.findall('"backdrop(.*?)_path"', output)
-        # if self.language == '&language=de':
-            # titel = 'TMDb Ergebnisse'
-        # else:
-        titel = 'TMDb Results'
+        titel = _('TMDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TMDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             self.session.openWithCallback(self.makeTMDbUpdate, moviesList, titel, rating, year, titles, poster, id, country, True, False)
@@ -7113,9 +6697,6 @@ class movieBrowserPosterwall(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDer TheTVDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nThe TVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -7176,15 +6757,8 @@ class movieBrowserPosterwall(Screen):
                 country.append(Country[0])
             except IndexError:
                 country.append(' ')
-
-        # if self.language == '&language=de':
-            # titel = 'TheTVDb Ergebnisse'
-        # else:
-        titel = 'TheTVDb Results'
+        titel = _('TheTVDb Results')
         if not titles:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nKeine TheTVDb Ergebnisse f\xc3\xbcr %s.' % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
-            # else:
             self.session.open(MessageBox, _('\nNo The TVDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
             content = self.contentlist[self.index]
@@ -7240,13 +6814,6 @@ class movieBrowserPosterwall(Screen):
                 name = self.namelist[self.index]
                 movie = self.movielist[self.index]
                 content = self.contentlist[self.index]
-                # if self.language == '&language=de':
-                    # if movie == config.plugins.moviebrowser.moviefolder.value + '...':
-                        # self.session.open(MessageBox, '\nDie Liste der Film Ordner kann nicht gel\xc3\xb6scht werden.', MessageBox.TYPE_ERROR)
-                    # elif content == 'Series:Top':
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\nAlle %s Eintr\xc3\xa4ge werden aus der Datenbank, aber nicht aus dem Film Ordner gel\xc3\xb6scht.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                    # else:
-                        # self.session.openWithCallback(self.delete_return, MessageBox, '\n%s wird aus der Datenbank und aus dem Film Ordner gel\xc3\xb6scht!\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
                 if movie == config.plugins.moviebrowser.moviefolder.value + '...':
                     self.session.open(MessageBox, _('\nThe List of Movie Folder can not be deleted.'), MessageBox.TYPE_ERROR)
                 elif content == 'Series:Top':
@@ -7297,7 +6864,6 @@ class movieBrowserPosterwall(Screen):
                     for line in data.split('\n'):
                         if search(movie, line) is not None:
                             data = data.replace(line + '\n', '')
-
                 name = name + 'FIN'
                 name = sub(' - [(][Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
@@ -7328,9 +6894,6 @@ class movieBrowserPosterwall(Screen):
         if self.ready is True and self.content != ':::Series:Top:::':
             try:
                 name = self.namelist[self.index]
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.blacklist_return, MessageBox, '\n%s wird aus der Datenbank gel\xc3\xb6scht und in die Blacklist aufgenommen, so dass der Film bei zuk\xc3\xbcnftigen Datenbank Aktualisierungen ignoriert wird.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                # else:
                 self.session.openWithCallback(self.blacklist_return, MessageBox, _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name, MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -8414,9 +7977,6 @@ class movieBrowserPosterwall(Screen):
         if self.ready is True:
             content = self.contentlist[self.index]
             if content == 'Series:Top':
-                # if self.language == '&language=de':
-                    # self.session.open(MessageBox, 'Serien Ordner: Keine Info m\xc3\xb6glich', MessageBox.TYPE_ERROR)
-                # else:
                 self.session.open(MessageBox, _('Series Folder: No Info possible'), MessageBox.TYPE_ERROR)
                 return
             self.movies = []
@@ -8431,10 +7991,7 @@ class movieBrowserPosterwall(Screen):
                             pass
 
                 if self.showfolder is True:
-                    # if self.language == '&language=de':
-                        # self.movies.append(('<Liste der Film Ordner>', config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
-                    # else:
-                    self.movies.append(('<List of Movie Folder>', config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png'))
+                    self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -8553,9 +8110,6 @@ class movieBrowserPosterwall(Screen):
                         max = len(folder)
 
             self.folders.sort()
-            # if self.language == '&language=de':
-                # self.session.openWithCallback(self.filter_return, filterList, self.folders, 'Film Ordner Auswahl', filter, len(self.folders), max)
-            # else:
             self.session.openWithCallback(self.filter_return, filterList, self.folders, _('Movie Folder Selection'), filter, len(self.folders), max)
         return
 
@@ -8603,10 +8157,6 @@ class movieBrowserPosterwall(Screen):
 
                 except IndexError:
                     pass
-
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.genres, 'Genre Auswahl', filter, len(self.genres), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.genres, _('Genre Selection'), filter, len(self.genres), max)
         return
 
@@ -8655,9 +8205,6 @@ class movieBrowserPosterwall(Screen):
                 except IndexError:
                     pass
 
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.actors, 'Darsteller Auswahl', filter, len(self.actors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.actors, _('Actor Selection'), filter, len(self.actors), max)
         return
 
@@ -8706,9 +8253,6 @@ class movieBrowserPosterwall(Screen):
                 except IndexError:
                     pass
 
-                # if self.language == '&language=de':
-                    # self.session.openWithCallback(self.filter_return, filterList, self.directors, 'Regisseur Auswahl', filter, len(self.directors), max)
-                # else:
                 self.session.openWithCallback(self.filter_return, filterList, self.directors, _('Director Selection'), filter, len(self.directors), max)
         return
 
@@ -9100,7 +8644,7 @@ class movieBrowserPosterwall(Screen):
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            
+
             if self.fhd is True:
                 try:
                     gMainDC.getInstance().setResolution(1920, 1080)
@@ -9165,9 +8709,6 @@ class UpdateDatabase():
             self.makeUpdate()
 
     def makeUpdate(self):
-        # if self.language == '&language=de':
-            # self.starttime = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-        # else:
         self.starttime = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         data = open(self.database).read()
         if fileExists(self.blacklist):
@@ -9935,10 +9476,6 @@ class UpdateDatabase():
 
     def showResult(self, show):
         found, orphaned, moviecount, seriescount = self.results
-        # if self.language == '&language=de':
-            # endtime = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-            # result = 'Startzeit: %s\nEndzeit: %s\nGescannte Dateien insgesamt: %s\nTheTVDb Datenbank Anfragen: %s\nTMDb Datenbank Anfragen: %s\nVerwaiste Filme/Serien: %s\nNeue Serien: %s\nNeue Filme: %s\n\n' % (self.starttime, endtime, self.fileCount, self.tvdbCount, self.tmdbCount, orphaned, seriescount, moviecount)
-        # else:
         endtime = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         result = _('Start time: %s\nEnd time: %s\nTotal scanned files: %s\nTheTVDb Database Requests: %s\nTMDb Database Requests: %s\nOrphaned Movies/Series: %s\nNew Series: %s\nNew Movies: %s\n\n') % (self.starttime, endtime, self.fileCount, self.tvdbCount, self.tmdbCount, orphaned, seriescount, moviecount)
         if found != 0:
@@ -10013,9 +9550,6 @@ class UpdateDatabase():
         except IndexError:
             pass
         except ValueError:
-            # if self.language == '&language=de':
-                # self.session.open(MessageBox, '\nDatenbank Fehler: Eintrag ohne Laufzeit', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
 
         f = open(self.database + '.movies', 'w')
@@ -10118,12 +9652,6 @@ class movieControlList(Screen):
         totalMovies = len(self.listentries)
         if config.plugins.moviebrowser.showfolder.value == 'yes':
             totalMovies -= 1
-        # if self.lang == 'de':
-            # free = 'freier Speicher'
-            # folder = 'Film Ordner'
-            # movies = 'Filme'
-            # series = 'Serien'
-        # else:
         free = 'free Space'
         folder = 'Movie Folder'
         movies = 'Movies'
@@ -10161,16 +9689,6 @@ class movieControlList(Screen):
 
     def showInfo(self):
         if self.ready is True:
-            # if self.lang == 'de':
-                # loglist = [
-                    # ('Film Datei Informationen', 'info'),
-                    # ('Film Datei l\xc3\xb6schen', 'delete'),
-                    # ('Film Datei blacklisten', 'blacklist'),
-                    # ('Datenbank Update Log', 'update'),
-                    # ('Datenbank Timer Log', 'timer'),
-                    # ('Cleanup Cache Ordner Log', 'cleanup')
-                # ]
-            # else:
             loglist = [
                 (_('Movie File Informations', 'info')),
                 (_('Delete Movie File', 'delete')),
@@ -10179,7 +9697,7 @@ class movieControlList(Screen):
                 (_('Database Timer Log', 'timer')),
                 (_('Cleanup Cache Folder Log', 'cleanup'))
             ]
-            self.session.openWithCallback(self.choiceLog, ChoiceBox, title='Movie Browser', list=loglist)
+            self.session.openWithCallback(self.choiceLog, ChoiceBox, title=_('Movie Browser'), list=loglist)
 
     def choiceLog(self, choice):
         choice = choice and choice[1]
@@ -10267,14 +9785,9 @@ class movieControlList(Screen):
                     if config.plugins.moviebrowser.m1v.value == 'no':
                         self.session.nav.stopService()
                     self.session.openWithCallback(self.cutlist_return, CutListEditor, service)
-                # elif self.lang == 'de':
-                    # self.session.open(MessageBox, '\nDas CutListEditor Plugin unterst\xc3\xbctzt nur Aufnahmen mit der Box.', MessageBox.TYPE_ERROR)
-                # else:
                 self.session.open(MessageBox, _('\nThe CutListEditor plugin supports only records with the box.'), MessageBox.TYPE_ERROR)
-            # elif self.lang == 'de':
-                # self.session.openWithCallback(self.CutListInstall, MessageBox, '\nDas CutListEditor Plugin ist nicht installiert.\n\nDas Plugin kann automatisch installiert werden, wenn es auf dem Feed ihres Images vorhanden ist.\n\nSoll das Plugin jetzt auf dem Feed gesucht und wenn vorhanden installiert werden?', MessageBox.TYPE_YESNO)
-            # else:
-            self.session.openWithCallback(self.CutListInstall, MessageBox, _('\nThe CutListEditor plugin is not installed.\n\nThe plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?'), MessageBox.TYPE_YESNO)
+            else:
+                self.session.openWithCallback(self.CutListInstall, MessageBox, _('\nThe CutListEditor plugin is not installed.\n\nThe plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?'), MessageBox.TYPE_YESNO)
 
     def cutlist_return(self):
         if config.plugins.moviebrowser.m1v.value == 'no':
@@ -10298,12 +9811,8 @@ class movieControlList(Screen):
                 if moviefile.endswith('.ts'):
                     service = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + moviefile)
                     self.session.open(MovieCut, service)
-                # elif self.lang == 'de':
-                    # self.session.open(MessageBox, '\nDas MovieCut Plugin unterst\xc3\xbctzt nur Aufnahmen mit der Box.', MessageBox.TYPE_ERROR)
                 else:
                     self.session.open(MessageBox, _('\nThe MovieCut plugin supports only records with the box.'), MessageBox.TYPE_ERROR)
-            # elif self.lang == 'de':
-                # self.session.openWithCallback(self.MovieCutInstall, MessageBox, '\nDas MovieCut Plugin ist nicht installiert.\n\nDas Plugin kann automatisch installiert werden, wenn es auf dem Feed ihres Images vorhanden ist.\n\nSoll das Plugin jetzt auf dem Feed gesucht und wenn vorhanden installiert werden?', MessageBox.TYPE_YESNO)
             else:
                 self.session.openWithCallback(self.MovieCutInstall, MessageBox, _('\nThe MovieCut plugin is not installed.\n\nThe plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?'), MessageBox.TYPE_YESNO)
 
@@ -10317,12 +9826,7 @@ class movieControlList(Screen):
         del self.container.appClosed[:]
         del self.container
         if fileExists('/usr/lib/enigma2/python/Plugins/Extensions/CutListEditor/plugin.pyo'):
-            # if self.lang == 'de':
-                # self.session.openWithCallback(self.restartGUI, MessageBox, '\nDas CutListEditor Plugin wurde installiert.\nBitte starten Sie Enigma neu.', MessageBox.TYPE_YESNO)
-            # else:
             self.session.openWithCallback(self.restartGUI, MessageBox, _('\nThe CutListEditor plugin was installed.\nPlease restart Enigma.'), MessageBox.TYPE_YESNO)
-        # elif self.lang == 'de':
-            # self.session.open(MessageBox, '\nDas CutListEditor Plugin ist nicht auf dem Feed ihres Images vorhanden.\n\nBitte installieren Sie das CutListEditor Plugin manuell.', MessageBox.TYPE_ERROR)
         else:
             self.session.open(MessageBox, _('\nThe CutListEditor plugin is not present on the feed of your image.\n\nPlease install the CutListEditor plugin manually.'), MessageBox.TYPE_ERROR)
 
@@ -10336,12 +9840,7 @@ class movieControlList(Screen):
         del self.container.appClosed[:]
         del self.container
         if fileExists('/usr/lib/enigma2/python/Plugins/Extensions/MovieCut/plugin.pyo'):
-            # if self.lang == 'de':
-                # self.session.openWithCallback(self.restartGUI, MessageBox, '\nDas MovieCut Plugin wurde installiert.\nBitte starten Sie Enigma neu.', MessageBox.TYPE_YESNO)
-            # else:
             self.session.openWithCallback(self.restartGUI, MessageBox, _('\nThe MovieCut plugin was installed.\nPlease restart Enigma.'), MessageBox.TYPE_YESNO)
-        # elif self.lang == 'de':
-            # self.session.open(MessageBox, '\nDas MovieCut Plugin ist nicht auf dem Feed ihres Images vorhanden.\n\nBitte installieren Sie das CutListEditor Plugin manuell.', MessageBox.TYPE_ERROR)
         else:
             self.session.open(MessageBox, _('\nThe MovieCut plugin is not present on the feed of your image.\n\nPlease install the CutListEditor plugin manually.'), MessageBox.TYPE_ERROR)
 
@@ -10359,13 +9858,6 @@ class movieControlList(Screen):
             index = self['list'].getSelectedIndex()
             name = self.list[index][0]
             movie = self.list[index][1]
-            # if self.lang == 'de':
-                # if movie == config.plugins.moviebrowser.moviefolder.value + '...':
-                    # self.session.open(MessageBox, '\nDie Liste der Film Ordner kann nicht gel\xc3\xb6scht werden.', MessageBox.TYPE_ERROR)
-                # elif name == movie:
-                    # self.session.openWithCallback(self.delete_return, MessageBox, '\nAlle %s Eintr\xc3\xa4ge werden aus der Datenbank, aber nicht aus dem Film Ordner gel\xc3\xb6scht.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-                # else:
-                    # self.session.openWithCallback(self.delete_return, MessageBox, '\n%s wird aus der Datenbank und aus dem Film Ordner gel\xc3\xb6scht!\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
             if movie == config.plugins.moviebrowser.moviefolder.value + '...':
                 self.session.open(MessageBox, _('\nThe List of Movie Folder can not be deleted.'), MessageBox.TYPE_ERROR)
             elif name == movie:
@@ -10446,10 +9938,6 @@ class movieControlList(Screen):
         try:
             index = self['list'].getSelectedIndex()
             name = self.list[index][0]
-            # movie = self.list[index][1]
-            # if self.lang == 'de':
-                # self.session.openWithCallback(self.blacklist_return, MessageBox, '\n%s wird aus der Datenbank gel\xc3\xb6scht und in die Blacklist aufgenommen, so dass der Film bei zuk\xc3\xbcnftigen Datenbank Aktualisierungen ignoriert wird.\n\nWollen Sie fortfahren?' % name, MessageBox.TYPE_YESNO)
-            # else:
             self.session.openWithCallback(self.blacklist_return, MessageBox, _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name, MessageBox.TYPE_YESNO)
         except IndexError:
             pass
@@ -10563,7 +10051,7 @@ class movieControlList(Screen):
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
-            
+
         if self.fhd is True:
             try:
                 gMainDC.getInstance().setResolution(1920, 1080)
@@ -10572,7 +10060,7 @@ class movieControlList(Screen):
             except:
                 import traceback
                 traceback.print_exc()
-            
+
         if self.log is True:
             self.log = False
             self['log'].hide()
@@ -10735,12 +10223,6 @@ class movieDatabase(Screen):
             self.selectList()
             self.ready = True
             totalMovies = len(self.list)
-            # if self.lang == 'de':
-                # database = 'Datenbank'
-                # free = 'freier Speicher'
-                # folder = 'Film Ordner'
-                # movies = 'Filme'
-            # else:
             database = _('Database')
             free = _('free Space')
             folder = _('Movie Folder')
@@ -10758,24 +10240,6 @@ class movieDatabase(Screen):
                 self.setTitle(title)
 
     def makeList2(self):
-        # if self.lang == 'de':
-            # self.list2 = []
-            # self.list2.append('Film: ' + self.namelist[self.index])
-            # self.list2.append('Rating: ' + self.ratinglist[self.index])
-            # self.list2.append('Regisseur: ' + self.directorlist[self.index])
-            # self.list2.append('Land: ' + self.countrylist[self.index])
-            # self.list2.append('Darsteller: ' + self.actorslist[self.index])
-            # self.list2.append('Jahr: ' + self.yearlist[self.index])
-            # self.list2.append('Laufzeit: ' + self.runtimelist[self.index])
-            # self.list2.append('Genres: ' + self.genreslist[self.index])
-            # if self.medialist[self.index] != '\n':
-                # self.list2.append('MediaInfo: ' + self.medialist[self.index])
-                # self.mediainfo = True
-            # else:
-                # self.mediainfo = False
-            # self.list2.append('Poster: ' + self.posterlist[self.index])
-            # self.list2.append('Backdrop: ' + self.backdroplist[self.index])
-        # else:
         self.list2 = []
         self.list2.append('Movie: ' + self.namelist[self.index])
         self.list2.append('Rating: ' + self.ratinglist[self.index])
@@ -10939,8 +10403,8 @@ class movieDatabase(Screen):
                 # f.close()
 
     def exit(self):
-        # if self.hideflag is False:
-            # self.hideflag = True
+        if self.hideflag is False:
+            self.hideflag = True
             # f = open('/proc/stb/video/alpha', 'w')
             # f.write('%i' % config.av.osd_alpha.value)
             # f.close()
@@ -11101,19 +10565,8 @@ class moviesList(Screen):
         if self.ready is True:
             if self.first is True:
                 if self.movie is True:
-                    # if self.language == 'de':
-                        # choicelist = [('Update Film', 'movie'), ('Update Poster', 'poster'), ('Update Backdrop', 'backdrop')]
-                        # self.session.openWithCallback(self.updateMovie, ChoiceBox, title='Update Film', list=choicelist)
-                    # else:
                     choicelist = [('Update Movie', _('movie')), ('Update Poster', _('poster')), ('Update Backdrop', _('backdrop'))]
                     self.session.openWithCallback(self.updateMovie, ChoiceBox, title='Update Movie', list=choicelist)
-                # elif self.language == 'de':
-                    # if self.top is True:
-                        # choicelist = [('Update Banner', 'banner'), ('Update Backdrop', 'backdrop')]
-                        # self.session.openWithCallback(self.updateSeries, ChoiceBox, title='Update Serie', list=choicelist)
-                    # else:
-                        # choicelist = [('Update Serie', 'series')]
-                        # self.session.openWithCallback(self.updateSeries, ChoiceBox, title='Update Serie', list=choicelist)
                 elif self.top is True:
                     choicelist = [('Update Banner', _('banner')), ('Update Backdrop', _('backdrop'))]
                     self.session.openWithCallback(self.updateSeries, ChoiceBox, title=_('Update Series'), list=choicelist)
@@ -11163,9 +10616,6 @@ class moviesList(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == 'de':
-                # self.session.open(MessageBox, '\nDer TMDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -11183,9 +10633,6 @@ class moviesList(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == 'de':
-                # self.session.open(MessageBox, '\nDer TMDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -11225,9 +10672,6 @@ class moviesList(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == 'de':
-                # self.session.open(MessageBox, '\nDer TheTVDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nThe TVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -11244,9 +10688,6 @@ class moviesList(Screen):
             else:
                 output = urlopen(request, timeout=10).read().decode('utf-8')
         except Exception:
-            # if self.language == 'de':
-                # self.session.open(MessageBox, '\nDer TheTVDb API Server ist nicht erreichbar.', MessageBox.TYPE_ERROR)
-            # else:
             self.session.open(MessageBox, _('\nThe TVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
 
@@ -12288,11 +11729,6 @@ class filterSeasonList(Screen):
 
         self['list'].l.setList(self.listentries)
         totalSeasons = len(self.list)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # series = 'Serien Episoden'
-            # free = 'freier Speicher'
-            # folder = 'Film Ordner'
-        # else:
         series = _('Series Episodes')
         free = _('free Space')
         folder = _('Movie Folder')
@@ -12302,7 +11738,6 @@ class filterSeasonList(Screen):
                 freeSize = movieFolder[statvfs.F_BSIZE] * movieFolder[statvfs.F_BFREE] / 1024 / 1024 / 1024
             else:
                 freeSize = movieFolder.f_bsize * movieFolder.f_bfree / 1024 / 1024 / 1024
-
             title = '%s %s (%s GB %s)' % (str(totalSeasons), series, str(freeSize), free)
             self.setTitle(title)
         else:
@@ -12657,14 +12092,6 @@ class switchScreen(Screen):
         self['select_2'].hide()
         self['select_3'].hide()
         if mode == 'content':
-            # if config.plugins.moviebrowser.language.value == 'de':
-                # self['label_1'] = Label('FILME')
-                # self['label_2'] = Label('SERIEN')
-                # self['label_3'] = Label('FILME & SERIEN')
-                # self['label_select_1'] = Label('FILME')
-                # self['label_select_2'] = Label('SERIEN')
-                # self['label_select_3'] = Label('FILME & SERIEN')
-            # else:
             self['label_1'] = Label(_('MOVIES'))
             self['label_2'] = Label(_('SERIES'))
             self['label_3'] = Label(_('MOVIES & SERIES'))
@@ -12788,14 +12215,6 @@ class switchStart(Screen):
         self['select_1'].hide()
         self['select_2'].hide()
         self['select_3'].hide()
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # self['label_1'] = Label('FILME')
-            # self['label_2'] = Label('SERIEN')
-            # self['label_3'] = Label('FILME & SERIEN')
-            # self['label_select_1'] = Label('FILME')
-            # self['label_select_2'] = Label('SERIEN')
-            # self['label_select_3'] = Label('FILME & SERIEN')
-        # else:
         self['label_1'] = Label(_('MOVIES'))
         self['label_2'] = Label(_('SERIES'))
         self['label_3'] = Label(_('MOVIES & SERIES'))
@@ -12922,17 +12341,6 @@ class searchYouTube(Screen):
         Screen.__init__(self, session)
         self.name = name + ' Trailer'
         self.link = 'https://www.youtube.com/results?filters=video&search_query=' + self.name.replace(' ', '%20').replace('\xc3\x83\xe2\x80\x9e', 'Ae').replace('\xc3\x83\xe2\x80\x93', 'Oe').replace('\xc3\x83\xc5\x93', 'Ue').replace('\xc3\x83\xc5\xb8', 'ss').replace('\xc3\x83\xc2\xa4', 'ae').replace('\xc3\x83\xc2\xb6', 'oe').replace('\xc3\x83\xc2\xbc', 'ue').replace('\xc3\x84', 'Ae').replace('\xc3\x96', 'Oe').replace('\xc3\x9c', 'Ue').replace('\xc3\xa4', 'ae').replace('\xc3\xb6', 'oe').replace('\xc3\xbc', 'ue')
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # self.titel = 'YouTube Trailer Suche | Seite '
-        # elif config.plugins.moviebrowser.language.value == 'es':
-            # self.titel = 'YouTube Trailer Busqueda | Pagina '
-        # elif config.plugins.moviebrowser.language.value == 'it':
-            # self.titel = 'YouTube Trailer Ricerca | Pagina '
-        # elif config.plugins.moviebrowser.language.value == 'fr':
-            # self.titel = 'YouTube Trailer Recherche | Page '
-        # elif config.plugins.moviebrowser.language.value == 'ru':
-            # self.titel = 'YouTube Trailer \xd0\xbf\xd0\xbe\xd0\xb8\xd1\x81\xd0\xba | \xd1\x81\xd1\x82\xd1\x80\xd0\xb0\xd0\xbd\xd0\xb8\xd1\x86\xd0\xb0 '
-        # else:
         self.titel = _('YouTube Trailer Search | Page ')
         self.poster = []
         self.trailer_id = []
@@ -13164,18 +12572,7 @@ class searchYouTube(Screen):
 
     def search(self):
         if self.ready is True:
-            # if config.plugins.moviebrowser.language.value == 'de':
-                # self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title='YouTube Trailer Suche:', text=self.name)
-            # elif config.plugins.moviebrowser.language.value == 'es':
-                # self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title='YouTube Trailer Busqueda:', text=self.name)
-            # elif config.plugins.moviebrowser.language.value == 'it':
-                # self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title='YouTube Trailer Ricerca:', text=self.name)
-            # elif config.plugins.moviebrowser.language.value == 'fr':
-                # self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title='YouTube Trailer Recherche:', text=self.name)
-            # elif config.plugins.moviebrowser.language.value == 'ru':
-                # self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title='YouTube Trailer \xd0\xbf\xd0\xbe\xd0\xb8\xd1\x81\xd0\xba:', text=self.name)
-            # else:
-                self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title=_('YouTube Trailer Search:'), text=self.name)
+            self.session.openWithCallback(self.searchReturn, VirtualKeyBoard, title=_('YouTube Trailer Search:'), text=self.name)
 
     def searchReturn(self, name):
         if name and name != '':
@@ -13611,17 +13008,6 @@ class searchYouTube(Screen):
         self.close()
 
     def showHelp(self):
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # self.session.open(MessageBox, '\n%s' % 'Bouquet = +- Seite\nGelb = Neue YouTube Suche', MessageBox.TYPE_INFO, close_on_any_key=True)
-        # elif config.plugins.moviebrowser.language.value == 'es':
-            # self.session.open(MessageBox, '\n%s' % 'Bouquet = +- Pagina\nAmarillo = Nueva Busqueda de YouTube', MessageBox.TYPE_INFO, close_on_any_key=True)
-        # elif config.plugins.moviebrowser.language.value == 'it':
-            # self.session.open(MessageBox, '\n%s' % 'Bouquet = +- Pagina\nGiallo = Nuova YouTube Ricerca', MessageBox.TYPE_INFO, close_on_any_key=True)
-        # elif config.plugins.moviebrowser.language.value == 'fr':
-            # self.session.open(MessageBox, '\n%s' % 'Bouquet = +- Page\nJaune = Nouvelle YouTube Recherche', MessageBox.TYPE_INFO, close_on_any_key=True)
-        # elif config.plugins.moviebrowser.language.value == 'ru':
-            # self.session.open(MessageBox, '\n%s' % 'Bouquet = +- \xd1\x81\xd1\x82\xd1\x80\xd0\xb0\xd0\xbd\xd0\xb8\xd1\x86\xd0\xb0\n\xd0\x96\xd0\xb5\xd0\xbb\xd1\x82\xd1\x8b\xd0\xb9 = \xd0\x9d\xd0\xbe\xd0\xb2\xd1\x8b\xd0\xb9 YouTube \xd0\xbf\xd0\xbe\xd0\xb8\xd1\x81\xd0\xba', MessageBox.TYPE_INFO, close_on_any_key=True)
-        # else:
         self.session.open(MessageBox, _('\n%s' % 'Bouquet = +- Page\nYellow = New YouTube Search'), MessageBox.TYPE_INFO, close_on_any_key=True)
 
     def hideScreen(self):
@@ -13658,7 +13044,6 @@ class searchYouTube(Screen):
             os.remove(self.poster3)
         if fileExists(self.poster4):
             os.remove(self.poster4)
-            
         self.close()
 
 
@@ -13697,13 +13082,6 @@ class helpScreen(Screen):
         self.dict = {'font': font}
         self.skin = applySkinVars(helpScreen.skin, self.dict)
         Screen.__init__(self, session)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # self.setTitle('Movie Browser Tastenbelegung')
-            # self['label'] = Label('     : YouTube Film Trailer\n     : Wikipedia Suche\n     : Wechsel Plugin Ansicht\n     : Plugin aus-/einblenden\nInfo Taste: Infos ein-/ausblenden\nVideo Taste: Update Datenbank\nText Taste: Editiere Datenbank\nStop Taste: Markiere Film als gesehen\nRadio Taste: L\xc3\xb6sche/Blacklist Film\n<- -> Taste: Gehe zu Anfangsbuchstabe\nTaste 1: CutListeditor/MovieCut/LogView\nTaste 2: Erneuere Infos auf TMDb\nTaste 3: Erneuere Infos auf TheTVDb\nTaste 4: Gesehene Filme aus-/einblenden\nTaste 5: Wechsel Filme/Serien Ansicht\nTaste 6: Film Ordner Auswahl\nTaste 7: Film Regisseur Auswahl\nTaste 8: Film Darsteller Auswahl\nTaste 9: Film Genre Auswahl\nTaste 0: Gehe an das Ende der Liste')
-        # elif config.plugins.moviebrowser.language.value == 'es':
-            # self.setTitle('Movie Browser Asignacion de Teclas')
-            # self['label'] = Label('     : YouTube Pelicula Trailer\n     : Wikipedia Buscar\n     : Cambiar Plugin Estilo\n     : Ocultar/mostrar plugin\nInfo Boton: Ocultar/mostrar info\nVideo Boton: Actualizar Database\nText Boton: Editar Database\nStop Boton: Marcar Pelicula se ve\nRadio Boton: Borrar/Blacklist Pelicula\n<- -> Boton: Ir a primera letra\nBoton 1: CutListEditor/MovieCut/LogView\nBoton 2: Renovar infos en TMDb\nBoton 3: Renovar infos en TheTVDb\nBoton 4: Ocultar/mostrar peliculas vistas\nBoton 5: Cambiar Pelicula/Serie vista\nBoton 6: Pelicula Carpeta seleccion\nBoton 7: Pelicula Director seleccion\nBoton 8: Pelicula Actor seleccion\nBoton 9: Pelicula Genre seleccion\nBoton 0: Ir al final de la lista')
-        # else:
         self.setTitle(_('Movie Browser Key Assignment'))
         self['label'] = Label(_('     : YouTube Movie Trailer\n     : Wikipedia Search\n     : Toggle Plugin Style\n     : Toggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
 
@@ -13742,7 +13120,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.dict = {'font': font}
         self.skin = applySkinVars(movieBrowserConfig.skin, self.dict)
         Screen.__init__(self, session)
-        
+
         # self.fhd = False
         # if config.plugins.moviebrowser.fhd.value == 'yes':
             # if getDesktop(0).size().width() == 1920:
@@ -13760,49 +13138,15 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.cachefolder = config.plugins.moviebrowser.cachefolder.value
         self.database = '/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/database'
         self.m1v = config.plugins.moviebrowser.m1v.value
-        self.lang = config.plugins.moviebrowser.language.value
+        # self.lang = config.plugins.moviebrowser.language.value
         self.timer_update = config.plugins.moviebrowser.timerupdate.value
         self.timer_hour = config.plugins.moviebrowser.timer.value[0]
         self.timer_min = config.plugins.moviebrowser.timer.value[1]
-        # if self.lang == 'de':
-            # self['save'] = Label('Speichern')
-            # self['cancel'] = Label('Abbrechen')
-        # else:
         self['save'] = Label(_('Save'))
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
         self.ready = True
         list = []
-        # if self.lang == 'de':
-            # list.append(getConfigListEntry('Filme Ansicht:', config.plugins.moviebrowser.style))
-            # list.append(getConfigListEntry('Serien Ansicht:', config.plugins.moviebrowser.seriesstyle))
-            # self.foldername = getConfigListEntry('Film Ordner:', config.plugins.moviebrowser.moviefolder)
-            # list.append(self.foldername)
-            # list.append(getConfigListEntry('Cache Ordner:', config.plugins.moviebrowser.cachefolder))
-            # list.append(getConfigListEntry('Filme oder Serien:', config.plugins.moviebrowser.filter))
-            # list.append(getConfigListEntry('Filme oder Serien Auswahl beim Start:', config.plugins.moviebrowser.showswitch))
-            # list.append(getConfigListEntry('TMDb/TheTVDb Sprache:', config.plugins.moviebrowser.language))
-            # list.append(getConfigListEntry('Film Sortierung:', config.plugins.moviebrowser.sortorder))
-            # list.append(getConfigListEntry('Zeige Backdrops:', config.plugins.moviebrowser.backdrops))
-            # list.append(getConfigListEntry('Download neue Backdrops:', config.plugins.moviebrowser.download))
-            # list.append(getConfigListEntry('Benutze m1v Backdrops:', config.plugins.moviebrowser.m1v))
-            # list.append(getConfigListEntry('Zeige TV im Hintergrund (no m1v):', config.plugins.moviebrowser.showtv))
-            # list.append(getConfigListEntry('Plugin im Enigma Men\xc3\xbc:', config.plugins.moviebrowser.showmenu))
-            # list.append(getConfigListEntry('Plugin Sans Serif Schrift:', config.plugins.moviebrowser.font))
-            # list.append(getConfigListEntry('Starte Plugin mit Video Taste:', config.plugins.moviebrowser.videobutton))
-            # list.append(getConfigListEntry('Gehe zum letzten Film beim Start:', config.plugins.moviebrowser.lastmovie))
-            # list.append(getConfigListEntry('Lade letzte Auswahl/Filter beim Start:', config.plugins.moviebrowser.lastfilter))
-            # list.append(getConfigListEntry('Zeige Liste der Film Ordner:', config.plugins.moviebrowser.showfolder))
-            # list.append(getConfigListEntry('Plugin Transparenz:', config.plugins.moviebrowser.transparency))
-            # list.append(getConfigListEntry('Posterwall/Backdrop Plugin Gr\xc3\xb6\xc3\x9fe:', config.plugins.moviebrowser.plugin_size))
-            # list.append(getConfigListEntry('Posterwall/Backdrop Filmbeschreibung:', config.plugins.moviebrowser.plotfull))
-            # list.append(getConfigListEntry('Posterwall/Backdrop Farbe \xc3\x9cberschriften:', config.plugins.moviebrowser.color))
-            # list.append(getConfigListEntry('Metrix Liste Farbe Auswahl:', config.plugins.moviebrowser.metrixcolor))
-            # list.append(getConfigListEntry('Plugin Auto Update Check:', config.plugins.moviebrowser.autocheck))
-            # list.append(getConfigListEntry('Aktualisiere Datenbank mit Timer:', config.plugins.moviebrowser.timerupdate))
-            # list.append(getConfigListEntry('Timer Datenbank Aktualisierung:', config.plugins.moviebrowser.timer))
-            # list.append(getConfigListEntry('Plugin w\xc3\xa4hrend Aktualisierung ausblenden:', config.plugins.moviebrowser.hideupdate))
-        # else:
         list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
         self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
@@ -13856,14 +13200,11 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         current = self['config'].getCurrent()
         if current == self.foldername:
             self.session.openWithCallback(self.folderSelected, FolderSelection, self.moviefolder)
-        # elif current == getConfigListEntry('Use m1v Backdrops:', config.plugins.moviebrowser.m1v) or current == getConfigListEntry('Benutze m1v Backdrops:', config.plugins.moviebrowser.m1v) or current == getConfigListEntry('Show TV in Background (no m1v):', config.plugins.moviebrowser.showtv) or current == getConfigListEntry('Zeige TV im Hintergrund (no m1v):', config.plugins.moviebrowser.showtv):
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
             if config.plugins.moviebrowser.m1v.value == 'yes':
                 config.plugins.moviebrowser.showtv.value = 'hide'
-        # elif current == getConfigListEntry('Goto last Movie on Start:', config.plugins.moviebrowser.lastmovie) or current == getConfigListEntry('Gehe zum letzten Film beim Start:', config.plugins.moviebrowser.lastmovie):
         elif current == getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie):
-
-           if config.plugins.moviebrowser.showfolder.value == 'no' and config.plugins.moviebrowser.lastmovie.value == 'folder':
+            if config.plugins.moviebrowser.showfolder.value == 'no' and config.plugins.moviebrowser.lastmovie.value == 'folder':
                 config.plugins.moviebrowser.lastmovie.value = 'yes'
         elif current == getConfigListEntry(_('PayPal Info:'), config.plugins.moviebrowser.paypal):
             import time
@@ -13882,16 +13223,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     f = open(self.cachefolder + '/backup/database', 'w')
                     f.write(data)
                     f.close()
-                    # if self.lang == 'de':
-                        # self.session.open(MessageBox, '\nDatenbank gesichert nach %s' % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                    # else:
                     self.session.open(MessageBox, _('\nDatabase backuped to %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                # elif self.lang == 'de':
-                    # self.session.open(MessageBox, '\nDatenbank %s nicht gefunden:\nMovie Browser Datenbank Backup abgebrochen.' % str(self.database), MessageBox.TYPE_ERROR)
                 else:
                     self.session.open(MessageBox, _('\nDatabase %s not found:\nMovie Browser Database Backup canceled.') % str(self.database), MessageBox.TYPE_ERROR)
-            # elif self.lang == 'de':
-                # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Backup abgebrochen.' % str(self.cachefolder), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Backup canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry('Restore Database:', config.plugins.moviebrowser.restore):
@@ -13901,16 +13235,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     f = open(self.database, 'w')
                     f.write(data)
                     f.close()
-                    # if self.lang == 'de':
-                        # self.session.open(MessageBox, '\nDatenbank zur\xc3\xbcckgespielt von %s' % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                    # else:
                     self.session.open(MessageBox, _('\nDatabase restored from %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                # elif self.lang == 'de':
-                    # self.session.open(MessageBox, '\nDatenbank Backup %s nicht gefunden:\nMovie Browser Datenbank Wiederherstellung abgebrochen.' % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_ERROR)
                 else:
                     self.session.open(MessageBox, _('\nDatabase Backup %s not found:\nMovie Browser Database Restore canceled.') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_ERROR)
-            # elif self.lang == 'de':
-                # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nMovie Browser Datenbank Wiederherstellung abgebrochen.' % str(self.cachefolder), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Restore canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup):
@@ -13933,32 +13260,18 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                                 if fileExists(filename):
                                     os.remove(filename)
                                     count += 1
-
                     del data
                     if count == 0:
-                        # if self.lang == 'de':
-                            # self.session.open(MessageBox, '\nKeine verwaisten Backdrops oder Poster gefunden:\nIhr Cache Ordner ist sauber.', MessageBox.TYPE_INFO, close_on_any_key=True)
-                        # else:
                         self.session.open(MessageBox, _('\nNo orphaned Backdrops or Posters found:\nYour Cache Folder is clean.'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                    # elif self.lang == 'de':
-                        # self.session.open(MessageBox, '\nCache Ordner Bereinigung beendet:\n%s verwaiste Backdrops oder Poster entfernt.' % str(count), MessageBox.TYPE_INFO, close_on_any_key=True)
                     else:
                         self.session.open(MessageBox, _('\nCleanup Cache Folder finished:\n%s orphaned Backdrops or Posters removed.') % str(count), MessageBox.TYPE_INFO, close_on_any_key=True)
-                    # if config.plugins.moviebrowser.language.value == 'de':
-                        # end = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                        # info = 'Startzeit: %s\nEndzeit: %s\nVerwaiste Backdrops/Poster entfernt: %s\n\n' % (now, end, str(count))
-                    # else:
                     end = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                     info = _('Start time: %s\nEnd time: %s\nOrphaned Backdrops/Posters removed: %s\n\n') % (now, end, str(count))
                     f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/cleanup.log', 'a')
                     f.write(info)
                     f.close()
-                # elif self.lang == 'de':
-                    # self.session.open(MessageBox, '\nDatenbank %s nicht gefunden:\nCache Ordner Bereinigung abgebrochen.' % str(self.database), MessageBox.TYPE_ERROR)
                 else:
                     self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
-            # elif self.lang == 'de':
-                # self.session.open(MessageBox, '\nCache Ordner %s ist nicht erreichbar:\nCache Ordner Bereinigung abgebrochen.' % str(self.cachefolder), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nCleanup Cache Folder canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         return
@@ -14042,10 +13355,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     except IndexError:
                         pass
                     except ValueError:
-                        # if self.lang == 'de':
-                            # self.session.open(MessageBox, '\nDatenbank Fehler: Eintrag ohne Laufzeit', MessageBox.TYPE_ERROR)
-                        # else:
-                        self.session.open(MessageBox, '\nDatabase Error: Entry without runtime', MessageBox.TYPE_ERROR)
+                        self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
 
                     f = open(self.database + '.movies', 'w')
                     f.writelines(lines)
@@ -14168,11 +13478,7 @@ class FolderSelection(Screen):
         self.dict = {'font': font}
         self.skin = applySkinVars(FolderSelection.skin, self.dict)
         Screen.__init__(self, session)
-        lang = config.plugins.moviebrowser.language.value
-        # if lang == 'de':
-            # self['save'] = Label('Speichern')
-            # self['cancel'] = Label('Abbrechen')
-        # else:
+        # lang = config.plugins.moviebrowser.language.value
         self['save'] = Label(_('Save'))
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
@@ -14253,10 +13559,6 @@ class timerUpdate():
         else:
             start_time = 1440 - now + start_time
         self.startTimer.start(start_time * 60 * 1000, True)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-            # info = '*******Movie Browser Datenbank Update Timer*******\nInitial Update Timer gestartet: %s\nTimer Wert (min): %s\n' % (now, str(start_time))
-        # else:
         now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('*******Movie Browser Database Update Timer*******\nInitial Update Timer started: %s\nTimer Value (min): %s\n') % (now, str(start_time))
         f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/timer.log', 'a')
@@ -14279,10 +13581,6 @@ class timerUpdate():
         self.dailyTimer.stop()
         if self.runUpdate in self.dailyTimer.callback:
             self.dailyTimer.callback.remove(self.runUpdate)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-            # info = 'Datenbank Update Timer gestoppt: %s\n' % now
-        # else:
         now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('Database Update Timer stopped: %s\n') % now
         f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/timer.log', 'a')
@@ -14297,10 +13595,6 @@ class timerUpdate():
         self.dailyTimer.callback.append(self.runUpdate)
         start_time = 1440
         self.dailyTimer.start(start_time * 60 * 1000, False)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-            # info = 'Datenbank Update Timer gestartet: %s\nTimer Wert (min): %s\n' % (now, str(start_time))
-        # else:
         now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('Database Update Timer started: %s\nTimer Value (min): %s\n') % (now, str(start_time))
         f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/timer.log', 'a')
@@ -14309,10 +13603,6 @@ class timerUpdate():
 
     def runUpdate(self):
         UpdateDatabase(False, '', '', '').showResult(True)
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-            # info = 'Film Datenbank Update gestartet: %s\n' % now
-        # else:
         now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('Movie Database Update started: %s\n') % now
         f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/timer.log', 'a')
@@ -14382,9 +13672,6 @@ timerupdate = timerUpdate()
 def autostart(reason, **kwargs):
     global infobarsession
     if 'session' in kwargs:
-        # if config.plugins.moviebrowser.language.value == 'de':
-            # info = '*******Movie Browser Datenbank Update*******\n'
-        # else:
         info = _('*******Movie Browser Database Update*******\n')
         f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/update.log', 'w')
         f.write(info)
@@ -14402,10 +13689,6 @@ def autostart(reason, **kwargs):
             except:
                 error = sys.exc_info()[1]
                 errortype = sys.exc_info()[0]
-                # if config.plugins.moviebrowser.language.value == 'de':
-                    # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                    # result = '*******Movie Browser Datenbank Update*******\nUhrzeit: %s\nFehler: %s\nGrund: %s' % (now, str(errortype), str(error))
-                # else:
                 now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                 result = _('*******Movie Browser Database Update*******\nTime: %s\nError: %s\nReason: %s') % (now, str(errortype), str(error))
                 print(result)
@@ -14419,9 +13702,6 @@ def autostart(reason, **kwargs):
                 data = data + ':::default_folder.png:::default_poster.png:::default_banner.png:::default_backdrop.png:::default_backdrop.m1v:::database:::'
                 folder = config.plugins.moviebrowser.cachefolder.value
                 count = 0
-                # if config.plugins.moviebrowser.language.value == 'de':
-                    # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                # else:
                 now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                 for root, dirs, files in os.walk(folder, topdown=False, onerror=None):
                     for name in files:
@@ -14434,10 +13714,6 @@ def autostart(reason, **kwargs):
                                 count += 1
 
                 del data
-                # if config.plugins.moviebrowser.language.value == 'de':
-                    # end = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                    # info = '*******Cleanup Cache Ordner*******\nStartzeit: %s\nEndzeit: %s\nVerwaiste Backdrops/Poster entfernt: %s\n\n' % (now, end, str(count))
-                # else:
                 end = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                 info = _('*******Cleanup Cache Folder*******\nStart time: %s\nEnd time: %s\nOrphaned Backdrops/Posters removed: %s\n\n') % (now, end, str(count))
                 f = open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/log/cleanup.log', 'w')
@@ -14447,10 +13723,6 @@ def autostart(reason, **kwargs):
 
 
 def Plugins(**kwargs):
-    # lang = language.getLanguage()[:2]
-    # if lang == 'de':
-        # plugindesc = 'Film & Serien Verwaltung'
-    # else:
     plugindesc = _('Manage your Movies & Series')
     if config.plugins.moviebrowser.showmenu.value == 'no':
         return [

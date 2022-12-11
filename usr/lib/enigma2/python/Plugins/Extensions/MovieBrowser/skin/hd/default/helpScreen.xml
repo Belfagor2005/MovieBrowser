@@ -1,8 +1,8 @@
 <screen name="helpScreen" position="center,center" size="512,512" flags="wfNoBorder" title=" ">
-        <ePixmap position="0,0" size="515,512" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/help.png" alphatest="on" transparent="0" zPosition="0" />
-        <ePixmap position="50,50" size="18,18" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3" />
-        <ePixmap position="50,71" size="18,18" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3" />
-        <ePixmap position="50,92" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3" />
-        <ePixmap position="50,113" size="18,18" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3" />
-        <widget name="label" position="30,48" size="415,420" font="Regular;18" transparent="1" zPosition="2" />
-    </screen>
+	<ePixmap position="0,0" size="515,512" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/help.png" alphatest="on" transparent="0" zPosition="0"/>
+	<ePixmap position="50,50" size="18,18" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,71" size="18,18" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,92" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,113" size="18,18" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3"/>
+	<widget name="label" position="30,48" size="415,420" font="Regular;18" transparent="1" zPosition="2"/>
+</screen>

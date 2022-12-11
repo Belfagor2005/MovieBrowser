@@ -1,3 +1,3 @@
 <screen name="getABC" position="center,center" size="190,60" backgroundColor="#000000" flags="wfNoBorder" title=" ">
-        <widget name="ABC" position="0,0" size="190,60" font="Regular;34" halign="center" valign="center" transparent="1" zPosition="1"/>
-    </screen>
+	<widget name="ABC" position="0,0" size="190,60" font="Regular;34" halign="center" valign="center" transparent="1" zPosition="1"/>
+</screen>

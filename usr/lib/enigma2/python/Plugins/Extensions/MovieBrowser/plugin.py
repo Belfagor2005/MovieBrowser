@@ -56,7 +56,7 @@ from re import sub
 import sys
 import math
 #
-from enigma import gPixmapPtr
+# from enigma import gPixmapPtr
 # from Components.AVSwitch import AVSwitch
 # from enigma import ePicLoad
 
@@ -104,7 +104,6 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args,
     try:
         response = get(url)
         response.raise_for_status()
-        # print("[MovieBrowser][threadGetPage] content=", response.content)
         if file is None:
             success(response.content)
         elif key is not None:
@@ -143,14 +142,16 @@ default_folder = '%spic/browser/default_folder.png' % skin_directory
 default_poster = '%spic/browser/default_poster.png' % skin_directory
 default_banner = '%spic/browser/default_banner.png' % skin_directory
 wiki_png = '%spic/browser/wiki.png' % skin_directory
-tmdb_api_key = 'dfc629f7ff6936a269f8c5cdb194c890'
-thetvdb_api_key = 'D19315B88B2DE21F'
 folders = os.listdir(skin_directory)
 if "pic" in folders:
     folders.remove("pic")
 
+tmdb_api_key = 'dfc629f7ff6936a269f8c5cdb194c890'
+thetvdb_api_key = 'D19315B88B2DE21F'
+
 
 class ItemList(MenuList):
+
     def __init__(self, items, enableWrapAround=True):
         MenuList.__init__(self, items, enableWrapAround, eListboxPythonMultiContent)
         if isFHD():
@@ -233,7 +234,6 @@ config.plugins.moviebrowser.videobutton = ConfigSelection(default='no', choices=
 config.plugins.moviebrowser.lastmovie = ConfigSelection(default='yes', choices=[('yes', _('Yes')), ('no', _('No')), ('folder', _('Folder Selection'))])
 config.plugins.moviebrowser.lastfilter = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.showfolder = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
-# config.plugins.moviebrowser.autocheck = ConfigSelection(default='yes', choices=[('yes', _('Yes')), ('no', _('No'))])
 
 config.plugins.moviebrowser.skin = ConfigSelection(default='default', choices=folders)
 skin_path = "%s%s/" % (skin_directory, config.plugins.moviebrowser.skin.value)
@@ -247,22 +247,16 @@ config.plugins.moviebrowser.reset = ConfigSelection(default='no', choices=[('no'
 config.plugins.moviebrowser.style = ConfigSelection(default='metrix', choices=[('metrix', 'Metrix'), ('backdrop', 'Backdrop'), ('posterwall', 'Posterwall')])
 config.plugins.moviebrowser.seriesstyle = ConfigSelection(default='metrix', choices=[('metrix', 'Metrix'), ('backdrop', 'Backdrop'), ('posterwall', 'Posterwall')])
 
-# config.plugins.moviebrowser.data = NoSave(ConfigOnOff(default=False))
 config.plugins.moviebrowser.api = NoSave(ConfigSelection(['-> Ok']))
 config.plugins.moviebrowser.txtapi = ConfigText(default=tmdb_api_key, visible_width=60, fixed_size=False)
 config.plugins.moviebrowser.tvdbapi = NoSave(ConfigSelection(['-> Ok']))
 config.plugins.moviebrowser.txttvdbapi = ConfigText(default=thetvdb_api_key, visible_width=60, fixed_size=False)
 
-# config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/')
 config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
 config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbusbcache, '/media/usb'), (dbhddcache, '/media/hdd'), (dbcache, 'Default')])
 config.plugins.moviebrowser.cleanup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
 config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
 config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
-# if config.plugins.moviebrowser.backup.value == 'yes':
-    # config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Restore>')])
-# if config.plugins.moviebrowser.restore.value == 'yes':
-    # config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Backup>')])
 
 config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
     ('#007895BC', 'Default'),
@@ -397,10 +391,6 @@ class movieBrowserMetrix(Screen):
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
         self.toogleHelp = self.session.instantiateDialog(helpScreen)
-        # ###########
-        # self.picload = ePicLoad()
-        # self.scale = AVSwitch().getFramebufferScale()
-        # ###########
         self.index = index
         self.hideflag = True
         self.ready = False
@@ -1177,19 +1167,7 @@ class movieBrowserMetrix(Screen):
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-
                 name = _renewTMDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
@@ -1257,19 +1235,7 @@ class movieBrowserMetrix(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-
                 name = _renewTVDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
@@ -3556,19 +3522,7 @@ class movieBrowserBackdrop(Screen):
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-
                 name = _renewTMDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
@@ -3637,19 +3591,7 @@ class movieBrowserBackdrop(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-
                 name = _renewTVDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
@@ -5958,19 +5900,7 @@ class movieBrowserPosterwall(Screen):
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-
                 name = _renewTMDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
@@ -6039,19 +5969,7 @@ class movieBrowserPosterwall(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-
                 name = _renewTVDb(name)
-
-                # name = sub('.*?[/]', '', name)
-                # if name.endswith('.ts'):
-                    # name = sub('_', ' ', name)
-                    # name = sub('^.*? - .*? - ', '', name)
-                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    # name = sub('^[0-9]+ - ', '', name)
-                    # name = sub('[.]ts', '', name)
-                # else:
-                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
-
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
@@ -11377,57 +11295,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self['status'] = StaticText()
         self.ready = True
 
-        # self.editListEntry = None
         list = []
-        # list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
-        # list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
-        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
-        # list.append(self.foldername)
-        # list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
-        # list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
-        # list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))
-        # list.append(getConfigListEntry(_('TMDb/TheTVDb Language:'), config.plugins.moviebrowser.language))
-        # list.append(getConfigListEntry(_('Movie Sort Order:'), config.plugins.moviebrowser.sortorder))
-        # list.append(getConfigListEntry(_('Show Backdrops:'), config.plugins.moviebrowser.backdrops))
-        # list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
-        # list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
-        # list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
-
-        # list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
-
-        # # list.append(getConfigListEntry(_('Plugin Sans Serif Font:'), config.plugins.moviebrowser.font))
-        # # list.append(getConfigListEntry(_('Plugin Transparency:'), config.plugins.moviebrowser.transparency))
-        # # list.append(getConfigListEntry(_('Posterwall/Backdrop Plugin Size:'), config.plugins.moviebrowser.plugin_size))
-        # # list.append(getConfigListEntry(_('Full HD Skin Support:'), config.plugins.moviebrowser.fhd))
-        # # list.append(getConfigListEntry(_('PayPal Info:'), config.plugins.moviebrowser.paypal))
-        # # list.append(getConfigListEntry(_('Plugin Auto Update Check:'), config.plugins.moviebrowser.autocheck))
-
-        # list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
-        # list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
-        # list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
-
-        # # list.append(getConfigListEntry(_("Settings TMDB ApiKey"), config.plugins.moviebrowser.data))  # , _("Settings TMDB ApiKey")))
-        # # if config.plugins.moviebrowser.data.value is True:
-        # list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))
-        # list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))
-        # list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))
-        # list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))
-
-        # list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
-        # list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
-
-        # list.append(getConfigListEntry(_('Update Database with Timer:'), config.plugins.moviebrowser.timerupdate))
-        # list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
-        # list.append(getConfigListEntry(_('Hide Plugin during Update:'), config.plugins.moviebrowser.hideupdate))
-
-        # list.append(getConfigListEntry(_('Reset Database:'), config.plugins.moviebrowser.reset))
-        # list.append(getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup))
-        # list.append(getConfigListEntry(_('Backup Database:'), config.plugins.moviebrowser.backup))
-        # list.append(getConfigListEntry(_('Restore Database:'), config.plugins.moviebrowser.restore))
-
-        # list.append(getConfigListEntry(_('Select skin *Restart GUI Required:'), config.plugins.moviebrowser.skin))
-        # list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
-        # list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
 
         ConfigListScreen.__init__(self, list, on_change=self.UpdateComponents)
 
@@ -11463,15 +11331,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
         list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
         list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
-
-        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
-        # list.append(self.foldername)
-        # list.append(getConfigListEntry(_('Plugin Sans Serif Font:'), config.plugins.moviebrowser.font))
-        # list.append(getConfigListEntry(_('Plugin Transparency:'), config.plugins.moviebrowser.transparency))
-        # list.append(getConfigListEntry(_('Posterwall/Backdrop Plugin Size:'), config.plugins.moviebrowser.plugin_size))
-        # list.append(getConfigListEntry(_('Full HD Skin Support:'), config.plugins.moviebrowser.fhd))
-        # list.append(getConfigListEntry(_('PayPal Info:'), config.plugins.moviebrowser.paypal))
-        # list.append(getConfigListEntry(_('Plugin Auto Update Check:'), config.plugins.moviebrowser.autocheck))
 
         list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
@@ -11556,9 +11415,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         data = data + ':::default_folder.png:::default_poster.png:::default_banner.png:::default_backdrop.png:::default_backdrop.m1v:::database:::'
                         folder = self.cachefolder
                         count = 0
-                        # if config.plugins.moviebrowser.language.value == 'de':
-                            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                        # else:
                         now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
                         for root, dirs, files in os.walk(folder, topdown=False, onerror=None):
                             for name in files:
@@ -11595,7 +11451,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         else:
             self.save()
 
-    def keyApi(self, answer=None):
+    def keyApi(self, answer=None):  # key stored 
         api = "/tmp/tmdbapikey.txt"
         if answer is None:
             if fileExists(api) and os.stat(api).st_size > 0:
@@ -11639,26 +11495,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
     def selectionChanged(self):
         self['status'].setText(self['config'].getCurrent()[0])
-
-    # def changedEntry(self):
-        # for x in self.onChangedEntry:
-            # x()
-        # try:
-            # if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
-                # self.UpdateComponents()
-        # except:
-            # self.createSetup()
-            # pass
-
-    # def getCurrentEntry(self):
-        # return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
-
-    # def getCurrentValue(self):
-        # return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
-
-    # def createSummary(self):
-        # from Screens.Setup import SetupSummary
-        # return SetupSummary
 
     def save(self):
         if self.ready is True:
@@ -11800,13 +11636,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self["config"].invalidate(self["config"].getCurrent())
         return
 
-# why don't work
-    def keySave(self):
-        for i in range(0, len(config.plugins.moviebrowser)):
-            # print('config list ', i)
-            config.plugins.moviebrowser[i].save()
-        ConfigListScreen.keySave(self)
-
     def cancel(self, answer=None):
         if answer is None:
             if self["config"].isChanged():
@@ -11842,6 +11671,31 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         else:
             self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, config.plugins.moviebrowser.filter.value, config.plugins.moviebrowser.filter.value)
 
+    def keySave(self):  # why don't work
+        for i in range(0, len(config.plugins.moviebrowser)):
+            # print('config list ', i)
+            config.plugins.moviebrowser[i].save()
+        ConfigListScreen.keySave(self)
+
+    # def changedEntry(self):
+        # for x in self.onChangedEntry:
+            # x()
+        # try:
+            # if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
+                # self.UpdateComponents()
+        # except:
+            # self.createSetup()
+            # pass
+
+    # def getCurrentEntry(self):
+        # return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
+
+    # def getCurrentValue(self):
+        # return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
+
+    # def createSummary(self):
+        # from Screens.Setup import SetupSummary
+        # return SetupSummary
 
 class timerUpdate():
 

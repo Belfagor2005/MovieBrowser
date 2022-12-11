@@ -1,5 +1,5 @@
 <screen name="movieDatabase" position="center,center" size="1280,720" title=" ">
-        <ePixmap position="10,0" size="1200,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logo.png" zPosition="1" />
-        <widget name="list" position="10,73" size="120,500" scrollbarMode="showOnDemand" zPosition="1" />
-        <widget name="list2" position="11,74" size="1200,500" scrollbarMode="showOnDemand" zPosition="1" />
-    </screen>
+	<ePixmap position="10,0" size="1200,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logo.png" zPosition="1"/>
+	<widget name="list" position="10,73" size="120,500" scrollbarMode="showOnDemand" zPosition="1"/>
+	<widget name="list2" position="11,74" size="1200,500" scrollbarMode="showOnDemand" zPosition="1"/>
+</screen>

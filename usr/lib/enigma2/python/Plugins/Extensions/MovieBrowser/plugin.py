@@ -125,6 +125,9 @@ dir_plugins = "/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/"
 pythonVer = sys.version_info.major
 dbmovie = '%sdb/database' % dir_plugins
 dbreset = '%sdb/reset' % dir_plugins
+dbcache = '/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/cache'
+dbhddcache = '/media/hdd/moviebrowser/cache'
+dbusbcache = '/media/usb/moviebrowser/cache'
 blacklistmovie = '%sdb/blacklist' % dir_plugins
 filtermovie = '%sdb/filter' % dir_plugins
 lastfile = '%sdb/last' % dir_plugins
@@ -239,7 +242,7 @@ config.plugins.moviebrowser.timer = ConfigClock(default=6 * 3600)
 config.plugins.moviebrowser.hideupdate = ConfigSelection(default='yes', choices=[('yes', _('Yes')), ('no', _('No'))])
 
 config.plugins.moviebrowser.reset = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
-config.plugins.moviebrowser.style = ConfigSelection(default='backdrop', choices=[('metrix', 'Metrix'), ('backdrop', 'Backdrop'), ('posterwall', 'Posterwall')])
+config.plugins.moviebrowser.style = ConfigSelection(default='metrix', choices=[('metrix', 'Metrix'), ('backdrop', 'Backdrop'), ('posterwall', 'Posterwall')])
 config.plugins.moviebrowser.seriesstyle = ConfigSelection(default='metrix', choices=[('metrix', 'Metrix'), ('backdrop', 'Backdrop'), ('posterwall', 'Posterwall')])
 
 # config.plugins.moviebrowser.data = NoSave(ConfigOnOff(default=False))
@@ -249,10 +252,15 @@ config.plugins.moviebrowser.txtapi = ConfigText(default=api_key, visible_width=5
 
 # config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/')
 config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
-config.plugins.moviebrowser.cachefolder = ConfigSelection(default='/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/cache', choices=[('/media/usb/moviebrowser/cache', '/media/usb'), ('/media/hdd/moviebrowser/cache', '/media/hdd'), ('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/cache', 'Default')])
-config.plugins.moviebrowser.cleanup = ConfigSelection(default='no', choices=[('no', '<Cleanup>'), ('no', '<Cleanup>')])
-config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', '<Backup>'), ('no', '<Backup>')])
-config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', '<Restore>'), ('no', '<Restore>')])
+config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbusbcache, '/media/usb'), (dbhddcache, '/media/hdd'), (dbcache, 'Default')])
+config.plugins.moviebrowser.cleanup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
+config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
+config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
+if config.plugins.moviebrowser.backup.value == 'yes':
+    config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Restore>')])
+if config.plugins.moviebrowser.restore.value == 'yes':
+    config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Backup>')])
+    
 config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
     ('#007895BC', 'Default'),
     ('#00F0A30A', 'Amber'),
@@ -11404,64 +11412,67 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         elif current == getConfigListEntry(_('Backup Database:'), config.plugins.moviebrowser.backup):
             if os.path.exists(self.cachefolder):
                 if fileExists(self.database):
-                    data = open(self.database).read()
-                    try:
-                        os.makedirs(self.cachefolder + '/backup')
-                    except OSError:
-                        pass
+                    if config.plugins.moviebrowser.backup.value == 'yes':
+                        data = open(self.database).read()
+                        try:
+                            os.makedirs(self.cachefolder + '/backup')
+                        except OSError:
+                            pass
 
-                    f = open(self.cachefolder + '/backup/database', 'w')
-                    f.write(data)
-                    f.close()
-                    self.session.open(MessageBox, _('\nDatabase backuped to %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                else:
-                    self.session.open(MessageBox, _('\nDatabase %s not found:\nMovie Browser Database Backup canceled.') % str(self.database), MessageBox.TYPE_ERROR)
+                        f = open(self.cachefolder + '/backup/database', 'w')
+                        f.write(data)
+                        f.close()
+                        self.session.open(MessageBox, _('\nDatabase backuped to %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
+                    else:
+                        self.session.open(MessageBox, _('\nDatabase %s not found:\nMovie Browser Database Backup canceled.') % str(self.database), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Backup canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry('Restore Database:', config.plugins.moviebrowser.restore):
             if os.path.exists(self.cachefolder):
-                if fileExists(self.cachefolder + '/backup/database'):
-                    data = open(self.cachefolder + '/backup/database').read()
-                    f = open(self.database, 'w')
-                    f.write(data)
-                    f.close()
-                    self.session.open(MessageBox, _('\nDatabase restored from %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
-                else:
-                    self.session.open(MessageBox, _('\nDatabase Backup %s not found:\nMovie Browser Database Restore canceled.') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_ERROR)
+                if config.plugins.moviebrowser.restore.value == 'yes':
+                    if fileExists(self.cachefolder + '/backup/database'):
+                        data = open(self.cachefolder + '/backup/database').read()
+                        f = open(self.database, 'w')
+                        f.write(data)
+                        f.close()
+                        self.session.open(MessageBox, _('\nDatabase restored from %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
+                    else:
+                        self.session.open(MessageBox, _('\nDatabase Backup %s not found:\nMovie Browser Database Restore canceled.') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Restore canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup):
             if os.path.exists(self.cachefolder):
-                if fileExists(self.database):
-                    data = open(self.database).read()
-                    data = data + ':::default_folder.png:::default_poster.png:::default_banner.png:::default_backdrop.png:::default_backdrop.m1v:::database:::'
-                    folder = self.cachefolder
-                    count = 0
-                    # if config.plugins.moviebrowser.language.value == 'de':
-                        # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
-                    # else:
-                    now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-                    for root, dirs, files in os.walk(folder, topdown=False, onerror=None):
-                        for name in files:
-                            shortname = sub('[.]jpg', '', name)
-                            shortname = sub('[.]m1v', '', shortname)
-                            if search(shortname, data) is None:
-                                filename = os.path.join(root, name)
-                                if fileExists(filename):
-                                    os.remove(filename)
-                                    count += 1
-                    del data
-                    if count == 0:
-                        self.session.open(MessageBox, _('\nNo orphaned Backdrops or Posters found:\nYour Cache Folder is clean.'), MessageBox.TYPE_INFO, close_on_any_key=True)
+                if config.plugins.moviebrowser.cleanup.value == 'yes':
+                    if fileExists(self.database):
+                        data = open(self.database).read()
+                        data = data + ':::default_folder.png:::default_poster.png:::default_banner.png:::default_backdrop.png:::default_backdrop.m1v:::database:::'
+                        folder = self.cachefolder
+                        count = 0
+                        # if config.plugins.moviebrowser.language.value == 'de':
+                            # now = str(datetime.datetime.now().strftime('%d.%m.%Y %H:%M:%S'))
+                        # else:
+                        now = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+                        for root, dirs, files in os.walk(folder, topdown=False, onerror=None):
+                            for name in files:
+                                shortname = sub('[.]jpg', '', name)
+                                shortname = sub('[.]m1v', '', shortname)
+                                if search(shortname, data) is None:
+                                    filename = os.path.join(root, name)
+                                    if fileExists(filename):
+                                        os.remove(filename)
+                                        count += 1
+                        del data
+                        if count == 0:
+                            self.session.open(MessageBox, _('\nNo orphaned Backdrops or Posters found:\nYour Cache Folder is clean.'), MessageBox.TYPE_INFO, close_on_any_key=True)
+                        else:
+                            self.session.open(MessageBox, _('\nCleanup Cache Folder finished:\n%s orphaned Backdrops or Posters removed.') % str(count), MessageBox.TYPE_INFO, close_on_any_key=True)
+                        end = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+                        info = _('Start time: %s\nEnd time: %s\nOrphaned Backdrops/Posters removed: %s\n\n') % (now, end, str(count))
+                        f = open(cleanuplog, 'a')
+                        f.write(info)
+                        f.close()
                     else:
-                        self.session.open(MessageBox, _('\nCleanup Cache Folder finished:\n%s orphaned Backdrops or Posters removed.') % str(count), MessageBox.TYPE_INFO, close_on_any_key=True)
-                    end = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-                    info = _('Start time: %s\nEnd time: %s\nOrphaned Backdrops/Posters removed: %s\n\n') % (now, end, str(count))
-                    f = open(cleanuplog, 'a')
-                    f.write(info)
-                    f.close()
-                else:
-                    self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
+                        self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nCleanup Cache Folder canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         return

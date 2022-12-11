@@ -1,0 +1,13 @@
+<screen name="moviesList" position="320,180" size="1280,720" title=" ">
+        <ePixmap position="0,0" size="730,28" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logo.png" zPosition="1" />
+        <widget name="list" position="100,33" size="620,500" scrollbarMode="showNever" zPosition="1" />
+        <widget name="piclist" position="10,33" size="710,500" scrollbarMode="showNever" transparent="1" zPosition="0" />
+		<widget name="poster1" position="10,33" size="80,120" alphatest="blend" zPosition="1" />
+        <widget name="poster2" position="10,158" size="80,120" alphatest="blend" zPosition="1" />
+        <widget name="poster3" position="10,283" size="80,120" alphatest="blend" zPosition="1" />
+        <widget name="poster4" position="10,408" size="80,120" alphatest="blend" zPosition="1" />
+        <widget name="banner1" position="10,33" size="710,120" alphatest="blend" zPosition="1" />
+        <widget name="banner2" position="10,158" size="710,120" alphatest="blend" zPosition="1" />
+        <widget name="banner3" position="10,283" size="710,120" alphatest="blend" zPosition="1" />
+        <widget name="banner4" position="10,408" size="710,120" alphatest="blend" zPosition="1" />
+    </screen>

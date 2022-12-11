@@ -22,7 +22,7 @@ from Components.ServiceEventTracker import ServiceEventTracker
 from Components.config import ConfigSelection, ConfigText
 # from Components.config import ConfigDirectory
 # from Components.config import ConfigSlider
-from Components.config import ConfigSubsection, ConfigOnOff
+from Components.config import ConfigSubsection  # , ConfigOnOff
 from Components.config import config, configfile, ConfigClock
 from Components.config import NoSave, getConfigListEntry
 from Plugins.Plugin import PluginDescriptor
@@ -41,7 +41,7 @@ from enigma import eConsoleAppContainer
 from enigma import eListboxPythonMultiContent, ePoint
 from enigma import eServiceReference, eTimer
 from enigma import getDesktop, gFont, iPlayableService
-from enigma import iServiceInformation, loadPNG, loadPic
+from enigma import iServiceInformation, loadPNG  # , loadPic
 from requests import get
 # from requests import exceptions
 from requests.exceptions import HTTPError
@@ -112,7 +112,7 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args,
             success(response.content, file)
     except HTTPError as httperror:
         print('[MovieBrowser][threadGetPage] Http error: ', httperror)
-        fail(error)
+        fail(error)  # E0602 undefined name 'error' [pyflakes]
     except Exception as error:
         print('[MovieBrowser][threadGetPage] error: ', error)
         if fail is not None:
@@ -142,7 +142,8 @@ default_folder = '%spic/browser/default_folder.png' % skin_directory
 default_poster = '%spic/browser/default_poster.png' % skin_directory
 default_banner = '%spic/browser/default_banner.png' % skin_directory
 wiki_png = '%spic/browser/wiki.png' % skin_directory
-api_key = 'dfc629f7ff6936a269f8c5cdb194c890'
+tmdb_api_key = 'dfc629f7ff6936a269f8c5cdb194c890'
+thetvdb_api_key = 'df00f423-27b4-4a1e-b0ea-ea151b54ca61'
 folders = os.listdir(skin_directory)
 if "pic" in folders:
     folders.remove("pic")
@@ -158,13 +159,13 @@ class ItemList(MenuList):
             self.l.setFont(28, gFont('Regular', 28))
             self.l.setFont(26, gFont('Regular', 26))
             self.l.setFont(24, gFont('Regular', 24))
-            self.l.setFont(22, gFont('Regular', 22))            
-            self.l.setFont(20, gFont('Regular', 20))            
+            self.l.setFont(22, gFont('Regular', 22))
+            self.l.setFont(20, gFont('Regular', 20))
             # textfont = int(34)
             # self.l.setFont(0, gFont('Regular', textfont))
         else:
             self.l.setItemHeight(35)
-            self.l.setFont(32, gFont('Regular', 32))            
+            self.l.setFont(32, gFont('Regular', 32))
             self.l.setFont(28, gFont('Regular', 28))
             self.l.setFont(26, gFont('Regular', 26))
             self.l.setFont(24, gFont('Regular', 24))
@@ -247,8 +248,9 @@ config.plugins.moviebrowser.seriesstyle = ConfigSelection(default='metrix', choi
 
 # config.plugins.moviebrowser.data = NoSave(ConfigOnOff(default=False))
 config.plugins.moviebrowser.api = NoSave(ConfigSelection(['-> Ok']))
-config.plugins.moviebrowser.txtapi = ConfigText(default=api_key, visible_width=50, fixed_size=False)
-
+config.plugins.moviebrowser.txtapi = ConfigText(default=tmdb_api_key, visible_width=60, fixed_size=False)
+config.plugins.moviebrowser.tvdbapi = NoSave(ConfigSelection(['-> Ok']))
+config.plugins.moviebrowser.txttvdbapi = ConfigText(default=thetvdb_api_key, visible_width=60, fixed_size=False)
 
 # config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/')
 config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
@@ -260,7 +262,7 @@ if config.plugins.moviebrowser.backup.value == 'yes':
     config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Restore>')])
 if config.plugins.moviebrowser.restore.value == 'yes':
     config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Backup>')])
-    
+
 config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
     ('#007895BC', 'Default'),
     ('#00F0A30A', 'Amber'),
@@ -1166,7 +1168,7 @@ class movieBrowserMetrix(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = ('https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s') % (api_key, name + self.language)
+                url = ('https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s') % (tmdb_api_key, name + self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -1203,7 +1205,7 @@ class movieBrowserMetrix(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -1271,7 +1273,7 @@ class movieBrowserMetrix(Screen):
         output = output.replace('&amp;', '&')
         seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
         for x in range(len(seriesid)):
-            url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml'
+            url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
             agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
@@ -1341,7 +1343,7 @@ class movieBrowserMetrix(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml'
+                url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
                 banner = self.posterlist[self.index].split('<episode>')
@@ -3550,7 +3552,7 @@ class movieBrowserBackdrop(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (api_key, name + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, name + self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -3587,7 +3589,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -3655,7 +3657,7 @@ class movieBrowserBackdrop(Screen):
         output = output.replace('&amp;', '&')
         seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
         for x in range(len(seriesid)):
-            url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml'
+            url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
             agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
@@ -3724,7 +3726,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml'
+                url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
                 banner = self.posterlist[self.index].split('<episode>')
@@ -5942,7 +5944,7 @@ class movieBrowserPosterwall(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (api_key, name + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, name + self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -5979,7 +5981,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -6047,7 +6049,7 @@ class movieBrowserPosterwall(Screen):
         output = output.replace('&amp;', '&')
         seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
         for x in range(len(seriesid)):
-            url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml'
+            url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
             agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
@@ -6116,7 +6118,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml'
+                url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
                 banner = self.posterlist[self.index].split('<episode>')
@@ -6745,7 +6747,7 @@ class movieBrowserPosterwall(Screen):
         try:
             plot = self.plotlist[self.index]
             self['plotfull'].setText(plot)
-            
+
         except IndexError:
             pass
 
@@ -8034,7 +8036,7 @@ class UpdateDatabase():
             else:
                 movie = transMOVIE(self.name)
                 movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (api_key, movie + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, movie + self.language)
                 self.getTMDbData(url, '0', False)
         return
 
@@ -8087,7 +8089,7 @@ class UpdateDatabase():
                 except IndexError:
                     self.posterlist.append(default_poster)
 
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid + self.language, api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid + self.language, tmdb_api_key)
                 headers = {'Accept': 'application/json'}
                 request = Request(url, headers=headers)
                 try:
@@ -8104,7 +8106,7 @@ class UpdateDatabase():
                 name = re.findall('"title":"(.*?)"', output)
                 backdrop = re.findall('"backdrop_path":"(.*?)"', output)
                 poster = re.findall('"poster_path":"(.*?)"', output)
-            url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, api_key)
+            url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, tmdb_api_key)
             headers = {'Accept': 'application/json'}
             request = Request(url, headers=headers)
             try:
@@ -8148,7 +8150,7 @@ class UpdateDatabase():
                 except IndexError:
                     self.posterlist.append(default_poster)
 
-            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid + self.language, api_key)
+            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid + self.language, tmdb_api_key)
             headers = {'Accept': 'application/json'}
             request = Request(url, headers=headers)
             try:
@@ -8288,7 +8290,7 @@ class UpdateDatabase():
                     season = '0'
                 episode = search('[Ss][0-9]+[Ee]([0-9]+)', data)
                 episode = episode.group(1).lstrip('0')
-                url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml'
+                url = 'https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
                 agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
@@ -8321,7 +8323,7 @@ class UpdateDatabase():
                 plotfull = []
                 rating = []
                 eposter = []
-            url = 'https://www.thetvdb.com/api/D19315B88B2DE21F/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml'
+            url = 'https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
             agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
@@ -8606,7 +8608,7 @@ class UpdateDatabase():
                 else:
                     movie = transMOVIE(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
-                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (api_key, movie + self.language)
+                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, movie + self.language)
                     try:
                         self.getTMDbData(url, '0', False)
                     except RuntimeError:
@@ -8772,16 +8774,14 @@ class movieControlList(Screen):
                         res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
                     else:
                         series = sub('[Ss][0]+[Ee]', 'Special ', self.list[i][0])
-                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))                
+                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
                 else:
                     if self.content != ':::Series:::':
                         res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
                     else:
                         series = sub('[Ss][0]+[Ee]', 'Special ', self.list[i][0])
                         res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
-                
-                
-                
+
                 self.listentries.append(res)
             except IndexError:
                 pass
@@ -9663,10 +9663,10 @@ class moviesList(Screen):
                 os.remove(self.poster4)
             self.close(current, self.choice)
         elif self.choice == 'poster':
-            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % api_key
+            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % tmdb_api_key
             self.getTMDbPosters(url)
         elif self.choice == 'backdrop':
-            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % api_key
+            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % tmdb_api_key
             self.getTMDbBackdrops(url)
 
     def getTMDbPosters(self, url):
@@ -9719,10 +9719,10 @@ class moviesList(Screen):
                 os.remove(self.poster4)
             self.close(current, self.choice)
         elif self.choice == 'banner':
-            url = 'https://thetvdb.com/api/D19315B88B2DE21F/series/' + current + '/banners.xml'
+            url = 'https://thetvdb.com/api/%s/series/' + current + '/banners.xml' % thetvdb_api_key
             self.getTVDbBanners(url)
         elif self.choice == 'backdrop':
-            url = 'https://thetvdb.com/api/D19315B88B2DE21F/series/' + current + '/banners.xml'
+            url = 'https://thetvdb.com/api/%s/series/' + current + '/banners.xml' % thetvdb_api_key
             self.getTVDbBackdrops(url)
 
     def getTVDbBanners(self, url):
@@ -11347,11 +11347,8 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
         list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
 
-        list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
-        list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
-        list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
         list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
-        
+
         # list.append(getConfigListEntry(_('Plugin Sans Serif Font:'), config.plugins.moviebrowser.font))
         # list.append(getConfigListEntry(_('Plugin Transparency:'), config.plugins.moviebrowser.transparency))
         # list.append(getConfigListEntry(_('Posterwall/Backdrop Plugin Size:'), config.plugins.moviebrowser.plugin_size))
@@ -11359,16 +11356,19 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         # list.append(getConfigListEntry(_('PayPal Info:'), config.plugins.moviebrowser.paypal))
         # list.append(getConfigListEntry(_('Plugin Auto Update Check:'), config.plugins.moviebrowser.autocheck))
 
-        list.append(getConfigListEntry(_('Select skin *Restart GUI Required:'), config.plugins.moviebrowser.skin))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
 
-
         # list.append(getConfigListEntry(_("Settings TMDB ApiKey"), config.plugins.moviebrowser.data))  # , _("Settings TMDB ApiKey")))
         # if config.plugins.moviebrowser.data.value is True:
-        list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/apikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/apikey.txt")))
+        list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/tmdbapikey.txt")))
         list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))  # , _("Signup on TMDB and input free personal ApiKey")))
+        list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))  # , _("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt")))
+        list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))  # , _("Signup on TheTVDb and input free personal ApiKey")))
+
+        list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
+        list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
 
         list.append(getConfigListEntry(_('Update Database with Timer:'), config.plugins.moviebrowser.timerupdate))
         list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
@@ -11378,6 +11378,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup))
         list.append(getConfigListEntry(_('Backup Database:'), config.plugins.moviebrowser.backup))
         list.append(getConfigListEntry(_('Restore Database:'), config.plugins.moviebrowser.restore))
+
+        list.append(getConfigListEntry(_('Select skin *Restart GUI Required:'), config.plugins.moviebrowser.skin))
+        list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
         list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
 
         ConfigListScreen.__init__(self, list, on_change=self.UpdateComponents)
@@ -11392,16 +11395,26 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.onLayoutFinish.append(self.UpdateComponents)
 
     def UpdateComponents(self):
-        png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
-        png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
-        if fileExists(png):
-            self["plugin"].instance.setPixmapFromFile(png)
-            self['plugin'].show()
-        if fileExists(png2):
-            self["plugin"].instance.setPixmapFromFile(png2)
-            self['plugin'].show()
+        # png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
+        # png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
+        # if fileExists(png):
+            # self["plugin"].instance.setPixmapFromFile(png)
+            # self['plugin'].show()
+        # if fileExists(png2):
+            # self["plugin"].instance.setPixmapFromFile(png2)
+            # self['plugin'].show()
         current = self['config'].getCurrent()
-        if current == self.foldername:
+        if current == getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style):
+            png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
+            if fileExists(png):
+                self["plugin"].instance.setPixmapFromFile(png)
+                self['plugin'].show()
+        elif current == getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle):
+            png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)    
+            if fileExists(png2):
+                self["plugin"].instance.setPixmapFromFile(png2)
+                self['plugin'].show()
+        elif current == self.foldername:
             self.session.openWithCallback(self.folderSelected, FolderSelection, self.moviefolder)
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
             if config.plugins.moviebrowser.m1v.value == 'yes':
@@ -11485,30 +11498,53 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         return
 
     def keyRun(self):
-        current = self["config"].getCurrent()[1]
-        if current and current == config.plugins.moviebrowser.api:
+        # current = self["config"].getCurrent()[1]
+        current = self['config'].getCurrent()
+        if current == getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
             self.keyApi()
+        elif current == getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
+            self.tvdbkeyApi()
         else:
             self.save()
 
     def keyApi(self, answer=None):
-        api = "/tmp/apikey.txt"
+        api = "/tmp/tmdbapikey.txt"
         if answer is None:
             if fileExists(api) and os.stat(api).st_size > 0:
-                self.session.openWithCallback(self.keyApi, MessageBox, _("Import Api Key TMDB from /tmp/apikey.txt?"))
+                self.session.openWithCallback(self.keyApi, MessageBox, _("Import Api Key TMDB from\n/tmp/tmdbapikey.txt?"))
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % api), MessageBox.TYPE_INFO, timeout=4)
         elif answer:
             if fileExists(api) and os.stat(api).st_size > 0:
                 with open(api, 'r') as f:
                     fpage = f.readline()
-                    self.mbox = self.session.open(MessageBox, (_("TMDB ApiKey Imported!")), MessageBox.TYPE_INFO, timeout=4)
                     config.plugins.moviebrowser.txtapi.setValue(str(fpage))
                     config.plugins.moviebrowser.txtapi.save()
-                    self.UpdateComponents()
-                    self.mbox = self.session.open(MessageBox, (_("TMDB ApiKey Stored!")), MessageBox.TYPE_INFO, timeout=4)
+                    configfile.save()
+                self.UpdateComponents()
+                self.mbox = self.session.open(MessageBox, (_("TMDB ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % api), MessageBox.TYPE_INFO, timeout=4)
+        return
+
+    def tvdbkeyApi(self, answer=None):
+        thetvdbapikey = "/tmp/thetvdbapikey.txt"
+        if answer is None:
+            if fileExists(thetvdbapikey) and os.stat(thetvdbapikey).st_size > 0:
+                self.session.openWithCallback(self.keyApi, MessageBox, _("Import Api Key TheTVDb from\n/tmp/thetvdbapikey.txt?"))
+            else:
+                self.mbox = self.session.open(MessageBox, (_("Missing %s !") % thetvdbapikey), MessageBox.TYPE_INFO, timeout=4)
+        elif answer:
+            if fileExists(thetvdbapikey) and os.stat(thetvdbapikey).st_size > 0:
+                with open(thetvdbapikey, 'r') as d:
+                    fpage2 = d.readline()
+                    config.plugins.moviebrowser.txttvdbapi.setValue(str(fpage2))
+                    config.plugins.moviebrowser.txttvdbapi.save()
+                    configfile.save()
+                self.UpdateComponents()
+                self.mbox = self.session.open(MessageBox, (_("TheTVDb ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
+            else:
+                self.mbox = self.session.open(MessageBox, (_("Missing %s !") % thetvdbapikey), MessageBox.TYPE_INFO, timeout=4)
         return
 
     def save(self):
@@ -11611,10 +11647,12 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 self.cachefolder = config.plugins.moviebrowser.cachefolder.value
                 config.plugins.moviebrowser.cachefolder.save()
             else:
-                for x in self['config'].list:
+                # for x in self['config'].list:
+                    # x[1].save()
+                    # configfile.save()
+                for x in self["config"].list:
                     x[1].save()
-                    configfile.save()
-
+                configfile.save()
                 self.exit()
         return
 
@@ -11623,8 +11661,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         del self.container
         for x in self['config'].list:
             x[1].save()
-            configfile.save()
-
+        configfile.save()
         self.exit()
 
     def KeyText(self):
@@ -11639,11 +11676,24 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self["config"].invalidate(self["config"].getCurrent())
         return
 
-    def cancel(self):
-        for x in self['config'].list:
-            x[1].cancel()
+    # def cancel(self):
+        # for x in self['config'].list:
+            # x[1].cancel()
+        # self.exit()
 
-        self.exit()
+    def cancel(self, answer=None):
+        if answer is None:
+            if self["config"].isChanged():
+                self.session.openWithCallback(self.cancel, MessageBox, _("Really close without saving settings?"))
+            else:
+                # self.close(False)
+                self.exit()
+        elif answer:
+            for x in self["config"].list:
+                x[1].cancel()
+            # self.close(True)
+            self.exit()
+        return
 
     def exit(self):
         if config.plugins.moviebrowser.filter.value == ':::Movie:Top:::':

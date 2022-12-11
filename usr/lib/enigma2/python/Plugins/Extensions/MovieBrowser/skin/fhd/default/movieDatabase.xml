@@ -1,0 +1,5 @@
+<screen name="movieDatabase" position="center,center" size="1920,1080" title=" ">
+	<ePixmap position="135,0" size="1600,45" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logo.png" zPosition="1"/>
+	<widget name="list" position="15,57" size="1800,750" scrollbarMode="showOnDemand" zPosition="1"/>
+	<widget name="list2" position="17,57" size="1800,750" scrollbarMode="showOnDemand" zPosition="1" itemHeight="45"/>
+</screen>

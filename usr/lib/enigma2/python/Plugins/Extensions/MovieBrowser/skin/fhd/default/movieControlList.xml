@@ -1,0 +1,11 @@
+<screen name="movieControlList" position="0,0" size="1920,1080" title=" ">
+	<ePixmap position="25,0" size="1800,75" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logoList.png" zPosition="1"/>
+	<ePixmap position="35,8" size="27,27" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="2"/>
+	<ePixmap position="35,41" size="27,27" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="2"/>
+	<ePixmap position="501,41" size="27,27" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="2"/>
+	<widget name="label" position="81,8" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
+	<widget name="label2" position="81,41" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
+	<widget name="label3" position="310,41" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="right" transparent="1" zPosition="2"/>
+	<widget name="list" position="23,120" size="1808,870" scrollbarMode="showOnDemand" zPosition="1"/>
+	<widget name="log" position="23,120" size="1808,870" font="Regular;20" zPosition="1"/>
+</screen>

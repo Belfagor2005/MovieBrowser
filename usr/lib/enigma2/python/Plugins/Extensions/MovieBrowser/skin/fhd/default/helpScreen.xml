@@ -1,0 +1,8 @@
+<screen name="helpScreen" position="center,center" size="768,768" flags="wfNoBorder" title=" ">
+	<ePixmap position="0,0" size="773,768" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/help.png" alphatest="on" transparent="0" zPosition="0"/>
+	<ePixmap position="50,75" size="27,27" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,107" size="27,27" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,138" size="27,27" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3"/>
+	<ePixmap position="50,170" size="27,27" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3"/>
+	<widget name="label" position="45,72" size="623,630" font="Regular;18" transparent="1" zPosition="2"/>
+</screen>

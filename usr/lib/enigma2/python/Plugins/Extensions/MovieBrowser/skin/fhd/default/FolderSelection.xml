@@ -1,0 +1,11 @@
+<screen name="FolderSelection" position="center,center" size="795,788" backgroundColor="#20000000" title="Movie Browser Setup">
+	<ePixmap position="0,0" size="795,42" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logoConfig.png" alphatest="blend" zPosition="1"/>
+	<ePixmap position="14,56" size="768,2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/seperator.png" alphatest="off" zPosition="1"/>
+	<widget name="folderlist" position="14,57" size="768,225" itemHeight="45" scrollbarMode="showOnDemand" zPosition="1"/>
+	<ePixmap position="14,284" size="768,2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/seperator.png" alphatest="off" zPosition="1"/>
+	<widget name="save" position="225,297" size="188,30" font="Regular;18" halign="left" transparent="1" zPosition="1"/>
+	<widget name="cancel" position="548,297" size="188,30" font="Regular;18" halign="left" transparent="1" zPosition="1"/>
+	<ePixmap position="188,299" size="27,27" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1"/>
+	<ePixmap position="510,299" size="27,27" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="1"/>
+	<widget name="plugin" position="14,342" size="768,432" alphatest="blend" zPosition="1"/>
+</screen>

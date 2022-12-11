@@ -11368,10 +11368,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
         # # list.append(getConfigListEntry(_("Settings TMDB ApiKey"), config.plugins.moviebrowser.data))  # , _("Settings TMDB ApiKey")))
         # # if config.plugins.moviebrowser.data.value is True:
-        # list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/tmdbapikey.txt")))
-        # list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))  # , _("Signup on TMDB and input free personal ApiKey")))
-        # list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))  # , _("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt")))
-        # list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))  # , _("Signup on TheTVDb and input free personal ApiKey")))
+        # list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))
+        # list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))
+        # list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))
+        # list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))
 
         # list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
         # list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
@@ -11401,6 +11401,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             'green': self.save,
             'save': self.save
         }, -1)
+
+        if not self.selectionChanged in self["config"].onSelectionChanged:
+            self["config"].onSelectionChanged.append(self.selectionChanged)
 
         self.onLayoutFinish.append(self.UpdateComponents)
 

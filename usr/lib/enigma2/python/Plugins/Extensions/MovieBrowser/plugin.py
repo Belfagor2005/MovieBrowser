@@ -11318,6 +11318,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.skin = f.read()
 
         Screen.__init__(self, session)
+        
+        self.onChangedEntry = []
+        
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
         self.cachefolder = config.plugins.moviebrowser.cachefolder.value
@@ -11332,11 +11335,82 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
         self.ready = True
+        
+        
+        # self.editListEntry = None        
+        list = []
+        # list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
+        # list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
+        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
+        # list.append(self.foldername)
+        # list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
+        # list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
+        # list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))
+        # list.append(getConfigListEntry(_('TMDb/TheTVDb Language:'), config.plugins.moviebrowser.language))
+        # list.append(getConfigListEntry(_('Movie Sort Order:'), config.plugins.moviebrowser.sortorder))
+        # list.append(getConfigListEntry(_('Show Backdrops:'), config.plugins.moviebrowser.backdrops))
+        # list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
+        # list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
+        # list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
+
+        # list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
+
+        # # list.append(getConfigListEntry(_('Plugin Sans Serif Font:'), config.plugins.moviebrowser.font))
+        # # list.append(getConfigListEntry(_('Plugin Transparency:'), config.plugins.moviebrowser.transparency))
+        # # list.append(getConfigListEntry(_('Posterwall/Backdrop Plugin Size:'), config.plugins.moviebrowser.plugin_size))
+        # # list.append(getConfigListEntry(_('Full HD Skin Support:'), config.plugins.moviebrowser.fhd))
+        # # list.append(getConfigListEntry(_('PayPal Info:'), config.plugins.moviebrowser.paypal))
+        # # list.append(getConfigListEntry(_('Plugin Auto Update Check:'), config.plugins.moviebrowser.autocheck))
+
+        # list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
+        # list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
+        # list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
+
+        # # list.append(getConfigListEntry(_("Settings TMDB ApiKey"), config.plugins.moviebrowser.data))  # , _("Settings TMDB ApiKey")))
+        # # if config.plugins.moviebrowser.data.value is True:
+        # list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/tmdbapikey.txt")))
+        # list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))  # , _("Signup on TMDB and input free personal ApiKey")))
+        # list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))  # , _("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt")))
+        # list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))  # , _("Signup on TheTVDb and input free personal ApiKey")))
+
+        # list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
+        # list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
+
+        # list.append(getConfigListEntry(_('Update Database with Timer:'), config.plugins.moviebrowser.timerupdate))
+        # list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
+        # list.append(getConfigListEntry(_('Hide Plugin during Update:'), config.plugins.moviebrowser.hideupdate))
+
+        # list.append(getConfigListEntry(_('Reset Database:'), config.plugins.moviebrowser.reset))
+        # list.append(getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup))
+        # list.append(getConfigListEntry(_('Backup Database:'), config.plugins.moviebrowser.backup))
+        # list.append(getConfigListEntry(_('Restore Database:'), config.plugins.moviebrowser.restore))
+
+        # list.append(getConfigListEntry(_('Select skin *Restart GUI Required:'), config.plugins.moviebrowser.skin))
+        # list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
+        # list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
+
+        ConfigListScreen.__init__(self, list, on_change=self.changedEntry)
+        
+        self.createSetup()
+        
+        self['actions'] = ActionMap(['SetupActions', 'VirtualKeyboardActions', 'ColorActions'], {
+            'ok': self.keyRun,
+            'showVirtualKeyboard': self.KeyText,
+            'cancel': self.cancel,
+            'red': self.cancel,
+            'green': self.save
+        }, -1)
+
+        self.onLayoutFinish.append(self.UpdateComponents)
+
+    def createSetup(self):
+        self.editListEntry = None        
         list = []
         list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
-        self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
-        list.append(self.foldername)
+        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
+        # list.append(self.foldername)
+        list.append(getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder))
         list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
         list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
         list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))
@@ -11382,27 +11456,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Select skin *Restart GUI Required:'), config.plugins.moviebrowser.skin))
         list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
         list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
-
-        ConfigListScreen.__init__(self, list, on_change=self.UpdateComponents)
-        self['actions'] = ActionMap(['SetupActions', 'VirtualKeyboardActions', 'ColorActions'], {
-            'ok': self.keyRun,
-            'showVirtualKeyboard': self.KeyText,
-            'cancel': self.cancel,
-            'red': self.cancel,
-            'green': self.save
-        }, -1)
-
-        self.onLayoutFinish.append(self.UpdateComponents)
+        self["config"].list = list
+        self["config"].l.setList(list)
 
     def UpdateComponents(self):
-        # png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
-        # png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
-        # if fileExists(png):
-            # self["plugin"].instance.setPixmapFromFile(png)
-            # self['plugin'].show()
-        # if fileExists(png2):
-            # self["plugin"].instance.setPixmapFromFile(png2)
-            # self['plugin'].show()
         current = self['config'].getCurrent()
         if current == getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style):
             png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
@@ -11414,8 +11471,8 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             if fileExists(png2):
                 self["plugin"].instance.setPixmapFromFile(png2)
                 self['plugin'].show()
-        elif current == self.foldername:
-            self.session.openWithCallback(self.folderSelected, FolderSelection, self.moviefolder)
+        # elif current == self.foldername:
+            # self.session.openWithCallback(self.folderSelected, FolderSelection, self.moviefolder)
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
             if config.plugins.moviebrowser.m1v.value == 'yes':
                 config.plugins.moviebrowser.showtv.value = 'hide'
@@ -11438,6 +11495,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         self.session.open(MessageBox, _('\nDatabase backuped to %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
                     else:
                         self.session.open(MessageBox, _('\nDatabase %s not found:\nMovie Browser Database Backup canceled.') % str(self.database), MessageBox.TYPE_ERROR)
+                    # config.plugins.moviebrowser.backup.setValue('no')
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Backup canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry('Restore Database:', config.plugins.moviebrowser.restore):
@@ -11451,6 +11509,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         self.session.open(MessageBox, _('\nDatabase restored from %s') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_INFO, close_on_any_key=True)
                     else:
                         self.session.open(MessageBox, _('\nDatabase Backup %s not found:\nMovie Browser Database Restore canceled.') % str(self.cachefolder + '/backup/database'), MessageBox.TYPE_ERROR)
+                    # config.plugins.moviebrowser.restore.setValue('no')
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nMovie Browser Database Restore canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         elif current == getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup):
@@ -11486,16 +11545,18 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         f.close()
                     else:
                         self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
+                    
+                    # config.plugins.moviebrowser.cleanup.setValue('no')
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nCleanup Cache Folder canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
         return
 
-    def folderSelected(self, folder):
-        if folder is not None:
-            self.moviefolder = folder
-            config.plugins.moviebrowser.moviefolder.value = folder
-            config.plugins.moviebrowser.moviefolder.save()
-        return
+    # def folderSelected(self, folder):
+        # if folder is not None:
+            # self.moviefolder = folder
+            # config.plugins.moviebrowser.moviefolder.value = folder
+            # config.plugins.moviebrowser.moviefolder.save()
+        # return
 
     def keyRun(self):
         # current = self["config"].getCurrent()[1]
@@ -11521,7 +11582,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     config.plugins.moviebrowser.txtapi.setValue(str(fpage))
                     config.plugins.moviebrowser.txtapi.save()
                     configfile.save()
-                self.UpdateComponents()
+                self.createSetup()
                 self.mbox = self.session.open(MessageBox, (_("TMDB ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % api), MessageBox.TYPE_INFO, timeout=4)
@@ -11541,11 +11602,34 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     config.plugins.moviebrowser.txttvdbapi.setValue(str(fpage2))
                     config.plugins.moviebrowser.txttvdbapi.save()
                     configfile.save()
-                self.UpdateComponents()
+                self.createSetup()
                 self.mbox = self.session.open(MessageBox, (_("TheTVDb ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % thetvdbapikey), MessageBox.TYPE_INFO, timeout=4)
         return
+
+    def selectionChanged(self):
+        self['status'].setText(self['config'].getCurrent()[0])
+
+    def changedEntry(self):
+        self.item = self["config"].getCurrent()
+        for x in self.onChangedEntry:
+            x()
+        try:
+            if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection):
+                self.createSetup()
+        except:
+            pass
+
+    def getCurrentEntry(self):
+        return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
+
+    def getCurrentValue(self):
+        return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
+
+    def createSummary(self):
+        from Screens.Setup import SetupSummary
+        return SetupSummary
 
     def save(self):
         if self.ready is True:
@@ -11635,10 +11719,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 if timerupdate.session is None:
                     timerupdate.saveSession(self.session)
                 timerupdate.stop()
-            if config.plugins.moviebrowser.reset.value == 'yes':
-                open(dbreset, 'w').close()
-                config.plugins.moviebrowser.reset.value = 'no'
-                config.plugins.moviebrowser.reset.save()
+
             if config.plugins.moviebrowser.cachefolder.value != self.cachefolder:
                 self.container = eConsoleAppContainer()
                 self.container.appClosed.append(self.finished)
@@ -11646,6 +11727,24 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 self.container.execute("mkdir -p '%s' && cp -r '%s' '%s' && rm -rf '%s'" % (config.plugins.moviebrowser.cachefolder.value, self.cachefolder, newcache, self.cachefolder))
                 self.cachefolder = config.plugins.moviebrowser.cachefolder.value
                 config.plugins.moviebrowser.cachefolder.save()
+
+            if config.plugins.moviebrowser.reset.value == 'yes':
+                open(dbreset, 'w').close()
+                config.plugins.moviebrowser.reset.value = 'no'
+                config.plugins.moviebrowser.reset.save()
+
+            if config.plugins.moviebrowser.backup.value == 'yes':
+                config.plugins.moviebrowser.backup.setValue('no')
+                config.plugins.moviebrowser.backup.save()
+
+            if config.plugins.moviebrowser.restore.value == 'yes':
+                config.plugins.moviebrowser.restore.setValue('no')
+                config.plugins.moviebrowser.restore.save()
+                
+            if config.plugins.moviebrowser.cleanup.value == 'yes':
+                config.plugins.moviebrowser.cleanup.setValue('no')
+                config.plugins.moviebrowser.cleanup.save()                
+
             else:
                 # for x in self['config'].list:
                     # x[1].save()
@@ -11653,7 +11752,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 for x in self["config"].list:
                     x[1].save()
                 configfile.save()
-                self.exit()
+            self.exit()
         return
 
     def finished(self, retval):
@@ -11675,6 +11774,13 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self["config"].getCurrent()[1].value = callback
             self["config"].invalidate(self["config"].getCurrent())
         return
+
+# why don't work
+    def keySave(self):
+        for i in range(0, len(config.plugins.moviebrowser)):
+            # print('config list ', i)
+            config.plugins.moviebrowser[i].save()
+        ConfigListScreen.keySave(self)
 
     # def cancel(self):
         # for x in self['config'].list:
@@ -11719,72 +11825,72 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, config.plugins.moviebrowser.filter.value, config.plugins.moviebrowser.filter.value)
 
 
-class FolderSelection(Screen):
+# class FolderSelection(Screen):
 
-    def __init__(self, session, folder):
-        skin = skin_path + "FolderSelection.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/FolderSelection.xml"
-        with open(skin, "r") as f:
-            self.skin = f.read()
+    # def __init__(self, session, folder):
+        # skin = skin_path + "FolderSelection.xml"
+        # # if os.path.exists("/var/lib/dpkg/status"):
+            # # skin = skin_path + "DreamOS/FolderSelection.xml"
+        # with open(skin, "r") as f:
+            # self.skin = f.read()
 
-        Screen.__init__(self, session)
-        self['save'] = Label(_('Save'))
-        self['cancel'] = Label(_('Cancel'))
-        self['plugin'] = Pixmap()
-        noFolder = [
-            '/bin',
-            '/boot',
-            '/dev',
-            '/etc',
-            '/lib',
-            '/proc',
-            '/sbin',
-            '/sys'
-        ]
-        self['folderlist'] = FileList(folder, showDirectories=True, showFiles=False, inhibitDirs=noFolder)
-        self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions'], {
-            'ok': self.ok,
-            'cancel': self.cancel,
-            'right': self.right,
-            'left': self.left,
-            'down': self.down,
-            'up': self.up,
-            'red': self.cancel,
-            'green': self.green
-        }, -1)
+        # Screen.__init__(self, session)
+        # self['save'] = Label(_('Save'))
+        # self['cancel'] = Label(_('Cancel'))
+        # self['plugin'] = Pixmap()
+        # noFolder = [
+            # '/bin',
+            # '/boot',
+            # '/dev',
+            # '/etc',
+            # '/lib',
+            # '/proc',
+            # '/sbin',
+            # '/sys'
+        # ]
+        # self['folderlist'] = FileList(folder, showDirectories=True, showFiles=False, inhibitDirs=noFolder)
+        # self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions'], {
+            # 'ok': self.ok,
+            # 'cancel': self.cancel,
+            # 'right': self.right,
+            # 'left': self.left,
+            # 'down': self.down,
+            # 'up': self.up,
+            # 'red': self.cancel,
+            # 'green': self.green
+        # }, -1)
 
-        self.onLayoutFinish.append(self.pluginPic)
+        # self.onLayoutFinish.append(self.pluginPic)
 
-    def pluginPic(self):
-        png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % skin_directory
-        if fileExists(png):
-            self["plugin"].instance.setPixmapFromFile(png)
-            self['plugin'].show()
-        return
+    # def pluginPic(self):
+        # png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % skin_directory
+        # if fileExists(png):
+            # self["plugin"].instance.setPixmapFromFile(png)
+            # self['plugin'].show()
+        # return
 
-    def ok(self):
-        if self['folderlist'].canDescent():
-            self['folderlist'].descent()
+    # def ok(self):
+        # if self['folderlist'].canDescent():
+            # self['folderlist'].descent()
 
-    def right(self):
-        self['folderlist'].pageDown()
+    # def right(self):
+        # self['folderlist'].pageDown()
 
-    def left(self):
-        self['folderlist'].pageUp()
+    # def left(self):
+        # self['folderlist'].pageUp()
 
-    def down(self):
-        self['folderlist'].down()
+    # def down(self):
+        # self['folderlist'].down()
 
-    def up(self):
-        self['folderlist'].up()
+    # def up(self):
+        # self['folderlist'].up()
 
-    def green(self):
-        self.close(self['folderlist'].getSelection()[0])
+    # def green(self):
+        # self.close(self['folderlist'].getSelection()[0])
 
-    def cancel(self):
-        self.close(None)
-        return
+    # def cancel(self):
+        # self.close(None)
+        # return
 
 
 class timerUpdate():

@@ -143,7 +143,7 @@ default_poster = '%spic/browser/default_poster.png' % skin_directory
 default_banner = '%spic/browser/default_banner.png' % skin_directory
 wiki_png = '%spic/browser/wiki.png' % skin_directory
 tmdb_api_key = 'dfc629f7ff6936a269f8c5cdb194c890'
-thetvdb_api_key = 'df00f423-27b4-4a1e-b0ea-ea151b54ca61'
+thetvdb_api_key = 'D19315B88B2DE21F'
 folders = os.listdir(skin_directory)
 if "pic" in folders:
     folders.remove("pic")

@@ -258,10 +258,10 @@ config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choic
 config.plugins.moviebrowser.cleanup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
 config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
 config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
-if config.plugins.moviebrowser.backup.value == 'yes':
-    config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Restore>')])
-if config.plugins.moviebrowser.restore.value == 'yes':
-    config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Backup>')])
+# if config.plugins.moviebrowser.backup.value == 'yes':
+    # config.plugins.moviebrowser.restore = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Restore>')])
+# if config.plugins.moviebrowser.restore.value == 'yes':
+    # config.plugins.moviebrowser.backup = ConfigSelection(default='no', choices=[('no', 'NO'), ('no', '<Backup>')])
 
 config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
     ('#007895BC', 'Default'),
@@ -11335,8 +11335,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
         self.ready = True
-        
-        
+
         # self.editListEntry = None        
         list = []
         # list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
@@ -11434,8 +11433,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
 
-        # list.append(getConfigListEntry(_("Settings TMDB ApiKey"), config.plugins.moviebrowser.data))  # , _("Settings TMDB ApiKey")))
-        # if config.plugins.moviebrowser.data.value is True:
         list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/tmdbapikey.txt")))
         list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))  # , _("Signup on TMDB and input free personal ApiKey")))
         list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))  # , _("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt")))
@@ -11488,7 +11485,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                             os.makedirs(self.cachefolder + '/backup')
                         except OSError:
                             pass
-
                         f = open(self.cachefolder + '/backup/database', 'w')
                         f.write(data)
                         f.close()
@@ -11545,7 +11541,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         f.close()
                     else:
                         self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
-                    
                     # config.plugins.moviebrowser.cleanup.setValue('no')
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nCleanup Cache Folder canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
@@ -11559,7 +11554,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         # return
 
     def keyRun(self):
-        # current = self["config"].getCurrent()[1]
         current = self['config'].getCurrent()
         if current == getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
             self.keyApi()
@@ -11746,9 +11740,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 config.plugins.moviebrowser.cleanup.save()                
 
             else:
-                # for x in self['config'].list:
-                    # x[1].save()
-                    # configfile.save()
                 for x in self["config"].list:
                     x[1].save()
                 configfile.save()
@@ -11761,7 +11752,8 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         for x in self['config'].list:
             x[1].save()
         configfile.save()
-        self.exit()
+        # self.exit()
+        return
 
     def KeyText(self):
         from Screens.VirtualKeyBoard import VirtualKeyBoard
@@ -11782,22 +11774,15 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             config.plugins.moviebrowser[i].save()
         ConfigListScreen.keySave(self)
 
-    # def cancel(self):
-        # for x in self['config'].list:
-            # x[1].cancel()
-        # self.exit()
-
     def cancel(self, answer=None):
         if answer is None:
             if self["config"].isChanged():
                 self.session.openWithCallback(self.cancel, MessageBox, _("Really close without saving settings?"))
             else:
-                # self.close(False)
                 self.exit()
         elif answer:
             for x in self["config"].list:
                 x[1].cancel()
-            # self.close(True)
             self.exit()
         return
 

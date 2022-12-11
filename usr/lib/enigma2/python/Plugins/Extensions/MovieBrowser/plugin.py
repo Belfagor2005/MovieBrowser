@@ -25,6 +25,7 @@ from Components.config import ConfigSelection, ConfigText
 from Components.config import ConfigSubsection  # , ConfigOnOff
 from Components.config import config, configfile, ConfigClock
 from Components.config import NoSave, getConfigListEntry
+from Components.Sources.StaticText import StaticText
 from Plugins.Plugin import PluginDescriptor
 from Screens.ChannelSelection import ChannelSelection
 from Screens.ChoiceBox import ChoiceBox
@@ -11318,9 +11319,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.skin = f.read()
 
         Screen.__init__(self, session)
-        
+
         self.onChangedEntry = []
-        
+
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
         self.cachefolder = config.plugins.moviebrowser.cachefolder.value
@@ -11331,12 +11332,12 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.timer_hour = config.plugins.moviebrowser.timer.value[0]
         self.timer_min = config.plugins.moviebrowser.timer.value[1]
         self['save'] = Label(_('Save'))
-
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
+        self['status'] = StaticText()
         self.ready = True
 
-        # self.editListEntry = None        
+        # self.editListEntry = None
         list = []
         # list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         # list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
@@ -11389,21 +11390,22 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         # list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
 
         ConfigListScreen.__init__(self, list, on_change=self.changedEntry)
-        
+
         self.createSetup()
-        
-        self['actions'] = ActionMap(['SetupActions', 'VirtualKeyboardActions', 'ColorActions'], {
+
+        self['actions'] = ActionMap(['ConfigListActions', 'VirtualKeyboardActions', 'ColorActions'], {
             'ok': self.keyRun,
             'showVirtualKeyboard': self.KeyText,
             'cancel': self.cancel,
             'red': self.cancel,
-            'green': self.save
+            'green': self.save,
+            'save': self.save
         }, -1)
 
         self.onLayoutFinish.append(self.UpdateComponents)
 
     def createSetup(self):
-        self.editListEntry = None        
+        self.editListEntry = None
         list = []
         list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
@@ -11463,7 +11465,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 self["plugin"].instance.setPixmapFromFile(png)
                 self['plugin'].show()
         elif current == getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle):
-            png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)    
+            png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
             if fileExists(png2):
                 self["plugin"].instance.setPixmapFromFile(png2)
                 self['plugin'].show()
@@ -11594,7 +11596,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     fpage2 = d.readline()
                     config.plugins.moviebrowser.txttvdbapi.setValue(str(fpage2))
                     config.plugins.moviebrowser.txttvdbapi.save()
-                    configfile.save()
+                    # configfile.save()
+
+                    config.save()  # try this ???
+
                 self.createSetup()
                 self.mbox = self.session.open(MessageBox, (_("TheTVDb ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
@@ -11734,10 +11739,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             if config.plugins.moviebrowser.restore.value == 'yes':
                 config.plugins.moviebrowser.restore.setValue('no')
                 config.plugins.moviebrowser.restore.save()
-                
+
             if config.plugins.moviebrowser.cleanup.value == 'yes':
                 config.plugins.moviebrowser.cleanup.setValue('no')
-                config.plugins.moviebrowser.cleanup.save()                
+                config.plugins.moviebrowser.cleanup.save()
 
             else:
                 for x in self["config"].list:

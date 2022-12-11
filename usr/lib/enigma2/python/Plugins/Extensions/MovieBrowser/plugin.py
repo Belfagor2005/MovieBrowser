@@ -8,7 +8,7 @@ from __future__ import print_function
 from . import _
 from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
-from Components.FileList import FileList
+# from Components.FileList import FileList
 from Components.Harddisk import harddiskmanager
 from Components.Label import Label
 from Components.Language import language
@@ -113,7 +113,7 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args,
             success(response.content, file)
     except HTTPError as httperror:
         print('[MovieBrowser][threadGetPage] Http error: ', httperror)
-        fail(error)  # E0602 undefined name 'error' [pyflakes]
+        fail(error)  # E0602 undefined name 'error'
     except Exception as error:
         print('[MovieBrowser][threadGetPage] error: ', error)
         if fail is not None:
@@ -355,6 +355,32 @@ def transSERIES(text):
     text = sub('\\+tt[0-9]+\\+', '++', text)
     text = sub('\\+\\+\\+\\+.*?FIN', '', text)
     text = sub('\\+FIN', '', text)
+    return text
+
+
+def _renewTMDb(text):
+    name = sub('.*?[/]', '', text)
+    if name.endswith('.ts'):
+        name = sub('_', ' ', name)
+        name = sub('^.*? - .*? - ', '', name)
+        name = sub('^[0-9]+ [0-9]+ - ', '', name)
+        name = sub('^[0-9]+ - ', '', name)
+        text = sub('[.]ts', '', name)
+    else:
+        text = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+    return text
+
+
+def _renewTVDb(text):
+    name = sub('.*?[/]', '', text)
+    if name.endswith('.ts'):
+        name = sub('_', ' ', name)
+        name = sub('^.*? - .*? - ', '', name)
+        name = sub('^[0-9]+ [0-9]+ - ', '', name)
+        name = sub('^[0-9]+ - ', '', name)
+        text = sub('[.]ts', '', name)
+    else:
+        text = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
     return text
 
 
@@ -761,12 +787,6 @@ class movieBrowserMetrix(Screen):
             movies.append(res)
 
         self['list'].l.setList(movies)
-        # if screenwidth.width() == 1920:
-            # self['list'].l.setFont(26, gFont('Regular', 26))
-            # self['list'].l.setItemHeight(50)
-        # else:
-            # self['list'].l.setFont(26, gFont('Regular', 26))
-            # self['list'].l.setItemHeight(45)
         try:
             self['list'].moveToIndex(self.index)
         except IndexError:
@@ -1154,22 +1174,26 @@ class movieBrowserMetrix(Screen):
             try:
                 content = self.contentlist[self.index]
                 if content == 'Series:Top':
-                    self.session.open(MessageBox, ('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
+                    self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTMDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = ('https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s') % (tmdb_api_key, name + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -1233,22 +1257,26 @@ class movieBrowserMetrix(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTVDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + name + self.language
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
                 pass
@@ -2617,7 +2645,6 @@ class movieBrowserMetrix(Screen):
                     list.append(res)
 
                 self['episodes'].l.setList(list)
-                # self['episodes'].l.setItemHeight(45)
                 self['episodes'].selectionEnabled(0)
                 self['episodes'].show()
             else:
@@ -3049,18 +3076,6 @@ class movieBrowserBackdrop(Screen):
             if size < 10:
                 os.remove(self.database)
 
-        # if screenwidth.width() >= 1920:
-            # self.infoBackPNG = '%spic/browser/info_backHD.png' % skin_directory
-            # InfoBack = loadPic(self.infoBackPNG, 788, 645, 3, 0, 0, 0)
-        # elif screenwidth.width() == 1280:
-            # self.infoBackPNG = '%spic/browser/info_back.png' % skin_directory
-            # InfoBack = loadPic(self.infoBackPNG, 525, 430, 3, 0, 0, 0)
-        # else:
-            # self.infoBackPNG = '%spic/browser/info_back.png' % skin_directory
-            # InfoBack = loadPic(self.infoBackPNG, 460, 400, 3, 0, 0, 0)
-        # if InfoBack is not None:
-            # self['plotfullback'].instance.setPixmap(InfoBack)
-            # self['infoback'].instance.setPixmap(InfoBack)
         self['plotfullback'].hide()
         self['infoback'].show()
 
@@ -3541,19 +3556,24 @@ class movieBrowserBackdrop(Screen):
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTMDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, name + self.language)
+                # https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=alien&language=it
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -3617,22 +3637,26 @@ class movieBrowserBackdrop(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTVDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + name + self.language
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
                 pass
@@ -3735,6 +3759,7 @@ class movieBrowserBackdrop(Screen):
                     banner = banner[1]
                 except IndexError:
                     return
+
                 bannernew = new
                 database = open(self.database).read()
                 database = database.replace(banner, bannernew)
@@ -5933,19 +5958,23 @@ class movieBrowserPosterwall(Screen):
                     self.session.open(MessageBox, _('\nTMDb Movie Update Error:\nSeries Folder'), MessageBox.TYPE_ERROR)
                     return
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTMDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, name + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -5982,7 +6011,8 @@ class movieBrowserPosterwall(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
+
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new, tmdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -6009,22 +6039,26 @@ class movieBrowserPosterwall(Screen):
         if self.ready is True:
             try:
                 name = self.movielist[self.index]
-                name = sub('.*?[/]', '', name)
-                if name.endswith('.ts'):
-                    name = sub('_', ' ', name)
-                    name = sub('^.*? - .*? - ', '', name)
-                    name = sub('^[0-9]+ [0-9]+ - ', '', name)
-                    name = sub('^[0-9]+ - ', '', name)
-                    name = sub('[.]ts', '', name)
-                else:
-                    name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
+                name = _renewTVDb(name)
+
+                # name = sub('.*?[/]', '', name)
+                # if name.endswith('.ts'):
+                    # name = sub('_', ' ', name)
+                    # name = sub('^.*? - .*? - ', '', name)
+                    # name = sub('^[0-9]+ [0-9]+ - ', '', name)
+                    # name = sub('^[0-9]+ - ', '', name)
+                    # name = sub('[.]ts', '', name)
+                # else:
+                    # name = sub('\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+
                 self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + name + self.language
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
                 pass
@@ -6119,6 +6153,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
+                # mmmmmmm  please report issue
                 url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
@@ -8032,12 +8067,12 @@ class UpdateDatabase():
                 series = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                 series = sub('FIN', '', series)
                 series = transSERIES(series)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + series + self.language
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (series, self.language)
                 self.getTVDbData(url, '0')
             else:
                 movie = transMOVIE(self.name)
                 movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, movie + self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, movie, self.language)
                 self.getTMDbData(url, '0', False)
         return
 
@@ -8059,7 +8094,7 @@ class UpdateDatabase():
             series = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
             series = sub('FIN', '', series)
             series = transSERIES(series)
-            url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + series + self.language
+            url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (series, self.language)
             self.getTVDbData(url, '0')
         else:
             output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
@@ -8090,7 +8125,8 @@ class UpdateDatabase():
                 except IndexError:
                     self.posterlist.append(default_poster)
 
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid + self.language, tmdb_api_key)
+                # https://api.themoviedb.org/3/movie/8587&language=it?api_key=dfc629f7ff6936a269f8c5cdb194c890
+                url = 'https://api.themoviedb.org/3/movie/%s&language=%s?api_key=%s' % (tmdbid, self.language, tmdb_api_key)
                 headers = {'Accept': 'application/json'}
                 request = Request(url, headers=headers)
                 try:
@@ -8150,8 +8186,8 @@ class UpdateDatabase():
                     self.posterlist.append('https://image.tmdb.org/t/p/w154' + poster[0])
                 except IndexError:
                     self.posterlist.append(default_poster)
-
-            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid + self.language, tmdb_api_key)
+            # https://api.themoviedb.org/3/movie/8587/casts?api_key=dfc629f7ff6936a269f8c5cdb194c890
+            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, tmdb_api_key)
             headers = {'Accept': 'application/json'}
             request = Request(url, headers=headers)
             try:
@@ -8584,7 +8620,8 @@ class UpdateDatabase():
             series = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
             series = sub('FIN', '', series)
             series = transSERIES(series)
-            url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + series + self.language
+            # https://www.thetvdb.com/api/GetSeries.php?seriesname=alien&language=it
+            url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (series, self.language)
             try:
                 self.getTVDbData(url, '0')
             except RuntimeError:
@@ -8600,7 +8637,7 @@ class UpdateDatabase():
                     series = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                     series = sub('FIN', '', series)
                     series = transSERIES(series)
-                    url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=' + series + self.language
+                    url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (series, self.language)
                     try:
                         self.getTVDbData(url, '0')
                     except RuntimeError:
@@ -8609,7 +8646,8 @@ class UpdateDatabase():
                 else:
                     movie = transMOVIE(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
-                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s' % (tmdb_api_key, movie + self.language)
+                    # https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=lion&language=it
+                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, movie, self.language)
                     try:
                         self.getTMDbData(url, '0', False)
                     except RuntimeError:
@@ -9664,10 +9702,11 @@ class moviesList(Screen):
                 os.remove(self.poster4)
             self.close(current, self.choice)
         elif self.choice == 'poster':
-            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % tmdb_api_key
+            # https://api.themoviedb.org/3/movie/8587/images?api_key=dfc629f7ff6936a269f8c5cdb194c890
+            url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, tmdb_api_key)
             self.getTMDbPosters(url)
         elif self.choice == 'backdrop':
-            url = 'https://api.themoviedb.org/3/movie/' + current + '/images?api_key=%s' % tmdb_api_key
+            url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, tmdb_api_key)
             self.getTMDbBackdrops(url)
 
     def getTMDbPosters(self, url):
@@ -9720,10 +9759,10 @@ class moviesList(Screen):
                 os.remove(self.poster4)
             self.close(current, self.choice)
         elif self.choice == 'banner':
-            url = 'https://thetvdb.com/api/%s/series/' + current + '/banners.xml' % thetvdb_api_key
+            url = 'https://thetvdb.com/api/%s/series/%s/banners.xml' % (thetvdb_api_key, current)
             self.getTVDbBanners(url)
         elif self.choice == 'backdrop':
-            url = 'https://thetvdb.com/api/%s/series/' + current + '/banners.xml' % thetvdb_api_key
+            url = 'https://thetvdb.com/api/%s/series/%s/banners.xml' % (thetvdb_api_key, current)
             self.getTVDbBackdrops(url)
 
     def getTVDbBanners(self, url):
@@ -11320,7 +11359,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
         Screen.__init__(self, session)
 
-        self.onChangedEntry = []
+        # self.onChangedEntry = []
 
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
@@ -11390,7 +11429,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         # list.append(getConfigListEntry(_('Start Plugin with Video Button:'), config.plugins.moviebrowser.videobutton))
         # list.append(getConfigListEntry(_('Plugin in Enigma Menu:'), config.plugins.moviebrowser.showmenu))
 
-        ConfigListScreen.__init__(self, list, on_change=self.changedEntry)
+        ConfigListScreen.__init__(self, list, on_change=self.UpdateComponents)
 
         self.createSetup()
 
@@ -11403,7 +11442,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             'save': self.save
         }, -1)
 
-        if not self.selectionChanged in self["config"].onSelectionChanged:
+        if self.selectionChanged not in self["config"].onSelectionChanged:
             self["config"].onSelectionChanged.append(self.selectionChanged)
 
         self.onLayoutFinish.append(self.UpdateComponents)
@@ -11549,10 +11588,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
     def keyRun(self):
         current = self["config"].getCurrent()[1]
         # current = self['config'].getCurrent()
-        if current == config.plugins.moviebrowser.tvdbapi  # getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
+        if current == config.plugins.moviebrowser.tvdbapi:  # getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
             self.tvdbkeyApi()
-        elif current == config.plugins.moviebrowser.api  # getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
-            self.keyApi()            
+        elif current == config.plugins.moviebrowser.api:  # getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
+            self.keyApi()
         else:
             self.save()
 
@@ -11576,7 +11615,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % api), MessageBox.TYPE_INFO, timeout=4)
         return
 
-    def tvdbkeyApi(self, answer=None):
+    def tvdbkeyApi(self, answer=None):  # no key stored ?????
         tvdbapikey = "/tmp/tvdbapikey.txt"
         if answer is None:
             if fileExists(tvdbapikey) and os.stat(tvdbapikey).st_size > 0:
@@ -11589,8 +11628,8 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     fpage2 = d.readline()
                     config.plugins.moviebrowser.txttvdbapi.setValue(str(fpage2))
                     config.plugins.moviebrowser.txttvdbapi.save()
-                    # configfile.save()
-                    self.keySave()
+                    configfile.save()
+                    # self.keySave()
                     # config.save()  # try this ???
                 self.createSetup()
                 self.mbox = self.session.open(MessageBox, (_("TheTVDb ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
@@ -11601,25 +11640,25 @@ class movieBrowserConfig(ConfigListScreen, Screen):
     def selectionChanged(self):
         self['status'].setText(self['config'].getCurrent()[0])
 
-    def changedEntry(self):
-        for x in self.onChangedEntry:
-            x()
-        try:
-            if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
-                self.UpdateComponents()
-        except:
-            self.createSetup()
-            pass
+    # def changedEntry(self):
+        # for x in self.onChangedEntry:
+            # x()
+        # try:
+            # if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
+                # self.UpdateComponents()
+        # except:
+            # self.createSetup()
+            # pass
 
-    def getCurrentEntry(self):
-        return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
+    # def getCurrentEntry(self):
+        # return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
 
-    def getCurrentValue(self):
-        return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
+    # def getCurrentValue(self):
+        # return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
 
-    def createSummary(self):
-        from Screens.Setup import SetupSummary
-        return SetupSummary
+    # def createSummary(self):
+        # from Screens.Setup import SetupSummary
+        # return SetupSummary
 
     def save(self):
         if self.ready is True:
@@ -11631,7 +11670,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     for line in f:
                         if ':::Series:::' in line:
                             series = series + line
-
                     f.close()
                     fseries = open(self.database + '.series', 'w')
                     fseries.write(series)
@@ -11648,7 +11686,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     for line in f:
                         if ':::Series:::' not in line:
                             movies = movies + line
-
                     f.close()
                     fmovies = open(self.database + '.movies', 'w')
                     fmovies.write(movies)
@@ -11991,16 +12028,10 @@ def autostart(reason, **kwargs):
 
 def Plugins(**kwargs):
     plugindesc = _('Manage your Movies & Series V.%s' % str(version))
-    if config.plugins.moviebrowser.showmenu.value == 'no':
-        return [
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_PLUGINMENU], icon='plugin.png', fnc=main),
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main),
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart)
-                ]
-    else:
-        return [
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_MENU], fnc=menu),
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_PLUGINMENU], icon='plugin.png', fnc=main),
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main),
-                PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart)
-                ]
+    pluginname = 'Movie Browser'
+    list = [PluginDescriptor(name='Movie Browser', description=plugindesc, where=[PluginDescriptor.WHERE_PLUGINMENU], icon='plugin.png', fnc=main)]
+    if config.plugins.moviebrowser.showmenu.value:
+        list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_MENU], fnc=menu))
+    list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main))
+    list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart))
+    return list

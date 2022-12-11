@@ -11407,8 +11407,6 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list = []
         list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
-        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
-        # list.append(self.foldername)
         list.append(getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder))
         list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
         list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
@@ -11419,9 +11417,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
         list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
-
         list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
 
+        # self.foldername = getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder)
+        # list.append(self.foldername)
         # list.append(getConfigListEntry(_('Plugin Sans Serif Font:'), config.plugins.moviebrowser.font))
         # list.append(getConfigListEntry(_('Plugin Transparency:'), config.plugins.moviebrowser.transparency))
         # list.append(getConfigListEntry(_('Posterwall/Backdrop Plugin Size:'), config.plugins.moviebrowser.plugin_size))
@@ -11433,10 +11432,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
 
-        list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))  # , _("Load TMDB Apikey from /tmp/tmdbapikey.txt")))
-        list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))  # , _("Signup on TMDB and input free personal ApiKey")))
-        list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))  # , _("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt")))
-        list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))  # , _("Signup on TheTVDb and input free personal ApiKey")))
+        list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))
+        list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))
+        list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/thetvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))
+        list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))
 
         list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
         list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
@@ -11606,13 +11605,14 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self['status'].setText(self['config'].getCurrent()[0])
 
     def changedEntry(self):
-        self.item = self["config"].getCurrent()
+        # self.item = self["config"].getCurrent()
         for x in self.onChangedEntry:
             x()
         try:
-            if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection):
-                self.createSetup()
+            if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
+                self.UpdateComponents()
         except:
+            self.createSetup()
             pass
 
     def getCurrentEntry(self):

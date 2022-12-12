@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: moviebrowser\n"
-"POT-Creation-Date: 2022-12-10 21:02+0100\n"
+"POT-Creation-Date: 2022-12-11 19:22+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: lululla\n"

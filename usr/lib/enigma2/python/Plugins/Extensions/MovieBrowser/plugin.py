@@ -158,6 +158,7 @@ class ItemList(MenuList):
             self.l.setItemHeight(50)
             self.l.setFont(36, gFont('Regular', 36))
             self.l.setFont(32, gFont('Regular', 32))
+            self.l.setFont(30, gFont('Regular', 30))
             self.l.setFont(28, gFont('Regular', 28))
             self.l.setFont(26, gFont('Regular', 26))
             self.l.setFont(24, gFont('Regular', 24))
@@ -746,9 +747,9 @@ class movieBrowserMetrix(Screen):
 
                     if screenwidth.width() == 1920:
                         if self.backcolor is True:
-                            res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=28, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=movie))
+                            res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=30, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=movie))
                         else:
-                            res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=28, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=movie))
+                            res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=30, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=movie))
 
                     else:
                         if self.backcolor is True:
@@ -766,9 +767,9 @@ class movieBrowserMetrix(Screen):
             res = ['']
             if screenwidth.width() == 1920:
                 if self.backcolor is True:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=28, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=30, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
                 else:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=28, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 50), font=30, color=16777215, color_sel=16777215, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
             else:
                 if self.backcolor is True:
                     res.append(MultiContentEntryText(pos=(0, 0), size=(540, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=self.back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=_('<List of Movie Folder>')))
@@ -2605,9 +2606,9 @@ class movieBrowserMetrix(Screen):
                 for i in range(len(self.seasons)):
                     res = ['']
                     if screenwidth.width() == 1920:
-                        res.append(MultiContentEntryText(pos=(0, 0), size=(810, 34), font=28, flags=RT_HALIGN_LEFT, text=self.seasons[i]))
+                        res.append(MultiContentEntryText(pos=(0, 0), size=(810, 34), font=30, flags=RT_HALIGN_LEFT, text=self.seasons[i]))
                     else:
-                        res.append(MultiContentEntryText(pos=(0, 0), size=(540, 30), font=22, flags=RT_HALIGN_LEFT, text=self.seasons[i]))
+                        res.append(MultiContentEntryText(pos=(0, 0), size=(540, 30), font=26, flags=RT_HALIGN_LEFT, text=self.seasons[i]))
                     list.append(res)
 
                 self['episodes'].l.setList(list)
@@ -4831,14 +4832,14 @@ class movieBrowserBackdrop(Screen):
                         res = ['']
                         if screenwidth.width() == 1920:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 30), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 30), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 30), font=26, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 30), font=30, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                         else:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 25), font=20, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 25), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 25), font=20, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 25), font=26, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                         self.entries.append(res)
                     except IndexError:
                         pass
@@ -5154,8 +5155,19 @@ class movieBrowserPosterwall(Screen):
 
     def __init__(self, session, index, content, filter):
 
-        if screenwidth.width() >= 1280:
-            self.xd = False
+        if screenwidth.width() >= 1920:
+            self.spaceTop = 0
+            self.spaceLeft = 20
+            self.spaceX = 5
+            self.spaceY = 5
+            self.picX = 225
+            self.picY = 338
+            self.posterX = 8
+            self.posterY = 3
+            self.posterALL = 27
+            self.posterREST = 0
+
+        elif screenwidth.width() == 1280:
             self.spaceTop = 0
             self.spaceLeft = 16
             self.spaceX = 5
@@ -5167,7 +5179,6 @@ class movieBrowserPosterwall(Screen):
             self.posterALL = 27
             self.posterREST = 0
         else:
-            self.xd = True
             self.spaceTop = 0
             self.spaceLeft = 10
             self.spaceX = 5
@@ -5188,8 +5199,11 @@ class movieBrowserPosterwall(Screen):
                 numX = 0
             posX = self.spaceLeft + self.spaceX + numX * (self.spaceX + self.picX)
             posY = self.spaceTop + self.spaceY + numY * (self.spaceY + self.picY)
-            # if self.xd is False:
-            if screenwidth.width() >= 1280:
+
+            if screenwidth.width() >= 1920:
+                self.positionlist.append((posX - 18, posY - 20))
+
+            elif screenwidth.width() == 1280:
                 self.positionlist.append((posX - 13, posY - 15))
             else:
                 self.positionlist.append((posX - 8, posY - 10))
@@ -7582,9 +7596,9 @@ class movieBrowserPosterwall(Screen):
                         res = ['']
                         if screenwidth.width() == 1920:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 28), font=28, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 28), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 28), font=28, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 28), font=30, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
                         else:
                             if backcolor is True:
                                 res.append(MultiContentEntryText(pos=(0, 0), size=(listwidth, 25), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
@@ -8728,10 +8742,10 @@ class movieControlList(Screen):
                 res = ['']
                 if screenwidth.width() == 1920:
                     if self.content != ':::Series:::':
-                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
+                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
                     else:
                         series = sub('[Ss][0]+[Ee]', 'Special ', self.list[i][0])
-                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
+                        res.append(MultiContentEntryText(pos=(0, 0), size=(1700, 30), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
                 else:
                     if self.content != ':::Series:::':
                         res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
@@ -9247,7 +9261,7 @@ class movieDatabase(Screen):
                 count += 1
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 30), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=name))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 30), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=name))
                 else:
                     res.append(MultiContentEntryText(pos=(0, 0), size=(710, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=name))
                 self.listentries.append(res)
@@ -9302,7 +9316,7 @@ class movieDatabase(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 25), font=28, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list2[i]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(1200, 25), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list2[i]))
                 else:
                     res.append(MultiContentEntryText(pos=(0, 0), size=(710, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list2[i]))
                 self.list2entries.append(res)
@@ -9543,15 +9557,15 @@ class moviesList(Screen):
             png2 = '%spic/browser/ratings.png' % skin_directory
             try:
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 225), font=28, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(10, 13), size=(800, 45), font=28, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
-                    res.append(MultiContentEntryText(pos=(10, 54), size=(200, 45), font=28, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.year[x]))
-                    res.append(MultiContentEntryText(pos=(10, 260), size=(200, 45), font=28, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.country[x]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(810, 225), font=30, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                    res.append(MultiContentEntryText(pos=(10, 13), size=(800, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
+                    res.append(MultiContentEntryText(pos=(10, 54), size=(200, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.year[x]))
+                    res.append(MultiContentEntryText(pos=(10, 260), size=(200, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.country[x]))
                     rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
 
                 else:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(620, 125), font=24, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(5, 13), size=(610, 30), font=24, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(620, 125), font=26, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                    res.append(MultiContentEntryText(pos=(5, 13), size=(610, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
                     res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.year[x]))
                     res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.country[x]))
                     rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
@@ -9563,7 +9577,7 @@ class moviesList(Screen):
                 if screenwidth.width() == 1920:
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(350, 45), png=loadPNG(png)))
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(rating, 45), png=loadPNG(png2)))
-                    res.append(MultiContentEntryText(pos=(410, 90), size=(50, 45), font=28, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.rating[x]))
+                    res.append(MultiContentEntryText(pos=(410, 90), size=(50, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.rating[x]))
                 else:
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 84), size=(210, 21), png=loadPNG(png)))
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 84), size=(rating, 21), png=loadPNG(png2)))
@@ -9753,7 +9767,7 @@ class moviesList(Screen):
         for x in range(len(self.titles)):
             res = ['']
             if screenwidth.width() == 1920:
-                res.append(MultiContentEntryText(pos=(0, 0), size=(1265, 225), font=28, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                res.append(MultiContentEntryText(pos=(0, 0), size=(1265, 225), font=30, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
                 self.imagelist.append(res)
                 self['piclist'].l.setList(self.imagelist)
                 self['piclist'].l.setItemHeight(225)
@@ -10637,9 +10651,9 @@ class filterList(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(700, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(700, 25), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
                 else:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(500, 25), font=20, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(500, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
                 self.listentries.append(res)
             except IndexError:
                 pass
@@ -10721,9 +10735,9 @@ class filterSeasonList(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(760, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(760, 30), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
                 else:
-                    res.append(MultiContentEntryText(pos=(0, 0), size=(510, 25), font=20, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(0, 0), size=(510, 25), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
                 self.listentries.append(res)
             except IndexError:
                 pass

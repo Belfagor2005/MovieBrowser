@@ -235,7 +235,7 @@ config.plugins.moviebrowser.showmenu = ConfigSelection(default='no', choices=[('
 config.plugins.moviebrowser.videobutton = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.lastmovie = ConfigSelection(default='yes', choices=[('yes', _('Yes')), ('no', _('No')), ('folder', _('Folder Selection'))])
 config.plugins.moviebrowser.lastfilter = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
-config.plugins.moviebrowser.showfolder = ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
+config.plugins.moviebrowser.showfolder = ConfigSelection(default='yes', choices=[('no', _('No')), ('yes', _('Yes'))])
 
 config.plugins.moviebrowser.skin = ConfigSelection(default='default', choices=folders)
 skin_path = "%s%s/" % (skin_directory, config.plugins.moviebrowser.skin.value)
@@ -11499,12 +11499,37 @@ class movieBrowserConfig(ConfigListScreen, Screen):
     def keyRun(self):
         current = self["config"].getCurrent()[1]
         # current = self['config'].getCurrent()
-        if current == config.plugins.moviebrowser.tvdbapi:  # getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
+        if current == config.plugins.moviebrowser.moviefolder:
+            self.openDirectoryBrowser(config.plugins.moviebrowser.movie.value)     
+        elif current == config.plugins.moviebrowser.tvdbapi:  # getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
             self.tvdbkeyApi()
         elif current == config.plugins.moviebrowser.api:  # getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
             self.keyApi()
         else:
             self.save()
+
+    def openDirectoryBrowser(self, path):
+        try:
+            from Screens.LocationBox import LocationBox
+            self.session.openWithCallback(
+             self.openDirectoryBrowserCB,
+             LocationBox,
+             windowTitle=_('Choose Directory:'),
+             text=_('Choose Directory'),
+             currDir=str(path),
+             bookmarks=config.movielist.videodirs,
+             autoAdd=False,
+             editDir=True,
+             inhibitDirs=['/bin', '/boot', '/dev', '/home', '/lib', '/proc', '/run', '/sbin', '/sys', '/var'],
+             minFree=15)
+        except Exception as e:
+            print('openDirectoryBrowser get failed: ', str(e))
+
+    def openDirectoryBrowserCB(self, path):
+        if path is not None:
+            config.plugins.moviebrowser.movie.setValue(path)
+            self.createSetup()
+        return
 
     def keyApi(self, answer=None):  # key stored
         api = "/tmp/tmdbapikey.txt"

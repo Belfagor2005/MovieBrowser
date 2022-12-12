@@ -2,7 +2,7 @@
 	<widget name="backdrop" position="0,0" size="1280,720" alphatest="on" transparent="0" zPosition="-2"/>
 	<widget name="metrixback" position="40,25" size="620,670" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>
 	<widget name="metrixback2" position="660,40" size="570,640" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>
-	<widget name="posterback" position="720,210" size="150,225" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/metrix_posterback.png" scale="1" zPosition="20" transparent="1" alphatest="blend"/>
+	<widget name="posterback" position="720,210" size="150,225" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/default_poster.png" scale="1" zPosition="20" transparent="1" alphatest="blend"/>
 	<widget name="menu" position="579,655" size="81,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/key_menu.png" alphatest="blend" transparent="1" zPosition="3"/>
 	<widget name="info" position="1149,640" size="81,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/key_info.png" alphatest="blend" transparent="1" zPosition="3"/>
 	<widget name="help" position="50,655" size="30,29" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/key_help.png" alphatest="blend" transparent="1" zPosition="3"/>

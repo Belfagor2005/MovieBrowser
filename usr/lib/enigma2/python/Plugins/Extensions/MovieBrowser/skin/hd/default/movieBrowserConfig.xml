@@ -1,5 +1,5 @@
 <screen name="movieBrowserConfig" title="Movie Browser Setup" position="410,220" size="1100,665" backgroundColor="#20000000" flags="wfNoBorder">
-	<ePixmap position="13,7" size="1068,45" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logoConfig.png" alphatest="blend" zPosition="1" />
+	<!-- <ePixmap position="13,7" size="1068,45" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logoConfig.png" alphatest="blend" zPosition="1" /> -->
 	<eLabel position="9,58" size="1050,3" backgroundColor="green" />
 	<widget name="config" position="12,72" size="1068,273" itemHeight="40" scrollbarMode="showOnDemand" zPosition="1" />
 	<eLabel position="9,364" size="1050,3" backgroundColor="green" />

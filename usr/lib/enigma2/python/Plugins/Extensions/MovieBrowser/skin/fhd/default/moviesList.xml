@@ -1,13 +1,12 @@
-<screen name="moviesList" position="center,center" size="1920,1080" title=" ">
-	<ePixmap position="10,0" size="1265,45" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logo.png" zPosition="1"/>
-	<widget name="list" position="171,57" size="1102,890" scrollbarMode="showNever" zPosition="1"/>
-	<widget name="piclist" position="15,50" size="1265,890" scrollbarMode="showNever" transparent="1" zPosition="0"/>
-	<widget name="poster1" position="15,60" size="150,225" alphatest="blend" zPosition="1"/>
-	<widget name="poster2" position="15,277" size="150,225" scale="1" alphatest="blend" zPosition="1"/>
-	<widget name="poster3" position="15,505" size="150,225" alphatest="blend" zPosition="1"/>
-	<widget name="poster4" position="15,722" size="150,225" alphatest="blend" zPosition="1"/>
-	<widget name="banner1" position="5,60" size="1265,225" alphatest="blend" zPosition="1"/>
-	<widget name="banner2" position="5,277" size="1265,225" alphatest="blend" zPosition="1"/>
-	<widget name="banner3" position="5,505" size="1265,225" alphatest="blend" zPosition="1"/>
-	<widget name="banner4" position="5,722" size="1265,225" alphatest="blend" zPosition="1"/>
+<screen name="moviesList" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder">
+	<widget name="list" position="240,52" size="1240,873" scrollbarMode="showNever" transparent="1" zPosition="1" />
+	<widget name="piclist" position="242,54" size="1240,874" scrollbarMode="showNever" transparent="1" zPosition="5" />
+	<widget name="poster1" position="80,50" size="150,225" alphatest="blend" zPosition="1" />
+	<widget name="poster2" position="80,272" size="150,225" alphatest="blend" zPosition="1" />
+	<widget name="poster3" position="80,500" size="150,225" alphatest="blend" zPosition="1" />
+	<widget name="poster4" position="80,717" size="150,225" alphatest="blend" zPosition="1" />			
+	<widget name="banner1" position="230,50" size="1265,225" alphatest="blend" zPosition="1" />
+	<widget name="banner2" position="230,272" size="1265,225" alphatest="blend" zPosition="1" />
+	<widget name="banner3" position="230,495" size="1265,225" alphatest="blend" zPosition="1" />
+	<widget name="banner4" position="230,717" size="1265,225" alphatest="blend" zPosition="1" />		
 </screen>

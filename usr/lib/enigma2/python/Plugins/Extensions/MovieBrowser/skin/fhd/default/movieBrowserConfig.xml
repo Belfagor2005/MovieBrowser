@@ -1,12 +1,14 @@
-<screen name="movieBrowserConfig" title="Movie Browser Setup" position="center,center" size="1650,998" backgroundColor="#20000000" flags="wfNoBorder">
-	<ePixmap position="20,8" size="1600,45" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logoConfig.png" alphatest="blend" zPosition="1"/>
-	<widget name="plugin" position="6,561" size="768,432" scale="1" alphatest="blend" zPosition="1"/>
-	<eLabel position="14,68" size="1600,5" backgroundColor="green"/>
-	<widget name="config" position="18,83" size="1602,420" itemHeight="50" scrollbarMode="showOnDemand" zPosition="1"/>
-	<eLabel position="14,529" size="1600,5" backgroundColor="green"/>
-	<widget name="save" position="896,825" size="188,45" font="Regular; 36" halign="left" transparent="1" zPosition="1"/>
-	<widget name="cancel" position="1257,825" size="188,45" font="Regular; 36" halign="left" transparent="1" zPosition="1"/>
-	<ePixmap position="840,825" size="45,45" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1"/>
-	<ePixmap position="1215,825" size="45,45" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="1"/>
-	<widget name="status" position="832,562" size="776,158" font="Regular;28" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="1" zPosition="5"/>
+<screen name="movieBrowserConfig" title="Movie Browser Setup" position="0,0" size="1920,1080" backgroundColor="#FF000000" flags="wfNoBorder">
+		<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;102" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+		<eLabel position="230,120" size="1250,3" backgroundColor="#303030" zPosition="4" />
+		<ePixmap position="0,0" size="1500,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/main2.png" zPosition="-2" />
+		<ePixmap position="1500,0" size="420,1080" pixmap="usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/pC.png" zPosition="-1" />
+		<eLabel position="230,960" size="1250,3" backgroundColor="#303030" zPosition="4" />
+		<widget name="config" position="220,150" size="1260,350" itemHeight="50" scrollbarMode="showOnDemand" scrollbarWidth="10" backgroundColorSelected="#001b3c85" enableWrapAround="1" backgroundColor="#000000" transparent="1" zPosition="5" />
+		<ePixmap position="230,995" size="30,30" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="1" />
+		<widget name="cancel" position="270,995" size="200,30" font="Regular;28" halign="left" transparent="1" zPosition="1" />
+		<ePixmap position="500,995" size="30,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1" />
+		<widget name="save" position="540,995" size="300,30" font="Regular; 28" halign="left" transparent="1" zPosition="1" />
+		<widget name="plugin" position="230,515" size="810,432" alphatest="blend" scale="1" zPosition="1" />
+		<widget name="status" position="872,973" size="586,82" font="Regular;28" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="1" zPosition="5" />
 </screen>

@@ -1,11 +1,14 @@
-<screen name="movieControlList" position="0,0" size="1920,1080" title=" ">
-	<ePixmap position="25,0" size="1800,75" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/logoList.png" zPosition="1"/>
-	<ePixmap position="35,8" size="27,27" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="2"/>
-	<ePixmap position="35,41" size="27,27" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="2"/>
-	<ePixmap position="501,41" size="27,27" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="2"/>
-	<widget name="label" position="81,8" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
-	<widget name="label2" position="81,41" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
-	<widget name="label3" position="310,41" size="180,30" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="right" transparent="1" zPosition="2"/>
-	<widget name="list" position="23,120" size="1808,870" scrollbarMode="showOnDemand" zPosition="1"/>
-	<widget name="log" position="23,120" size="1808,870" font="Regular;20" zPosition="1"/>
+<screen name="movieControlList" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder">
+	<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;102" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+	<eLabel position="230,120" size="1250,3" backgroundColor="#303030" zPosition="4" />
+	<ePixmap position="0,0" size="1500,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/main2.png" zPosition="-2" />
+	<ePixmap position="1500,0" size="420,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/pC.png" zPosition="-1" />
+	<eLabel position="230,960" size="1250,3" backgroundColor="#303030" zPosition="4" />
+	<widget name="list" position="230,140" size="1240,800" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="40" font="Regular;30" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" backgroundColorSelected="#001b3c85" />
+	<ePixmap pixmap="skin_default/buttons/red.png" position="280,1002" size="30,30" alphatest="on" scale="1" zPosition="5" />
+	<widget name="label" position="320,1000" size="200,40" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="3" />
+	<ePixmap pixmap="skin_default/buttons/green.png" position="535,1002" size="30,30" alphatest="on" scale="1" zPosition="5" />
+	<widget name="label2" position="575,1000" size="200,40" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="3" />
+	<ePixmap pixmap="skin_default/buttons/yellow.png" position="790,1002" size="30,30" alphatest="on" scale="1" zPosition="5" />
+	<widget name="label3" position="830,1000" size="200,40" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#000000" transparent="1" zPosition="3" />
 </screen>

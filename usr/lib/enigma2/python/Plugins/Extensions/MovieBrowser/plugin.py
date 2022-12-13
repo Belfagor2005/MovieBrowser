@@ -223,7 +223,7 @@ config.plugins.moviebrowser.sortorder = ConfigSelection(default='date_reverse', 
     ('folder', _('Movie Folder Ascending')),
     ('folder_reverse', _('Movie Folder Descending'))
 ])
-config.plugins.moviebrowser.backdrops = ConfigSelection(default='info', choices=[('info', _('Info Button')), ('auto', _('Automatic')), ('hide', _('Hide'))])
+config.plugins.moviebrowser.backdrops = ConfigSelection(default='auto', choices=[('info', _('Info Button')), ('auto', _('Automatic')), ('hide', _('Hide'))])
 config.plugins.moviebrowser.m1v = ConfigOnOff(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.download = ConfigSelection(default='update', choices=[('access', _('On First Access')), ('update', _('On Database Update'))])
 if config.plugins.moviebrowser.m1v.value:
@@ -11406,34 +11406,39 @@ class movieBrowserConfig(ConfigListScreen, Screen):
     def createSetup(self):
         # self.editListEntry = None
         list = []
+        list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
+        list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))   
+        list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
+        list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))        
+
         list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
         list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
         list.append(getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder))
         list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
-        list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
-        list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))
-        list.append(getConfigListEntry(_('TMDb/TheTVDb Language:'), config.plugins.moviebrowser.language))
         list.append(getConfigListEntry(_('Movie Sort Order:'), config.plugins.moviebrowser.sortorder))
+        list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
+
         list.append(getConfigListEntry(_('Show Backdrops:'), config.plugins.moviebrowser.backdrops))
         list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
+        list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))        
+        
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
-        list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
-        list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
+        
 
         list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
 
+        list.append(getConfigListEntry(_('TMDb/TheTVDb Language:'), config.plugins.moviebrowser.language))
         list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))
         list.append(getConfigListEntry(_("Signup on TMDB and input free personal ApiKey"), config.plugins.moviebrowser.txtapi))
         list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))
         list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))
 
-        list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
-        list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))
 
         list.append(getConfigListEntry(_('Update Database with Timer:'), config.plugins.moviebrowser.timerupdate))
-        list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
+        if config.plugins.moviebrowser.timerupdate:
+            list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
         list.append(getConfigListEntry(_('Hide Plugin during Update:'), config.plugins.moviebrowser.hideupdate))
 
         list.append(getConfigListEntry(_('Reset Database:'), config.plugins.moviebrowser.reset))
@@ -11687,14 +11692,14 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         os.remove(self.database + '.series')
                     os.rename(self.database + '.sorted', self.database)
             if config.plugins.moviebrowser.timerupdate.value:
-                if self.timer_hour != config.plugins.moviebrowser.timer.value[0] or self.timer_min != config.plugins.moviebrowser.timer.value[1] or self.timer_update == 'no':
+                if self.timer_hour != config.plugins.moviebrowser.timer.value[0] or self.timer_min != config.plugins.moviebrowser.timer.value[1] or self.timer_update is False:
                     if timerupdate.session is None:
                         timerupdate.saveSession(self.session)
                     timerupdate.restart()
-            elif config.plugins.moviebrowser.timerupdate.value is False and self.timer_update == 'yes':
-                if timerupdate.session is None:
-                    timerupdate.saveSession(self.session)
-                timerupdate.stop()
+            # elif config.plugins.moviebrowser.timerupdate.value is False and self.timer_update is True:
+                # if timerupdate.session is None:
+                    # timerupdate.saveSession(self.session)
+                # timerupdate.stop()
 
             if config.plugins.moviebrowser.cachefolder.value != self.cachefolder:
                 self.container = eConsoleAppContainer()
@@ -11953,7 +11958,7 @@ def autostart(reason, **kwargs):
             infobarsession = kwargs['session']
             from Screens.InfoBar import InfoBar
             InfoBar.showMovies = mainInfoBar
-        if config.plugins.moviebrowser.timerupdate.value == 'yes':
+        if config.plugins.moviebrowser.timerupdate.value:
             open(timerlog, 'w').close()
             session = kwargs['session']
             timerupdate.saveSession(session)

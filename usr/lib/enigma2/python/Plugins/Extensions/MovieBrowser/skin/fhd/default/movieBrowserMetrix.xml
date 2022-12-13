@@ -1,8 +1,8 @@
 <screen name="movieBrowserMetrix" position="0,0" size="1920,1080" flags="wfNoBorder" title="  ">
 
 		<!-- Sfondo - BackDrop - Overlay -->
-		<!-- <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4" /> -->
-	    <widget name="backdrop" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" scale="1" zPosition="-3"/>
+		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4" />
+	    <widget name="backdrop" position="0,0" size="1920,1080" scale="1" zPosition="-3"/>
 		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/overlay-mx.png" position="0,0" size="1920,1080" alphatest="blend" zPosition="-2" />
 		<eLabel position="15,90"   size="920,3" backgroundColor="#101010" />
 		<eLabel position="1000,90" size="900,3" backgroundColor="#101010" />

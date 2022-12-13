@@ -21,7 +21,7 @@ from Components.ScrollLabel import ScrollLabel
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.config import ConfigSelection, ConfigText, ConfigYesNo
 # from Components.config import ConfigDirectory
-# from Components.config import ConfigSlider
+from Components.config import ConfigEnableDisable
 from Components.config import ConfigSubsection, ConfigOnOff
 from Components.config import config, configfile, ConfigClock
 from Components.config import NoSave, getConfigListEntry
@@ -141,7 +141,7 @@ default_backdrop = '%spic/setup/default_backdrop.png' % skin_directory
 default_folder = '%spic/browser/default_folder.png' % skin_directory
 default_poster = '%spic/browser/default_poster.png' % skin_directory
 default_banner = '%spic/browser/default_banner.png' % skin_directory
-default_backdropm1v = '%spic/browser/default_backdrop.m1v' % skin_directory
+# default_backdropm1v = '%spic/browser/default_backdrop.m1v' % skin_directory
 wiki_png = '%spic/browser/wiki.png' % skin_directory
 folders = os.listdir(skin_directory)
 if "pic" in folders:
@@ -224,12 +224,14 @@ config.plugins.moviebrowser.sortorder = ConfigSelection(default='date_reverse', 
     ('folder_reverse', _('Movie Folder Descending'))
 ])
 config.plugins.moviebrowser.backdrops = ConfigSelection(default='auto', choices=[('info', _('Info Button')), ('auto', _('Automatic')), ('hide', _('Hide'))])
-config.plugins.moviebrowser.m1v = ConfigOnOff(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.download = ConfigSelection(default='update', choices=[('access', _('On First Access')), ('update', _('On Database Update'))])
-if config.plugins.moviebrowser.m1v.value:
-    config.plugins.moviebrowser.showtv = ConfigSelection(default='hide', choices=[('show', _('Show')), ('hide', _('Hide'))])
-else:
-    config.plugins.moviebrowser.showtv = ConfigSelection(default='show', choices=[('show', _('Show')), ('hide', _('Hide'))])
+# config.plugins.moviebrowser.m1v = ConfigOnOff(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
+# if config.plugins.moviebrowser.m1v.value:
+    # config.plugins.moviebrowser.showtv = ConfigSelection(default='hide', choices=[('show', _('Show')), ('hide', _('Hide'))])
+# else:
+    # config.plugins.moviebrowser.showtv = ConfigSelection(default='show', choices=[('show', _('Show')), ('hide', _('Hide'))])
+config.plugins.moviebrowser.showtv = ConfigSelection(default='hide', choices=[('show', _('Show')), ('hide', _('Hide'))])
+    
 config.plugins.moviebrowser.showswitch = ConfigOnOff(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.showmenu = ConfigOnOff(default=False)  # choices=[('no', _('No')), ('yes', _('Yes'))])
 config.plugins.moviebrowser.videobutton = ConfigOnOff(default=False)  # choices=[('no', _('No')), ('yes', _('Yes'))])
@@ -241,7 +243,8 @@ config.plugins.moviebrowser.skin = ConfigSelection(default='default', choices=fo
 skin_path = "%s%s/" % (skin_directory, config.plugins.moviebrowser.skin.value)
 config.plugins.moviebrowser.plotfull = ConfigSelection(default='show', choices=[('hide', _('Info Button')), ('show', _('Automatic'))])
 
-config.plugins.moviebrowser.timerupdate = ConfigOnOff(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
+config.plugins.moviebrowser.timerupdate = ConfigEnableDisable(default=False)  # ConfigSelection(default='no', choices=[('no', _('No')), ('yes', _('Yes'))])
+# if config.plugins.moviebrowser.timerupdate:
 config.plugins.moviebrowser.timer = ConfigClock(default=6 * 3600)
 config.plugins.moviebrowser.hideupdate = ConfigOnOff(default=False)  # ConfigSelection(default='yes', choices=[('yes', _('Yes')), ('no', _('No'))])
 
@@ -255,7 +258,7 @@ config.plugins.moviebrowser.tvdbapi = NoSave(ConfigSelection(['-> Ok']))
 config.plugins.moviebrowser.txttvdbapi = ConfigText(default=thetvdb_api_key, visible_width=60, fixed_size=False)
 
 config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
-config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbusbcache, '/media/usb'), (dbhddcache, '/media/hdd'), (dbcache, 'Default')])
+config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbcache, 'Default'), (dbhddcache, '/media/hdd'), (dbusbcache, '/media/usb')])
 config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
 config.plugins.moviebrowser.backup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
 config.plugins.moviebrowser.restore = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
@@ -406,10 +409,9 @@ class movieBrowserMetrix(Screen):
         self.content = content
         self.filter = filter
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
+        self.showfolder = False
         if config.plugins.moviebrowser.showfolder.value:
             self.showfolder = True
-        else:
-            self.showfolder = False
         self.ABC = 'ABC'
         self.namelist = []
         self.movielist = []
@@ -566,7 +568,7 @@ class movieBrowserMetrix(Screen):
         self['red'].hide()
         self['green'].hide()
 
-        if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+        if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
         if fileExists(self.database):
             if self.index == 0:
@@ -609,7 +611,6 @@ class movieBrowserMetrix(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
             self.close()
@@ -1817,7 +1818,6 @@ class movieBrowserMetrix(Screen):
         except IndexError:
             self['Country'].hide()
             self['country'].hide()
-            pass
 
         ddd = self.dddlist[self.index]
         media = self.medialist[self.index]
@@ -1897,7 +1897,6 @@ class movieBrowserMetrix(Screen):
             # self["banner"].instance.setPixmapFromFile(png)
             # self['banner'].show()
 
-
     def makeEpisodes(self):
         try:
             posterurl = self.posterlist[self.index]
@@ -1952,7 +1951,6 @@ class movieBrowserMetrix(Screen):
                 else:
                     if pythonVer == 3:
                         eposterurl = eposterurl.encode()
-                    # getPage(eposterurl).addCallback(self.getEPoster, eposter).addErrback(self.downloadError)
                     callInThread(threadGetPage, url=eposterurl, file=eposter, sucess=self.getEPoster, fail=self.downloadError)
         except IndexError:
             pass
@@ -1981,7 +1979,6 @@ class movieBrowserMetrix(Screen):
             else:
                 if pythonVer == 3:
                     posterurl = posterurl.encode()
-                # getPage(posterurl).addCallback(self.getPoster, poster).addErrback(self.downloadError)
                 callInThread(threadGetPage, url=posterurl, file=poster, success=self.getPoster, fail=self.downloadError)
         except IndexError:
             self['posterback'].hide()
@@ -2008,28 +2005,27 @@ class movieBrowserMetrix(Screen):
                 self.oldbackdropurl = backdropurl
                 backdrop = sub('.*?[/]', '', backdropurl)
                 backdrop = config.plugins.moviebrowser.cachefolder.value + '/' + backdrop
-                if config.plugins.moviebrowser.m1v.value:
-                    backdrop_m1v = backdrop.replace('.jpg', '.m1v')
-                    if fileExists(backdrop_m1v):
-                        self['backdrop'].hide()
-                        os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-                    elif fileExists(backdrop):
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                    else:
-                        if pythonVer == 3:
-                            backdropurl = backdropurl.encode()
-                        # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
-                        callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                elif fileExists(backdrop):
+                # if config.plugins.moviebrowser.m1v.value:
+                    # backdrop_m1v = backdrop.replace('.jpg', '.m1v')
+                    # if fileExists(backdrop_m1v):
+                        # self['backdrop'].hide()
+                        # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+                    # elif fileExists(backdrop):
+                        # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        # self['backdrop'].show()
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                    # else:
+                        # if pythonVer == 3:
+                            # backdropurl = backdropurl.encode()
+                        # # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
+                        # callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                if fileExists(backdrop):
                     self["backdrop"].instance.setPixmapFromFile(backdrop)
                     self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
-                    # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
                     callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
         except IndexError:
             self['backdrop'].hide()
@@ -2047,39 +2043,21 @@ class movieBrowserMetrix(Screen):
             print('error ', str(e))
         return
 
-    # def showDefaultBackdrop(self):
-        # backdrop = str(default_backdrop)
+    def showDefaultBackdrop(self):
+        backdrop = str(default_backdrop)
         # backdrop_m1v = str(default_backdropm1v)
         # if config.plugins.moviebrowser.m1v.value:
             # if fileExists(backdrop_m1v):
                 # self['backdrop'].hide()
                 # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-            # elif fileExists(backdrop):
-                # # if self["backdrop"].instance:
-                # self["backdrop"].instance.setPixmapFromFile(backdrop)
-                # self['backdrop'].show()
-                # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-
-        # elif fileExists(backdrop):
-            # self["backdrop"].instance.setPixmapFromFile(backdrop)
-            # self['backdrop'].show()
-        # return
-
-    def showDefaultBackdrop(self):
-        backdrop = str(default_backdrop)
-        backdrop_m1v = str(default_backdropm1v)
-        if config.plugins.moviebrowser.m1v.value:
-            if fileExists(backdrop_m1v):
-                self['backdrop'].hide()
-                os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-            # elif fileExists(backdrop):
-                # self["backdrop"].instance.setPixmapFromFile(backdrop)
-                # self['backdrop'].show()
-                # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-        else:
-            if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+            # # elif fileExists(backdrop):
+                # # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                # # self['backdrop'].show()
+                # # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+        # else:
+        if fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -2301,6 +2279,7 @@ class movieBrowserMetrix(Screen):
 
                 if self.showfolder is True:
                     self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
+                    # self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -2668,7 +2647,7 @@ class movieBrowserMetrix(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -2684,7 +2663,7 @@ class movieBrowserMetrix(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -2795,7 +2774,6 @@ class movieBrowserMetrix(Screen):
     def download(self, link, name):
         if pythonVer == 3:
             link = link.encode()
-        # getPage(link).addCallback(name).addErrback(self.downloadError)
         callInThread(threadGetPage, url=link, file=None, success=name, fail=self.downloadError)
 
     def downloadError(self, output):
@@ -2806,7 +2784,6 @@ class movieBrowserMetrix(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
@@ -2876,7 +2853,7 @@ class movieBrowserMetrix(Screen):
                 f = open(self.lastfilter, 'w')
                 f.write(self.filter)
                 f.close()
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
@@ -2911,10 +2888,9 @@ class movieBrowserBackdrop(Screen):
         self.content = content
         self.filter = filter
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
+        self.showfolder = False
         if config.plugins.moviebrowser.showfolder.value:
             self.showfolder = True
-        else:
-            self.showfolder = False
         self.ABC = 'ABC'
         self.namelist = []
         self.movielist = []
@@ -3073,7 +3049,7 @@ class movieBrowserBackdrop(Screen):
         self['plotfullback'].hide()
         self['infoback'].show()
 
-        if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+        if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
         if fileExists(self.database):
             if self.index == 0:
@@ -3116,7 +3092,6 @@ class movieBrowserBackdrop(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
             self.close()
@@ -3368,7 +3343,6 @@ class movieBrowserBackdrop(Screen):
                         self.oldfilter = self.filter
                         self.topindex = self.index
                         self.index = 5
-                        # if self.xd is False:
                         if screenwidth.width() >= 1280:
                             self.posterindex = 6
                         else:
@@ -4236,7 +4210,6 @@ class movieBrowserBackdrop(Screen):
                     else:
                         if pythonVer == 3:
                             bannerurl = bannerurl.encode()
-                        # getPage(bannerurl).addCallback(self.getBanner, banner).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=bannerurl, file=banner, success=self.getBanner, fail=self.downloadError)
                 else:
                     self['banner'].hide()
@@ -4270,7 +4243,6 @@ class movieBrowserBackdrop(Screen):
                         else:
                             if pythonVer == 3:
                                 bannerurl = bannerurl.encode()
-                            # getPage(bannerurl).addCallback(self.getBanner, banner).addErrback(self.downloadError)
                             callInThread(threadGetPage, url=bannerurl, file=banner, success=self.getBanner, fail=self.downloadError)
                     else:
                         self['banner'].hide()
@@ -4296,7 +4268,6 @@ class movieBrowserBackdrop(Screen):
                     else:
                         if pythonVer == 3:
                             eposterurl = eposterurl.encode()
-                        # getPage(eposterurl).addCallback(self.getEPoster, eposter).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=eposterurl, file=eposter, success=self.getEPoster, fail=self.downloadError)
                 else:
                     self.toggleCount = 2
@@ -4352,7 +4323,6 @@ class movieBrowserBackdrop(Screen):
                 else:
                     if pythonVer == 3:
                         posterurl = posterurl.encode()
-                    # getPage(posterurl).addCallback(self.getPoster, x, poster).addErrback(self.downloadError)
                     callInThread(threadGetPage, url=posterurl, file=poster, key=x, success=self.getPoster, fail=self.downloadError)
             except IndexError:
                 self['poster' + str(x)].hide()
@@ -4378,22 +4348,22 @@ class movieBrowserBackdrop(Screen):
                 self.oldbackdropurl = backdropurl
                 backdrop = sub('.*?[/]', '', backdropurl)
                 backdrop = config.plugins.moviebrowser.cachefolder.value + '/' + backdrop
-                if config.plugins.moviebrowser.m1v.value:
-                    backdrop_m1v = backdrop.replace('.jpg', '.m1v')
-                    if fileExists(backdrop_m1v):
-                        self['backdrop'].hide()
-                        os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-                    elif fileExists(backdrop):
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                    else:
-                        if pythonVer == 3:
-                            backdropurl = backdropurl.encode()
-                        # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
-                        callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                elif fileExists(backdrop):
+                # if config.plugins.moviebrowser.m1v.value:
+                    # backdrop_m1v = backdrop.replace('.jpg', '.m1v')
+                    # if fileExists(backdrop_m1v):
+                        # self['backdrop'].hide()
+                        # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+                    # elif fileExists(backdrop):
+                        # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        # self['backdrop'].show()
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                    # else:
+                        # if pythonVer == 3:
+                            # backdropurl = backdropurl.encode()
+                        # # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
+                        # callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                if fileExists(backdrop):
                         self["backdrop"].instance.setPixmapFromFile(backdrop)
                         self['backdrop'].show()
                 else:
@@ -4419,19 +4389,19 @@ class movieBrowserBackdrop(Screen):
 
     def showDefaultBackdrop(self):
         backdrop = str(default_backdrop)
-        backdrop_m1v = str(default_backdropm1v)
-        if config.plugins.moviebrowser.m1v.value:
-            if fileExists(backdrop_m1v):
-                self['backdrop'].hide()
-                os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-            # elif fileExists(backdrop):
-                # self["backdrop"].instance.setPixmapFromFile(backdrop)
-                # self['backdrop'].show()
-                # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-        else:
-            if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+        # backdrop_m1v = str(default_backdropm1v)
+        # if config.plugins.moviebrowser.m1v.value:
+            # if fileExists(backdrop_m1v):
+                # self['backdrop'].hide()
+                # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+            # # elif fileExists(backdrop):
+                # # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                # # self['backdrop'].show()
+                # # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+        # else:
+        if fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -4545,6 +4515,7 @@ class movieBrowserBackdrop(Screen):
 
                 if self.showfolder is True:
                     self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
+                    # self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -4615,7 +4586,6 @@ class movieBrowserBackdrop(Screen):
                 self.filter = self.content
                 self.index = 0
                 self.toggleCount = 0
-                # if self.xd is False:
                 if screenwidth.width() >= 1280:
                     self.posterindex = 6
                 else:
@@ -4910,7 +4880,7 @@ class movieBrowserBackdrop(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -4926,7 +4896,7 @@ class movieBrowserBackdrop(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -5110,7 +5080,6 @@ class movieBrowserBackdrop(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
@@ -5175,7 +5144,7 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.lastfilter, 'w')
                 f.write(self.filter)
                 f.close()
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
@@ -5284,10 +5253,9 @@ class movieBrowserPosterwall(Screen):
             self.plotfull = False
             self.episodes = False
         self.toggleCount = 0
+        self.showfolder = False
         if config.plugins.moviebrowser.showfolder.value:
             self.showfolder = True
-        else:
-            self.showfolder = False
         self.ABC = 'ABC'
         self.namelist = []
         self.movielist = []
@@ -5429,7 +5397,7 @@ class movieBrowserPosterwall(Screen):
         self['infoback'].show()
         self['2infoback'].hide()
         self['plotfullback'].hide()
-        if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+        if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
         if fileExists(self.database):
             if self.index == 0:
@@ -6447,7 +6415,7 @@ class movieBrowserPosterwall(Screen):
                         name = sub(' \\S+FIN', '', name)
                     name = name + ' ...'
 
-# check this please
+            # check this please
                 elif len(name) > 64:
                     if name[63:64] == ' ':
                         name = name[0:63]
@@ -6496,16 +6464,15 @@ class movieBrowserPosterwall(Screen):
             year = self.infolist[count][5]
             self['year'].setText(year)
             self['year'].show()
-        # except IndexError:
-            # self['year'].hide()
+        except IndexError:
+            self['year'].hide()
 
-        # try:
+        try:
             country = self.infolist[count][6]
             self['country'].setText(country)
             self['country'].show()
         except IndexError:
-            # self['country'].hide()
-            pass
+            self['country'].hide()
 
         ddd = self.dddlist[self.index]
         media = self.medialist[self.index]
@@ -6784,7 +6751,6 @@ class movieBrowserPosterwall(Screen):
                     else:
                         if pythonVer == 3:
                             bannerurl = bannerurl.encode()
-                        # getPage(bannerurl).addCallback(self.getBanner, banner).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=bannerurl, file=banner, success=self.getBanner, fail=self.downloadError)
                 else:
                     self['banner'].hide()
@@ -6818,7 +6784,6 @@ class movieBrowserPosterwall(Screen):
                         else:
                             if pythonVer == 3:
                                 bannerurl = bannerurl.encode()
-                            # getPage(bannerurl).addCallback(self.getBanner, banner).addErrback(self.downloadError)
                             callInThread(threadGetPage, url=bannerurl, file=banner, success=self.getBanner, fail=self.downloadError)
                     else:
                         self['banner'].hide()
@@ -6844,7 +6809,6 @@ class movieBrowserPosterwall(Screen):
                     else:
                         if pythonVer == 3:
                             eposterurl = eposterurl.encode()
-                        # getPage(eposterurl).addCallback(self.getEPoster, eposter).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=eposterurl, file=eposter, success=self.getEPoster, fail=self.downloadError)
                 else:
                     self.toggleCount = 1
@@ -6894,7 +6858,6 @@ class movieBrowserPosterwall(Screen):
                 else:
                     if pythonVer == 3:
                         posterurl = posterurl.encode()
-                    # getPage(posterurl).addCallback(self.getPoster, x, poster).addErrback(self.downloadError)
                     callInThread(threadGetPage, url=posterurl, file=poster, key=x, success=self.getPoster, fail=self.downloadError)
             except IndexError:
                 self['poster' + str(x)].hide()
@@ -6940,28 +6903,27 @@ class movieBrowserPosterwall(Screen):
                 self.oldbackdropurl = backdropurl
                 backdrop = sub('.*?[/]', '', backdropurl)
                 backdrop = config.plugins.moviebrowser.cachefolder.value + '/' + backdrop
-                if config.plugins.moviebrowser.m1v.value:
-                    backdrop_m1v = backdrop.replace('.jpg', '.m1v')
-                    if fileExists(backdrop_m1v):
-                        self['backdrop'].hide()
-                        os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-                    elif fileExists(backdrop):
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                    else:
-                        if pythonVer == 3:
-                            backdropurl = backdropurl.encode()
-                        # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
-                        callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-                elif fileExists(backdrop):
+                # if config.plugins.moviebrowser.m1v.value:
+                    # backdrop_m1v = backdrop.replace('.jpg', '.m1v')
+                    # if fileExists(backdrop_m1v):
+                        # self['backdrop'].hide()
+                        # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+                    # elif fileExists(backdrop):
+                        # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        # self['backdrop'].show()
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                    # else:
+                        # if pythonVer == 3:
+                            # backdropurl = backdropurl.encode()
+                        # # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
+                        # callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
+                        # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+                if fileExists(backdrop):
                     self["backdrop"].instance.setPixmapFromFile(backdrop)
                     self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
-                    # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
                     callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
         except IndexError:
             self['backdrop'].hide()
@@ -6999,19 +6961,19 @@ class movieBrowserPosterwall(Screen):
 
     def showDefaultBackdrop(self):
         backdrop = str(default_backdrop)
-        backdrop_m1v = str(default_backdropm1v)
-        if config.plugins.moviebrowser.m1v.value:
-            if fileExists(backdrop_m1v):
-                self['backdrop'].hide()
-                os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-            # elif fileExists(backdrop):
-                # self["backdrop"].instance.setPixmapFromFile(backdrop)
-                # self['backdrop'].show()
-                # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-        else:
-            if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+        # backdrop_m1v = str(default_backdropm1v)
+        # if config.plugins.moviebrowser.m1v.value:
+            # if fileExists(backdrop_m1v):
+                # self['backdrop'].hide()
+                # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+            # # elif fileExists(backdrop):
+                # # self["backdrop"].instance.setPixmapFromFile(backdrop)
+                # # self['backdrop'].show()
+                # # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
+        # else:
+        if fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -7315,6 +7277,7 @@ class movieBrowserPosterwall(Screen):
 
                 if self.showfolder is True:
                     self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
+                    # self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', 'https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                 f.close()
                 self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
@@ -7698,7 +7661,7 @@ class movieBrowserPosterwall(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -7714,7 +7677,7 @@ class movieBrowserPosterwall(Screen):
                 except IndexError:
                     pass
 
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
@@ -7861,7 +7824,6 @@ class movieBrowserPosterwall(Screen):
     def download(self, link, name):
         if pythonVer == 3:
             link = link.encode()
-        # getPage(link).addCallback(name).addErrback(self.downloadError)
         callInThread(threadGetPage, url=link, file=None, success=name, fail=self.downloadError)
 
     def downloadError(self, output):
@@ -7872,7 +7834,6 @@ class movieBrowserPosterwall(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
             self.topseries = False
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
 
     def zap(self):
@@ -7945,7 +7906,7 @@ class movieBrowserPosterwall(Screen):
                 f = open(self.lastfilter, 'w')
                 f.write(self.filter)
                 f.close()
-            if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
+            if config.plugins.moviebrowser.showtv.value == 'hide':  # or config.plugins.moviebrowser.m1v.value is True:
                 self.session.nav.playService(self.oldService)
             self.session.deleteDialog(self.toogleHelp)
             config.usage.on_movie_stop.value = self.movie_stop
@@ -8954,26 +8915,26 @@ class movieControlList(Screen):
                 index = self['list'].getSelectedIndex()
                 moviefile = self.list[index][1]
                 if moviefile.endswith('.ts'):
-                    service = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + moviefile)
-                    if config.plugins.moviebrowser.m1v.value is False:
-                        self.session.nav.stopService()
+                    # service = eServiceReference('1:0:0:0:0:0:0:0:0:0:' + moviefile)
+                    # if config.plugins.moviebrowser.m1v.value is False:
+                        # self.session.nav.stopService()
                     self.session.openWithCallback(self.cutlist_return, CutListEditor, service)
                 self.session.open(MessageBox, _('\nThe CutListEditor plugin supports only records with the box.'), MessageBox.TYPE_ERROR)
             else:
                 self.session.openWithCallback(self.CutListInstall, MessageBox, _('\nThe CutListEditor plugin is not installed.\n\nThe plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?'), MessageBox.TYPE_YESNO)
 
     def cutlist_return(self):
-        if config.plugins.moviebrowser.m1v.value is False:
+        # if config.plugins.moviebrowser.m1v.value is False:
             self.session.nav.stopService()
             self.session.nav.playService(self.oldService)
-        else:
+        # else:
             index = self['list'].getSelectedIndex()
             backdropurl = self.list[index][2]
             backdrop = sub('.*?[/]', '', backdropurl)
             backdrop = config.plugins.moviebrowser.cachefolder.value + '/' + backdrop
-            backdrop_m1v = backdrop.replace('.jpg', '.m1v')
-            if fileExists(backdrop_m1v):
-                os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
+            # backdrop_m1v = backdrop.replace('.jpg', '.m1v')
+            # if fileExists(backdrop_m1v):
+                # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
 
     def movieCut(self):
         if self.ready is True:
@@ -10607,7 +10568,6 @@ class moviesList(Screen):
     def download(self, link, name):
         if pythonVer == 3:
             link = link.encode()
-        # getPage(link).addCallback(name).addErrback(self.downloadError)
         callInThread(threadGetPage, url=link, file=None, success=name, fail=self.downloadError)
 
     def downloadError(self, output):
@@ -11346,7 +11306,7 @@ class helpScreen(Screen):
 
         Screen.__init__(self, session)
         self.setTitle(_('Movie Browser Key Assignment'))
-        self['label'] = Label(_(': Update Database\n"     : Wikipedia Search\n     : Toggle Plugin Style\n     : Toggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
+        self['label'] = Label(_('Update Database\nWikipedia Search\nToggle Plugin Style\nToggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
         self['actions'] = ActionMap(['OkCancelActions'], {
             'ok': self.close,
             'cancel': self.close
@@ -11364,67 +11324,66 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.skin = f.read()
 
         Screen.__init__(self, session)
-
-        # self.onChangedEntry = []
-
+        self.session = session
+        self.onChangedEntry = []
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
         self.cachefolder = config.plugins.moviebrowser.cachefolder.value
         self.database = dbmovie
-        self.m1v = config.plugins.moviebrowser.m1v.value
-
+        # self.m1v = config.plugins.moviebrowser.m1v.value
         self.timer_update = config.plugins.moviebrowser.timerupdate.value
         self.timer_hour = config.plugins.moviebrowser.timer.value[0]
         self.timer_min = config.plugins.moviebrowser.timer.value[1]
-
         self['save'] = Label(_('Save'))
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
         self['status'] = StaticText()
         self.ready = True
-
         list = []
-
-        ConfigListScreen.__init__(self, list, on_change=self.UpdateComponents)
-
+        ConfigListScreen.__init__(self, list, session=self.session, on_change=self.UpdateComponents)
         self.createSetup()
 
-        self['actions'] = ActionMap(['HelpActions', 'SetupActions', 'VirtualKeyboardActions', 'ColorActions'], {
+        self['actions'] = ActionMap(['HelpActions', 'SetupActions', 'VirtualKeyboardActions', 'ColorActions', 'DirectionActions'], {
             'ok': self.keyRun,
             'showVirtualKeyboard': self.KeyText,
             'cancel': self.cancel,
             'red': self.cancel,
             'green': self.save,
-            'save': self.save
-        }, -1)
-
-        if self.selectionChanged not in self["config"].onSelectionChanged:
-            self["config"].onSelectionChanged.append(self.selectionChanged)
+            'save': self.save,
+            'left': self.keyLeft,
+            'down': self.keyDown,
+            'up': self.keyUp,
+            'right': self.keyRight}, -1)
 
         self.onLayoutFinish.append(self.UpdateComponents)
+        self.onLayoutFinish.append(self.layoutFinished)
+
+    def layoutFinished(self):
+        pass
 
     def createSetup(self):
-        # self.editListEntry = None
+        self.editListEntry = None
         list = []
+        list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
+        list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))   
+        
         list.append(getConfigListEntry(_('Movies or Series:'), config.plugins.moviebrowser.filter))
         list.append(getConfigListEntry(_('Movies or Series Selection at Start:'), config.plugins.moviebrowser.showswitch))   
         list.append(getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie))
         list.append(getConfigListEntry(_('Load last Selection/Filter on Start:'), config.plugins.moviebrowser.lastfilter))        
 
-        list.append(getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style))
-        list.append(getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle))
+
         list.append(getConfigListEntry(_('Movie Folder:'), config.plugins.moviebrowser.moviefolder))
         list.append(getConfigListEntry(_('Cache Folder:'), config.plugins.moviebrowser.cachefolder))
         list.append(getConfigListEntry(_('Movie Sort Order:'), config.plugins.moviebrowser.sortorder))
         list.append(getConfigListEntry(_('Show List of Movie Folder:'), config.plugins.moviebrowser.showfolder))
 
         list.append(getConfigListEntry(_('Show Backdrops:'), config.plugins.moviebrowser.backdrops))
-        list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
+        # list.append(getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v))
         list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))        
         
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
         
-
         list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
@@ -11435,11 +11394,10 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi))
         list.append(getConfigListEntry(_("Signup on TheTVDb and input free personal ApiKey"), config.plugins.moviebrowser.txttvdbapi))
 
-
         list.append(getConfigListEntry(_('Update Database with Timer:'), config.plugins.moviebrowser.timerupdate))
-        if config.plugins.moviebrowser.timerupdate:
+        if config.plugins.moviebrowser.timerupdate.getValue():
             list.append(getConfigListEntry(_('Timer Database Update:'), config.plugins.moviebrowser.timer))
-        list.append(getConfigListEntry(_('Hide Plugin during Update:'), config.plugins.moviebrowser.hideupdate))
+            list.append(getConfigListEntry(_('Hide Plugin during Update:'), config.plugins.moviebrowser.hideupdate))
 
         list.append(getConfigListEntry(_('Reset Database:'), config.plugins.moviebrowser.reset))
         list.append(getConfigListEntry(_('Cleanup Cache Folder:'), config.plugins.moviebrowser.cleanup))
@@ -11464,9 +11422,9 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             if fileExists(png2):
                 self["plugin"].instance.setPixmapFromFile(png2)
                 self['plugin'].show()
-        elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
-            if config.plugins.moviebrowser.m1v.value:
-                config.plugins.moviebrowser.showtv.value = 'hide'
+        # elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
+            # if config.plugins.moviebrowser.m1v.value:
+                # config.plugins.moviebrowser.showtv.value = 'hide'
         elif current == getConfigListEntry(_('Goto last Movie on Start:'), config.plugins.moviebrowser.lastmovie):
             if config.plugins.moviebrowser.showfolder.value and config.plugins.moviebrowser.lastmovie.value == 'folder':
                 config.plugins.moviebrowser.lastmovie.value = 'yes'
@@ -11532,16 +11490,15 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                         self.session.open(MessageBox, _('\nDatabase %s not found:\nCleanup Cache Folder canceled.') % str(self.database), MessageBox.TYPE_ERROR)
             else:
                 self.session.open(MessageBox, _('\nCache Folder %s not reachable:\nCleanup Cache Folder canceled.') % str(self.cachefolder), MessageBox.TYPE_ERROR)
-        return
+        self.createSetup()
 
     def keyRun(self):
         current = self["config"].getCurrent()[1]
-        # current = self['config'].getCurrent()
         if current == config.plugins.moviebrowser.moviefolder:
             self.openDirectoryBrowser(config.plugins.moviebrowser.moviefolder.value)
-        elif current == config.plugins.moviebrowser.tvdbapi:  # getConfigListEntry(_("Load TheTVDb Apikey from /tmp/tvdbapikey.txt"), config.plugins.moviebrowser.tvdbapi):
+        elif current == config.plugins.moviebrowser.tvdbapi:
             self.tvdbkeyApi()
-        elif current == config.plugins.moviebrowser.api:  # getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api):
+        elif current == config.plugins.moviebrowser.api:
             self.keyApi()
         else:
             self.save()
@@ -11583,7 +11540,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     config.plugins.moviebrowser.txtapi.setValue(str(fpage))
                     config.plugins.moviebrowser.txtapi.save()
                     configfile.save()
-                self.createSetup()
+                self.UpdateComponents()
                 self.mbox = self.session.open(MessageBox, (_("TMDB ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % api), MessageBox.TYPE_INFO, timeout=4)
@@ -11605,7 +11562,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     configfile.save()
                     # self.keySave()
                     # config.save()  # try this ???
-                self.createSetup()
+                self.UpdateComponents()
                 self.mbox = self.session.open(MessageBox, (_("TheTVDb ApiKey Imported & Stored!")), MessageBox.TYPE_INFO, timeout=4)
             else:
                 self.mbox = self.session.open(MessageBox, (_("Missing %s !") % tvdbapikey), MessageBox.TYPE_INFO, timeout=4)
@@ -11691,7 +11648,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
                     if fileExists(self.database + '.series'):
                         os.remove(self.database + '.series')
                     os.rename(self.database + '.sorted', self.database)
-            if config.plugins.moviebrowser.timerupdate.value:
+            if config.plugins.moviebrowser.timerupdate.value is True:
                 if self.timer_hour != config.plugins.moviebrowser.timer.value[0] or self.timer_min != config.plugins.moviebrowser.timer.value[1] or self.timer_update is False:
                     if timerupdate.session is None:
                         timerupdate.saveSession(self.session)
@@ -11791,30 +11748,44 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
     def keySave(self):  # why don't work
         for i in range(0, len(config.plugins.moviebrowser)):
-            # print('config list ', i)
             config.plugins.moviebrowser[i].save()
         ConfigListScreen.keySave(self)
 
-    # def changedEntry(self):
-        # for x in self.onChangedEntry:
-            # x()
-        # try:
-            # if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
-                # self.UpdateComponents()
-        # except:
-            # self.createSetup()
-            # pass
+    def changedEntry(self):
+        self.item = self["config"].getCurrent()
+        for x in self.onChangedEntry:
+            x()
+        try:
+            if isinstance(self["config"].getCurrent()[1], ConfigYesNo) or isinstance(self["config"].getCurrent()[1], ConfigOnOff) or isinstance(self["config"].getCurrent()[1], ConfigSelection) or isinstance(self["config"].getCurrent()[1], ConfigText):
+                self.createSetup()
+        except:
+            pass
 
-    # def getCurrentEntry(self):
-        # return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
+    def getCurrentEntry(self):
+        return self["config"].getCurrent() and self["config"].getCurrent()[0] or ""
 
-    # def getCurrentValue(self):
-        # return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
+    def getCurrentValue(self):
+        return self["config"].getCurrent() and str(self["config"].getCurrent()[1].getText()) or ""
 
-    # def createSummary(self):
-        # from Screens.Setup import SetupSummary
-        # return SetupSummary
+    def createSummary(self):
+        from Screens.Setup import SetupSummary
+        return SetupSummary
 
+    def keyLeft(self):
+        ConfigListScreen.keyLeft(self)
+        self.createSetup()
+
+    def keyRight(self):
+        ConfigListScreen.keyRight(self)
+        self.createSetup()
+
+    def keyDown(self):
+        self['config'].instance.moveSelection(self['config'].instance.moveDown)
+        self.createSetup()
+
+    def keyUp(self):
+        self['config'].instance.moveSelection(self['config'].instance.moveUp)
+        self.createSetup()
 
 class timerUpdate():
 

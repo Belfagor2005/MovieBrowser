@@ -1173,7 +1173,7 @@ class movieBrowserMetrix(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -1213,7 +1213,7 @@ class movieBrowserMetrix(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, str(tmdb_api_key))
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -1274,7 +1274,7 @@ class movieBrowserMetrix(Screen):
             output = output.replace('&amp;', '&')
             seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
@@ -1347,7 +1347,7 @@ class movieBrowserMetrix(Screen):
                 if select == 'series':
                     movie = self.movielist[self.index]
                     date = self.datelist[self.index]
-                    url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                    url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                     UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
                 elif select == 'banner':
                     banner = self.posterlist[self.index].split('<episode>')
@@ -3555,7 +3555,7 @@ class movieBrowserBackdrop(Screen):
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 # https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=alien&language=it
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -3595,7 +3595,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'movie':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new + self.language, str(tmdb_api_key))
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -3655,7 +3655,7 @@ class movieBrowserBackdrop(Screen):
             output = output.replace('&amp;', '&')
             seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
@@ -3726,7 +3726,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
                 banner = self.posterlist[self.index].split('<episode>')
@@ -5950,7 +5950,7 @@ class movieBrowserPosterwall(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -5991,7 +5991,7 @@ class movieBrowserPosterwall(Screen):
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
 
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (new, str(tmdb_api_key))
                 UpdateDatabase(True, self.name, movie, date).getTMDbData(url, new, True)
             elif select == 'poster':
                 poster = self.posterlist[self.index]
@@ -6051,7 +6051,7 @@ class movieBrowserPosterwall(Screen):
             output = output.replace('&amp;', '&')
             seriesid = re.findall('<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = 'https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
@@ -6123,7 +6123,7 @@ class movieBrowserPosterwall(Screen):
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
                 # mmmmmmm  please report issue
-                url = 'https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 UpdateDatabase(True, self.name, movie, date).getTVDbData(url, new)
             elif select == 'banner':
                 banner = self.posterlist[self.index].split('<episode>')
@@ -8060,7 +8060,7 @@ class UpdateDatabase():
             else:
                 movie = transMOVIE(self.name)
                 movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, movie, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), movie, self.language)
                 self.getTMDbData(url, '0', False)
         return
 
@@ -8114,7 +8114,7 @@ class UpdateDatabase():
                     self.posterlist.append(str(default_poster))
 
                 # https://api.themoviedb.org/3/movie/8587&language=it?api_key=dfc629f7ff6936a269f8c5cdb194c890
-                url = 'https://api.themoviedb.org/3/movie/%s&language=%s?api_key=%s' % (tmdbid, self.language, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s&language=%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api_key))
                 headers = {'Accept': 'application/json'}
                 request = Request(url, headers=headers)
                 try:
@@ -8131,7 +8131,7 @@ class UpdateDatabase():
                 name = re.findall('"title":"(.*?)"', output)
                 backdrop = re.findall('"backdrop_path":"(.*?)"', output)
                 poster = re.findall('"poster_path":"(.*?)"', output)
-            url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, tmdb_api_key)
+            url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, str(tmdb_api_key))
             headers = {'Accept': 'application/json'}
             request = Request(url, headers=headers)
             try:
@@ -8175,7 +8175,7 @@ class UpdateDatabase():
                 except IndexError:
                     self.posterlist.append(str(default_poster))
             # https://api.themoviedb.org/3/movie/8587/casts?api_key=dfc629f7ff6936a269f8c5cdb194c890
-            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, tmdb_api_key)
+            url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, str(tmdb_api_key))
             headers = {'Accept': 'application/json'}
             request = Request(url, headers=headers)
             try:
@@ -8315,7 +8315,7 @@ class UpdateDatabase():
                     season = '0'
                 episode = search('[Ss][0-9]+[Ee]([0-9]+)', data)
                 episode = episode.group(1).lstrip('0')
-                url = 'https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
                 agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
@@ -8348,7 +8348,7 @@ class UpdateDatabase():
                 plotfull = []
                 rating = []
                 eposter = []
-            url = 'https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml' % thetvdb_api_key
+            url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api_key)
             agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
@@ -8635,7 +8635,7 @@ class UpdateDatabase():
                     movie = transMOVIE(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                     # https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=lion&language=it
-                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (tmdb_api_key, movie, self.language)
+                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), movie, self.language)
                     try:
                         self.getTMDbData(url, '0', False)
                     except RuntimeError:
@@ -9692,10 +9692,10 @@ class moviesList(Screen):
                 self.close(current, self.choice)
             elif self.choice == 'poster':
                 # https://api.themoviedb.org/3/movie/8587/images?api_key=dfc629f7ff6936a269f8c5cdb194c890
-                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, str(tmdb_api_key))
                 self.getTMDbPosters(url)
             elif self.choice == 'backdrop':
-                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, tmdb_api_key)
+                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (current, str(tmdb_api_key))
                 self.getTMDbBackdrops(url)
         except Exception as e:
             print('error get ', str(e))

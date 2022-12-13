@@ -1,5 +1,5 @@
 <screen name="movieBrowserMetrix" position="center,center" size="1280,720" flags="wfNoBorder" title="  ">
-	<widget name="backdrop" position="0,0" size="1280,720" alphatest="on" transparent="0" zPosition="-2"/>
+	<widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-2"/>
 	<widget name="metrixback" position="40,25" size="620,670" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>
 	<widget name="metrixback2" position="660,40" size="570,640" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>
 	<widget name="posterback" position="720,210" size="150,225" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/default_poster.png" scale="1" zPosition="20" transparent="1" alphatest="blend"/>

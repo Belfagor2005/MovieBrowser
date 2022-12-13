@@ -1929,12 +1929,17 @@ class movieBrowserMetrix(Screen):
         return
 
     def getBanner(self, output, banner):
-        f = open(banner, 'wb')
-        f.write(output)
-        f.close()
-        if fileExists(banner):
-            self["banner"].instance.setPixmapFromFile(banner)
-            self['banner'].show()
+        try:
+            f = open(banner, 'wb')
+            f.write(output)
+            f.close()
+            if fileExists(banner):
+                self["banner"].instance.setPixmapFromFile(banner)
+                self['banner'].show()
+                self['plotfull'].hide()
+        except Exception as e:
+            print('error ', str(e))
+            self['banner'].hide()
         return
 
     def makeEPoster(self):
@@ -1958,12 +1963,17 @@ class movieBrowserMetrix(Screen):
         return
 
     def getEPoster(self, output, eposter):
-        f = open(eposter, 'wb')
-        f.write(output)
-        f.close()
-        if fileExists(eposter):
-            self["eposter"].instance.setPixmapFromFile(eposter)
-            self['eposter'].show()
+        try:
+            f = open(eposter, 'wb')
+            f.write(output)
+            f.close()
+            if fileExists(eposter):
+                self["eposter"].instance.setPixmapFromFile(eposter)
+                self['eposter'].show()
+                self['plotfull'].hide()
+        except Exception as e:
+            print('error ', str(e))
+            self['eposter'].hide()
         return
 
     def makePoster(self, poster=None):
@@ -1983,7 +1993,6 @@ class movieBrowserMetrix(Screen):
         except IndexError:
             self['posterback'].hide()
             self['poster'].hide()
-
         return
 
     def getPoster(self, output, poster):
@@ -1996,6 +2005,8 @@ class movieBrowserMetrix(Screen):
             self['posterback'].show()
         except Exception as e:
             print('error ', str(e))
+            self['posterback'].hide()
+            self['poster'].hide()            
         return
 
     def showBackdrops(self, index):
@@ -2037,10 +2048,13 @@ class movieBrowserMetrix(Screen):
             f = open(backdrop, 'wb')
             f.write(output)
             f.close()
-            self["backdrop"].instance.setPixmapFromFile(backdrop)
-            self['backdrop'].show()
+            if fileExists(backdrop):
+                if self["backdrop"].instance:
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
+            self['backdrop'].hide()
         return
 
     def showDefaultBackdrop(self):
@@ -2507,7 +2521,6 @@ class movieBrowserMetrix(Screen):
                             last = self.actors[i]
                             if len(last) > max:
                                 max = len(last)
-
                 except IndexError:
                     pass
                 self.session.openWithCallback(self.filter_return, filterList, self.actors, _('Actor Selection'), filter, len(self.actors), max)
@@ -2553,7 +2566,6 @@ class movieBrowserMetrix(Screen):
                             last = self.directors[i]
                             if len(last) > max:
                                 max = len(last)
-
                 except IndexError:
                     pass
                 self.session.openWithCallback(self.filter_return, filterList, self.directors, _('Director Selection'), filter, len(self.directors), max)
@@ -2587,10 +2599,8 @@ class movieBrowserMetrix(Screen):
                             season = sub(',', '', season)
                         except IndexError:
                             season = ' '
-
                         if season != ' ':
                             seasons = seasons + season + ', '
-
                 self.seasons = [i for i in seasons.split(', ')]
                 self.seasons.sort()
                 self.seasons.pop(0)
@@ -2748,7 +2758,6 @@ class movieBrowserMetrix(Screen):
                 movie = self.movielist[self.index]
             except IndexError:
                 movie = 'None'
-
             self.session.openWithCallback(self.returnDatabase, movieDatabase, movie)
 
     def returnDatabase(self, changed):
@@ -4289,6 +4298,7 @@ class movieBrowserBackdrop(Screen):
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
+            self['eposter'].hide()
         return
 
     def getBanner(self, output, banner):
@@ -4302,6 +4312,7 @@ class movieBrowserBackdrop(Screen):
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
+            self['banner'].hide()
         return
 
     def makePoster(self):
@@ -4339,6 +4350,7 @@ class movieBrowserBackdrop(Screen):
                 self['poster' + str(x)].show()
         except Exception as e:
             print('error ', str(e))
+            self['poster' + str(x)].hide()
         return
 
     def showBackdrops(self, index):
@@ -4381,10 +4393,13 @@ class movieBrowserBackdrop(Screen):
             f = open(backdrop, 'wb')
             f.write(output)
             f.close()
-            self["backdrop"].instance.setPixmapFromFile(backdrop)
-            self['backdrop'].show()
+            if fileExists(backdrop):
+                if self["backdrop"].instance:
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
+            self['backdrop'].hide()
         return
 
     def showDefaultBackdrop(self):
@@ -5444,7 +5459,6 @@ class movieBrowserPosterwall(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
             self.close()
 
@@ -6822,13 +6836,17 @@ class movieBrowserPosterwall(Screen):
         return
 
     def getEPoster(self, output, eposter):
-        f = open(eposter, 'wb')
-        f.write(output)
-        f.close()
-        if fileExists(eposter):
-            self["eposter"].instance.setPixmapFromFile(eposter)
-            self['eposter'].show()
-            self['plotfull'].hide()
+        try:
+            f = open(eposter, 'wb')
+            f.write(output)
+            f.close()
+            if fileExists(eposter):
+                self["eposter"].instance.setPixmapFromFile(eposter)
+                self['eposter'].show()
+                self['plotfull'].hide()
+        except Exception as e:
+            print('error ', str(e))
+            self['eposter'].hide()
         return
 
     def getBanner(self, output, banner):
@@ -6842,6 +6860,7 @@ class movieBrowserPosterwall(Screen):
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
+            self['banner'].hide()
         return
 
     def makePoster(self, page):
@@ -6861,7 +6880,6 @@ class movieBrowserPosterwall(Screen):
                     callInThread(threadGetPage, url=posterurl, file=poster, key=x, success=self.getPoster, fail=self.downloadError)
             except IndexError:
                 self['poster' + str(x)].hide()
-
         self['poster_back' + str(self.wallindex)].hide()
         return
 
@@ -6876,6 +6894,7 @@ class movieBrowserPosterwall(Screen):
                     self['poster' + str(x)].show()
         except Exception as e:
             print('error ', str(e))
+            self['poster' + str(x)].hide()
         return
 
     def paintFrame(self):
@@ -6941,23 +6960,8 @@ class movieBrowserPosterwall(Screen):
                     self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
+            self['backdrop'].hide()
         return
-
-    # def showDefaultBackdrop(self):
-        # backdrop = str(default_backdrop)
-        # backdrop_m1v = str(default_backdropm1v)
-        # if config.plugins.moviebrowser.m1v.value:
-            # if fileExists(backdrop_m1v):
-                # self['backdrop'].hide()
-                # os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
-            # elif fileExists(backdrop):
-                # self["backdrop"].instance.setPixmapFromFile(backdrop)
-                # self['backdrop'].show()
-                # # os.popen('/usr/bin/showiframe %spic/browser/no.m1v' % skin_directory)
-        # elif fileExists(backdrop):
-            # self["backdrop"].instance.setPixmapFromFile(backdrop)
-            # self['backdrop'].show()
-        # return
 
     def showDefaultBackdrop(self):
         backdrop = str(default_backdrop)

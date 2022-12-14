@@ -611,7 +611,7 @@ class movieBrowserMetrix(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.exit, movieBrowserConfig)
+            self.session.openWithCallback(self.close, movieBrowserConfig)
         else:
             self.close()
 
@@ -1612,10 +1612,10 @@ class movieBrowserMetrix(Screen):
                         self.showInfo()
 
     def showPlot(self):
-        self['list'].hide()
-        self['label'].hide()
-        self['label2'].hide()
-        self['label3'].hide()
+        # self['list'].hide()
+        # self['label'].hide()
+        # self['label2'].hide()
+        # self['label3'].hide()
         self['help'].hide()
         self['pvr'].hide()
         self['text'].hide()
@@ -2868,7 +2868,7 @@ class movieBrowserMetrix(Screen):
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
 
-        self.close()
+            self.close()
 
 
 class movieBrowserBackdrop(Screen):
@@ -3101,7 +3101,7 @@ class movieBrowserBackdrop(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.exit, movieBrowserConfig)
+            self.session.openWithCallback(self.close, movieBrowserConfig)
         else:
             self.close()
 
@@ -5459,7 +5459,8 @@ class movieBrowserPosterwall(Screen):
             open(dbreset, 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.exit, movieBrowserConfig)
+            self.session.openWithCallback(self.close, movieBrowserConfig)
+        else:
             self.close()
 
     def reset_return(self, answer):
@@ -9181,7 +9182,7 @@ class movieControlList(Screen):
         else:
             index = self['list'].getSelectedIndex()
             self.close(index, True)
-        return
+        # return
 
 
 class movieDatabase(Screen):
@@ -10605,7 +10606,7 @@ class moviesList(Screen):
         if fileExists(self.banner4):
             os.remove(self.banner4)
         self.close(None, None)
-        return
+        # return
 
 
 class filterList(Screen):
@@ -10731,7 +10732,7 @@ class filterList(Screen):
 
     def exit(self):
         self.close(None)
-        return
+        # return
 
 
 class filterSeasonList(Screen):
@@ -10837,7 +10838,7 @@ class filterSeasonList(Screen):
 
     def exit(self):
         self.close(None)
-        return
+        # return
 
 
 class getABC(Screen):
@@ -11725,7 +11726,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             for x in self["config"].list:
                 x[1].cancel()
             self.exit()
-        return
+        # return
 
     def exit(self):
         if config.plugins.moviebrowser.filter.value == ':::Movie:Top:::':

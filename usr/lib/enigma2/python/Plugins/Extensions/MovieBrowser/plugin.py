@@ -20,7 +20,7 @@ from Components.ProgressBar import ProgressBar
 from Components.ScrollLabel import ScrollLabel
 from Components.ServiceEventTracker import ServiceEventTracker
 from Components.config import ConfigSelection, ConfigText, ConfigYesNo
-# from Components.config import ConfigDirectory
+from Components.config import ConfigDirectory
 from Components.config import ConfigEnableDisable
 from Components.config import ConfigSubsection, ConfigOnOff
 from Components.config import config, configfile, ConfigClock
@@ -8173,7 +8173,9 @@ class UpdateDatabase():
             actor5 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             actor6 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             actor7 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
-            director = re.findall('"job":"Director","name":"(.*?)"', output)
+            # director = re.findall('"job":"Director","name":"(.*?)"', output)
+            director = re.findall('"known_for_department":"Writing","name":"(.*?)"', output)
+            
             res = []
             try:
                 res.append(runtime[0] + ' min')
@@ -11325,7 +11327,7 @@ class helpScreen(Screen):
 
         Screen.__init__(self, session)
         self.setTitle(_('Movie Browser Key Assignment'))
-        self['label'] = Label(_('Update Database\nWikipedia Search\nToggle Plugin Style\nToggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
+        self['label'] = Label(_('Update Database\nHelp\nToggle Plugin Style\nToggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
         self['actions'] = ActionMap(['OkCancelActions'], {
             'ok': self.close,
             'cancel': self.close

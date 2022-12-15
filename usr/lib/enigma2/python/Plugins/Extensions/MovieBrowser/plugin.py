@@ -257,7 +257,19 @@ config.plugins.moviebrowser.txtapi = ConfigText(default=tmdb_api_key, visible_wi
 config.plugins.moviebrowser.tvdbapi = NoSave(ConfigSelection(['-> Ok']))
 config.plugins.moviebrowser.txttvdbapi = ConfigText(default=thetvdb_api_key, visible_width=60, fixed_size=False)
 
-config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
+# config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
+
+
+config.plugins.moviebrowser.moviefolder = ConfigDirectory("/media/hdd/movie")
+try:
+    from Components.UsageConfig import defaultMoviePath
+    downloadpath = defaultMoviePath()
+    config.plugins.moviebrowser.moviefolder = ConfigDirectory(default=downloadpath)
+except:
+    if os.path.exists("/usr/bin/apt-get"):
+        config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/movie/')
+
+
 config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbcache, 'Default'), (dbhddcache, '/media/hdd'), (dbusbcache, '/media/usb')])
 config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
 config.plugins.moviebrowser.backup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
@@ -437,8 +449,8 @@ class movieBrowserMetrix(Screen):
         self['Runtime'] = Label(_('Runtime:'))
         self['Country'] = Label(_('Country:'))
         self['text1'] = Label(_('Update'))
-        self['text2'] = Label(_('Help'))
-        self['text3'] = Label(_('Edit'))
+        self['text2'] = Label(_('Style'))
+        self['text3'] = Label(_('Help'))
         self['Genres'] = Label(_('Genres:'))
         self['director'] = Label()
         self['actors'] = Label()
@@ -522,6 +534,7 @@ class movieBrowserMetrix(Screen):
             'red': self.switchStyle,
             'yellow': self.updateDatabase,
             'blue': self.hideScreen,
+            'green': self.showHelp,
             'contextMenu': self.config,
             'showEventInfo': self.toggleInfo,
             'EPGPressed': self.toggleInfo,
@@ -1624,8 +1637,9 @@ class movieBrowserMetrix(Screen):
         self['yellow'].show()
         self['green'].show()
         self['red'].show()
-        self['text1'].setText('')
+        self['text1'].setText('Update')
         self['text2'].setText('Style')
+        self['text3'].setText('Help')
 
     def showInfo(self):
         self['poster'].show()
@@ -1660,8 +1674,8 @@ class movieBrowserMetrix(Screen):
         self['pvr'].show()
         self['text'].show()
         self['text1'].setText('Update')
-        self['text2'].setText('Help')
-        self['text3'].setText('Edit')
+        self['text2'].setText('Style')
+        self['text3'].setText('Help')
 
     def hideInfo(self):
         self['poster'].hide()
@@ -8829,12 +8843,12 @@ class movieControlList(Screen):
     def showInfo(self):
         if self.ready is True:
             loglist = [
-                (_('Movie File Informations', 'info')),
-                (_('Delete Movie File', 'delete')),
-                (_('Blacklist Movie File', 'blacklist')),
-                (_('Database Update Log', 'update')),
-                (_('Database Timer Log', 'timer')),
-                (_('Cleanup Cache Folder Log', 'cleanup'))
+                ('Movie File Informations', 'info'),
+                ('Delete Movie File', 'delete'),
+                ('Blacklist Movie File', 'blacklist'),
+                ('Database Update Log', 'update'),
+                ('Database Timer Log', 'timer'),
+                ('Cleanup Cache Folder Log', 'cleanup')
             ]
             self.session.openWithCallback(self.choiceLog, ChoiceBox, title='Movie Browser', list=loglist)
 

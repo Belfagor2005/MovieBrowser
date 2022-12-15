@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# -*- coding: latin-1 -*-
+# -*- coding: utf-8 -*-
 
 # 20221004 Kiddac edit: python 3 support et al
 # 20221204 Lululla edit & add: language, config, major fix
@@ -258,7 +258,6 @@ config.plugins.moviebrowser.tvdbapi = NoSave(ConfigSelection(['-> Ok']))
 config.plugins.moviebrowser.txttvdbapi = ConfigText(default=thetvdb_api_key, visible_width=60, fixed_size=False)
 
 # config.plugins.moviebrowser.moviefolder = ConfigSelection(choices=choices, default=getMountDefault(choices))
-
 
 config.plugins.moviebrowser.moviefolder = ConfigDirectory("/media/hdd/movie")
 try:
@@ -8845,12 +8844,12 @@ class movieControlList(Screen):
     def showInfo(self):
         if self.ready is True:
             loglist = [
-                ('Movie File Informations', 'info'),
-                ('Delete Movie File', 'delete'),
-                ('Blacklist Movie File', 'blacklist'),
-                ('Database Update Log', 'update'),
-                ('Database Timer Log', 'timer'),
-                ('Cleanup Cache Folder Log', 'cleanup')
+                (_('Movie File Informations'), 'info'),
+                (_('Delete Movie File'), 'delete'),
+                (_('Blacklist Movie File'), 'blacklist'),
+                (_('Database Update Log'), 'update'),
+                (_('Database Timer Log'), 'timer'),
+                (_('Cleanup Cache Folder Log'), 'cleanup')
             ]
             self.session.openWithCallback(self.choiceLog, ChoiceBox, title='Movie Browser', list=loglist)
 

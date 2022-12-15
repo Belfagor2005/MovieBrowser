@@ -179,25 +179,25 @@ class ItemList(MenuList):
             # self.l.setFont(0, gFont('Regular', textfont))
 
 
-def getMountChoices():
-    choices = []
-    for p in harddiskmanager.getMountedPartitions():
-        if os.path.exists(p.mountpoint):
-            d = os.path.normpath(p.mountpoint)
-            if p.mountpoint != "/":
-                choices.append((p.mountpoint, d))
-    choices.sort()
-    return choices
+# def getMountChoices():
+    # choices = []
+    # for p in harddiskmanager.getMountedPartitions():
+        # if os.path.exists(p.mountpoint):
+            # d = os.path.normpath(p.mountpoint)
+            # if p.mountpoint != "/":
+                # choices.append((p.mountpoint, d))
+    # choices.sort()
+    # return choices
 
 
-def getMountDefault(choices):
-    choices = {x[1]: x[0] for x in choices}
-    default = choices.get("/media/hdd") or choices.get("/media/usb")
-    # print("[MovieBrowser][getMountDefault] default, choices", default, "   ", choices)
-    return default
+# def getMountDefault(choices):
+    # choices = {x[1]: x[0] for x in choices}
+    # default = choices.get("/media/hdd") or choices.get("/media/usb")
+    # # print("[MovieBrowser][getMountDefault] default, choices", default, "   ", choices)
+    # return default
 
 
-choices = getMountChoices()
+# choices = getMountChoices()
 config.plugins.moviebrowser = ConfigSubsection()
 lang = language.getLanguage()[:2]
 config.plugins.moviebrowser.language = ConfigSelection(default=lang, choices=[

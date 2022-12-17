@@ -121,7 +121,7 @@ msgstr "Attori:"
 
 #: plugin.py:447 plugin.py:2933 plugin.py:5333
 msgid "Years:"
-msgstr "Anni:"
+msgstr "Anno:"
 
 #: plugin.py:448 plugin.py:2934 plugin.py:5334
 msgid "Runtime:"

@@ -8038,7 +8038,7 @@ class UpdateDatabase():
                 self.getTVDbData(url, '0')
             else:
                 movie = transMOVIE(self.name)
-                movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
+                # movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s&language=%s' % (str(tmdb_api_key), movie, self.language)
                 self.getTMDbData(url, '0', False)
         return

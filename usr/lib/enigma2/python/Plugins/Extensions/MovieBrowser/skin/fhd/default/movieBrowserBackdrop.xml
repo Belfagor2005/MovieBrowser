@@ -5,7 +5,7 @@
 		</widget>
 
 		<!-- Sfondo - BackDrop - Overlay -->
-		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4" />
+		<!-- <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4" /> -->
 	        <widget name="backdrop" position="0,0" size="1920,1080" scale="1" zPosition="-3"/>
 		<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/overlay-mx.png" position="0,0" size="1920,1080" alphatest="blend" zPosition="-2" />
 	        
@@ -73,5 +73,5 @@
 	        <widget name="poster9"       position="1450,820" size="140,210" zPosition="21" transparent="1" alphatest="blend" scale="1"/>
 	        <widget name="poster10"      position="1600,820" size="140,210" zPosition="21" transparent="1" alphatest="blend" scale="1"/>
 	        <widget name="poster11"      position="1750,820" size="140,210" zPosition="21" transparent="1" alphatest="blend" scale="1"/>
-	        <!-- widget name="poster12"  position="1850,820" size="140,210" zPosition="21" transparent="1" scale="1"/-->
+	        <widget name="poster12"		 position="1850,820" size="140,210" zPosition="21" transparent="1" alphatest="blend" scale="1"/>
 	</screen>

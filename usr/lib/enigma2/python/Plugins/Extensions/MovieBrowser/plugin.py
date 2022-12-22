@@ -105,6 +105,14 @@ def convert_size(size_bytes):
     s = round(size_bytes // p, 2)
     return "%s %s" % (s, size_name[i])
 
+def OnclearMem():
+    try:
+        os.system('sync')
+        os.system('echo 1 > /proc/sys/vm/drop_caches')
+        os.system('echo 2 > /proc/sys/vm/drop_caches')
+        os.system('echo 3 > /proc/sys/vm/drop_caches')
+    except:
+        pass
 
 def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args, **kwargs):
     print('[MovieBrowser][threadGetPage] url, file, key, args, kwargs', url, "   ", file, "   ", key, "   ", args, "   ", kwargs)
@@ -390,6 +398,7 @@ def _renewTVDb(text):
 
 
 class movieBrowserMetrix(Screen):
+                                                                                                          
 
     def __init__(self, session, index, content, filter):
 
@@ -629,6 +638,7 @@ class movieBrowserMetrix(Screen):
             # self.session.openWithCallback(self.exit, movieBrowserConfig)
             self.session.openWithCallback(self.close, movieBrowserConfig)
         else:
+            OnclearMem()
             self.close()
 
     def reset_return(self, answer):
@@ -732,7 +742,7 @@ class movieBrowserMetrix(Screen):
                     # self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
                     # self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                     self.posterlist.append(str(default_folder))
-                    self.backdroplist.append(str(default_backdrop))                    
+                    self.backdroplist.append(str(default_backdrop))
                     self.contentlist.append(':Top')
                     self.seenlist.append('unseen')
                     self.medialist.append('\n')
@@ -747,6 +757,7 @@ class movieBrowserMetrix(Screen):
                 else:
                     self.showDefaultBackdrop()
                 self.ready = True
+        OnclearMem()
         return
 
     def makeList(self):
@@ -900,6 +911,7 @@ class movieBrowserMetrix(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
+                
             except IndexError:
                 pass
 
@@ -907,6 +919,7 @@ class movieBrowserMetrix(Screen):
                 self.runTimer = eTimer()
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
+        OnclearMem()
 
     def database_run(self):
         if config.plugins.moviebrowser.hideupdate.value is True:
@@ -980,6 +993,7 @@ class movieBrowserMetrix(Screen):
             else:
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
+        OnclearMem()
         return
 
     def ok(self):
@@ -2043,13 +2057,13 @@ class movieBrowserMetrix(Screen):
                         self["backdrop"].instance.setPixmapFromFile(backdrop)
                         self['backdrop'].show()
                         # os.popen('/usr/bin/showiframe /usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/browser/no.m1v')
-                        os.popen('/usr/bin/showiframe %s') % no_m1v                        
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
                             backdropurl = backdropurl.encode()
                         # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        os.popen('/usr/bin/showiframe %s') % no_m1v  
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
                     # Backdrop = loadPic(backdrop, 1280, 720, 3, 0, 0, 0)
                     # if Backdrop is not None:
@@ -2094,7 +2108,7 @@ class movieBrowserMetrix(Screen):
                 # if Backdrop is not None:
                     # self['backdrop'].instance.setPixmap(Backdrop)
                     # self['backdrop'].show()
-                    # os.popen('/usr/bin/showiframe %s') % no_m1v  
+                    # os.popen('/usr/bin/showiframe %s') % no_m1v
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
         elif fileExists(backdrop):
@@ -3073,7 +3087,7 @@ class movieBrowserBackdrop(Screen):
         self.database = dbmovie
         self.blacklist = blacklistmovie
         self.lastfilter = filtermovie
-        self.lastfile = lastfile        
+        self.lastfile = lastfile
         self.onLayoutFinish.append(self.onLayoutFinished)
 
     def onLayoutFinished(self):
@@ -3134,9 +3148,10 @@ class movieBrowserBackdrop(Screen):
             open('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/db/reset', 'w').close()
             config.usage.on_movie_stop.value = self.movie_stop
             config.usage.on_movie_eof.value = self.movie_eof
-            self.session.openWithCallback(self.close, movieBrowserConfig)
-            # self.session.openWithCallback(self.exit, movieBrowserConfig)
+            # self.session.openWithCallback(self.close, movieBrowserConfig)
+            self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
+            OnclearMem()
             self.close()
 
     def reset_return(self, answer):
@@ -3240,7 +3255,7 @@ class movieBrowserBackdrop(Screen):
                     # self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
                     # self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
                     self.posterlist.append(str(default_folder))
-                    self.backdroplist.append(str(default_backdrop))                    
+                    self.backdroplist.append(str(default_backdrop))
                     self.contentlist.append(':Top')
                     self.seenlist.append('unseen')
                     self.medialist.append('\n')
@@ -3277,6 +3292,7 @@ class movieBrowserBackdrop(Screen):
                     pass
 
                 self.ready = True
+        OnclearMem()
         return
 
     def updateDatabase(self):
@@ -3296,6 +3312,7 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
+                
             except IndexError:
                 pass
 
@@ -3303,6 +3320,7 @@ class movieBrowserBackdrop(Screen):
                 self.runTimer = eTimer()
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
+        OnclearMem()
 
     def database_run(self):
         if config.plugins.moviebrowser.hideupdate.value is True:
@@ -3369,6 +3387,7 @@ class movieBrowserBackdrop(Screen):
             else:
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
+        OnclearMem()
         return
 
     def ok(self):
@@ -4435,13 +4454,13 @@ class movieBrowserBackdrop(Screen):
                             # self['backdrop'].show()
                         self["backdrop"].instance.setPixmapFromFile(backdrop)
                         self['backdrop'].show()
-                        os.popen('/usr/bin/showiframe %s') % no_m1v  
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
                             backdropurl = backdropurl.encode()
                         # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        os.popen('/usr/bin/showiframe %s') % no_m1v  
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
                     # if screenwidth.width() >= 1280:
                         # Backdrop = loadPic(backdrop, 1280, 720, 3, 0, 0, 0)
@@ -4490,7 +4509,7 @@ class movieBrowserBackdrop(Screen):
                     # self['backdrop'].instance.setPixmap(Backdrop)
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
-                os.popen('/usr/bin/showiframe %s') % no_m1v  
+                os.popen('/usr/bin/showiframe %s') % no_m1v
         elif fileExists(backdrop):
             # if screenwidth.width() >= 1280:
                 # Backdrop = loadPic(backdrop, 1280, 720, 3, 0, 0, 0)
@@ -5631,6 +5650,7 @@ class movieBrowserPosterwall(Screen):
             # self.session.openWithCallback(self.close, movieBrowserConfig)
             self.session.openWithCallback(self.exit, movieBrowserConfig)
         else:
+            OnclearMem()
             self.close()
 
     def reset_return(self, answer):
@@ -5777,6 +5797,7 @@ class movieBrowserPosterwall(Screen):
                     pass
 
                 self.ready = True
+        OnclearMem()
         return
 
     def updateDatabase(self):
@@ -5796,6 +5817,7 @@ class movieBrowserPosterwall(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
+                
             except IndexError:
                 pass
 
@@ -5803,6 +5825,7 @@ class movieBrowserPosterwall(Screen):
                 self.runTimer = eTimer()
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
+        OnclearMem()
 
     def database_run(self):
         if config.plugins.moviebrowser.hideupdate.value is True:
@@ -5873,6 +5896,7 @@ class movieBrowserPosterwall(Screen):
             else:
                 self.session.open(MessageBox, _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
+        OnclearMem()
         return
 
     def ok(self):
@@ -7148,13 +7172,13 @@ class movieBrowserPosterwall(Screen):
                             # self['backdrop'].show()
                         self["backdrop"].instance.setPixmapFromFile(backdrop)
                         self['backdrop'].show()
-                        os.popen('/usr/bin/showiframe %s') % no_m1v  
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
                             backdropurl = backdropurl.encode()
                         # getPage(backdropurl).addCallback(self.getBackdrop, backdrop, index).addErrback(self.downloadError)
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
-                        os.popen('/usr/bin/showiframe %s') % no_m1v  
+                        os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
                     # if screenwidth.width() >= 1280:
                         # Backdrop = loadPic(backdrop, 1280, 720, 3, 0, 0, 0)
@@ -7207,7 +7231,7 @@ class movieBrowserPosterwall(Screen):
                     # self['backdrop'].show()
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
-                os.popen('/usr/bin/showiframe %s') % no_m1v  
+                os.popen('/usr/bin/showiframe %s') % no_m1v
         elif fileExists(backdrop):
             # if screenwidth.width() >= 1280:
                 # Backdrop = loadPic(backdrop, 1280, 720, 3, 0, 0, 0)
@@ -8313,7 +8337,7 @@ class UpdateDatabase():
                 try:
                     self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster[0])
                 except IndexError:
-                    self.posterlist.append(str(default_poster))                    
+                    self.posterlist.append(str(default_poster))
                 # try:
                     # self.posterlist.append('https://image.tmdb.org/t/p/w154' + poster[0])
                 # except IndexError:
@@ -8401,7 +8425,7 @@ class UpdateDatabase():
             actor6 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             actor7 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             # director = re.findall('"job":"Director","name":"(.*?)"', output)
-            director = re.findall('"known_for_department":"Writing","name":"(.*?)"', output)  # director fixed 
+            director = re.findall('"known_for_department":"Writing","name":"(.*?)"', output)  # director fixed
             res = []
             try:
                 res.append(runtime[0] + ' min')
@@ -8701,10 +8725,10 @@ class UpdateDatabase():
                 # country = 'RUS'
             # else:
                 # country = 'USA'
-            
+
             country = config.plugins.moviebrowser.language.getValue()
             country = country.upper()
-            
+
             res.append(country)
             self.infolist.append(res)
             try:
@@ -9978,19 +10002,36 @@ class moviesList(Screen):
             res = ['']
             # issue image is covered when selected
             if screenwidth.width() == 1920:
-                res.append(MultiContentEntryText(pos=(10, 0), size=(1265, 225), font=30, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                res.append(MultiContentEntryText(pos=(5, 0), size=(1240, 225), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
                 self.imagelist.append(res)
                 self['piclist'].l.setList(self.imagelist)
-                self['piclist'].l.setItemHeight(225)                
-                
+                self['piclist'].l.setItemHeight(225)
+
             else:
-                res.append(MultiContentEntryText(pos=(5, 0), size=(710, 125), font=26, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                res.append(MultiContentEntryText(pos=(5, 0), size=(710, 125), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
                 self.imagelist.append(res)
                 self['piclist'].l.setList(self.imagelist)
                 self['piclist'].l.setItemHeight(125)
         self['piclist'].show()
         self.first = False
         self.ready = True
+        # for x in range(len(self.titles)):
+            # res = ['']
+            # # issue image is covered when selected
+            # if screenwidth.width() == 1920:
+                # res.append(MultiContentEntryText(pos=(10, 0), size=(1265, 225), font=30, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                # self.imagelist.append(res)
+                # self['piclist'].l.setList(self.imagelist)
+                # self['piclist'].l.setItemHeight(225)
+
+            # else:
+                # res.append(MultiContentEntryText(pos=(5, 0), size=(710, 125), font=26, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
+                # self.imagelist.append(res)
+                # self['piclist'].l.setList(self.imagelist)
+                # self['piclist'].l.setItemHeight(125)
+        # self['piclist'].show()
+        # self.first = False
+        # self.ready = True
 
     def down(self):
         if self.ready is True:
@@ -11458,6 +11499,9 @@ class switchStart(Screen):
                 self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, ':Top:::', ':Top:::')
 
     def quit(self):
+                            
+                      
+                                
         self.close()
 
 

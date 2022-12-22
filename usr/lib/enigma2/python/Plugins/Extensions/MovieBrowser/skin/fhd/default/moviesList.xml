@@ -1,15 +1,16 @@
 <screen name="moviesList" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder">
-	<widget name="list" position="240,52" size="1240,875" scrollbarMode="showNever" transparent="1" zPosition="1" />
-	<widget name="piclist" position="242,54" size="1240,874" scrollbarMode="showNever" transparent="1" zPosition="5" />
-<!--	
-	<widget name="piclist" position="242,54" size="1240,874" scrollbarMode="showNever" transparent="1" zPosition="1" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/select.png" />
- --> 
-	<widget name="poster1" position="80,50" size="150,225" alphatest="blend" zPosition="1" />
-	<widget name="poster2" position="80,272" size="150,225" alphatest="blend" zPosition="1" />
-	<widget name="poster3" position="80,500" size="150,225" alphatest="blend" zPosition="1" />
-	<widget name="poster4" position="80,717" size="150,225" alphatest="blend" zPosition="1" />			
-	<widget name="banner1" position="230,50" size="1265,225" alphatest="blend" zPosition="1" />
-	<widget name="banner2" position="230,272" size="1265,225" alphatest="blend" zPosition="1" />
-	<widget name="banner3" position="230,495" size="1265,225" alphatest="blend" zPosition="1" />
-	<widget name="banner4" position="230,717" size="1265,225" alphatest="blend" zPosition="1" />		
+	<widget name="list" position="236,30" size="1240,890" scrollbarMode="showNever" transparent="1" zPosition="1" />
+	
+	<widget name="piclist" position="250,30" size="1240,890" backgroundColor="#001b3c85" scrollbarMode="showNever" transparent="1" zPosition="0" />
+<!-- 	
+	<widget name="piclist" position="242,54" size="1240,874" scrollbarMode="showNever" transparent="1" zPosition="1" backgroundColor="#001b3c85" selectionPixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/select.png" />
+ -->
+	<widget name="poster1" position="85,45" size="140,210" alphatest="blend" zPosition="1" />
+	<widget name="poster2" position="85,265" size="140,210" alphatest="blend" zPosition="1" />
+	<widget name="poster3" position="85,485" size="140,210" alphatest="blend" zPosition="1" />
+	<widget name="poster4" position="85,705" size="140,210" alphatest="blend" zPosition="1" />			
+	<widget name="banner1" position="250,40" size="1210,210" alphatest="blend" zPosition="1" />
+	<widget name="banner2" position="250,265" size="1210,210" alphatest="blend" zPosition="1" />
+	<widget name="banner3" position="250,485" size="1210,210" alphatest="blend" zPosition="1" />
+	<widget name="banner4" position="252,705" size="1210,210" alphatest="blend" zPosition="1" />		
 </screen>

@@ -4950,14 +4950,14 @@ class movieBrowserBackdrop(Screen):
                         res = ['']
                         if screenwidth.width() == 1920:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 40), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 40), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 30), font=30, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 30), font=30, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                         else:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 40), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 3), font=26, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 3), font=26, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                         self.entries.append(res)
                     except IndexError:
                         pass
@@ -7875,14 +7875,14 @@ class movieBrowserPosterwall(Screen):
                         res = ['']
                         if screenwidth.width() == 1920:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 28), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 28), font=30, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 28), font=30, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(10, 0), size=(listwidth, 28), font=30, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                         else:
                             if backcolor is True:
-                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 25), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 25), font=26, color=16777215, color_sel=16777215, backcolor_sel=back_color, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                             else:
-                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 25), font=26, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.seasons[i]))
+                                res.append(MultiContentEntryText(pos=(5, 0), size=(listwidth, 25), font=26, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.seasons[i]))
                         self.entries.append(res)
                     except IndexError:
                         pass
@@ -9017,7 +9017,7 @@ class movieControlList(Screen):
         self['log'].hide()
         # self['label'] = Label('= MovieCut')
         # self['label2'] = Label('= CutListEditor')
-        self['label3'] = Label('Info = ')
+        self['label3'] = Label('Info')
         self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions', 'ChannelSelectBaseActions', 'HelpActions', 'NumberActions'], {
             'ok': self.ok,
             'cancel': self.exit,
@@ -9046,16 +9046,16 @@ class movieControlList(Screen):
                 res = ['']
                 if screenwidth.width() == 1920:
                     if self.content != ':::Series:::':
-                        res.append(MultiContentEntryText(pos=(10, 0), size=(1700, 40), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
+                        res.append(MultiContentEntryText(pos=(10, 0), size=(1700, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i][0]))
                     else:
                         series = sub('[Ss][0]+[Ee]', 'Special ', self.list[i][0])
-                        res.append(MultiContentEntryText(pos=(10, 0), size=(1700, 30), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
+                        res.append(MultiContentEntryText(pos=(10, 0), size=(1700, 30), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=series))
                 else:
                     if self.content != ':::Series:::':
-                        res.append(MultiContentEntryText(pos=(5, 0), size=(1200, 40), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i][0]))
+                        res.append(MultiContentEntryText(pos=(5, 0), size=(1200, 40), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i][0]))
                     else:
                         series = sub('[Ss][0]+[Ee]', 'Special ', self.list[i][0])
-                        res.append(MultiContentEntryText(pos=(5, 0), size=(1200, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=series))
+                        res.append(MultiContentEntryText(pos=(5, 0), size=(1200, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=series))
                 self.listentries.append(res)
             except IndexError:
                 pass
@@ -9493,9 +9493,9 @@ class movieDatabase(Screen):
                 count += 1
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=name))
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=name))
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
                 self.listentries.append(res)
 
             self['list'].l.setList(self.listentries)
@@ -9547,9 +9547,9 @@ class movieDatabase(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list2[i]))
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list2[i]))
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list2[i]))
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list2[i]))
                 self.list2entries.append(res)
             except IndexError:
                 pass
@@ -9785,16 +9785,16 @@ class moviesList(Screen):
             png2 = '%spic/browser/ratings.png' % skin_directory
             try:
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(810, 225), font=30, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(10, 13), size=(800, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
-                    res.append(MultiContentEntryText(pos=(10, 54), size=(200, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.year[x]))
-                    res.append(MultiContentEntryText(pos=(10, 260), size=(200, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.country[x]))
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(810, 225), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
+                    res.append(MultiContentEntryText(pos=(10, 13), size=(800, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.titles[x]))
+                    res.append(MultiContentEntryText(pos=(10, 54), size=(200, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.year[x]))
+                    res.append(MultiContentEntryText(pos=(10, 260), size=(200, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.country[x]))
                     rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(620, 125), font=26, backcolor_sel=16777215, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(5, 13), size=(610, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.titles[x]))
-                    res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.year[x]))
-                    res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.country[x]))
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(620, 125), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
+                    res.append(MultiContentEntryText(pos=(5, 13), size=(610, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.titles[x]))
+                    res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.year[x]))
+                    res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.country[x]))
                     rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
 
             except (IndexError, ValueError):
@@ -9804,11 +9804,11 @@ class moviesList(Screen):
                 if screenwidth.width() == 1920:
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(350, 45), png=loadPNG(png)))
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(rating, 45), png=loadPNG(png2)))
-                    res.append(MultiContentEntryText(pos=(410, 90), size=(50, 45), font=30, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.rating[x]))
+                    res.append(MultiContentEntryText(pos=(410, 90), size=(50, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.rating[x]))
                 else:
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 84), size=(210, 21), png=loadPNG(png)))
                     res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 84), size=(rating, 21), png=loadPNG(png2)))
-                    res.append(MultiContentEntryText(pos=(225, 84), size=(50, 21), font=26, backcolor_sel=16777215, color_sel=0, color=16777215, flags=RT_HALIGN_LEFT, text=self.rating[x]))
+                    res.append(MultiContentEntryText(pos=(225, 84), size=(50, 21), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.rating[x]))
             except IndexError:
                 pass
 
@@ -9860,6 +9860,7 @@ class moviesList(Screen):
                     os.remove(self.poster3)
                 if fileExists(self.poster4):
                     os.remove(self.poster4)
+                self.session.open(MessageBox, _('All /tmp/posters Cleaned'), MessageBox.TYPE_INFO, timeout=4)
                 self.close(current, self.choice)
             elif self.choice == 'poster':
                 # https://api.themoviedb.org/3/movie/8587/images?api_key=dfc629f7ff6936a269f8c5cdb194c890
@@ -10805,6 +10806,7 @@ class moviesList(Screen):
             os.remove(self.banner3)
         if fileExists(self.banner4):
             os.remove(self.banner4)
+        OnclearMem()
         self.close(None, None)
         return
 
@@ -10896,9 +10898,9 @@ class filterList(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(700, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(700, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
                 self.listentries.append(res)
             except IndexError:
                 pass
@@ -10978,9 +10980,9 @@ class filterSeasonList(Screen):
             try:
                 res = ['']
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(760, 40), font=30, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(760, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(510, 30), font=26, color=16777215, backcolor_sel=16777215, color_sel=0, flags=RT_HALIGN_CENTER | RT_VALIGN_CENTER, text=self.list[i]))
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(510, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
                 self.listentries.append(res)
             except IndexError:
                 pass
@@ -11516,12 +11518,60 @@ class helpScreen(Screen):
 
         Screen.__init__(self, session)
         self.setTitle(_('Movie Browser Key Assignment'))
-        self['label'] = Label(_('Update Database\nHelp\nToggle Plugin Style\nToggle hide/show plugin\nInfo Button: Toggle show/hide infos\nVideo Button: Update Database\nText Button: Edit Database\nStop Button: Mark movie as seen\nRadio Button: Delete/Blacklist movie\n<- -> Button: Go to first letter\nButton 1: CutListEditor/MovieCut/LogView\nButton 2: Renew infos on TMDb\nButton 3: Renew infos on TheTVDb\nButton 4: Hide/show seen movies\nButton 5: Toggle Movies/Series view\nButton 6: Movie Folder Selection\nButton 7: Movie Director Selection\nButton 8: Movie Actor Selection\nButton 9: Movie Genre Selection\nButton 0: Go to end of list'))
+        self["label"] = Label()
+        # self['label'] = Label(_('Update Database\n \
+                                # Help\n \
+                                # Toggle Plugin Style\n \
+                                # Toggle hide/show plugin\n \
+                                # Info Button: Toggle show/hide infos\n \
+                                # Video Button: Update Database\n \
+                                # Text Button: Edit Database\n \
+                                # Stop Button: Mark movie as seen\n \
+                                # Radio Button: Delete/Blacklist movie\n \
+                                # <- -> Button: Go to first letter\n \
+                                # Button 1: CutListEditor/MovieCut/LogView\n \
+                                # Button 2: Renew infos on TMDb\n \
+                                # Button 3: Renew infos on TheTVDb\n \
+                                # Button 4: Hide/show seen movies\n \
+                                # Button 5: Toggle Movies/Series view\n \
+                                # Button 6: Movie Folder Selection\n \
+                                # Button 7: Movie Director Selection\n \
+                                # Button 8: Movie Actor Selection\n \
+                                # Button 9: Movie Genre Selection\n \
+                                # Button 0: Go to end of list'))
+                                
         self['actions'] = ActionMap(['OkCancelActions'], {
             'ok': self.close,
             'cancel': self.close
         }, -1)
+        self.onLayoutFinish.append(self.finishLayout)
 
+    def finishLayout(self):
+        helpdesc = self.homecontext()
+        self["label"].setText(helpdesc)
+
+    def homecontext(self):
+        conthelp = _('Manage your Movies & Series V.%s' % str(version))
+        conthelp += _("Help\n")
+        conthelp += _("Toggle Plugin Style\n")
+        conthelp += _("Toggle hide/show plugin\n")
+        conthelp += _("Info Button: Toggle show/hide infos\n")
+        conthelp += _("Video Button: Update Database\n")
+        conthelp += _("Text Button: Edit Database\n")
+        conthelp += _("Stop Button: Mark movie as seen\n")
+        conthelp += _("Radio Button: Delete/Blacklist movie\n")
+        conthelp += _("<- -> Button: Go to first letter\n")
+        conthelp += _("Button 1: CutListEditor/MovieCut/LogView\n")
+        conthelp += _("Button 2: Renew infos on TMDb\n")
+        conthelp += _("Button 3: Renew infos on TheTVDb\n")
+        conthelp += _("Button 4: Hide/show seen movies\n")
+        conthelp += _("Button 5: Toggle Movies/Series view\n")
+        conthelp += _("Button 6: Movie Folder Selection\n")
+        conthelp += _("Button 7: Movie Director Selection\n")
+        conthelp += _("Button 8: Movie Actor Selection\n")
+        conthelp += _("Button 9: Movie Genre Selection\n")
+        conthelp += _("Button 0: Go to end of list")
+        return conthelp
 
 class movieBrowserConfig(ConfigListScreen, Screen):
 

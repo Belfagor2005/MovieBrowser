@@ -1,5 +1,5 @@
 <screen name="filterSeasonList" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder" >
-		<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;102" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+		<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;48" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
 		<eLabel position="230,120" size="1250,3" backgroundColor="#303030" zPosition="4" />
 		<ePixmap position="0,0" size="1500,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/main2.png" zPosition="-2" />
 		<ePixmap position="1500,0" size="420,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/pC.png" zPosition="-1" />

@@ -1,12 +1,12 @@
-<screen name="helpScreen" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder" >
-		<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;102" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+<screen name="helpScreen" position="0,0" size="1920,1080" title=" " backgroundColor="#FF000000" flags="wfNoBorder">
+		<widget source="Title" render="Label" position="385,7" size="1090,110" font="LCD;48" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
 		<eLabel position="230,120" size="1250,3" backgroundColor="#303030" zPosition="4" />
 		<ePixmap position="0,0" size="1500,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/main2.png" zPosition="-2" />
 		<ePixmap position="1500,0" size="420,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/pC.png" zPosition="-1" />
-		<eLabel position="230,960" size="1250,3" backgroundColor="#303030" zPosition="4" />
-		<ePixmap position="230,150" size="40,30" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3"/>
-		<ePixmap position="230,190" size="40,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3"/>
-		<ePixmap position="230,230" size="40,30" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3"/>
-		<ePixmap position="230,270" size="40,30" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3"/>
-		<widget name="label" position="300,145" size="950,800" font="Regular;34" transparent="1" zPosition="2"/>
+		<eLabel position="230,985" size="1250,3" backgroundColor="#303030" zPosition="4" />
+		<ePixmap position="230,180" size="40,30" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3" />
+		<ePixmap position="230,220" size="40,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3" />
+		<ePixmap position="230,260" size="40,30" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3" />
+		<ePixmap position="230,305" size="40,30" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3" />
+		<widget name="label" position="280,150" size="1157,826" font="Regular;34" transparent="1" zPosition="2" />
 	</screen>

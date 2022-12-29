@@ -277,30 +277,30 @@ config.plugins.moviebrowser.transparency = ConfigSlider(default=255, limits=(100
     # addFont('/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/font/MetrixHD.ttf', 'Metrix', 100, False, 0)
 
 
-config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
-    ('#007895BC', 'Default'),
-    ('#00F0A30A', 'Amber'),
-    ('#00825A2C', 'Brown'),
-    ('#000050EF', 'Cobalt'),
-    ('#00911D10', 'Crimson'),
-    ('#001BA1E2', 'Cyan'),
-    ('#00008A00', 'Emerald'),
-    ('#0070AD11', 'Green'),
-    ('#006A00FF', 'Indigo'),
-    ('#00A4C400', 'Lime'),
-    ('#00A61D4D', 'Magenta'),
-    ('#0076608A', 'Mauve'),
-    ('#006D8764', 'Olive'),
-    ('#00C3461B', 'Orange'),
-    ('#00F472D0', 'Pink'),
-    ('#00E51400', 'Red'),
-    ('#007A3B3F', 'Sienna'),
-    ('#00647687', 'Steel'),
-    ('#00149BAF', 'Teal'),
-    ('#004176B6', 'Tufts'),
-    ('#006C0AAB', 'Violet'),
-    ('#00BF9217', 'Yellow')
-])
+# config.plugins.moviebrowser.color = ConfigSelection(default='#007895BC', choices=[
+    # ('#007895BC', 'Default'),
+    # ('#00F0A30A', 'Amber'),
+    # ('#00825A2C', 'Brown'),
+    # ('#000050EF', 'Cobalt'),
+    # ('#00911D10', 'Crimson'),
+    # ('#001BA1E2', 'Cyan'),
+    # ('#00008A00', 'Emerald'),
+    # ('#0070AD11', 'Green'),
+    # ('#006A00FF', 'Indigo'),
+    # ('#00A4C400', 'Lime'),
+    # ('#00A61D4D', 'Magenta'),
+    # ('#0076608A', 'Mauve'),
+    # ('#006D8764', 'Olive'),
+    # ('#00C3461B', 'Orange'),
+    # ('#00F472D0', 'Pink'),
+    # ('#00E51400', 'Red'),
+    # ('#007A3B3F', 'Sienna'),
+    # ('#00647687', 'Steel'),
+    # ('#00149BAF', 'Teal'),
+    # ('#004176B6', 'Tufts'),
+    # ('#006C0AAB', 'Violet'),
+    # ('#00BF9217', 'Yellow')
+# ])
 
 config.plugins.moviebrowser.metrixcolor = ConfigSelection(default='0x00000000', choices=[
     ('0x00000000', 'Skin Default'),
@@ -2820,6 +2820,83 @@ class movieBrowserMetrix(Screen):
             f.close()
             self.makeMovies(self.filter)
 
+    def sortDatabase(self):
+        f = open(self.database, 'r')
+        series = ''
+        for line in f:
+            if ':::Series:::' in line:
+                series = series + line
+
+        f.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.write(series)
+        fseries.close()
+        fseries = open(self.database + '.series', 'r')
+        series = fseries.readlines()
+        series.sort(key=lambda line: line.split(':::')[0])
+        fseries.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.writelines(series)
+        fseries.close()
+        f = open(self.database, 'r')
+        movies = ''
+        for line in f:
+            if ':::Series:::' not in line:
+                movies = movies + line
+
+        f.close()
+        fmovies = open(self.database + '.movies', 'w')
+        fmovies.write(movies)
+        fmovies.close()
+        fmovies = open(self.database + '.movies', 'r')
+        lines = fmovies.readlines()
+        fmovies.close()
+        self.sortorder = config.plugins.moviebrowser.sortorder.value
+        try:
+            if self.sortorder == 'name':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+            elif self.sortorder == 'name_reverse':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+            elif self.sortorder == 'rating':
+                lines.sort(key=lambda line: line.split(':::')[4])
+            elif self.sortorder == 'rating_reverse':
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+            elif self.sortorder == 'year':
+                lines.sort(key=lambda line: line.split(':::')[8])
+            elif self.sortorder == 'year_reverse':
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+            elif self.sortorder == 'date':
+                lines.sort(key=lambda line: line.split(':::')[2])
+            elif self.sortorder == 'date_reverse':
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+            elif self.sortorder == 'folder':
+                lines.sort(key=lambda line: line.split(':::')[1])
+            elif self.sortorder == 'folder_reverse':
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+            elif self.sortorder == 'runtime':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+            elif self.sortorder == 'runtime_reverse':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+        except IndexError:
+            pass
+        except ValueError:
+            self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+
+        f = open(self.database + '.movies', 'w')
+        f.writelines(lines)
+        f.close()
+        files = [self.database + '.movies', self.database + '.series']
+        with open(self.database + '.sorted', 'w') as outfile:
+            for name in files:
+                with open(name) as infile:
+                    outfile.write(infile.read())
+
+        if fileExists(self.database + '.movies'):
+            os.remove(self.database + '.movies')
+        if fileExists(self.database + '.series'):
+            os.remove(self.database + '.series')
+        os.rename(self.database + '.sorted', self.database)
+
     def getIndex(self, list):
         return list.getSelectedIndex()
 
@@ -5148,6 +5225,83 @@ class movieBrowserBackdrop(Screen):
 
             f.close()
             self.makeMovies(self.filter)
+
+    def sortDatabase(self):
+        f = open(self.database, 'r')
+        series = ''
+        for line in f:
+            if ':::Series:::' in line:
+                series = series + line
+
+        f.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.write(series)
+        fseries.close()
+        fseries = open(self.database + '.series', 'r')
+        series = fseries.readlines()
+        series.sort(key=lambda line: line.split(':::')[0])
+        fseries.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.writelines(series)
+        fseries.close()
+        f = open(self.database, 'r')
+        movies = ''
+        for line in f:
+            if ':::Series:::' not in line:
+                movies = movies + line
+
+        f.close()
+        fmovies = open(self.database + '.movies', 'w')
+        fmovies.write(movies)
+        fmovies.close()
+        fmovies = open(self.database + '.movies', 'r')
+        lines = fmovies.readlines()
+        fmovies.close()
+        self.sortorder = config.plugins.moviebrowser.sortorder.value
+        try:
+            if self.sortorder == 'name':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+            elif self.sortorder == 'name_reverse':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+            elif self.sortorder == 'rating':
+                lines.sort(key=lambda line: line.split(':::')[4])
+            elif self.sortorder == 'rating_reverse':
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+            elif self.sortorder == 'year':
+                lines.sort(key=lambda line: line.split(':::')[8])
+            elif self.sortorder == 'year_reverse':
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+            elif self.sortorder == 'date':
+                lines.sort(key=lambda line: line.split(':::')[2])
+            elif self.sortorder == 'date_reverse':
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+            elif self.sortorder == 'folder':
+                lines.sort(key=lambda line: line.split(':::')[1])
+            elif self.sortorder == 'folder_reverse':
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+            elif self.sortorder == 'runtime':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+            elif self.sortorder == 'runtime_reverse':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+        except IndexError:
+            pass
+        except ValueError:
+            self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+
+        f = open(self.database + '.movies', 'w')
+        f.writelines(lines)
+        f.close()
+        files = [self.database + '.movies', self.database + '.series']
+        with open(self.database + '.sorted', 'w') as outfile:
+            for name in files:
+                with open(name) as infile:
+                    outfile.write(infile.read())
+
+        if fileExists(self.database + '.movies'):
+            os.remove(self.database + '.movies')
+        if fileExists(self.database + '.series'):
+            os.remove(self.database + '.series')
+        os.rename(self.database + '.sorted', self.database)
 
     def getIndex(self, list):
         return list.getSelectedIndex()
@@ -8077,6 +8231,83 @@ class movieBrowserPosterwall(Screen):
 
             f.close()
             self.makeMovies(self.filter)
+
+    def sortDatabase(self):
+        f = open(self.database, 'r')
+        series = ''
+        for line in f:
+            if ':::Series:::' in line:
+                series = series + line
+
+        f.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.write(series)
+        fseries.close()
+        fseries = open(self.database + '.series', 'r')
+        series = fseries.readlines()
+        series.sort(key=lambda line: line.split(':::')[0])
+        fseries.close()
+        fseries = open(self.database + '.series', 'w')
+        fseries.writelines(series)
+        fseries.close()
+        f = open(self.database, 'r')
+        movies = ''
+        for line in f:
+            if ':::Series:::' not in line:
+                movies = movies + line
+
+        f.close()
+        fmovies = open(self.database + '.movies', 'w')
+        fmovies.write(movies)
+        fmovies.close()
+        fmovies = open(self.database + '.movies', 'r')
+        lines = fmovies.readlines()
+        fmovies.close()
+        self.sortorder = config.plugins.moviebrowser.sortorder.value
+        try:
+            if self.sortorder == 'name':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+            elif self.sortorder == 'name_reverse':
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+            elif self.sortorder == 'rating':
+                lines.sort(key=lambda line: line.split(':::')[4])
+            elif self.sortorder == 'rating_reverse':
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+            elif self.sortorder == 'year':
+                lines.sort(key=lambda line: line.split(':::')[8])
+            elif self.sortorder == 'year_reverse':
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+            elif self.sortorder == 'date':
+                lines.sort(key=lambda line: line.split(':::')[2])
+            elif self.sortorder == 'date_reverse':
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+            elif self.sortorder == 'folder':
+                lines.sort(key=lambda line: line.split(':::')[1])
+            elif self.sortorder == 'folder_reverse':
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+            elif self.sortorder == 'runtime':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+            elif self.sortorder == 'runtime_reverse':
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+        except IndexError:
+            pass
+        except ValueError:
+            self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+
+        f = open(self.database + '.movies', 'w')
+        f.writelines(lines)
+        f.close()
+        files = [self.database + '.movies', self.database + '.series']
+        with open(self.database + '.sorted', 'w') as outfile:
+            for name in files:
+                with open(name) as infile:
+                    outfile.write(infile.read())
+
+        if fileExists(self.database + '.movies'):
+            os.remove(self.database + '.movies')
+        if fileExists(self.database + '.series'):
+            os.remove(self.database + '.series')
+        os.rename(self.database + '.sorted', self.database)
 
     def getIndex(self, list):
         return list.getSelectedIndex()
@@ -11638,7 +11869,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         list.append(getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv))
         list.append(getConfigListEntry(_('Download new Backdrops:'), config.plugins.moviebrowser.download))
         list.append(getConfigListEntry(_('Posterwall/Backdrop Show Plot:'), config.plugins.moviebrowser.plotfull))
-        list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
+        # list.append(getConfigListEntry(_('Posterwall/Backdrop Headline Color:'), config.plugins.moviebrowser.color))
         list.append(getConfigListEntry(_('Metrix List Selection Color:'), config.plugins.moviebrowser.metrixcolor))
         list.append(getConfigListEntry(_('TMDb/TheTVDb Language:'), config.plugins.moviebrowser.language))
         list.append(getConfigListEntry(_("Load TMDB Apikey from /tmp/tmdbapikey.txt"), config.plugins.moviebrowser.api))

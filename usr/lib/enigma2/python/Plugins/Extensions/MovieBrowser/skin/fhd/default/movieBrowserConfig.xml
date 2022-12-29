@@ -9,6 +9,7 @@
 		<widget name="cancel" position="270,995" size="200,30" font="Regular;28" halign="left" transparent="1" zPosition="1" />
 		<ePixmap position="500,995" size="30,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1" />
 		<widget name="save" position="540,995" size="300,30" font="Regular; 28" halign="left" transparent="1" zPosition="1" />
-		<widget name="plugin" position="230,515" size="810,432" alphatest="blend" scale="1" zPosition="1" />
+		<widget name="plugin" position="230,515" size="810,432" scale="1" zPosition="1" />
+<!-- 		<widget name="plugin" position="230,515" size="810,432" alphatest="blend" scale="1" zPosition="1" /> -->		
 		<widget name="status" position="872,973" size="586,82" font="Regular;28" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="1" zPosition="5" />
 </screen>

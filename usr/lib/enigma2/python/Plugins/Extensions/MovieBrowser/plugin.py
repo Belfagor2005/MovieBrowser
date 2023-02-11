@@ -402,7 +402,7 @@ class movieBrowserMetrix(Screen):
 
     def __init__(self, session, index, content, filter):
 
-        skin = os_path.join(skin_path + "movieBrowserMetrix.xml")
+        skin = os.path.join(skin_path + "movieBrowserMetrix.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -3004,7 +3004,7 @@ class movieBrowserMetrix(Screen):
 class movieBrowserBackdrop(Screen):
 
     def __init__(self, session, index, content, filter):
-        skin = os_path.join(skin_path + "movieBrowserBackdrop.xml")
+        skin = os.path.join(skin_path + "movieBrowserBackdrop.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -5585,7 +5585,7 @@ class movieBrowserPosterwall(Screen):
             # self.skin = applySkinVars(skin, self.dict)
 
 
-        skin = os_path.join(skin_path + "movieBrowserPosterwall.xml")
+        skin = os.path.join(skin_path + "movieBrowserPosterwall.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -9241,7 +9241,7 @@ class UpdateDatabase():
 class movieControlList(Screen):
 
     def __init__(self, session, list, index, content):
-        skin = os_path.join(skin_path + "movieControlList.xml")
+        skin = os.path.join(skin_path + "movieControlList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -9644,7 +9644,7 @@ class movieDatabase(Screen):
 
     def __init__(self, session, movie):
         Screen.__init__(self, session)
-        skin = os_path.join(skin_path + "movieDatabase.xml")
+        skin = os.path.join(skin_path + "movieDatabase.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.hideflag = True
@@ -9938,7 +9938,7 @@ class moviesList(Screen):
 
     def __init__(self, session, titel, rating, year, titles, poster, id, country, movie, top):
         Screen.__init__(self, session)
-        skin = os_path.join(skin_path + "moviesList.xml")
+        skin = os.path.join(skin_path + "moviesList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.titel = titel
@@ -11107,7 +11107,7 @@ class filterList(Screen):
         # self.skin = applySkinVars(filterList.skin, self.dict)
 
     def __init__(self, session, list, titel, filter, len, max):
-        skin = os_path.join(skin_path + "filterList.xml")
+        skin = os.path.join(skin_path + "filterList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11192,7 +11192,7 @@ class filterSeasonList(Screen):
 
     def __init__(self, session, list, content):
         Screen.__init__(self, session)
-        skin = os_path.join(skin_path + "filterSeasonList.xml")
+        skin = os.path.join(skin_path + "filterSeasonList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.hideflag = True
@@ -11293,7 +11293,7 @@ class filterSeasonList(Screen):
 class getABC(Screen):
 
     def __init__(self, session, ABC, XYZ):
-        skin = os_path.join(skin_path + "getABC.xml")
+        skin = os.path.join(skin_path + "getABC.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11546,7 +11546,7 @@ class getABC(Screen):
 class switchScreen(Screen):
 
     def __init__(self, session, number, mode):
-        skin = os_path.join(skin_path + "switchScreen.xml")
+        skin = os.path.join(skin_path + "switchScreen.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11643,7 +11643,7 @@ class switchScreen(Screen):
 class switchStart(Screen):
 
     def __init__(self, session, number):
-        skin = os_path.join(skin_path + "switchStart.xml")
+        skin = os.path.join(skin_path + "switchStart.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11747,7 +11747,7 @@ class switchStart(Screen):
 class helpScreen(Screen):
 
     def __init__(self, session):
-        skin = os_path.join(skin_path + "helpScreen.xml")
+        skin = os.path.join(skin_path + "helpScreen.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
 
@@ -11812,7 +11812,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
     def __init__(self, session):
 
-        skin = os_path.join(skin_path + "movieBrowserConfig.xml")
+        skin = os.path.join(skin_path + "movieBrowserConfig.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)

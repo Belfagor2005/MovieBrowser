@@ -402,9 +402,7 @@ class movieBrowserMetrix(Screen):
 
     def __init__(self, session, index, content, filter):
 
-        skin = skin_path + "movieBrowserMetrix.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieBrowserMetrix.xml"
+        skin = os_path.join(skin_path + "movieBrowserMetrix.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -674,7 +672,17 @@ class movieBrowserMetrix(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if self.content in line and filter in line:
-                        name = filename = date = runtime = rating = director = actors = genres = year = country = plotfull = " "
+                        name = ""
+                        filename = ""
+                        date = ""
+                        runtime = ""
+                        rating = ""
+                        director = ""
+                        actors = ""
+                        genres = ""
+                        year = ""
+                        country = ""
+                        plotfull = ""
                         poster = str(default_poster)
                         backdrop = str(default_backdrop)
                         seen = 'unseen'
@@ -2996,9 +3004,7 @@ class movieBrowserMetrix(Screen):
 class movieBrowserBackdrop(Screen):
 
     def __init__(self, session, index, content, filter):
-        skin = skin_path + "movieBrowserBackdrop.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieBrowserBackdrop.xml"
+        skin = os_path.join(skin_path + "movieBrowserBackdrop.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -3264,7 +3270,17 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if self.content in line and filter in line:
-                        name = filename = date = runtime = rating = director = actors = genres = year = country = plotfull = " "
+                        name = ""
+                        filename = ""
+                        date = ""
+                        runtime = ""
+                        rating = ""
+                        director = ""
+                        actors = ""
+                        genres = ""
+                        year = ""
+                        country = ""
+                        plotfull = ""
                         poster = str(default_poster)
                         backdrop = str(default_backdrop)
                         seen = 'unseen'
@@ -5569,9 +5585,7 @@ class movieBrowserPosterwall(Screen):
             # self.skin = applySkinVars(skin, self.dict)
 
 
-        skin = skin_path + "movieBrowserPosterwall.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieBrowserPosterwall.xml"
+        skin = os_path.join(skin_path + "movieBrowserPosterwall.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -9227,9 +9241,7 @@ class UpdateDatabase():
 class movieControlList(Screen):
 
     def __init__(self, session, list, index, content):
-        skin = skin_path + "movieControlList.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieControlList.xml"
+        skin = os_path.join(skin_path + "movieControlList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -9632,9 +9644,7 @@ class movieDatabase(Screen):
 
     def __init__(self, session, movie):
         Screen.__init__(self, session)
-        skin = skin_path + "movieDatabase.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieDatabase.xml"
+        skin = os_path.join(skin_path + "movieDatabase.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.hideflag = True
@@ -9683,11 +9693,20 @@ class movieDatabase(Screen):
             index = 0
             f = open(self.database, 'r')
             for line in f:
-                movieline = line.split(':::')
+                name = ""
+                movie = ""
+                date = ""
+                runtime = ""
+                rating = ""
+                director = ""
+                actors = ""
+                genres = ""
+                year = ""
+                country = ""
                 poster = str(default_poster)
                 backdrop = str(default_backdrop)
                 media = '\n'
-                name = movie = date = runtime = rating = director = actors = year = country = " "
+                movieline = line.split(':::')
                 try:
                     name = movieline[0]
                     name = sub('[Ss][0]+[Ee]', 'Special ', name)
@@ -9919,9 +9938,7 @@ class moviesList(Screen):
 
     def __init__(self, session, titel, rating, year, titles, poster, id, country, movie, top):
         Screen.__init__(self, session)
-        skin = skin_path + "moviesList.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/moviesList.xml"
+        skin = os_path.join(skin_path + "moviesList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.titel = titel
@@ -11090,10 +11107,7 @@ class filterList(Screen):
         # self.skin = applySkinVars(filterList.skin, self.dict)
 
     def __init__(self, session, list, titel, filter, len, max):
-        skin = skin_path + "filterList.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/filterList.xml"
-        # xskin = applySkinVars(skin, self.dict)
+        skin = os_path.join(skin_path + "filterList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11178,9 +11192,7 @@ class filterSeasonList(Screen):
 
     def __init__(self, session, list, content):
         Screen.__init__(self, session)
-        skin = skin_path + "filterSeasonList.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/filterSeasonList.xml"
+        skin = os_path.join(skin_path + "filterSeasonList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         self.hideflag = True
@@ -11281,9 +11293,7 @@ class filterSeasonList(Screen):
 class getABC(Screen):
 
     def __init__(self, session, ABC, XYZ):
-        skin = skin_path + "getABC.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/getABC.xml"
+        skin = os_path.join(skin_path + "getABC.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11536,9 +11546,7 @@ class getABC(Screen):
 class switchScreen(Screen):
 
     def __init__(self, session, number, mode):
-        skin = skin_path + "switchScreen.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/switchScreen.xml"
+        skin = os_path.join(skin_path + "switchScreen.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11635,9 +11643,7 @@ class switchScreen(Screen):
 class switchStart(Screen):
 
     def __init__(self, session, number):
-        skin = skin_path + "switchStart.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/switchStart.xml"
+        skin = os_path.join(skin_path + "switchStart.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)
@@ -11741,9 +11747,7 @@ class switchStart(Screen):
 class helpScreen(Screen):
 
     def __init__(self, session):
-        skin = skin_path + "helpScreen.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/helpScreen.xml"
+        skin = os_path.join(skin_path + "helpScreen.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
 
@@ -11808,9 +11812,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
 
     def __init__(self, session):
 
-        skin = skin_path + "movieBrowserConfig.xml"
-        # if os.path.exists("/var/lib/dpkg/status"):
-            # skin = skin_path + "DreamOS/movieBrowserConfig.xml"
+        skin = os_path.join(skin_path + "movieBrowserConfig.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
         Screen.__init__(self, session)

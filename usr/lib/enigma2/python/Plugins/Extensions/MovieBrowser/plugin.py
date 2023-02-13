@@ -1212,7 +1212,7 @@ class movieBrowserMetrix(Screen):
                 self.name = name
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s%s' % (str(tmdb_api_key), name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -3686,7 +3686,7 @@ class movieBrowserBackdrop(Screen):
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 # url = 'https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=' + name + self.language
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s%s' % (str(tmdb_api_key), name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -6296,7 +6296,7 @@ class movieBrowserPosterwall(Screen):
                 name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 # url = 'https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=' + name + self.language
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s%s' % (str(tmdb_api_key), name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -8530,7 +8530,7 @@ class UpdateDatabase():
                 movie = transMOVIE(self.name)
                 # movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                 # url = 'https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=' + movie + self.language
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s%s' % (str(tmdb_api_key), movie, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                 self.getTMDbData(url, '0', False)
         return
 
@@ -9129,7 +9129,7 @@ class UpdateDatabase():
                     movie = transMOVIE(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                     # url = 'https://api.themoviedb.org/3/search/movie?api_key=dfc629f7ff6936a269f8c5cdb194c890&query=' + movie + self.language
-                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&query=%s%s' % (str(tmdb_api_key), movie, self.language)
+                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                     try:
                         self.getTMDbData(url, '0', False)
                     except RuntimeError:

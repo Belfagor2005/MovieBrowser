@@ -37,13 +37,13 @@ from Screens.Screen import Screen
 from Screens.Standby import TryQuitMainloop
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 from Tools.Directories import fileExists
-from enigma import RT_HALIGN_CENTER, RT_VALIGN_CENTER  # , RT_WRAP
-from enigma import RT_HALIGN_LEFT  # , RT_HALIGN_RIGHT
+from enigma import RT_VALIGN_CENTER
+from enigma import RT_HALIGN_LEFT
 from enigma import eConsoleAppContainer
 from enigma import eListboxPythonMultiContent, ePoint
 from enigma import eServiceReference, eTimer
 from enigma import getDesktop, gFont, iPlayableService
-from enigma import iServiceInformation, loadPNG  # , loadPic
+from enigma import iServiceInformation, loadPNG
 from requests import get
 from requests.exceptions import HTTPError
 from twisted.internet.reactor import callInThread
@@ -105,6 +105,7 @@ def convert_size(size_bytes):
     s = round(size_bytes // p, 2)
     return "%s %s" % (s, size_name[i])
 
+
 def OnclearMem():
     try:
         os.system('sync')
@@ -113,6 +114,7 @@ def OnclearMem():
         os.system('echo 3 > /proc/sys/vm/drop_caches')
     except:
         pass
+
 
 def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args, **kwargs):
     print('[MovieBrowser][threadGetPage] url, file, key, args, kwargs', url, "   ", file, "   ", key, "   ", args, "   ", kwargs)
@@ -127,11 +129,11 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, *args,
             success(response.content, file)
     except HTTPError as httperror:
         print('[MovieBrowser][threadGetPage] Http error: ', httperror)
-        fail(error)  # E0602 undefined name 'error'
+        # fail(error)  # E0602 undefined name 'error'
     except Exception as error:
         print('[MovieBrowser][threadGetPage] error: ', error)
-        if fail is not None:
-            fail(error)
+        # if fail is not None:
+            # fail(error)
 
 
 version = '3.7rc6'
@@ -398,7 +400,6 @@ def _renewTVDb(text):
 
 
 class movieBrowserMetrix(Screen):
-                                                                                                          
 
     def __init__(self, session, index, content, filter):
 
@@ -422,7 +423,7 @@ class movieBrowserMetrix(Screen):
         self.content = content
         self.filter = filter
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
-        self.showfolder =  config.plugins.moviebrowser.showfolder.getValue()
+        self.showfolder = config.plugins.moviebrowser.showfolder.getValue()
         self.ABC = 'ABC'
         self.namelist = []
         self.movielist = []
@@ -919,7 +920,6 @@ class movieBrowserMetrix(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
-                
             except IndexError:
                 pass
 
@@ -3024,7 +3024,7 @@ class movieBrowserBackdrop(Screen):
         self.content = content
         self.filter = filter
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
-        self.showfolder =  config.plugins.moviebrowser.showfolder.getValue()
+        self.showfolder = config.plugins.moviebrowser.showfolder.getValue()
         self.ABC = 'ABC'
         self.namelist = []
         self.movielist = []
@@ -3405,7 +3405,6 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
-                
             except IndexError:
                 pass
 
@@ -5584,7 +5583,6 @@ class movieBrowserPosterwall(Screen):
             # }
             # self.skin = applySkinVars(skin, self.dict)
 
-
         skin = os.path.join(skin_path + "movieBrowserPosterwall.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
@@ -5985,7 +5983,6 @@ class movieBrowserPosterwall(Screen):
                 f = open(self.lastfile, 'w')
                 f.write(movie)
                 f.close()
-                
             except IndexError:
                 pass
 
@@ -7244,8 +7241,6 @@ class movieBrowserPosterwall(Screen):
             if fileExists(banner):
                 self["banner"].instance.setPixmapFromFile(banner)
                 self['banner'].show()
-
-
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -9302,7 +9297,6 @@ class movieControlList(Screen):
                 self.listentries.append(res)
             except IndexError:
                 pass
-
 
         self['list'].l.setList(self.listentries)
         try:
@@ -11738,9 +11732,6 @@ class switchStart(Screen):
                 self.session.openWithCallback(self.close, movieBrowserPosterwall, 0, ':Top:::', ':Top:::')
 
     def quit(self):
-                            
-                      
-                                
         self.close()
 
 
@@ -11774,7 +11765,7 @@ class helpScreen(Screen):
                                 # Button 8: Movie Actor Selection\n \
                                 # Button 9: Movie Genre Selection\n \
                                 # Button 0: Go to end of list'))
-                                
+
         self['actions'] = ActionMap(['OkCancelActions'], {
             'ok': self.close,
             'cancel': self.close
@@ -11807,6 +11798,7 @@ class helpScreen(Screen):
         conthelp += _("Button 9: Movie Genre Selection\n")
         conthelp += _("Button 0: Go to end of list")
         return conthelp
+
 
 class movieBrowserConfig(ConfigListScreen, Screen):
 

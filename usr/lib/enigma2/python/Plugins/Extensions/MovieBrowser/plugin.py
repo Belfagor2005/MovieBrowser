@@ -8664,8 +8664,8 @@ class UpdateDatabase():
             actor5 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             actor6 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
             actor7 = re.findall('"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
-            # director = re.findall('"job":"Director","name":"(.*?)"', output)
-            director = re.findall('"known_for_department":"Writing","name":"(.*?)"', output)  # director fixed
+            director = re.findall('"job":"Director","name":"(.*?)"', output)
+            # director = re.findall('"known_for_department":"Writing","name":"(.*?)"', output)  # director fixed
             res = []
             try:
                 res.append(runtime[0] + ' min')

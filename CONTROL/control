@@ -1,10 +1,9 @@
 Package: enigma2-plugin-extensions-moviebrowser
-Version: 3.7rc4
+Version: 3.7rc5
 Description: Movie Browser Plugin
 Architecture: all
 Section: extra
 Priority: optional
 Maintainer: kashmir
 Homepage: http://www.kashmir-plugins.de
-Depends: python-pyopenssl python-textutils python-misc
 Source: http://www.kashmir-plugins.de

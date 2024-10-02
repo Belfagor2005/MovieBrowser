@@ -400,7 +400,7 @@ class movieBrowserMetrix(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        # self.toogleHelp = self.session.instantiateDialog(helpScreen)
+        self.toogleHelp = self.session.instantiateDialog(helpScreen)
         self.index = index
         self.hideflag = True
         self.ready = False

@@ -1,0 +1,21 @@
+﻿#!/bin/sh
+# <!-- **************************************  -->
+# <!-- Don't Remove this Disclaimer            -->
+# <!-- **************************************  -->
+echo "   recoded by lululla                 "
+echo "*****************************************"
+echo "*    Uninstall Moviebrowser Plugin      *"
+echo "*****************************************"
+
+EXTDIR="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser"
+
+if [ -d "$EXTDIR" ]; then
+   rm -rf "$EXTDIR" > /dev/null 2>&1
+fi
+
+echo "*****************************************"
+echo "*          ....done                     *"
+echo "*****************************************"
+exit 0
+
+

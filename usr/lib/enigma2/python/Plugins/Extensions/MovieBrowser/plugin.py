@@ -80,6 +80,16 @@ import sys
 import math
 pythonVer = sys.version_info.major
 
+
+if pythonVer < 3:
+    import codecs
+    open_func = codecs.open
+    str_type = unicode
+else:
+    open_func = open
+    str_type = str
+
+
 isDreambox = False
 if os.path.exists("/usr/bin/apt-get"):
     isDreambox = True
@@ -88,11 +98,6 @@ try:
     from urllib2 import Request, urlopen
 except:
     from urllib.request import Request, urlopen
-
-try:
-    import statvfs
-except ImportError:
-    from os import statvfs
 
 
 def getDesktopSize():
@@ -793,7 +798,7 @@ class movieBrowserMetrix(Screen):
         series = _('SERIES')
         episodes = _('EPISODES')
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -1926,45 +1931,6 @@ class movieBrowserMetrix(Screen):
             print('error ', str(e))
             self['eposter'].hide()
         return
-
-
-    # def makePoster(self):
-        # for x in range(self.posterALL):
-            # try:
-                # index = self.index - self.posterindex + x
-                # if index >= self.maxentry:
-                    # index = index - self.maxentry
-                # elif index < 0:
-                    # index = self.maxentry + index
-                # posterurl = self.posterlist[index]
-                # posterurl = sub('<episode>.*?<episode>', '', posterurl)
-                # poster = sub('.*?[/]', '', posterurl)
-                # poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
-                # if fileExists(poster):
-                    # self['poster' + str(x)].instance.setPixmapFromFile(poster)
-                    # self['poster' + str(x)].show()
-                # else:
-                    # if pythonVer == 3:
-                        # posterurl = posterurl.encode()
-                    # callInThread(threadGetPage, url=posterurl, file=poster, key=x, success=self.getPoster, fail=self.downloadError)
-            # except IndexError:
-                # self['poster' + str(x)].hide()
-
-        # return
-
-    # def getPoster(self, output, poster, x):  # success(response.content, file, key
-        # try:
-            # open(poster, 'wb').write(output)
-            # if fileExists(poster):
-                # if self['poster' + str(x)].instance:
-                    # self['poster' + str(x)].instance.setPixmapFromFile(poster)
-                    # self['poster' + str(x)].show()
-        # except Exception as e:
-            # print('error ', str(e))
-            # self['poster' + str(x)].hide()
-        # return
-
-
 
     def makePoster(self, poster=None):
         try:
@@ -6914,8 +6880,10 @@ class movieBrowserPosterwall(Screen):
                     banner = sub('.*?[/]', '', bannerurl)
                     banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                     if fileExists(banner):
-                        self["banner"].instance.setPixmapFromFile(banner)
-                        self['banner'].show()
+                        if self['banner'].instance:
+                            banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
+                            self["banner"].instance.setPixmapFromFile(banner)
+                            self['banner'].show()
                     else:
                         if pythonVer == 3:
                             bannerurl = bannerurl.encode()
@@ -6947,8 +6915,10 @@ class movieBrowserPosterwall(Screen):
                         banner = sub('.*?[/]', '', bannerurl)
                         banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                         if fileExists(banner):
-                            self["banner"].instance.setPixmapFromFile(banner)
-                            self['banner'].show()
+                            if self['banner'].instance:
+                                banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
+                                self["banner"].instance.setPixmapFromFile(banner)
+                                self['banner'].show()
                         else:
                             if pythonVer == 3:
                                 bannerurl = bannerurl.encode()
@@ -6972,8 +6942,10 @@ class movieBrowserPosterwall(Screen):
                     eposter = sub('.*?[/]', '', eposterurl)
                     eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                     if fileExists(eposter):
-                        self["eposter"].instance.setPixmapFromFile(eposter)
-                        self['eposter'].show()
+                        if self['eposter'].instance:
+                            eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
+                            self["eposter"].instance.setPixmapFromFile(eposter)
+                            self['eposter'].show()
                     else:
                         if pythonVer == 3:
                             eposterurl = eposterurl.encode()
@@ -6993,8 +6965,10 @@ class movieBrowserPosterwall(Screen):
         try:
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
-                self["eposter"].instance.setPixmapFromFile(eposter)
-                self['eposter'].show()
+                if self['eposter'].instance:
+                    eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
+                    self["eposter"].instance.setPixmapFromFile(eposter)
+                    self['eposter'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -7005,8 +6979,10 @@ class movieBrowserPosterwall(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
-                self["banner"].instance.setPixmapFromFile(banner)
-                self['banner'].show()
+                if self['banner'].instance:
+                    banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
+                    self["banner"].instance.setPixmapFromFile(banner)
+                    self['banner'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -7022,8 +6998,10 @@ class movieBrowserPosterwall(Screen):
                 poster = sub('.*?[/]', '', posterurl)
                 poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
                 if fileExists(poster):
-                    self['poster' + str(x)].instance.setPixmapFromFile(poster)
-                    self['poster' + str(x)].show()
+                    if self['poster' + str(x)].instance:
+                        poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
+                        self['poster' + str(x)].instance.setPixmapFromFile(poster)
+                        self['poster' + str(x)].show()
                 else:
                     if pythonVer == 3:
                         posterurl = posterurl.encode()
@@ -7039,6 +7017,7 @@ class movieBrowserPosterwall(Screen):
             open(poster, 'wb').write(output)
             if fileExists(poster):
                 if self['poster' + str(x)].instance:
+                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                     self['poster' + str(x)].instance.setPixmapFromFile(poster)
                     self['poster' + str(x)].show()
         except Exception as e:
@@ -7057,8 +7036,10 @@ class movieBrowserPosterwall(Screen):
             poster = sub('.*?[/]', '', posterurl)
             poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
             if fileExists(poster):
-                self["frame"].instance.setPixmapFromFile(poster)
-                self['frame'].show()
+                if self['frame'].instance:
+                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
+                    self["frame"].instance.setPixmapFromFile(poster)
+                    self['frame'].show()
         except IndexError:
             pass
 
@@ -7077,8 +7058,10 @@ class movieBrowserPosterwall(Screen):
                         self['backdrop'].hide()
                         os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
                     elif fileExists(backdrop):
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
+                        if self['backdrop'].instance:
+                            backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
+                            self["backdrop"].instance.setPixmapFromFile(backdrop)
+                            self['backdrop'].show()
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
@@ -7086,8 +7069,10 @@ class movieBrowserPosterwall(Screen):
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
+                    if self['backdrop'].instance:
+                        backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
+                        self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
@@ -7102,6 +7087,7 @@ class movieBrowserPosterwall(Screen):
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
                 if self["backdrop"].instance:
+                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
                     self["backdrop"].instance.setPixmapFromFile(backdrop)
                     self['backdrop'].show()
         except Exception as e:
@@ -7117,12 +7103,16 @@ class movieBrowserPosterwall(Screen):
                 self['backdrop'].hide()
                 os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
             elif fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+                if self['backdrop'].instance:
+                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
                 os.popen('/usr/bin/showiframe %s') % no_m1v
         elif fileExists(backdrop):
-            self["backdrop"].instance.setPixmapFromFile(backdrop)
-            self['backdrop'].show()
+            if self['backdrop'].instance:
+                backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
+                self["backdrop"].instance.setPixmapFromFile(backdrop)
+                self['backdrop'].show()
         return
 
     def down(self):
@@ -7418,7 +7408,7 @@ class movieBrowserPosterwall(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if self.content in line and self.filter in line:
-                        movieline = line.split(':::')
+                        movieline = str(line).split(':::')
                         try:
                             self.movies.append((movieline[0], movieline[1], movieline[12]))
                         except IndexError:
@@ -8980,7 +8970,7 @@ class movieControlList(Screen):
         movies = 'Movies'
         series = 'Series'
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -9419,7 +9409,7 @@ class movieDatabase(Screen):
             folder = _('Movie Folder')
             movies = _('Movies')
             if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-                movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+                movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
                 try:
                     stat = movieFolder
                     freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -10578,91 +10568,107 @@ class moviesList(Screen):
         self.leftUp()
 
     def getPoster1(self, output):
-        with open(self.poster1, 'wb', encoding='utf-8') as file:
+        with open_func(self.poster1, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster1(self.poster1)
 
     def showPoster1(self, poster1):
         if fileExists(poster1):
-            self["poster1"].instance.setPixmapFromFile(poster1)
-            self['poster1'].show()
+            if self['poster1'].instance:
+                poster1 = poster1.encode('utf-8') if isinstance(poster1, unicode) else poster1
+                self['poster1'].instance.setPixmapFromFile(poster1)
+                self['poster1'].show()
         return
 
     def getPoster2(self, output):
-        with open(self.poster2, 'wb', encoding='utf-8') as file:
+        with open_func(self.poster2, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster2(self.poster2)
 
     def showPoster2(self, poster2):
         if fileExists(poster2):
-            self["poster2"].instance.setPixmapFromFile(poster2)
-            self['poster2'].show()
+            if self['poster2'].instance:
+                poster2 = poster2.encode('utf-8') if isinstance(poster2, unicode) else poster2
+                self['poster2'].instance.setPixmapFromFile(poster2)
+                self['poster2'].show()
         return
 
     def getPoster3(self, output):
-        with open(self.poster3, 'wb', encoding='utf-8') as file:
+        with open_func(self.poster3, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster3(self.poster3)
 
     def showPoster3(self, poster3):
         if fileExists(poster3):
-            self["poster3"].instance.setPixmapFromFile(poster3)
-            self['poster3'].show()
+            if self['poster3'].instance:
+                poster3 = poster3.encode('utf-8') if isinstance(poster3, unicode) else poster3
+                self['poster3'].instance.setPixmapFromFile(poster3)
+                self['poster3'].show()
         return
 
     def getPoster4(self, output):
-        with open(self.poster4, 'wb', encoding='utf-8') as file:
+        with open_func(self.poster4, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster4(self.poster4)
 
     def showPoster4(self, poster4):
         if fileExists(poster4):
-            self["poster4"].instance.setPixmapFromFile(poster4)
-            self['poster4'].show()
+            if self['poster4'].instance:
+                poster4 = poster4.encode('utf-8') if isinstance(poster4, unicode) else poster4
+                self['poster4'].instance.setPixmapFromFile(poster4)
+                self['poster4'].show()
         return
 
     def getBanner1(self, output):
-        with open(self.banner1, 'wb', encoding='utf-8') as file:
+        with open_func(self.banner1, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner1(self.banner1)
 
     def showBanner1(self, banner1):
         if fileExists(banner1):
-            self["banner1"].instance.setPixmapFromFile(banner1)
-            self['banner1'].show()
+            if self['banner1'].instance:
+                banner1 = banner1.encode('utf-8') if isinstance(banner1, unicode) else banner1
+                self["banner1"].instance.setPixmapFromFile(banner1)
+                self['banner1'].show()
         return
 
     def getBanner2(self, output):
-        with open(self.banner2, 'wb', encoding='utf-8') as file:
+        with open_func(self.banner2, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner2(self.banner2)
 
     def showBanner2(self, banner2):
         if fileExists(banner2):
-            self["banner2"].instance.setPixmapFromFile(banner2)
-            self['banner2'].show()
+            if self['banner2'].instance:
+                banner2 = banner2.encode('utf-8') if isinstance(banner2, unicode) else banner2
+                self["banner2"].instance.setPixmapFromFile(banner2)
+                self['banner2'].show()
         return
 
     def getBanner3(self, output):
-        with open(self.banner3, 'wb', encoding='utf-8') as file:
+        with open_func(self.banner3, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner3(self.banner3)
 
     def showBanner3(self, banner3):
         if fileExists(banner3):
-            self["banner3"].instance.setPixmapFromFile(banner3)
-            self['banner3'].show()
+            if self['banner3'].instance:
+                banner3 = banner3.encode('utf-8') if isinstance(banner3, unicode) else banner3
+                self["banner3"].instance.setPixmapFromFile(banner3)
+                self['banner3'].show()
         return
 
     def getBanner4(self, output):
-        with open(self.banner4, 'wb', encoding='utf-8') as file:
+        with open_func(self.banner4, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner4(self.banner4)
 
     def showBanner4(self, banner4):
         if fileExists(banner4):
-            self["banner4"].instance.setPixmapFromFile(banner4)
-            self['banner4'].show()
+            if self['banner4'].instance:
+                banner4 = banner4.encode('utf-8') if isinstance(banner4, unicode) else banner4
+                self["banner4"].instance.setPixmapFromFile(banner4)
+                self['banner4'].show()
         return
 
     def download(self, link, name):
@@ -10840,7 +10846,7 @@ class filterSeasonList(Screen):
         free = _('Free Space:')
         folder = _('Movie Folder')
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -11485,13 +11491,17 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         if current == getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style):
             png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
             if fileExists(png):
-                self["plugin"].instance.setPixmapFromFile(png)
-                self['plugin'].show()
+                if self['plugin'].instance:
+                    png = png.encode('utf-8') if isinstance(png, unicode) else png
+                    self["plugin"].instance.setPixmapFromFile(png)
+                    self['plugin'].show()
         elif current == getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle):
             png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
             if fileExists(png2):
-                self["plugin"].instance.setPixmapFromFile(png2)
-                self['plugin'].show()
+                if self['plugin'].instance:
+                    png2 = png2.encode('utf-8') if isinstance(png2, unicode) else png2
+                    self["plugin"].instance.setPixmapFromFile(png2)
+                    self['plugin'].show()
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
             if config.plugins.moviebrowser.m1v.value is True:
                 config.plugins.moviebrowser.showtv.value = 'hide'

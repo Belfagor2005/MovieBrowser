@@ -1,12 +1,12 @@
 <screen name="movieBrowserConfig" title="Movie Browser Setup" position="410,220" size="1100,665" backgroundColor="#20000000" flags="wfNoBorder">
 	<!-- <ePixmap position="13,7" size="1068,45" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logoConfig.png" alphatest="blend" zPosition="1" /> -->
-	<eLabel position="9,58" size="1050,3" backgroundColor="green" />
-	<widget name="config" position="12,72" size="1068,273" itemHeight="40" scrollbarMode="showOnDemand" zPosition="1" />
-	<eLabel position="9,364" size="1050,3" backgroundColor="green" />
-	<widget name="save" position="597,550" size="125,30" font="Regular; 24" halign="left" transparent="1" zPosition="1" />
-	<widget name="cancel" position="838,550" size="125,30" font="Regular; 24" halign="left" transparent="1" zPosition="1" />
-	<ePixmap position="560,550" size="30,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1" />
-	<ePixmap position="810,550" size="30,30" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="1" />
-	<widget name="plugin" position="4,374" size="512,288" alphatest="blend" zPosition="1" />
-	<widget name="status" position="521,376" size="535,158" font="Regular;24" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="1" zPosition="5" />
+	<eLabel position="9,58" size="1050,3" backgroundColor="green"/>
+	<widget name="config" position="12,72" size="1068,273" itemHeight="40" scrollbarMode="showOnDemand" zPosition="1"/>
+	<eLabel position="9,364" size="1050,3" backgroundColor="green"/>
+	<widget name="save" position="597,550" size="125,30" font="Regular; 24" halign="left" transparent="1" zPosition="1"/>
+	<widget name="cancel" position="838,550" size="125,30" font="Regular; 24" halign="left" transparent="1" zPosition="1"/>
+	<ePixmap position="560,550" size="30,30" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="1"/>
+	<ePixmap position="810,550" size="30,30" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="1"/>
+	<widget name="plugin" position="4,374" size="512,288" alphatest="blend" zPosition="1"/>
+	<widget name="status" position="521,376" size="535,158" font="Regular;24" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#202020" transparent="1" zPosition="5"/>
 </screen>

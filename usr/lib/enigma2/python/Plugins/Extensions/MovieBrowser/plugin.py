@@ -11,7 +11,6 @@ from . import _
 from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
-from Components.Language import language
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryPixmapAlphaTest
 from Components.MultiContent import MultiContentEntryText
@@ -62,6 +61,7 @@ from requests import get
 from requests.exceptions import HTTPError
 from re import search, sub, findall
 from twisted.internet.reactor import callInThread
+from six import text_type
 '''
 # try:
     # from twisted.internet.reactor import callInThread
@@ -78,14 +78,17 @@ import re
 from io import open
 import sys
 import math
+
 pythonVer = sys.version_info.major
 
 
 if pythonVer < 3:
     import codecs
+    text_type_type = text_type
     open_func = codecs.open
-    str_type = unicode
+    str_type = text_type
 else:
+    text_type_type = str
     open_func = open
     str_type = str
 
@@ -94,11 +97,26 @@ isDreambox = False
 if os.path.exists("/usr/bin/apt-get"):
     isDreambox = True
 
+
 try:
-    from urllib2 import Request, urlopen
-    from urllib import urlretrieve
-except ImportError:
-    from urllib.request import Request, urlopen, urlretrieve
+    # from urllib.request import urlretrieve
+    from urllib.request import urlopen, Request
+    from urllib.parse import quote_plus, unquote  # , quote
+    # from urllib.request import HTTPError
+except:
+    from urllib2 import Request
+    # from urllib import urlretrieve
+    from urllib2 import urlopen
+    from urllib import quote_plus, unquote  # , quote
+    # from urllib2 import HTTPError
+
+
+def quoteEventName(eventName):
+    try:
+        text = eventName.decode('utf8').replace(u'\x86', u'').replace(u'\x87', u'').encode('utf8')
+    except:
+        text = eventName
+    return quote_plus(text, safe="+")
 
 
 def getDesktopSize():
@@ -304,6 +322,71 @@ def applySkinVars(skin, dict):
         except Exception as e:
             print(e, '@key=', key)
     return skin
+
+
+def getCleanContentSearchTitle(event_title=""):
+    cleanEventname = re.sub(' I$', ' 1', event_title)
+    cleanEventname = re.sub(' II$', ' 2', cleanEventname)
+    cleanEventname = re.sub(' III$', ' 3', cleanEventname)
+    cleanEventname = cleanEventname.lower().replace(",", "").replace("ß", "ss").replace(" & ", " and ").replace("!", "").replace("-", "").replace(" und ", " and ").replace(".", "").replace("'", "").replace("?", "").replace(" ", "")
+    return cleanEventname
+
+
+def remove_accents(string):
+    import unicodedata
+    if pythonVer < 3:
+        if type(string) is not text_type:
+            string = text_type(string, encoding='utf-8')
+    string = unicodedata.normalize('NFD', string)
+    string = re.sub(r'[\u0300-\u036f]', '', string)
+    return string
+
+
+def cutName(eventName=""):
+    if eventName:
+        eventName = eventName.replace('"', '').replace('Х/Ф', '').replace('М/Ф', '').replace('Х/ф', '').replace('.', '').replace(' | ', '')
+        eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
+        eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
+        eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        eventName = eventName.replace('episode', '')
+        eventName = eventName.replace('مسلسل', '')
+        eventName = eventName.replace('فيلم وثائقى', '')
+        eventName = eventName.replace('حفل', '')
+        return eventName
+    return ""
+
+
+def getCleanTitle(eventitle=""):
+    save_name = eventitle.replace(' ^`^s', '').replace(' ^`^y', '')
+    return save_name
+
+
+def convtext(text=''):
+    try:
+        if text is None:
+            print('return None original text: ', type(text))
+            return  # Esci dalla funzione se text è None
+        if text == '':
+            print('text is an empty string')
+        else:
+            print('original text: ', text)
+            text = text.lower()
+            print('lowercased text: ', text)
+            text = remove_accents(text)
+            print('remove_accents text: ', text)
+            text = cutName(text)
+            text = getCleanTitle(text)
+            if text.endswith("the"):
+                text = "the " + text[:-4]
+            text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
+            text = transMOVIE(text)
+            print('transMOVIE: ', text)
+            text = quoteEventName(text)
+            print('TEXT=', text)
+        return unquote(text).capitalize()
+    except Exception as e:
+        print('convtext error: ', e)
+        pass
 
 
 def transHTML(text):
@@ -620,25 +703,42 @@ class movieBrowserMetrix(Screen):
             self.filter = filter
             if fileExists(self.database):
                 with open(self.database, 'r', encoding='utf-8') as f:
+                    name = ""
+                    filename = ""
+                    date = ""
+                    runtime = ""
+                    rating = ""
+                    director = ""
+                    actors = ""
+                    genres = ""
+                    year = ""
+                    country = ""
+                    plotfull = ""
+                    poster = str(default_poster)
+                    backdrop = str(default_backdrop)
+                    seen = 'unseen'
+                    content = 'Movie:Top'
+                    media = '\n'
+
                     for line in f:
                         if self.content in line and filter in line:
-                            name = ""
-                            filename = ""
-                            date = ""
-                            runtime = ""
-                            rating = ""
-                            director = ""
-                            actors = ""
-                            genres = ""
-                            year = ""
-                            country = ""
-                            plotfull = ""
-                            poster = str(default_poster)
-                            backdrop = str(default_backdrop)
-                            seen = 'unseen'
-                            content = 'Movie:Top'
-                            media = '\n'
-                            movieline = line.split(':::')
+                            # name = ""
+                            # filename = ""
+                            # date = ""
+                            # runtime = ""
+                            # rating = ""
+                            # director = ""
+                            # actors = ""
+                            # genres = ""
+                            # year = ""
+                            # country = ""
+                            # plotfull = ""
+                            # poster = str(default_poster)
+                            # backdrop = str(default_backdrop)
+                            # seen = 'unseen'
+                            # content = 'Movie:Top'
+                            # media = '\n'
+                            movieline = str(line).split(':::')
                             try:
                                 name = movieline[0]
                                 name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
@@ -709,7 +809,7 @@ class movieBrowserMetrix(Screen):
         movies = []
         for line in f:
             if self.content in line and self.filter in line:
-                movieline = line.split(':::')
+                movieline = str(line).split(':::')
                 try:
                     res = ['']
                     if self.content == ':::Series:::':
@@ -782,7 +882,6 @@ class movieBrowserMetrix(Screen):
                     self.hideInfo()
                     self.makeEPoster()
                 plot = self.plotlist[self.index]
-                plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                 self['plotfull'].setText(plot)
                 self.showPlot()
         except IndexError:
@@ -1146,7 +1245,7 @@ class movieBrowserMetrix(Screen):
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
                 self.name = name
-                name = transMOVIE(name)
+                name = convtext(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
@@ -1558,7 +1657,6 @@ class movieBrowserMetrix(Screen):
                     self.makeEPoster()
                 try:
                     plot = self.plotlist[self.index]
-                    plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                     self['plotfull'].setText(plot)
                 except IndexError:
                     pass
@@ -1662,7 +1760,6 @@ class movieBrowserMetrix(Screen):
     def makeName(self, count):
         try:
             name = self.namelist[count]
-            name = name.encode('utf-8') if isinstance(name, unicode) else name
             if len(name) > 63:
                 if name[62:63] == ' ':
                     name = name[0:62]
@@ -1747,7 +1844,6 @@ class movieBrowserMetrix(Screen):
         try:
             director = self.infolist[count][2]
             self['Director'].show()
-            director = director.encode('utf-8') if isinstance(director, unicode) else str(director)
             self['director'].setText(director)
             self['director'].show()
         except IndexError:
@@ -1757,7 +1853,6 @@ class movieBrowserMetrix(Screen):
         try:
             actors = self.infolist[count][3]
             self['Actors'].show()
-            actors = actors.encode('utf-8') if isinstance(actors, unicode) else str(actors)
             self['actors'].setText(actors)
             self['actors'].show()
         except IndexError:
@@ -1767,7 +1862,6 @@ class movieBrowserMetrix(Screen):
         try:
             genres = self.infolist[count][4]
             self['Genres'].show()
-            genres = genres.encode('utf-8') if isinstance(genres, unicode) else str(genres)
             self['genres'].setText(genres)
             self['genres'].show()
         except IndexError:
@@ -1777,7 +1871,6 @@ class movieBrowserMetrix(Screen):
         try:
             year = self.infolist[count][5]
             self['Year'].show()
-            year = year.encode('utf-8') if isinstance(year, unicode) else str(year)
             self['year'].setText(year)
             self['year'].show()
         except IndexError:
@@ -1787,7 +1880,6 @@ class movieBrowserMetrix(Screen):
         try:
             country = self.infolist[count][6]
             self['Country'].show()
-            country = country.encode('utf-8') if isinstance(country, unicode) else str(country)
             self['country'].setText(country)
             self['country'].show()
         except IndexError:
@@ -1876,7 +1968,6 @@ class movieBrowserMetrix(Screen):
                 banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                 if fileExists(banner):
                     if self['banner'].instance:
-                        banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                         self["banner"].instance.setPixmapFromFile(banner)
                         self['banner'].show()
                 else:
@@ -1903,7 +1994,6 @@ class movieBrowserMetrix(Screen):
             open(banner, 'wb').write(output)
             if fileExists(banner):
                 if self['banner'].instance:
-                    banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                     self["banner"].instance.setPixmapFromFile(banner)
                     self['banner'].show()
                 self['plotfull'].hide()
@@ -1922,7 +2012,6 @@ class movieBrowserMetrix(Screen):
                 eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                 if fileExists(eposter):
                     if self['eposter'].instance:
-                        eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                         self["eposter"].instance.setPixmapFromFile(eposter)
                         self['eposter'].show()
                 else:
@@ -1939,10 +2028,9 @@ class movieBrowserMetrix(Screen):
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
                 if self['eposter'].instance:
-                    eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                     self["eposter"].instance.setPixmapFromFile(eposter)
                     self['eposter'].show()
-                self['plotfull'].hide()
+                    self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
             self['eposter'].hide()
@@ -1956,7 +2044,6 @@ class movieBrowserMetrix(Screen):
             poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
             if fileExists(poster):
                 if self['poster'].instance:
-                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                     self["poster"].instance.setPixmapFromFile(poster)
                     self['posterback'].show()
                     self['poster'].show()
@@ -1975,8 +2062,7 @@ class movieBrowserMetrix(Screen):
             open(poster, 'wb').write(output)
             self['posterback'].show()
             if self['poster'].instance:
-                poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
-                self['poster'].instance.setPixmapFromFile(poster)
+                self["poster"].instance.setPixmapFromFile(poster)
                 self['poster'].show()
         except Exception as e:
             print('error ', str(e))
@@ -1997,10 +2083,8 @@ class movieBrowserMetrix(Screen):
                         self['backdrop'].hide()
                         os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
                     elif fileExists(backdrop):
-                        if self['backdrop'].instance:
-                            backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                            self["backdrop"].instance.setPixmapFromFile(backdrop)
-                            self['backdrop'].show()
+                        self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        self['backdrop'].show()
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
@@ -2008,10 +2092,8 @@ class movieBrowserMetrix(Screen):
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
-                    if self['backdrop'].instance:
-                        backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
@@ -2025,10 +2107,8 @@ class movieBrowserMetrix(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                if self['backdrop'].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
+                self["backdrop"].instance.setPixmapFromFile(backdrop)
+                self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
@@ -2042,16 +2122,11 @@ class movieBrowserMetrix(Screen):
                 self['backdrop'].hide()
                 os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
             elif fileExists(backdrop):
-                if self['backdrop'].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
-
-        elif fileExists(backdrop):
-            if self['backdrop'].instance:
-                backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
+        elif fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -2086,7 +2161,6 @@ class movieBrowserMetrix(Screen):
                             self.hideInfo()
                             self.makeEPoster()
                         plot = self.plotlist[self.index]
-                        plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                         self['plotfull'].setText(plot)
                         self.showPlot()
                 except IndexError:
@@ -2124,7 +2198,6 @@ class movieBrowserMetrix(Screen):
                             self.hideInfo()
                             self.makeEPoster()
                         plot = self.plotlist[self.index]
-                        plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                         self['plotfull'].setText(plot)
                         self.showPlot()
                 except IndexError:
@@ -2175,7 +2248,6 @@ class movieBrowserMetrix(Screen):
                                 self.hideInfo()
                                 self.makeEPoster()
                             plot = self.plotlist[self.index]
-                            plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                             self['plotfull'].setText(plot)
                             self.showPlot()
                     except IndexError:
@@ -2216,7 +2288,6 @@ class movieBrowserMetrix(Screen):
                             self.hideInfo()
                             self.makeEPoster()
                         plot = self.plotlist[self.index]
-                        plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                         self['plotfull'].setText(plot)
                         self.showPlot()
                 except IndexError:
@@ -2253,7 +2324,6 @@ class movieBrowserMetrix(Screen):
                         self.hideInfo()
                         self.makeEPoster()
                     plot = self.plotlist[self.index]
-                    plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                     self['plotfull'].setText(plot)
                     self.showPlot()
             except IndexError:
@@ -2317,7 +2387,6 @@ class movieBrowserMetrix(Screen):
                             self.hideInfo()
                             self.makeEPoster()
                         plot = self.plotlist[self.index]
-                        plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                         self['plotfull'].setText(plot)
                         self.showPlot()
                 except IndexError:
@@ -2367,7 +2436,6 @@ class movieBrowserMetrix(Screen):
                             self.hideInfo()
                             self.makeEPoster()
                         plot = self.plotlist[self.index]
-                        plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
                         self['plotfull'].setText(plot)
                         self.showPlot()
                 except IndexError:
@@ -2569,7 +2637,7 @@ class movieBrowserMetrix(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if line.startswith(filter) and content in line:
-                        movieline = line.split(':::')
+                        movieline = str(line).split(':::')
                         try:
                             season = movieline[0]
                             season = season + 'FIN'
@@ -2792,29 +2860,29 @@ class movieBrowserMetrix(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: str(line).split(':::')[4])
+                lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: str(line).split(':::')[8])
+                lines.sort(key=lambda line: line.split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: str(line).split(':::')[2])
+                lines.sort(key=lambda line: line.split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: str(line).split(':::')[1])
+                lines.sort(key=lambda line: line.split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -3091,15 +3159,11 @@ class movieBrowserBackdrop(Screen):
                 os.remove(self.database)
 
         if fileExists(infosmallBackPNG):
-            if self["infoback"].instance:
-                infosmallBac = infosmallBackPNG.encode('utf-8') if isinstance(infosmallBackPNG, unicode) else infosmallBackPNG
-                self["infoback"].instance.setPixmapFromFile(infosmallBac)
-                self['infoback'].show()
+            self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
+            self['infoback'].show()
         if fileExists(infoBackPNG):
-            if self["plotfullback"].instance:
-                infoBac = infoBackPNG.encode('utf-8') if isinstance(infoBackPNG, unicode) else infoBackPNG
-                self["plotfullback"].instance.setPixmapFromFile(infoBac)
-                self['plotfullback'].hide()
+            self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
+            self['plotfullback'].hide()
 
         if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
@@ -3180,24 +3244,40 @@ class movieBrowserBackdrop(Screen):
             self.filter = filter
             if fileExists(self.database):
                 with open(self.database, 'r', encoding='utf-8') as f:
+                    name = ""
+                    filename = ""
+                    date = ""
+                    runtime = ""
+                    rating = ""
+                    director = ""
+                    actors = ""
+                    genres = ""
+                    year = ""
+                    country = ""
+                    plotfull = ""
+                    poster = str(default_poster)
+                    backdrop = str(default_backdrop)
+                    seen = 'unseen'
+                    content = 'Movie:Top'
+                    media = '\n'
                     for line in f:
                         if self.content in line and filter in line:
-                            name = ""
-                            filename = ""
-                            date = ""
-                            runtime = ""
-                            rating = ""
-                            director = ""
-                            actors = ""
-                            genres = ""
-                            year = ""
-                            country = ""
-                            plotfull = ""
-                            poster = str(default_poster)
-                            backdrop = str(default_backdrop)
-                            seen = 'unseen'
-                            content = 'Movie:Top'
-                            media = '\n'
+                            # name = ""
+                            # filename = ""
+                            # date = ""
+                            # runtime = ""
+                            # rating = ""
+                            # director = ""
+                            # actors = ""
+                            # genres = ""
+                            # year = ""
+                            # country = ""
+                            # plotfull = ""
+                            # poster = str(default_poster)
+                            # backdrop = str(default_backdrop)
+                            # seen = 'unseen'
+                            # content = 'Movie:Top'
+                            # media = '\n'
                             movieline = str(line).split(':::')
                             try:
                                 name = movieline[0]
@@ -3580,7 +3660,7 @@ class movieBrowserBackdrop(Screen):
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
                 self.name = name
-                name = transMOVIE(name)
+                name = convtext(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
@@ -3600,15 +3680,26 @@ class movieBrowserBackdrop(Screen):
             return
 
         output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
-        output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
-        output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
-        rating = findall('"vote_average":(.*?),', output)
-        year = findall('"release_date":"(.*?)"', output)
-        titles = findall('"title":"(.*?)"', output)
-        poster = findall('"poster_path":"(.*?)"', output)
-        id = findall('"id":(.*?),', output)
-        country = findall('"backdrop(.*?)_path"', output)
+        output = sub(r'"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
+        output = sub(r'"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
+        rating = findall(r'"vote_average":(.*?),', output)
+        year = findall(r'"release_date":"(.*?)"', output)
+        titles = findall(r'"title":"(.*?)"', output)
+        poster = findall(r'"poster_path":"(.*?)"', output)
+        id = findall(r'"id":(.*?),', output)
+        country = findall(r'"backdrop(.*?)_path"', output)
         titel = _('TMDb Results')
+
+        # output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
+        # output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
+        # output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
+        # rating = findall('"vote_average":(.*?),', output)
+        # year = findall('"release_date":"(.*?)"', output)
+        # titles = findall('"title":"(.*?)"', output)
+        # poster = findall('"poster_path":"(.*?)"', output)
+        # id = findall('"id":(.*?),', output)
+        # country = findall('"backdrop(.*?)_path"', output)
+        # titel = _('TMDb Results')
         if not titles:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
@@ -3690,17 +3781,29 @@ class movieBrowserBackdrop(Screen):
                 except Exception:
                     output = ''
 
-                output = sub('<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
-                output = sub('<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
-                output = sub('<Rating></Rating>', '<Rating>0.0</Rating>', output)
-                output = sub('&amp;', '&', output)
-                Rating = findall('<Rating>(.*?)</Rating>', output)
-                Year = findall('<FirstAired>([0-9]+)-', output)
-                Added = findall('<added>([0-9]+)-', output)
-                Titles = findall('<SeriesName>(.*?)</SeriesName>', output)
-                Poster = findall('<poster>(.*?)</poster>', output)
-                TVDbid = findall('<id>(.*?)</id>', output)
-                Country = findall('<Status>(.*?)</Status>', output)
+                output = sub(r'<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
+                output = sub(r'<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
+                output = sub(r'<Rating></Rating>', '<Rating>0.0</Rating>', output)
+                output = sub(r'&amp;', '&', output)
+                Rating = findall(r'<Rating>(.*?)</Rating>', output)
+                Year = findall(r'<FirstAired>([0-9]+)-', output)
+                Added = findall(r'<added>([0-9]+)-', output)
+                Titles = findall(r'<SeriesName>(.*?)</SeriesName>', output)
+                Poster = findall(r'<poster>(.*?)</poster>', output)
+                TVDbid = findall(r'<id>(.*?)</id>', output)
+                Country = findall(r'<Status>(.*?)</Status>', output)
+
+                # output = sub('<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
+                # output = sub('<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
+                # output = sub('<Rating></Rating>', '<Rating>0.0</Rating>', output)
+                # output = sub('&amp;', '&', output)
+                # Rating = findall('<Rating>(.*?)</Rating>', output)
+                # Year = findall('<FirstAired>([0-9]+)-', output)
+                # Added = findall('<added>([0-9]+)-', output)
+                # Titles = findall('<SeriesName>(.*?)</SeriesName>', output)
+                # Poster = findall('<poster>(.*?)</poster>', output)
+                # TVDbid = findall('<id>(.*?)</id>', output)
+                # Country = findall('<Status>(.*?)</Status>', output)
                 try:
                     rating.append(Rating[0])
                 except IndexError:
@@ -4077,7 +4180,6 @@ class movieBrowserBackdrop(Screen):
                 self['aspectratio'].hide()
                 return
             self['Runtime'].show()
-            runtime = runtime.encode('utf-8') if isinstance(runtime, unicode) else str(runtime)
             self['runtime'].setText(runtime)
             self['runtime'].show()
         except IndexError:
@@ -4103,7 +4205,6 @@ class movieBrowserBackdrop(Screen):
         try:
             director = self.infolist[count][2]
             self['Director'].show()
-            director = director.encode('utf-8') if isinstance(director, unicode) else str(director)
             self['director'].setText(director)
             self['director'].show()
         except IndexError:
@@ -4113,7 +4214,6 @@ class movieBrowserBackdrop(Screen):
         try:
             actors = self.infolist[count][3]
             self['Actors'].show()
-            actors = actors.encode('utf-8') if isinstance(actors, unicode) else str(actors)
             self['actors'].setText(actors)
             self['actors'].show()
         except IndexError:
@@ -4123,7 +4223,6 @@ class movieBrowserBackdrop(Screen):
         try:
             genres = self.infolist[count][4]
             self['Genres'].show()
-            genres = genres.encode('utf-8') if isinstance(genres, unicode) else str(genres)
             self['genres'].setText(genres)
             self['genres'].show()
         except IndexError:
@@ -4133,7 +4232,6 @@ class movieBrowserBackdrop(Screen):
         try:
             year = self.infolist[count][5]
             self['Year'].show()
-            year = year.encode('utf-8') if isinstance(year, unicode) else str(year)
             self['year'].setText(year)
             self['year'].show()
         except IndexError:
@@ -4143,7 +4241,6 @@ class movieBrowserBackdrop(Screen):
         try:
             country = self.infolist[count][6]
             self['Country'].show()
-            country = country.encode('utf-8') if isinstance(country, unicode) else str(country)
             self['country'].setText(country)
             self['country'].show()
         except IndexError:
@@ -4234,14 +4331,12 @@ class movieBrowserBackdrop(Screen):
         self['plotfullback'].show()
         try:
             plot = self.plotlist[self.index]
-            plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
             self['plotfull'].setText(plot)
         except IndexError:
             pass
 
         self['plotfull'].hide()
         self.makeEPoster()
-        return
 
     def makeEPoster(self):
         if self.content == ':::Movie:Top:::':
@@ -4261,7 +4356,6 @@ class movieBrowserBackdrop(Screen):
                     banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                     if fileExists(banner):
                         if self['banner'].instance:
-                            banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                             self["banner"].instance.setPixmapFromFile(banner)
                             self['banner'].show()
                     else:
@@ -4296,7 +4390,6 @@ class movieBrowserBackdrop(Screen):
                         banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                         if fileExists(banner):
                             if self['banner'].instance:
-                                banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                                 self["banner"].instance.setPixmapFromFile(banner)
                                 self['banner'].show()
                         else:
@@ -4323,7 +4416,6 @@ class movieBrowserBackdrop(Screen):
                     eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                     if fileExists(eposter):
                         if self['eposter'].instance:
-                            eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                             self["eposter"].instance.setPixmapFromFile(eposter)
                             self['eposter'].show()
                     else:
@@ -4344,7 +4436,6 @@ class movieBrowserBackdrop(Screen):
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
                 if self['eposter'].instance:
-                    eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                     self["eposter"].instance.setPixmapFromFile(eposter)
                     self['eposter'].show()
                 self['plotfull'].hide()
@@ -4357,11 +4448,11 @@ class movieBrowserBackdrop(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
+
+                # if self['banner'].instance:
+                self["banner"].instance.setPixmapFromFile(banner)
+                self['banner'].show()
                 self['plotfull'].hide()
-                if self['banner'].instance:
-                    banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
-                    self["banner"].instance.setPixmapFromFile(banner)
-                    self['banner'].show()
         except Exception as e:
             print('error ', str(e))
             self['banner'].hide()
@@ -4381,7 +4472,6 @@ class movieBrowserBackdrop(Screen):
                 poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
                 if fileExists(poster):
                     if self['poster' + str(x)].instance:
-                        poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                         self['poster' + str(x)].instance.setPixmapFromFile(poster)
                         self['poster' + str(x)].show()
                 else:
@@ -4398,7 +4488,6 @@ class movieBrowserBackdrop(Screen):
             open(poster, 'wb').write(output)
             if fileExists(poster):
                 if self['poster' + str(x)].instance:
-                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                     self['poster' + str(x)].instance.setPixmapFromFile(poster)
                     self['poster' + str(x)].show()
         except Exception as e:
@@ -4419,10 +4508,8 @@ class movieBrowserBackdrop(Screen):
                         self['backdrop'].hide()
                         os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
                     elif fileExists(backdrop):
-                        if self['backdrop'].instance:
-                            backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                            self["backdrop"].instance.setPixmapFromFile(backdrop)
-                            self['backdrop'].show()
+                        self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        self['backdrop'].show()
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
@@ -4430,10 +4517,8 @@ class movieBrowserBackdrop(Screen):
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
-                    if self['backdrop'].instance:
-                        backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
@@ -4447,34 +4532,27 @@ class movieBrowserBackdrop(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                if self['backdrop'].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
+                self["backdrop"].instance.setPixmapFromFile(backdrop)
+                self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
         return
 
     def showDefaultBackdrop(self):
-        backdrop = default_backdrop  # config.plugins.moviebrowser.cachefolder.value + '/default_backdrop.png'
-        backdrop_m1v = default_backdropm1v  # config.plugins.moviebrowser.cachefolder.value + '/default_backdrop.m1v'
+        backdrop = default_backdrop
+        backdrop_m1v = default_backdropm1v
         if config.plugins.moviebrowser.m1v.value is True:
             if fileExists(backdrop_m1v):
                 self['backdrop'].hide()
                 os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
             elif fileExists(backdrop):
-                if self['backdrop'].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
-
-                os.popen('/usr/bin/showiframe %s') % no_m1v
-        elif fileExists(backdrop):
-            if self['backdrop'].instance:
-                backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
+                os.popen('/usr/bin/showiframe %s') % no_m1v
+        elif fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -4848,7 +4926,7 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if line.startswith(filter) and content in line:
-                        movieline = line.split(':::')
+                        movieline = str(line).split(':::')
                         try:
                             season = movieline[0]
                             season = season + 'FIN'
@@ -5175,7 +5253,6 @@ class movieBrowserBackdrop(Screen):
             for name in files:
                 with open(name, 'r') as infile:
                     outfile.write(infile.read())
-
         if fileExists(self.database + '.movies'):
             os.remove(self.database + '.movies')
         if fileExists(self.database + '.series'):
@@ -5288,7 +5365,7 @@ class movieBrowserPosterwall(Screen):
 
             skincontent += '<screen name="movieBrowserPosterwall" position="0,0" size="1920,1080" flags="wfNoBorder" title="  ">'
             skincontent += ' <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4"/>'
-            skincontent += ' <widget name="backdrop" position="0,0" size="1920,1080" scale="1" alphatest="on" transparent="0" zPosition="-5"/>'
+            skincontent += ' <widget name="backdrop" position="0,0" size="1920,1080" scale="1" alphatest="on" transparent="0" zPosition="-3"/>'
             skincontent += ' <!-- Titolo e Visto -->'
             skincontent += ' <widget name="name" position="503,930" size="915,143" font="Regular; 48" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3"/>'
             skincontent += ' <widget name="seen" position="1425,965" size="60,60" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/browser/seen.png" transparent="1" alphatest="on" scale="1" zPosition="3"/>'
@@ -5346,7 +5423,7 @@ class movieBrowserPosterwall(Screen):
             self.posterALL = 27
             self.posterREST = 0
             skincontent += ' <screen name="movieBrowserPosterwall" position="center,center" size="1280,720" flags="wfNoBorder" title="  ">'
-            skincontent += ' <widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-5"/>'
+            skincontent += ' <widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-3"/>'
             skincontent += ' <widget name="infoback" position="5,620" size="1270,95" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="2"/>'
             skincontent += ' <widget name="plotfullback" position="730,25" size="525,430" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>'
             skincontent += ' <widget name="episodes" position="742,151" size="500,270" scrollbarMode="showOnDemand" transparent="1" zPosition="30"/>'
@@ -5594,20 +5671,14 @@ class movieBrowserPosterwall(Screen):
                 os.remove(self.database)
 
         if fileExists(infosmallBackPNG):
-            if self["infoback"].instance:
-                infosmallBac = infosmallBackPNG.encode('utf-8') if isinstance(infosmallBackPNG, unicode) else infosmallBackPNG
-                self["infoback"].instance.setPixmapFromFile(infosmallBac)
-                self['infoback'].show()
+            self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
+            self['infoback'].show()
         if fileExists(infoBackPNG):
-            if self["2infoback"].instance:
-                infoBac = infoBackPNG.encode('utf-8') if isinstance(infoBackPNG, unicode) else infoBackPNG
-                self["2infoback"].instance.setPixmapFromFile(infoBac)
-                self['2infoback'].hide()
+            self["2infoback"].instance.setPixmapFromFile(infoBackPNG)
+            self['2infoback'].hide()
         if fileExists(infoBackPNG):
-            if self["plotfullback"].instance:
-                infoBackP = infoBackPNG.encode('utf-8') if isinstance(infoBackPNG, unicode) else infoBackPNG
-                self["plotfullback"].instance.setPixmapFromFile(infoBackP)
-                self['plotfullback'].hide()
+            self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
+            self['plotfullback'].hide()
 
         if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
@@ -5692,24 +5763,40 @@ class movieBrowserPosterwall(Screen):
             self.filter = filter
             if fileExists(self.database):
                 with open(self.database, 'r', encoding='utf-8') as f:
+                    name = ""
+                    filename = ""
+                    date = ""
+                    runtime = ""
+                    rating = ""
+                    director = ""
+                    actors = ""
+                    genres = ""
+                    year = ""
+                    country = ""
+                    plotfull = ""
+                    poster = str(default_poster)
+                    backdrop = str(default_backdrop)
+                    seen = 'unseen'
+                    content = 'Movie:Top'
+                    media = '\n'
                     for line in f:
                         if self.content in line and filter in line:
-                            name = ""
-                            filename = ""
-                            date = ""
-                            runtime = ""
-                            rating = ""
-                            director = ""
-                            actors = ""
-                            genres = ""
-                            year = ""
-                            country = ""
-                            plotfull = ""
-                            poster = str(default_poster)
-                            backdrop = str(default_backdrop)
-                            seen = 'unseen'
-                            content = 'Movie:Top'
-                            media = '\n'
+                            # name = ""
+                            # filename = ""
+                            # date = ""
+                            # runtime = ""
+                            # rating = ""
+                            # director = ""
+                            # actors = ""
+                            # genres = ""
+                            # year = ""
+                            # country = ""
+                            # plotfull = ""
+                            # poster = str(default_poster)
+                            # backdrop = str(default_backdrop)
+                            # seen = 'unseen'
+                            # content = 'Movie:Top'
+                            # media = '\n'
                             movieline = str(line).split(':::')
                             try:
                                 name = movieline[0]
@@ -6130,7 +6217,7 @@ class movieBrowserPosterwall(Screen):
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
                 self.name = name
-                name = transMOVIE(name)
+                name = convtext(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
@@ -6660,7 +6747,6 @@ class movieBrowserPosterwall(Screen):
                 self['ratingsback_up'].hide()
                 return
             runtime = '(' + runtime + ')'
-            runtime = runtime.encode('utf-8') if isinstance(runtime, unicode) else str(runtime)
             self['runtime'].setText(runtime)
             self['runtime'].show()
         except IndexError:
@@ -6668,7 +6754,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             year = self.infolist[count][5]
-            year = year.encode('utf-8') if isinstance(year, unicode) else str(year)
             self['year'].setText(year)
             self['year'].show()
         except IndexError:
@@ -6676,7 +6761,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             country = self.infolist[count][6]
-            country = country.encode('utf-8') if isinstance(country, unicode) else str(country)
             self['country'].setText(country)
             self['country'].show()
         except IndexError:
@@ -6859,7 +6943,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             runtime = self.infolist[count][0]
-            runtime = runtime.encode('utf-8') if isinstance(runtime, unicode) else str(runtime)
             self['2Runtime'].show()
             self['2runtime'].setText(runtime)
             self['2runtime'].show()
@@ -6874,7 +6957,7 @@ class movieBrowserPosterwall(Screen):
             except ValueError:
                 ratings = '0.0'
                 rating = int(10 * round(float(ratings), 1))
-            rating = rating.encode('utf-8') if isinstance(rating, unicode) else str(rating)
+
             self['2Rating'].show()
             self['2ratings'].setValue(rating)
             self['2ratings'].show()
@@ -6885,7 +6968,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             director = self.infolist[count][2]
-            director = director.encode('utf-8') if isinstance(director, unicode) else str(director)
             self['2Director'].show()
             self['2director'].setText(director)
             self['2director'].show()
@@ -6895,7 +6977,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             actors = self.infolist[count][3]
-            actors = actors.encode('utf-8') if isinstance(actors, unicode) else str(actors)
             self['2Actors'].show()
             self['2actors'].setText(actors)
             self['2actors'].show()
@@ -6905,7 +6986,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             genres = self.infolist[count][4]
-            genres = genres.encode('utf-8') if isinstance(genres, unicode) else str(genres)
             self['2Genres'].show()
             self['2genres'].setText(genres)
             self['2genres'].show()
@@ -6915,7 +6995,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             year = self.infolist[count][5]
-            year = year.encode('utf-8') if isinstance(year, unicode) else str(year)
             self['2Year'].show()
             self['2year'].setText(year)
             self['2year'].show()
@@ -6925,7 +7004,6 @@ class movieBrowserPosterwall(Screen):
 
         try:
             country = self.infolist[count][6]
-            country = country.encode('utf-8') if isinstance(country, unicode) else str(country)
             self['2Country'].show()
             self['2country'].setText(country)
             self['2country'].show()
@@ -6937,8 +7015,6 @@ class movieBrowserPosterwall(Screen):
         self['plotfullback'].show()
         try:
             plot = self.plotlist[self.index]
-            plot = plot.encode('utf-8') if isinstance(plot, unicode) else str(plot)
-            plot = plot.encode('utf-8') if isinstance(plot, unicode) else plot
             self['plotfull'].setText(plot)
         except IndexError:
             pass
@@ -6965,7 +7041,6 @@ class movieBrowserPosterwall(Screen):
                     banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                     if fileExists(banner):
                         if self['banner'].instance:
-                            banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                             self["banner"].instance.setPixmapFromFile(banner)
                             self['banner'].show()
                     else:
@@ -7000,7 +7075,6 @@ class movieBrowserPosterwall(Screen):
                         banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                         if fileExists(banner):
                             if self['banner'].instance:
-                                banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                                 self["banner"].instance.setPixmapFromFile(banner)
                                 self['banner'].show()
                         else:
@@ -7027,7 +7101,6 @@ class movieBrowserPosterwall(Screen):
                     eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                     if fileExists(eposter):
                         if self['eposter'].instance:
-                            eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                             self["eposter"].instance.setPixmapFromFile(eposter)
                             self['eposter'].show()
                     else:
@@ -7050,7 +7123,6 @@ class movieBrowserPosterwall(Screen):
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
                 if self['eposter'].instance:
-                    eposter = eposter.encode('utf-8') if isinstance(eposter, unicode) else eposter
                     self["eposter"].instance.setPixmapFromFile(eposter)
                     self['eposter'].show()
                 self['plotfull'].hide()
@@ -7064,7 +7136,6 @@ class movieBrowserPosterwall(Screen):
             open(banner, 'wb').write(output)
             if fileExists(banner):
                 if self['banner'].instance:
-                    banner = banner.encode('utf-8') if isinstance(banner, unicode) else banner
                     self["banner"].instance.setPixmapFromFile(banner)
                     self['banner'].show()
                 self['plotfull'].hide()
@@ -7083,7 +7154,6 @@ class movieBrowserPosterwall(Screen):
                 poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
                 if fileExists(poster):
                     if self['poster' + str(x)].instance:
-                        poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                         self['poster' + str(x)].instance.setPixmapFromFile(poster)
                         self['poster' + str(x)].show()
                 else:
@@ -7101,7 +7171,6 @@ class movieBrowserPosterwall(Screen):
             open(poster, 'wb').write(output)
             if fileExists(poster):
                 if self['poster' + str(x)].instance:
-                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                     self['poster' + str(x)].instance.setPixmapFromFile(poster)
                     self['poster' + str(x)].show()
         except Exception as e:
@@ -7121,7 +7190,6 @@ class movieBrowserPosterwall(Screen):
             poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
             if fileExists(poster):
                 if self['frame'].instance:
-                    poster = poster.encode('utf-8') if isinstance(poster, unicode) else poster
                     self["frame"].instance.setPixmapFromFile(poster)
                     self['frame'].show()
         except IndexError:
@@ -7142,10 +7210,9 @@ class movieBrowserPosterwall(Screen):
                         self['backdrop'].hide()
                         os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
                     elif fileExists(backdrop):
-                        if self['backdrop'].instance:
-                            backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                            self["backdrop"].instance.setPixmapFromFile(backdrop)
-                            self['backdrop'].show()
+                        # if self['backdrop'].instance:
+                        self["backdrop"].instance.setPixmapFromFile(backdrop)
+                        self['backdrop'].show()
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                     else:
                         if pythonVer == 3:
@@ -7153,10 +7220,8 @@ class movieBrowserPosterwall(Screen):
                         callInThread(threadGetPage, url=backdropurl, file=backdrop, key=index, success=self.getBackdrop, fail=self.downloadError)
                         os.popen('/usr/bin/showiframe %s') % no_m1v
                 elif fileExists(backdrop):
-                    if self['backdrop'].instance:
-                        backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                        self["backdrop"].instance.setPixmapFromFile(backdrop)
-                        self['backdrop'].show()
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
                 else:
                     if pythonVer == 3:
                         backdropurl = backdropurl.encode()
@@ -7170,10 +7235,8 @@ class movieBrowserPosterwall(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                if self["backdrop"].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
+                self["backdrop"].instance.setPixmapFromFile(backdrop)
+                self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
@@ -7187,16 +7250,12 @@ class movieBrowserPosterwall(Screen):
                 self['backdrop'].hide()
                 os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
             elif fileExists(backdrop):
-                if self['backdrop'].instance:
-                    backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
-                    self["backdrop"].instance.setPixmapFromFile(backdrop)
-                    self['backdrop'].show()
-                os.popen('/usr/bin/showiframe %s') % no_m1v
-        elif fileExists(backdrop):
-            if self['backdrop'].instance:
-                backdrop = backdrop.encode('utf-8') if isinstance(backdrop, unicode) else backdrop
                 self["backdrop"].instance.setPixmapFromFile(backdrop)
                 self['backdrop'].show()
+                os.popen('/usr/bin/showiframe %s') % no_m1v
+        elif fileExists(backdrop):
+            self["backdrop"].instance.setPixmapFromFile(backdrop)
+            self['backdrop'].show()
         return
 
     def down(self):
@@ -7727,8 +7786,8 @@ class movieBrowserPosterwall(Screen):
                 filter = self.content
             directors = ''
             if fileExists(self.database):
-                f = open(self.database, 'r')
                 max = 25
+                f = open(self.database, 'r')
                 for line in f:
                     if filter in line:
                         movieline = line.split(':::')
@@ -8067,29 +8126,29 @@ class movieBrowserPosterwall(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: line.split(':::')[4])
+                lines.sort(key=lambda line: str(line).split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: line.split(':::')[8])
+                lines.sort(key=lambda line: str(line).split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: line.split(':::')[2])
+                lines.sort(key=lambda line: str(line).split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: line.split(':::')[1])
+                lines.sort(key=lambda line: str(line).split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -8279,7 +8338,7 @@ class UpdateDatabase():
                 self.fileCount = count
 
         for line in data.split('\n'):
-            movieline = line.split(':::')
+            movieline = str(line).split(':::')
             try:
                 moviefolder = sub('\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
             except IndexError:
@@ -8313,7 +8372,7 @@ class UpdateDatabase():
                 url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
                 self.getTVDbData(url, '0')
             else:
-                movie = transMOVIE(self.name)
+                movie = convtext(self.name)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                 self.getTMDbData(url, '0', False)
         return
@@ -8863,7 +8922,7 @@ class UpdateDatabase():
                     except RuntimeError:
                         return (1, self.orphaned, self.moviecount, self.seriescount)
                 else:
-                    movie = transMOVIE(self.name)
+                    movie = convtext(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                     url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                     try:
@@ -8930,29 +8989,29 @@ class UpdateDatabase():
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: line.split(':::')[4])
+                lines.sort(key=lambda line: str(line).split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: line.split(':::')[8])
+                lines.sort(key=lambda line: str(line).split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: line.split(':::')[2])
+                lines.sort(key=lambda line: str(line).split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: line.split(':::')[1])
+                lines.sort(key=lambda line: str(line).split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -9441,7 +9500,7 @@ class movieDatabase(Screen):
                 poster = str(default_poster)
                 backdrop = str(default_backdrop)
                 media = '\n'
-                movieline = line.split(':::')
+                movieline = str(line).split(':::')
                 try:
                     name = movieline[0]
                     name = sub('[Ss][0]+[Ee]', 'Special ', name)
@@ -10659,7 +10718,6 @@ class moviesList(Screen):
     def showPoster1(self, poster1):
         if fileExists(poster1):
             if self['poster1'].instance:
-                poster1 = poster1.encode('utf-8') if isinstance(poster1, unicode) else poster1
                 self['poster1'].instance.setPixmapFromFile(poster1)
                 self['poster1'].show()
         return
@@ -10672,7 +10730,6 @@ class moviesList(Screen):
     def showPoster2(self, poster2):
         if fileExists(poster2):
             if self['poster2'].instance:
-                poster2 = poster2.encode('utf-8') if isinstance(poster2, unicode) else poster2
                 self['poster2'].instance.setPixmapFromFile(poster2)
                 self['poster2'].show()
         return
@@ -10685,7 +10742,6 @@ class moviesList(Screen):
     def showPoster3(self, poster3):
         if fileExists(poster3):
             if self['poster3'].instance:
-                poster3 = poster3.encode('utf-8') if isinstance(poster3, unicode) else poster3
                 self['poster3'].instance.setPixmapFromFile(poster3)
                 self['poster3'].show()
         return
@@ -10698,7 +10754,6 @@ class moviesList(Screen):
     def showPoster4(self, poster4):
         if fileExists(poster4):
             if self['poster4'].instance:
-                poster4 = poster4.encode('utf-8') if isinstance(poster4, unicode) else poster4
                 self['poster4'].instance.setPixmapFromFile(poster4)
                 self['poster4'].show()
         return
@@ -10711,7 +10766,6 @@ class moviesList(Screen):
     def showBanner1(self, banner1):
         if fileExists(banner1):
             if self['banner1'].instance:
-                banner1 = banner1.encode('utf-8') if isinstance(banner1, unicode) else banner1
                 self["banner1"].instance.setPixmapFromFile(banner1)
                 self['banner1'].show()
         return
@@ -10724,7 +10778,6 @@ class moviesList(Screen):
     def showBanner2(self, banner2):
         if fileExists(banner2):
             if self['banner2'].instance:
-                banner2 = banner2.encode('utf-8') if isinstance(banner2, unicode) else banner2
                 self["banner2"].instance.setPixmapFromFile(banner2)
                 self['banner2'].show()
         return
@@ -10737,7 +10790,6 @@ class moviesList(Screen):
     def showBanner3(self, banner3):
         if fileExists(banner3):
             if self['banner3'].instance:
-                banner3 = banner3.encode('utf-8') if isinstance(banner3, unicode) else banner3
                 self["banner3"].instance.setPixmapFromFile(banner3)
                 self['banner3'].show()
         return
@@ -10750,18 +10802,14 @@ class moviesList(Screen):
     def showBanner4(self, banner4):
         if fileExists(banner4):
             if self['banner4'].instance:
-                banner4 = banner4.encode('utf-8') if isinstance(banner4, unicode) else banner4
                 self["banner4"].instance.setPixmapFromFile(banner4)
                 self['banner4'].show()
         return
 
     def download(self, link, name):
-        try:
-            if pythonVer == 3:
-                link = link.encode()
-            callInThread(threadGetPage, url=link, file=None, key=None, success=name, fail=self.downloadError)
-        except Exception as e:
-            print(str(e))
+        if pythonVer == 3:
+            link = link.encode()
+        callInThread(threadGetPage, url=link, file=None, key=None, success=name, fail=self.downloadError)
 
     def downloadError(self, output):
         pass
@@ -11017,214 +11065,133 @@ class getABC(Screen):
 
     def ABC(self):
         self.Timer.start(2000, True)
-        if self.field.startswith('A') or self.field.startswith('B') or self.field.startswith('C'):
-            self.field = 'DEF'
-        elif self.field.startswith('D') or self.field.startswith('E') or self.field.startswith('F'):
-            self.field = 'GHI'
-        elif self.field.startswith('G') or self.field.startswith('H') or self.field.startswith('I'):
-            self.field = 'JKL'
-        elif self.field.startswith('J') or self.field.startswith('K') or self.field.startswith('L'):
-            self.field = 'MNO'
-        elif self.field.startswith('M') or self.field.startswith('N') or self.field.startswith('O'):
-            self.field = 'PQRS'
-        elif self.field.startswith('P') or self.field.startswith('Q') or self.field.startswith('R') or self.field.startswith('S'):
-            self.field = 'TUV'
-        elif self.field.startswith('T') or self.field.startswith('U') or self.field.startswith('V'):
-            self.field = 'WXYZ'
-        elif self.field.startswith('W') or self.field.startswith('X') or self.field.startswith('Y') or self.field.startswith('Z'):
-            self.field = 'ABC'
+        transitions = {
+            'A': 'DEF', 'B': 'DEF', 'C': 'DEF',
+            'D': 'GHI', 'E': 'GHI', 'F': 'GHI',
+            'G': 'JKL', 'H': 'JKL', 'I': 'JKL',
+            'J': 'MNO', 'K': 'MNO', 'L': 'MNO',
+            'M': 'PQRS', 'N': 'PQRS', 'O': 'PQRS',
+            'P': 'TUV', 'Q': 'TUV', 'R': 'TUV', 'S': 'TUV',
+            'T': 'WXYZ', 'U': 'WXYZ', 'V': 'WXYZ',
+            'W': 'ABC', 'X': 'ABC', 'Y': 'ABC', 'Z': 'ABC'
+        }
+        self.field = transitions.get(self.field, 'DEF')
         self['ABC'].setText(self.field)
 
     def WXYZ(self):
         self.Timer.start(2000, True)
-        if self.field.startswith('W') or self.field.startswith('X') or self.field.startswith('Y') or self.field.startswith('Z'):
-            self.field = 'TUV'
-        elif self.field.startswith('T') or self.field.startswith('U') or self.field.startswith('V'):
-            self.field = 'PQRS'
-        elif self.field.startswith('P') or self.field.startswith('Q') or self.field.startswith('R') or self.field.startswith('S'):
-            self.field = 'MNO'
-        elif self.field.startswith('M') or self.field.startswith('N') or self.field.startswith('O'):
-            self.field = 'JKL'
-        elif self.field.startswith('J') or self.field.startswith('K') or self.field.startswith('L'):
-            self.field = 'GHI'
-        elif self.field.startswith('G') or self.field.startswith('H') or self.field.startswith('I'):
-            self.field = 'DEF'
-        elif self.field.startswith('D') or self.field.startswith('E') or self.field.startswith('F'):
-            self.field = 'ABC'
-        elif self.field.startswith('A') or self.field.startswith('B') or self.field.startswith('C'):
-            self.field = 'WXYZ'
+        transitions = {
+            'W': 'TUV', 'X': 'TUV', 'Y': 'TUV', 'Z': 'TUV',
+            'T': 'PQRS', 'U': 'PQRS', 'V': 'PQRS',
+            'P': 'MNO', 'Q': 'MNO', 'R': 'MNO', 'S': 'MNO',
+            'M': 'JKL', 'N': 'JKL', 'O': 'JKL',
+            'J': 'GHI', 'K': 'GHI', 'L': 'GHI',
+            'G': 'DEF', 'H': 'DEF', 'I': 'DEF',
+            'D': 'ABC', 'E': 'ABC', 'F': 'ABC',
+            'A': 'WXYZ', 'B': 'WXYZ', 'C': 'WXYZ'
+        }
+        self.field = transitions.get(self.field, 'TUV')
         self['ABC'].setText(self.field)
 
     def _ABC(self):
         self.Timer.start(2000, True)
-        if self.field != 'A' and self.field != 'B' and self.field != 'C':
-            self.field = 'A'
-        elif self.field == 'A':
-            self.field = 'B'
-        elif self.field == 'B':
-            self.field = 'C'
-        elif self.field == 'C':
-            self.field = 'A'
+        transitions = {
+            'A': 'B', 'B': 'C', 'C': 'A'
+        }
+        self.field = transitions.get(self.field, 'A')
         self['ABC'].setText(self.field)
 
     def _DEF(self):
         self.Timer.start(2000, True)
-        if self.field != 'D' and self.field != 'E' and self.field != 'F':
-            self.field = 'D'
-        elif self.field == 'D':
-            self.field = 'E'
-        elif self.field == 'E':
-            self.field = 'F'
-        elif self.field == 'F':
-            self.field = 'D'
+        transitions = {
+            'D': 'E', 'E': 'F', 'F': 'D'
+        }
+        self.field = transitions.get(self.field, 'D')
         self['ABC'].setText(self.field)
 
     def _GHI(self):
         self.Timer.start(2000, True)
-        if self.field != 'G' and self.field != 'H' and self.field != 'I':
-            self.field = 'G'
-        elif self.field == 'G':
-            self.field = 'H'
-        elif self.field == 'H':
-            self.field = 'I'
-        elif self.field == 'I':
-            self.field = 'G'
+        transitions = {
+            'G': 'H', 'H': 'I', 'I': 'G'
+        }
+        self.field = transitions.get(self.field, 'G')
         self['ABC'].setText(self.field)
 
     def _JKL(self):
         self.Timer.start(2000, True)
-        if self.field != 'J' and self.field != 'K' and self.field != 'L':
-            self.field = 'J'
-        elif self.field == 'J':
-            self.field = 'K'
-        elif self.field == 'K':
-            self.field = 'L'
-        elif self.field == 'L':
-            self.field = 'J'
+        transitions = {
+            'J': 'K', 'K': 'L', 'L': 'J'
+        }
+        self.field = transitions.get(self.field, 'J')
         self['ABC'].setText(self.field)
 
     def _MNO(self):
         self.Timer.start(2000, True)
-        if self.field != 'M' and self.field != 'N' and self.field != 'O':
+        transitions = {
+            'M': 'N',
+            'N': 'O',
+            'O': 'M'
+        }
+        if self.field not in transitions:
             self.field = 'M'
-        elif self.field == 'M':
-            self.field = 'N'
-        elif self.field == 'N':
-            self.field = 'O'
-        elif self.field == 'O':
-            self.field = 'M'
+        else:
+            self.field = transitions[self.field]
         self['ABC'].setText(self.field)
 
     def _PQRS(self):
         self.Timer.start(2000, True)
-        if self.field != 'P' and self.field != 'Q' and self.field != 'R' and self.field != 'S':
+        transitions = {
+            'P': 'Q',
+            'Q': 'R',
+            'R': 'S',
+            'S': 'P'
+        }
+        if self.field not in transitions:
             self.field = 'P'
-        elif self.field == 'P':
-            self.field = 'Q'
-        elif self.field == 'Q':
-            self.field = 'R'
-        elif self.field == 'R':
-            self.field = 'S'
-        elif self.field == 'S':
-            self.field = 'P'
+        else:
+            self.field = transitions[self.field]
         self['ABC'].setText(self.field)
 
     def _TUV(self):
         self.Timer.start(2000, True)
-        if self.field != 'T' and self.field != 'U' and self.field != 'V':
+        transitions = {
+            'T': 'U',
+            'U': 'V',
+            'V': 'T'
+        }
+        if self.field not in transitions:
             self.field = 'T'
-        elif self.field == 'T':
-            self.field = 'U'
-        elif self.field == 'U':
-            self.field = 'V'
-        elif self.field == 'V':
-            self.field = 'T'
+        else:
+            self.field = transitions[self.field]
         self['ABC'].setText(self.field)
 
     def _WXYZ(self):
         self.Timer.start(2000, True)
-        if self.field != 'W' and self.field != 'X' and self.field != 'Y' and self.field != 'Z':
+        transitions = {
+            'W': 'X',
+            'X': 'Y',
+            'Y': 'Z',
+            'Z': 'W'
+        }
+        if self.field not in transitions:
             self.field = 'W'
-        elif self.field == 'W':
-            self.field = 'X'
-        elif self.field == 'X':
-            self.field = 'Y'
-        elif self.field == 'Y':
-            self.field = 'Z'
-        elif self.field == 'Z':
-            self.field = 'W'
+        else:
+            self.field = transitions[self.field]
         self['ABC'].setText(self.field)
 
     def OK(self):
         self.Timer.start(2000, True)
-        if self.field == 'ABC':
-            self.field = 'B'
-        elif self.field == 'B':
-            self.field = 'C'
-        elif self.field == 'C':
-            self.field = 'A'
-        elif self.field == 'A':
-            self.field = 'B'
-        elif self.field == 'DEF':
-            self.field = 'E'
-        elif self.field == 'E':
-            self.field = 'F'
-        elif self.field == 'F':
-            self.field = 'D'
-        elif self.field == 'D':
-            self.field = 'E'
-        elif self.field == 'GHI':
-            self.field = 'H'
-        elif self.field == 'H':
-            self.field = 'I'
-        elif self.field == 'I':
-            self.field = 'G'
-        elif self.field == 'G':
-            self.field = 'H'
-        elif self.field == 'JKL':
-            self.field = 'K'
-        elif self.field == 'K':
-            self.field = 'L'
-        elif self.field == 'L':
-            self.field = 'J'
-        elif self.field == 'J':
-            self.field = 'K'
-        elif self.field == 'MNO':
-            self.field = 'N'
-        elif self.field == 'N':
-            self.field = 'O'
-        elif self.field == 'O':
-            self.field = 'M'
-        elif self.field == 'M':
-            self.field = 'N'
-        elif self.field == 'PQRS':
-            self.field = 'Q'
-        elif self.field == 'Q':
-            self.field = 'R'
-        elif self.field == 'R':
-            self.field = 'S'
-        elif self.field == 'S':
-            self.field = 'P'
-        elif self.field == 'P':
-            self.field = 'Q'
-        elif self.field == 'TUV':
-            self.field = 'U'
-        elif self.field == 'U':
-            self.field = 'V'
-        elif self.field == 'V':
-            self.field = 'T'
-        elif self.field == 'T':
-            self.field = 'U'
-        elif self.field == 'WXYZ':
-            self.field = 'X'
-        elif self.field == 'X':
-            self.field = 'Y'
-        elif self.field == 'Y':
-            self.field = 'Z'
-        elif self.field == 'Z':
-            self.field = 'W'
-        elif self.field == 'W':
-            self.field = 'X'
+        transitions = {
+            'ABC': 'B', 'B': 'C', 'C': 'A', 'A': 'B',
+            'DEF': 'E', 'E': 'F', 'F': 'D', 'D': 'E',
+            'GHI': 'H', 'H': 'I', 'I': 'G', 'G': 'H',
+            'JKL': 'K', 'K': 'L', 'L': 'J', 'J': 'K',
+            'MNO': 'N', 'N': 'O', 'O': 'M', 'M': 'N',
+            'PQRS': 'Q', 'Q': 'R', 'R': 'S', 'S': 'P', 'P': 'Q',
+            'TUV': 'U', 'U': 'V', 'V': 'T', 'T': 'U',
+            'WXYZ': 'X', 'X': 'Y', 'Y': 'Z', 'Z': 'W', 'W': 'X'
+        }
+        self.field = transitions.get(self.field, self.field)
         self['ABC'].setText(self.field)
 
     def returnABC(self):
@@ -11576,14 +11543,12 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
             if fileExists(png):
                 if self['plugin'].instance:
-                    png = png.encode('utf-8') if isinstance(png, unicode) else png
                     self["plugin"].instance.setPixmapFromFile(png)
                     self['plugin'].show()
         elif current == getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle):
             png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
             if fileExists(png2):
                 if self['plugin'].instance:
-                    png2 = png2.encode('utf-8') if isinstance(png2, unicode) else png2
                     self["plugin"].instance.setPixmapFromFile(png2)
                     self['plugin'].show()
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):

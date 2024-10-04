@@ -1,5 +1,5 @@
 <screen name="movieBrowserPosterwall" position="center,center" size="1280,720" flags="wfNoBorder" title="  ">
-	<widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-5"/>
+	<widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-3"/>
 	<widget name="infoback" position="5,620" size="1270,95" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="2"/>
 	<widget name="plotfullback" position="730,25" size="525,430" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>
 	<widget name="episodes" position="742,151" size="500,270" scrollbarMode="showOnDemand" transparent="1" zPosition="30"/>

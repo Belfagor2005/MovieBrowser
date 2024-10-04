@@ -1,9 +1,9 @@
 <screen name="movieControlList" position="320,180" size="1280,720" title=" ">
 	<!-- <ePixmap position="15,0" size="1205,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logoList.png" zPosition="1"/> -->
-<!-- 	<ePixmap position="20,5" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="2"/>
+	<!-- 	<ePixmap position="20,5" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="2"/>
 	<ePixmap position="20,27" size="18,18" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="2"/> -->
 	<ePixmap position="316,27" size="18,18" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="2"/>
-<!-- 	<widget name="label" position="44,5" size="120,20" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
+	<!-- 	<widget name="label" position="44,5" size="120,20" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/>
 	<widget name="label2" position="44,27" size="120,20" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="left" transparent="1" zPosition="2"/> -->
 	<widget name="label3" position="192,27" size="120,20" font="Regular;16" foregroundColor="#000000" backgroundColor="#FFFFFF" halign="right" transparent="1" zPosition="2"/>
 	<widget name="list" position="17,80" size="1205,580" scrollbarMode="showOnDemand" zPosition="1"/>

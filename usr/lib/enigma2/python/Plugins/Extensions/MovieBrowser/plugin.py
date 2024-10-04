@@ -1245,7 +1245,7 @@ class movieBrowserMetrix(Screen):
                 self.name = name
                 name = convtext(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true%s&query=%s' % (str(tmdb_api_key), self.language, name)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -9712,7 +9712,6 @@ class moviesList(Screen):
         self.movie = movie
         self.top = top
         self.choice = 'movie'
-        self.language = config.plugins.moviebrowser.language.value
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
         self.movielist = []
         self.imagelist = []

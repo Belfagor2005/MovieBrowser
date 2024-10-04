@@ -58,9 +58,9 @@ from enigma import (
     loadPNG,
 )
 from requests import get
-from requests.exceptions import HTTPError
 from re import search, sub, findall
 from twisted.internet.reactor import callInThread
+# from twisted.web.client import getPage, downloadPage
 from six import text_type
 '''
 # try:
@@ -102,13 +102,13 @@ try:
     # from urllib.request import urlretrieve
     from urllib.request import urlopen, Request
     from urllib.parse import quote_plus, unquote  # , quote
-    # from urllib.request import HTTPError
+    from urllib.request import HTTPError
 except:
     from urllib2 import Request
     # from urllib import urlretrieve
     from urllib2 import urlopen
     from urllib import quote_plus, unquote  # , quote
-    # from urllib2 import HTTPError
+    from urllib2 import HTTPError
 
 
 def quoteEventName(eventName):
@@ -284,9 +284,9 @@ except:
     if os.path.exists("/usr/bin/apt-get"):
         config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/movie/')
 config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbcache, 'Default'), (dbhddcache, '/media/hdd'), (dbusbcache, '/media/usb')])
-config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
-config.plugins.moviebrowser.backup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
-config.plugins.moviebrowser.restore = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
+config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)
+config.plugins.moviebrowser.backup = ConfigYesNo(default=False)
+config.plugins.moviebrowser.restore = ConfigYesNo(default=False)
 config.plugins.moviebrowser.transparency = ConfigSlider(default=255, limits=(100, 255))
 
 config.plugins.moviebrowser.metrixcolor = ConfigSelection(default='0x00000000', choices=[
@@ -459,7 +459,7 @@ class movieBrowserMetrix(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreen)
+        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
         self.index = index
         self.hideflag = True
         self.ready = False
@@ -719,7 +719,6 @@ class movieBrowserMetrix(Screen):
                     seen = 'unseen'
                     content = 'Movie:Top'
                     media = '\n'
-
                     for line in f:
                         if self.content in line and filter in line:
                             # name = ""
@@ -1228,7 +1227,6 @@ class movieBrowserMetrix(Screen):
                     newline = sub('seen:::.*?FIN', 'seen:::' + media + ':::', newline)
                     newline = sub('FIN', '', newline)
                     database = database.replace(line, newline)
-
             f = open(self.database + '.new', 'w')
             f.write(database)
             f.close()
@@ -2011,9 +2009,8 @@ class movieBrowserMetrix(Screen):
                 eposter = sub('.*?[/]', '', eposterurl)
                 eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                 if fileExists(eposter):
-                    if self['eposter'].instance:
-                        self["eposter"].instance.setPixmapFromFile(eposter)
-                        self['eposter'].show()
+                    self["eposter"].instance.setPixmapFromFile(eposter)
+                    self['eposter'].show()
                 else:
                     if pythonVer == 3:
                         eposterurl = eposterurl.encode()
@@ -2027,10 +2024,9 @@ class movieBrowserMetrix(Screen):
         try:
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
-                if self['eposter'].instance:
-                    self["eposter"].instance.setPixmapFromFile(eposter)
-                    self['eposter'].show()
-                    self['plotfull'].hide()
+                self["eposter"].instance.setPixmapFromFile(eposter)
+                self['eposter'].show()
+                self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
             self['eposter'].hide()
@@ -2043,10 +2039,9 @@ class movieBrowserMetrix(Screen):
             poster = sub('.*?[/]', '', posterurl)
             poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
             if fileExists(poster):
-                if self['poster'].instance:
-                    self["poster"].instance.setPixmapFromFile(poster)
-                    self['posterback'].show()
-                    self['poster'].show()
+                self["poster"].instance.setPixmapFromFile(poster)
+                self['posterback'].show()
+                self['poster'].show()
             else:
                 if pythonVer == 3:
                     posterurl = posterurl.encode()
@@ -2061,9 +2056,8 @@ class movieBrowserMetrix(Screen):
         try:
             open(poster, 'wb').write(output)
             self['posterback'].show()
-            if self['poster'].instance:
-                self["poster"].instance.setPixmapFromFile(poster)
-                self['poster'].show()
+            self["poster"].instance.setPixmapFromFile(poster)
+            self['poster'].show()
         except Exception as e:
             print('error ', str(e))
             self['posterback'].hide()
@@ -2860,29 +2854,29 @@ class movieBrowserMetrix(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: line.split(':::')[4])
+                lines.sort(key=lambda line: str(line).split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: line.split(':::')[8])
+                lines.sort(key=lambda line: str(line).split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: line.split(':::')[2])
+                lines.sort(key=lambda line: str(line).split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: line.split(':::')[1])
+                lines.sort(key=lambda line: str(line).split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -3006,7 +3000,7 @@ class movieBrowserBackdrop(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreen)
+        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
         self.hideflag = True
         self.ready = False
         self.renew = False
@@ -3107,7 +3101,17 @@ class movieBrowserBackdrop(Screen):
         self['videomode'] = MultiPixmap()
         self['videocodec'] = MultiPixmap()
         self['aspectratio'] = MultiPixmap()
-        self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions', 'ChannelSelectBaseActions', 'HelpActions', 'InfobarActions', 'InfobarTeletextActions', 'MovieSelectionActions', 'MoviePlayerActions', 'InfobarEPGActions', 'NumberActions'], {
+        self['actions'] = ActionMap(['OkCancelActions',
+                                     'DirectionActions',
+                                     'ColorActions',
+                                     'ChannelSelectBaseActions',
+                                     'HelpActions',
+                                     'InfobarActions',
+                                     'InfobarTeletextActions',
+                                     'MovieSelectionActions',
+                                     'MoviePlayerActions',
+                                     'InfobarEPGActions',
+                                     'NumberActions'], {
             'ok': self.ok,
             'cancel': self.exit,
             'right': self.rightDown,
@@ -3123,7 +3127,7 @@ class movieBrowserBackdrop(Screen):
             'blue': self.hideScreen,
             'contextMenu': self.config,
             'showEventInfo': self.togglePlot,
-            'EPGPressed': self.togglePlot,
+            # 'EPGPressed': self.togglePlot,
             'startTeletext': self.editDatabase,
             'showMovies': self.updateDatabase,
             'showRadio': self.deleteMovie,
@@ -3388,6 +3392,7 @@ class movieBrowserBackdrop(Screen):
 
             if fileExists(self.database):
                 self.runTimer = eTimer()
+
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
         OnclearMem()
@@ -3689,17 +3694,6 @@ class movieBrowserBackdrop(Screen):
         id = findall(r'"id":(.*?),', output)
         country = findall(r'"backdrop(.*?)_path"', output)
         titel = _('TMDb Results')
-
-        # output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
-        # output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
-        # output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
-        # rating = findall('"vote_average":(.*?),', output)
-        # year = findall('"release_date":"(.*?)"', output)
-        # titles = findall('"title":"(.*?)"', output)
-        # poster = findall('"poster_path":"(.*?)"', output)
-        # id = findall('"id":(.*?),', output)
-        # country = findall('"backdrop(.*?)_path"', output)
-        # titel = _('TMDb Results')
         if not titles:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
         else:
@@ -3792,18 +3786,6 @@ class movieBrowserBackdrop(Screen):
                 Poster = findall(r'<poster>(.*?)</poster>', output)
                 TVDbid = findall(r'<id>(.*?)</id>', output)
                 Country = findall(r'<Status>(.*?)</Status>', output)
-
-                # output = sub('<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
-                # output = sub('<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
-                # output = sub('<Rating></Rating>', '<Rating>0.0</Rating>', output)
-                # output = sub('&amp;', '&', output)
-                # Rating = findall('<Rating>(.*?)</Rating>', output)
-                # Year = findall('<FirstAired>([0-9]+)-', output)
-                # Added = findall('<added>([0-9]+)-', output)
-                # Titles = findall('<SeriesName>(.*?)</SeriesName>', output)
-                # Poster = findall('<poster>(.*?)</poster>', output)
-                # TVDbid = findall('<id>(.*?)</id>', output)
-                # Country = findall('<Status>(.*?)</Status>', output)
                 try:
                     rating.append(Rating[0])
                 except IndexError:
@@ -4355,9 +4337,8 @@ class movieBrowserBackdrop(Screen):
                     banner = sub('.*?[/]', '', bannerurl)
                     banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                     if fileExists(banner):
-                        if self['banner'].instance:
-                            self["banner"].instance.setPixmapFromFile(banner)
-                            self['banner'].show()
+                        self["banner"].instance.setPixmapFromFile(banner)
+                        self['banner'].show()
                     else:
                         if pythonVer == 3:
                             bannerurl = bannerurl.encode()
@@ -4415,9 +4396,8 @@ class movieBrowserBackdrop(Screen):
                     eposter = sub('.*?[/]', '', eposterurl)
                     eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                     if fileExists(eposter):
-                        if self['eposter'].instance:
-                            self["eposter"].instance.setPixmapFromFile(eposter)
-                            self['eposter'].show()
+                        self["eposter"].instance.setPixmapFromFile(eposter)
+                        self['eposter'].show()
                     else:
                         if pythonVer == 3:
                             eposterurl = eposterurl.encode()
@@ -4435,9 +4415,8 @@ class movieBrowserBackdrop(Screen):
         try:
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
-                if self['eposter'].instance:
-                    self["eposter"].instance.setPixmapFromFile(eposter)
-                    self['eposter'].show()
+                self["eposter"].instance.setPixmapFromFile(eposter)
+                self['eposter'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -4448,8 +4427,6 @@ class movieBrowserBackdrop(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
-
-                # if self['banner'].instance:
                 self["banner"].instance.setPixmapFromFile(banner)
                 self['banner'].show()
                 self['plotfull'].hide()
@@ -4654,20 +4631,20 @@ class movieBrowserBackdrop(Screen):
                 self.session.open(MessageBox, _('Series Folder: No Info possible'), MessageBox.TYPE_ERROR)
                 return
             self.movies = []
-            if fileExists(self.database):
-                f = open(self.database, 'r')
-                for line in f:
-                    if self.content in line and self.filter in line:
-                        movieline = str(line).split(':::')
-                        try:
-                            self.movies.append((movieline[0], movieline[1], movieline[12]))
-                        except IndexError:
-                            pass
+            # if fileExists(self.database):
+            f = open(self.database, 'r')
+            for line in f:
+                if self.content in line and self.filter in line:
+                    movieline = str(line).split(':::')
+                    try:
+                        self.movies.append((movieline[0], movieline[1], movieline[12]))
+                    except IndexError:
+                        pass
 
-                if self.showfolder is True:
-                    self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
-                f.close()
-                self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
+            if self.showfolder is True:
+                self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
+            f.close()
+            self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
     def gotoMovie(self, index, rebuild):
         if index is not None:
@@ -5505,7 +5482,7 @@ class movieBrowserPosterwall(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreen)
+        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
         self.hideflag = True
         self.ready = False
         self.renew = False
@@ -5713,7 +5690,6 @@ class movieBrowserPosterwall(Screen):
             self.openTimer = eTimer()
             self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
-
         return
 
     def openInfo(self):
@@ -5761,135 +5737,135 @@ class movieBrowserPosterwall(Screen):
             self.medialist = []
             self.dddlist = []
             self.filter = filter
-            if fileExists(self.database):
-                with open(self.database, 'r', encoding='utf-8') as f:
-                    name = ""
-                    filename = ""
-                    date = ""
-                    runtime = ""
-                    rating = ""
-                    director = ""
-                    actors = ""
-                    genres = ""
-                    year = ""
-                    country = ""
-                    plotfull = ""
-                    poster = str(default_poster)
-                    backdrop = str(default_backdrop)
-                    seen = 'unseen'
-                    content = 'Movie:Top'
-                    media = '\n'
-                    for line in f:
-                        if self.content in line and filter in line:
-                            # name = ""
-                            # filename = ""
-                            # date = ""
-                            # runtime = ""
-                            # rating = ""
-                            # director = ""
-                            # actors = ""
-                            # genres = ""
-                            # year = ""
-                            # country = ""
-                            # plotfull = ""
-                            # poster = str(default_poster)
-                            # backdrop = str(default_backdrop)
-                            # seen = 'unseen'
-                            # content = 'Movie:Top'
-                            # media = '\n'
-                            movieline = str(line).split(':::')
-                            try:
-                                name = movieline[0]
-                                name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
-                                filename = movieline[1]
-                                date = movieline[2]
-                                runtime = movieline[3]
-                                rating = movieline[4]
-                                director = movieline[5]
-                                actors = movieline[6]
-                                genres = movieline[7]
-                                year = movieline[8]
-                                country = movieline[9]
-                                plotfull = movieline[10]
-                                poster = movieline[11]
-                                backdrop = movieline[12]
-                                content = movieline[13]
-                                seen = movieline[14]
-                                media = movieline[15]
-                            except IndexError:
-                                pass
-                            self.namelist.append(name)
-                            self.movielist.append(filename)
-                            self.dddlist.append('yes' if '3d' in filename.lower() else 'no')
-                            self.datelist.append(date)
-                            res = [runtime, rating, director, actors, genres, year, country]
-                            self.infolist.append(res)
-                            self.plotlist.append(plotfull)
-                            self.posterlist.append(poster)
-                            self.backdroplist.append(backdrop)
-                            self.contentlist.append(content)
-                            self.seenlist.append(seen)
-                            self.medialist.append(media)
-                if self.showfolder is True:
-                    self.namelist.append(_('<List of Movie Folder>'))
-                    self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
-                    self.datelist.append('')
-                    res = []
-                    res.append('')
-                    res.append('0.0')
-                    res.append('')
-                    res.append('')
-                    res.append('')
-                    res.append('')
-                    res.append('')
-                    self.infolist.append(res)
-                    self.plotlist.append('')
-                    self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
-                    self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
-                    self.contentlist.append(':Top')
-                    self.seenlist.append('unseen')
-                    self.medialist.append('\n')
-                self.maxentry = len(self.namelist)
-                self.posterREST = self.maxentry % self.posterALL
-                if self.posterREST == 0:
-                    self.posterREST = self.posterALL
-                self.pagemax = self.maxentry // self.posterALL
-                if self.maxentry % self.posterALL > 0:
-                    self.pagemax += 1
-                self.makePoster(self.pagecount - 1)
-                self.paintFrame()
-                if self.backdrops != 'hide':
-                    try:
-                        self.showBackdrops(self.index)
-                    except IndexError:
-                        pass
-
-                else:
-                    self.showDefaultBackdrop()
+            # if fileExists(self.database):
+            with open(self.database, 'r', encoding='utf-8') as f:
+                name = ""
+                filename = ""
+                date = ""
+                runtime = ""
+                rating = ""
+                director = ""
+                actors = ""
+                genres = ""
+                year = ""
+                country = ""
+                plotfull = ""
+                poster = str(default_poster)
+                backdrop = str(default_backdrop)
+                seen = 'unseen'
+                content = 'Movie:Top'
+                media = '\n'
+                for line in f:
+                    if self.content in line and filter in line:
+                        # name = ""
+                        # filename = ""
+                        # date = ""
+                        # runtime = ""
+                        # rating = ""
+                        # director = ""
+                        # actors = ""
+                        # genres = ""
+                        # year = ""
+                        # country = ""
+                        # plotfull = ""
+                        # poster = str(default_poster)
+                        # backdrop = str(default_backdrop)
+                        # seen = 'unseen'
+                        # content = 'Movie:Top'
+                        # media = '\n'
+                        movieline = str(line).split(':::')
+                        try:
+                            name = movieline[0]
+                            name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
+                            filename = movieline[1]
+                            date = movieline[2]
+                            runtime = movieline[3]
+                            rating = movieline[4]
+                            director = movieline[5]
+                            actors = movieline[6]
+                            genres = movieline[7]
+                            year = movieline[8]
+                            country = movieline[9]
+                            plotfull = movieline[10]
+                            poster = movieline[11]
+                            backdrop = movieline[12]
+                            content = movieline[13]
+                            seen = movieline[14]
+                            media = movieline[15]
+                        except IndexError:
+                            pass
+                        self.namelist.append(name)
+                        self.movielist.append(filename)
+                        self.dddlist.append('yes' if '3d' in filename.lower() else 'no')
+                        self.datelist.append(date)
+                        res = [runtime, rating, director, actors, genres, year, country]
+                        self.infolist.append(res)
+                        self.plotlist.append(plotfull)
+                        self.posterlist.append(poster)
+                        self.backdroplist.append(backdrop)
+                        self.contentlist.append(content)
+                        self.seenlist.append(seen)
+                        self.medialist.append(media)
+            if self.showfolder is True:
+                self.namelist.append(_('<List of Movie Folder>'))
+                self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
+                self.datelist.append('')
+                res = []
+                res.append('')
+                res.append('0.0')
+                res.append('')
+                res.append('')
+                res.append('')
+                res.append('')
+                res.append('')
+                self.infolist.append(res)
+                self.plotlist.append('')
+                self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
+                self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
+                self.contentlist.append(':Top')
+                self.seenlist.append('unseen')
+                self.medialist.append('\n')
+            self.maxentry = len(self.namelist)
+            self.posterREST = self.maxentry % self.posterALL
+            if self.posterREST == 0:
+                self.posterREST = self.posterALL
+            self.pagemax = self.maxentry // self.posterALL
+            if self.maxentry % self.posterALL > 0:
+                self.pagemax += 1
+            self.makePoster(self.pagecount - 1)
+            self.paintFrame()
+            if self.backdrops != 'hide':
                 try:
-                    self.makeName(self.index)
+                    self.showBackdrops(self.index)
                 except IndexError:
                     pass
 
-                try:
-                    self.makeInfo(self.index)
-                except IndexError:
-                    pass
+            else:
+                self.showDefaultBackdrop()
+            try:
+                self.makeName(self.index)
+            except IndexError:
+                pass
 
-                try:
-                    content = self.contentlist[self.index]
-                    if content == 'Series:Top':
-                        self.infofull = True
-                        self.plotfull = True
-                        self.episodes = True
-                    if self.infofull is True:
-                        self.makeInfo2(self.index)
-                    if self.plotfull is True:
-                        self.makePlot(self.index)
-                except IndexError:
-                    pass
+            try:
+                self.makeInfo(self.index)
+            except IndexError:
+                pass
 
-                self.ready = True
+            try:
+                content = self.contentlist[self.index]
+                if content == 'Series:Top':
+                    self.infofull = True
+                    self.plotfull = True
+                    self.episodes = True
+                if self.infofull is True:
+                    self.makeInfo2(self.index)
+                if self.plotfull is True:
+                    self.makePlot(self.index)
+            except IndexError:
+                pass
+
+            self.ready = True
         OnclearMem()
         return
 
@@ -6957,7 +6933,6 @@ class movieBrowserPosterwall(Screen):
             except ValueError:
                 ratings = '0.0'
                 rating = int(10 * round(float(ratings), 1))
-
             self['2Rating'].show()
             self['2ratings'].setValue(rating)
             self['2ratings'].show()
@@ -7040,9 +7015,8 @@ class movieBrowserPosterwall(Screen):
                     banner = sub('.*?[/]', '', bannerurl)
                     banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                     if fileExists(banner):
-                        if self['banner'].instance:
-                            self["banner"].instance.setPixmapFromFile(banner)
-                            self['banner'].show()
+                        self["banner"].instance.setPixmapFromFile(banner)
+                        self['banner'].show()
                     else:
                         if pythonVer == 3:
                             bannerurl = bannerurl.encode()
@@ -7074,9 +7048,8 @@ class movieBrowserPosterwall(Screen):
                         banner = sub('.*?[/]', '', bannerurl)
                         banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                         if fileExists(banner):
-                            if self['banner'].instance:
-                                self["banner"].instance.setPixmapFromFile(banner)
-                                self['banner'].show()
+                            self["banner"].instance.setPixmapFromFile(banner)
+                            self['banner'].show()
                         else:
                             if pythonVer == 3:
                                 bannerurl = bannerurl.encode()
@@ -7100,9 +7073,8 @@ class movieBrowserPosterwall(Screen):
                     eposter = sub('.*?[/]', '', eposterurl)
                     eposter = config.plugins.moviebrowser.cachefolder.value + '/' + eposter
                     if fileExists(eposter):
-                        if self['eposter'].instance:
-                            self["eposter"].instance.setPixmapFromFile(eposter)
-                            self['eposter'].show()
+                        self["eposter"].instance.setPixmapFromFile(eposter)
+                        self['eposter'].show()
                     else:
                         if pythonVer == 3:
                             eposterurl = eposterurl.encode()
@@ -7122,9 +7094,8 @@ class movieBrowserPosterwall(Screen):
         try:
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
-                if self['eposter'].instance:
-                    self["eposter"].instance.setPixmapFromFile(eposter)
-                    self['eposter'].show()
+                self["eposter"].instance.setPixmapFromFile(eposter)
+                self['eposter'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -7135,9 +7106,8 @@ class movieBrowserPosterwall(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
-                if self['banner'].instance:
-                    self["banner"].instance.setPixmapFromFile(banner)
-                    self['banner'].show()
+                self["banner"].instance.setPixmapFromFile(banner)
+                self['banner'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -7189,9 +7159,8 @@ class movieBrowserPosterwall(Screen):
             poster = sub('.*?[/]', '', posterurl)
             poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
             if fileExists(poster):
-                if self['frame'].instance:
-                    self["frame"].instance.setPixmapFromFile(poster)
-                    self['frame'].show()
+                self["frame"].instance.setPixmapFromFile(poster)
+                self['frame'].show()
         except IndexError:
             pass
 
@@ -7210,7 +7179,6 @@ class movieBrowserPosterwall(Screen):
                         self['backdrop'].hide()
                         os.popen("/usr/bin/showiframe '%s'" % backdrop_m1v)
                     elif fileExists(backdrop):
-                        # if self['backdrop'].instance:
                         self["backdrop"].instance.setPixmapFromFile(backdrop)
                         self['backdrop'].show()
                         os.popen('/usr/bin/showiframe %s') % no_m1v
@@ -8978,7 +8946,6 @@ class UpdateDatabase():
         for line in f:
             if ':::Series:::' not in line:
                 movies = movies + line
-
         f.close()
         fmovies = open(self.database + '.movies', 'w')
         fmovies.write(movies)
@@ -9482,88 +9449,88 @@ class movieDatabase(Screen):
         self.medialist = []
         self.list = []
         self.listentries = []
-        if fileExists(self.database):
-            count = 0
-            index = 0
-            f = open(self.database, 'r')
-            for line in f:
-                name = ""
-                movie = ""
-                date = ""
-                runtime = ""
-                rating = ""
-                director = ""
-                actors = ""
-                genres = ""
-                year = ""
-                country = ""
-                poster = str(default_poster)
-                backdrop = str(default_backdrop)
-                media = '\n'
-                movieline = str(line).split(':::')
-                try:
-                    name = movieline[0]
-                    name = sub('[Ss][0]+[Ee]', 'Special ', name)
-                    movie = movieline[1]
-                    if movie == self.movie:
-                        index = count
-                    date = movieline[2]
-                    runtime = movieline[3]
-                    rating = movieline[4]
-                    director = movieline[5]
-                    actors = movieline[6]
-                    genres = movieline[7]
-                    year = movieline[8]
-                    country = movieline[9]
-                    poster = movieline[11]
-                    backdrop = movieline[12]
-                    media = movieline[15]
-                except IndexError:
-                    pass
-                self.namelist.append(name)
-                self.movielist.append(movie)
-                self.datelist.append(date)
-                self.runtimelist.append(runtime)
-                self.ratinglist.append(rating)
-                self.directorlist.append(director)
-                self.actorslist.append(actors)
-                self.genreslist.append(genres)
-                self.yearlist.append(year)
-                self.countrylist.append(country)
-                self.posterlist.append(poster)
-                self.backdroplist.append(backdrop)
-                self.medialist.append(media)
-                self.list.append(name)
-                count += 1
-                res = ['']
-                if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
-                else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
-                self.listentries.append(res)
-
-            self['list'].l.setList(self.listentries)
-            self['list'].moveToIndex(index)
-            self.selectList()
-            self.ready = True
-            totalMovies = len(self.list)
-            database = _('Database')
-            free = _('Free Space')
-            folder = _('Movie Folder')
-            movies = _('Movies')
-            if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-                movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
-                try:
-                    stat = movieFolder
-                    freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
-                except Exception as e:
-                    print(e)
-                    freeSize = "-?-"
-                title = '%s Editor: %s %s (%s %s)' % (database, str(totalMovies), movies, str(freeSize), free)
-                self.setTitle(title)
+        # if fileExists(self.database):
+        count = 0
+        index = 0
+        f = open(self.database, 'r')
+        for line in f:
+            name = ""
+            movie = ""
+            date = ""
+            runtime = ""
+            rating = ""
+            director = ""
+            actors = ""
+            genres = ""
+            year = ""
+            country = ""
+            poster = str(default_poster)
+            backdrop = str(default_backdrop)
+            media = '\n'
+            movieline = str(line).split(':::')
+            try:
+                name = movieline[0]
+                name = sub('[Ss][0]+[Ee]', 'Special ', name)
+                movie = movieline[1]
+                if movie == self.movie:
+                    index = count
+                date = movieline[2]
+                runtime = movieline[3]
+                rating = movieline[4]
+                director = movieline[5]
+                actors = movieline[6]
+                genres = movieline[7]
+                year = movieline[8]
+                country = movieline[9]
+                poster = movieline[11]
+                backdrop = movieline[12]
+                media = movieline[15]
+            except IndexError:
+                pass
+            self.namelist.append(name)
+            self.movielist.append(movie)
+            self.datelist.append(date)
+            self.runtimelist.append(runtime)
+            self.ratinglist.append(rating)
+            self.directorlist.append(director)
+            self.actorslist.append(actors)
+            self.genreslist.append(genres)
+            self.yearlist.append(year)
+            self.countrylist.append(country)
+            self.posterlist.append(poster)
+            self.backdroplist.append(backdrop)
+            self.medialist.append(media)
+            self.list.append(name)
+            count += 1
+            res = ['']
+            if screenwidth.width() == 1920:
+                res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
             else:
-                title = '%s Editor: %s %s (%s offline)' % (database, str(totalMovies), movies, folder)
-                self.setTitle(title)
+                res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
+            self.listentries.append(res)
+
+        self['list'].l.setList(self.listentries)
+        self['list'].moveToIndex(index)
+        self.selectList()
+        self.ready = True
+        totalMovies = len(self.list)
+        database = _('Database')
+        free = _('Free Space')
+        folder = _('Movie Folder')
+        movies = _('Movies')
+        if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
+            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
+            try:
+                stat = movieFolder
+                freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
+            except Exception as e:
+                print(e)
+                freeSize = "-?-"
+            title = '%s Editor: %s %s (%s %s)' % (database, str(totalMovies), movies, str(freeSize), free)
+            self.setTitle(title)
+        else:
+            title = '%s Editor: %s %s (%s offline)' % (database, str(totalMovies), movies, folder)
+            self.setTitle(title)
 
     def makeList2(self):
         self.list2 = []
@@ -11402,7 +11369,7 @@ class switchStart(Screen):
         self.close()
 
 
-class helpScreen(Screen):
+class helpScreenx(Screen):
 
     def __init__(self, session):
         skin = os.path.join(skin_path + "helpScreen.xml")
@@ -11542,15 +11509,13 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         if current == getConfigListEntry(_('Movies Style:'), config.plugins.moviebrowser.style):
             png = ('%spic/setup/' + str(config.plugins.moviebrowser.style.value) + '.png') % str(skin_directory)
             if fileExists(png):
-                if self['plugin'].instance:
-                    self["plugin"].instance.setPixmapFromFile(png)
-                    self['plugin'].show()
+                self["plugin"].instance.setPixmapFromFile(png)
+                self['plugin'].show()
         elif current == getConfigListEntry(_('Series Style:'), config.plugins.moviebrowser.seriesstyle):
             png2 = ('%spic/setup/' + str(config.plugins.moviebrowser.seriesstyle.value) + '.png') % str(skin_directory)
             if fileExists(png2):
-                if self['plugin'].instance:
-                    self["plugin"].instance.setPixmapFromFile(png2)
-                    self['plugin'].show()
+                self["plugin"].instance.setPixmapFromFile(png2)
+                self['plugin'].show()
         elif current == getConfigListEntry(_('Use m1v Backdrops:'), config.plugins.moviebrowser.m1v) or current == getConfigListEntry(_('Show TV in Background (no m1v):'), config.plugins.moviebrowser.showtv):
             if config.plugins.moviebrowser.m1v.value is True:
                 config.plugins.moviebrowser.showtv.value = 'hide'
@@ -11708,78 +11673,78 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.ready = False
             series = ''
             if config.plugins.moviebrowser.sortorder.value != self.sortorder:
-                if fileExists(self.database):
-                    f = open(self.database, 'r')
-                    for line in f:
-                        if ':::Series:::' in line:
-                            series = series + line
-                    f.close()
-                    fseries = open(self.database + '.series', 'w')
-                    fseries.write(series)
-                    fseries.close()
-                    fseries = open(self.database + '.series', 'r')
-                    series = fseries.readlines()
-                    series.sort(key=lambda line: line.split(':::')[0])
-                    fseries.close()
-                    fseries = open(self.database + '.series', 'w')
-                    fseries.writelines(series)
-                    fseries.close()
-                    f = open(self.database, 'r')
-                    movies = ''
-                    for line in f:
-                        if ':::Series:::' not in line:
-                            movies = movies + line
-                    f.close()
-                    fmovies = open(self.database + '.movies', 'w')
-                    fmovies.write(movies)
-                    fmovies.close()
-                    fmovies = open(self.database + '.movies', 'r')
-                    lines = fmovies.readlines()
-                    fmovies.close()
-                    try:
-                        if config.plugins.moviebrowser.sortorder.value == 'name':
-                            lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
-                        elif config.plugins.moviebrowser.sortorder.value == 'name_reverse':
-                            lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
-                        elif config.plugins.moviebrowser.sortorder.value == 'rating':
-                            lines.sort(key=lambda line: str(line).split(':::')[4])
-                        elif config.plugins.moviebrowser.sortorder.value == 'rating_reverse':
-                            lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
-                        elif config.plugins.moviebrowser.sortorder.value == 'year':
-                            lines.sort(key=lambda line: str(line).split(':::')[8])
-                        elif config.plugins.moviebrowser.sortorder.value == 'year_reverse':
-                            lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
-                        elif config.plugins.moviebrowser.sortorder.value == 'date':
-                            lines.sort(key=lambda line: str(line).split(':::')[2])
-                        elif config.plugins.moviebrowser.sortorder.value == 'date_reverse':
-                            lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
-                        elif config.plugins.moviebrowser.sortorder.value == 'folder':
-                            lines.sort(key=lambda line: str(line).split(':::')[1])
-                        elif config.plugins.moviebrowser.sortorder.value == 'folder_reverse':
-                            lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
-                        elif config.plugins.moviebrowser.sortorder.value == 'runtime':
-                            lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
-                        elif config.plugins.moviebrowser.sortorder.value == 'runtime_reverse':
-                            lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
-                    except IndexError:
-                        pass
-                    except ValueError:
-                        self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+                # if fileExists(self.database):
+                f = open(self.database, 'r')
+                for line in f:
+                    if ':::Series:::' in line:
+                        series = series + line
+                f.close()
+                fseries = open(self.database + '.series', 'w')
+                fseries.write(series)
+                fseries.close()
+                fseries = open(self.database + '.series', 'r')
+                series = fseries.readlines()
+                series.sort(key=lambda line: line.split(':::')[0])
+                fseries.close()
+                fseries = open(self.database + '.series', 'w')
+                fseries.writelines(series)
+                fseries.close()
+                f = open(self.database, 'r')
+                movies = ''
+                for line in f:
+                    if ':::Series:::' not in line:
+                        movies = movies + line
+                f.close()
+                fmovies = open(self.database + '.movies', 'w')
+                fmovies.write(movies)
+                fmovies.close()
+                fmovies = open(self.database + '.movies', 'r')
+                lines = fmovies.readlines()
+                fmovies.close()
+                try:
+                    if config.plugins.moviebrowser.sortorder.value == 'name':
+                        lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                    elif config.plugins.moviebrowser.sortorder.value == 'name_reverse':
+                        lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                    elif config.plugins.moviebrowser.sortorder.value == 'rating':
+                        lines.sort(key=lambda line: str(line).split(':::')[4])
+                    elif config.plugins.moviebrowser.sortorder.value == 'rating_reverse':
+                        lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                    elif config.plugins.moviebrowser.sortorder.value == 'year':
+                        lines.sort(key=lambda line: str(line).split(':::')[8])
+                    elif config.plugins.moviebrowser.sortorder.value == 'year_reverse':
+                        lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                    elif config.plugins.moviebrowser.sortorder.value == 'date':
+                        lines.sort(key=lambda line: str(line).split(':::')[2])
+                    elif config.plugins.moviebrowser.sortorder.value == 'date_reverse':
+                        lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                    elif config.plugins.moviebrowser.sortorder.value == 'folder':
+                        lines.sort(key=lambda line: str(line).split(':::')[1])
+                    elif config.plugins.moviebrowser.sortorder.value == 'folder_reverse':
+                        lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                    elif config.plugins.moviebrowser.sortorder.value == 'runtime':
+                        lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                    elif config.plugins.moviebrowser.sortorder.value == 'runtime_reverse':
+                        lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                except IndexError:
+                    pass
+                except ValueError:
+                    self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
 
-                    f = open(self.database + '.movies', 'w')
-                    f.writelines(lines)
-                    f.close()
-                    files = [self.database + '.movies', self.database + '.series']
-                    with open(self.database + '.sorted', 'w', encoding='utf-8') as outfile:
-                        for name in files:
-                            with open(name, 'r', encoding='utf-8') as infile:
-                                outfile.write(infile.read())
+                f = open(self.database + '.movies', 'w')
+                f.writelines(lines)
+                f.close()
+                files = [self.database + '.movies', self.database + '.series']
+                with open(self.database + '.sorted', 'w', encoding='utf-8') as outfile:
+                    for name in files:
+                        with open(name, 'r', encoding='utf-8') as infile:
+                            outfile.write(infile.read())
 
-                    if fileExists(self.database + '.movies'):
-                        os.remove(self.database + '.movies')
-                    if fileExists(self.database + '.series'):
-                        os.remove(self.database + '.series')
-                    os.rename(self.database + '.sorted', self.database)
+                if fileExists(self.database + '.movies'):
+                    os.remove(self.database + '.movies')
+                if fileExists(self.database + '.series'):
+                    os.remove(self.database + '.series')
+                os.rename(self.database + '.sorted', self.database)
             if config.plugins.moviebrowser.timerupdate.value is True:
                 if self.timer_hour != config.plugins.moviebrowser.timer.value[0] or self.timer_min != config.plugins.moviebrowser.timer.value[1] or self.timer_update is False:
                     if timerupdate.session is None:

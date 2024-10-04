@@ -5,7 +5,7 @@
 	</widget>
 	<!-- Sfondo - BackDrop - Overlay -->
 	<!-- <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4" /> -->
-	<widget name="backdrop" position="0,0" size="1920,1080" scale="1" zPosition="-3"/>
+	<widget name="backdrop" position="0,0" size="1920,1080" scale="1" alphatest="on" zPosition="-3"/>
 	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/overlay-mx.png" position="0,0" size="1920,1080" alphatest="blend" zPosition="-2"/>
 	<!-- Titolo e Visto -->
 	<widget name="name" position="10,0" size="900,90" font="Regular;36" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3"/>

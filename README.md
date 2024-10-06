@@ -11,6 +11,7 @@ python2 & Python3 compatible
 
 -20221222 Lululla recoded, major fix
 
+-20241002 Lululla recoded py3 - poster backdrop show now
 
 <img src="https://github.com/Belfagor2005/MovieBrowser/blob/main/screenshot/screenmovie1.jpg">
 

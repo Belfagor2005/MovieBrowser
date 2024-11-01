@@ -11,6 +11,7 @@ from . import _
 from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigListScreen
 from Components.Label import Label
+from Components.Language import language
 from Components.MenuList import MenuList
 from Components.MultiContent import MultiContentEntryPixmapAlphaTest
 from Components.MultiContent import MultiContentEntryText
@@ -58,10 +59,9 @@ from enigma import (
     loadPNG,
 )
 from requests import get
+from requests.exceptions import HTTPError
 from re import search, sub, findall
 from twisted.internet.reactor import callInThread
-# from twisted.web.client import getPage, downloadPage
-from six import text_type
 '''
 # try:
     # from twisted.internet.reactor import callInThread
@@ -78,45 +78,21 @@ import re
 from io import open
 import sys
 import math
-
 pythonVer = sys.version_info.major
-
-
-if pythonVer < 3:
-    import codecs
-    text_type_type = text_type
-    open_func = codecs.open
-    str_type = text_type
-else:
-    text_type_type = str
-    open_func = open
-    str_type = str
-
 
 isDreambox = False
 if os.path.exists("/usr/bin/apt-get"):
     isDreambox = True
 
+try:
+    from urllib2 import Request, urlopen
+except:
+    from urllib.request import Request, urlopen
 
 try:
-    # from urllib.request import urlretrieve
-    from urllib.request import urlopen, Request
-    from urllib.parse import quote_plus, unquote  # , quote
-    from urllib.request import HTTPError
-except:
-    from urllib2 import Request
-    # from urllib import urlretrieve
-    from urllib2 import urlopen
-    from urllib import quote_plus, unquote  # , quote
-    from urllib2 import HTTPError
-
-
-def quoteEventName(eventName):
-    try:
-        text = eventName.decode('utf8').replace(u'\x86', u'').replace(u'\x87', u'').encode('utf8')
-    except:
-        text = eventName
-    return quote_plus(text, safe="+")
+    import statvfs
+except ImportError:
+    from os import statvfs
 
 
 def getDesktopSize():
@@ -218,13 +194,7 @@ class ItemList(MenuList):
 
 
 config.plugins.moviebrowser = ConfigSubsection()
-# lang = language.getLanguage()[:2]
-try:
-    lang = config.osd.language.value
-    lang = lang[:-3]
-except:
-    lang = 'en'
-    pass
+lang = language.getLanguage()[:2]
 config.plugins.moviebrowser.language = ConfigSelection(default=lang, choices=[
     ('en', 'English'),
     ('de', 'German'),
@@ -284,9 +254,9 @@ except:
     if os.path.exists("/usr/bin/apt-get"):
         config.plugins.moviebrowser.moviefolder = ConfigDirectory(default='/media/hdd/movie/')
 config.plugins.moviebrowser.cachefolder = ConfigSelection(default=dbcache, choices=[(dbcache, 'Default'), (dbhddcache, '/media/hdd'), (dbusbcache, '/media/usb')])
-config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)
-config.plugins.moviebrowser.backup = ConfigYesNo(default=False)
-config.plugins.moviebrowser.restore = ConfigYesNo(default=False)
+config.plugins.moviebrowser.cleanup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Cleanup>')])
+config.plugins.moviebrowser.backup = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Backup>')])
+config.plugins.moviebrowser.restore = ConfigYesNo(default=False)  # ConfigSelection(default='no', choices=[('no', 'NO'), ('yes', '<Restore>')])
 config.plugins.moviebrowser.transparency = ConfigSlider(default=255, limits=(100, 255))
 
 config.plugins.moviebrowser.metrixcolor = ConfigSelection(default='0x00000000', choices=[
@@ -322,71 +292,6 @@ def applySkinVars(skin, dict):
         except Exception as e:
             print(e, '@key=', key)
     return skin
-
-
-def getCleanContentSearchTitle(event_title=""):
-    cleanEventname = re.sub(' I$', ' 1', event_title)
-    cleanEventname = re.sub(' II$', ' 2', cleanEventname)
-    cleanEventname = re.sub(' III$', ' 3', cleanEventname)
-    cleanEventname = cleanEventname.lower().replace(",", "").replace("ß", "ss").replace(" & ", " and ").replace("!", "").replace("-", "").replace(" und ", " and ").replace(".", "").replace("'", "").replace("?", "").replace(" ", "")
-    return cleanEventname
-
-
-def remove_accents(string):
-    import unicodedata
-    if pythonVer < 3:
-        if type(string) is not text_type:
-            string = text_type(string, encoding='utf-8')
-    string = unicodedata.normalize('NFD', string)
-    string = re.sub(r'[\u0300-\u036f]', '', string)
-    return string
-
-
-def cutName(eventName=""):
-    if eventName:
-        eventName = eventName.replace('"', '').replace('Х/Ф', '').replace('М/Ф', '').replace('Х/ф', '').replace('.', '').replace(' | ', '')
-        eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
-        eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
-        eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
-        eventName = eventName.replace('episode', '')
-        eventName = eventName.replace('مسلسل', '')
-        eventName = eventName.replace('فيلم وثائقى', '')
-        eventName = eventName.replace('حفل', '')
-        return eventName
-    return ""
-
-
-def getCleanTitle(eventitle=""):
-    save_name = eventitle.replace(' ^`^s', '').replace(' ^`^y', '')
-    return save_name
-
-
-def convtext(text=''):
-    try:
-        if text is None:
-            print('return None original text: ', type(text))
-            return  # Esci dalla funzione se text è None
-        if text == '':
-            print('text is an empty string')
-        else:
-            print('original text: ', text)
-            text = text.lower()
-            print('lowercased text: ', text)
-            text = remove_accents(text)
-            print('remove_accents text: ', text)
-            text = cutName(text)
-            text = getCleanTitle(text)
-            if text.endswith("the"):
-                text = "the " + text[:-4]
-            text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
-            text = transMOVIE(text)
-            print('transMOVIE: ', text)
-            text = quoteEventName(text)
-            print('TEXT=', text)
-        return unquote(text).capitalize()
-    except Exception as e:
-        print('convtext error: ', e)
-        pass
 
 
 def transHTML(text):
@@ -459,7 +364,7 @@ class movieBrowserMetrix(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
+        self.toogleHelp = self.session.instantiateDialog(helpScreen)
         self.index = index
         self.hideflag = True
         self.ready = False
@@ -703,41 +608,25 @@ class movieBrowserMetrix(Screen):
             self.filter = filter
             if fileExists(self.database):
                 with open(self.database, 'r', encoding='utf-8') as f:
-                    name = ""
-                    filename = ""
-                    date = ""
-                    runtime = ""
-                    rating = ""
-                    director = ""
-                    actors = ""
-                    genres = ""
-                    year = ""
-                    country = ""
-                    plotfull = ""
-                    poster = str(default_poster)
-                    backdrop = str(default_backdrop)
-                    seen = 'unseen'
-                    content = 'Movie:Top'
-                    media = '\n'
                     for line in f:
                         if self.content in line and filter in line:
-                            # name = ""
-                            # filename = ""
-                            # date = ""
-                            # runtime = ""
-                            # rating = ""
-                            # director = ""
-                            # actors = ""
-                            # genres = ""
-                            # year = ""
-                            # country = ""
-                            # plotfull = ""
-                            # poster = str(default_poster)
-                            # backdrop = str(default_backdrop)
-                            # seen = 'unseen'
-                            # content = 'Movie:Top'
-                            # media = '\n'
-                            movieline = str(line).split(':::')
+                            name = ""
+                            filename = ""
+                            date = ""
+                            runtime = ""
+                            rating = ""
+                            director = ""
+                            actors = ""
+                            genres = ""
+                            year = ""
+                            country = ""
+                            plotfull = ""
+                            poster = str(default_poster)
+                            backdrop = str(default_backdrop)
+                            seen = 'unseen'
+                            content = 'Movie:Top'
+                            media = '\n'
+                            movieline = line.split(':::')
                             try:
                                 name = movieline[0]
                                 name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
@@ -808,7 +697,7 @@ class movieBrowserMetrix(Screen):
         movies = []
         for line in f:
             if self.content in line and self.filter in line:
-                movieline = str(line).split(':::')
+                movieline = line.split(':::')
                 try:
                     res = ['']
                     if self.content == ':::Series:::':
@@ -897,7 +786,7 @@ class movieBrowserMetrix(Screen):
         series = _('SERIES')
         episodes = _('EPISODES')
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -1227,6 +1116,7 @@ class movieBrowserMetrix(Screen):
                     newline = sub('seen:::.*?FIN', 'seen:::' + media + ':::', newline)
                     newline = sub('FIN', '', newline)
                     database = database.replace(line, newline)
+
             f = open(self.database + '.new', 'w')
             f.write(database)
             f.close()
@@ -1242,10 +1132,11 @@ class movieBrowserMetrix(Screen):
                     return
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
-                self.name = name
-                name = convtext(name)
+                # self.name = name
+                name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
-                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true%s&query=%s' % (str(tmdb_api_key), self.language, name)
+                self.name = name
+                url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
                 pass
@@ -1312,12 +1203,13 @@ class movieBrowserMetrix(Screen):
             try:
                 name = self.movielist[self.index]
                 name = _renewTVDb(name)
-                self.name = name
+                # self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
+                self.name = name
                 url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
@@ -1965,9 +1857,8 @@ class movieBrowserMetrix(Screen):
                 banner = sub('.*?[/]', '', bannerurl)
                 banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                 if fileExists(banner):
-                    if self['banner'].instance:
-                        self["banner"].instance.setPixmapFromFile(banner)
-                        self['banner'].show()
+                    self["banner"].instance.setPixmapFromFile(banner)
+                    self['banner'].show()
                 else:
                     if pythonVer == 3:
                         bannerurl = bannerurl.encode()
@@ -1991,9 +1882,8 @@ class movieBrowserMetrix(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
-                if self['banner'].instance:
-                    self["banner"].instance.setPixmapFromFile(banner)
-                    self['banner'].show()
+                self["banner"].instance.setPixmapFromFile(banner)
+                self['banner'].show()
                 self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
@@ -2031,6 +1921,45 @@ class movieBrowserMetrix(Screen):
             print('error ', str(e))
             self['eposter'].hide()
         return
+
+
+    # def makePoster(self):
+        # for x in range(self.posterALL):
+            # try:
+                # index = self.index - self.posterindex + x
+                # if index >= self.maxentry:
+                    # index = index - self.maxentry
+                # elif index < 0:
+                    # index = self.maxentry + index
+                # posterurl = self.posterlist[index]
+                # posterurl = sub('<episode>.*?<episode>', '', posterurl)
+                # poster = sub('.*?[/]', '', posterurl)
+                # poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
+                # if fileExists(poster):
+                    # self['poster' + str(x)].instance.setPixmapFromFile(poster)
+                    # self['poster' + str(x)].show()
+                # else:
+                    # if pythonVer == 3:
+                        # posterurl = posterurl.encode()
+                    # callInThread(threadGetPage, url=posterurl, file=poster, key=x, success=self.getPoster, fail=self.downloadError)
+            # except IndexError:
+                # self['poster' + str(x)].hide()
+
+        # return
+
+    # def getPoster(self, output, poster, x):  # success(response.content, file, key
+        # try:
+            # open(poster, 'wb').write(output)
+            # if fileExists(poster):
+                # if self['poster' + str(x)].instance:
+                    # self['poster' + str(x)].instance.setPixmapFromFile(poster)
+                    # self['poster' + str(x)].show()
+        # except Exception as e:
+            # print('error ', str(e))
+            # self['poster' + str(x)].hide()
+        # return
+
+
 
     def makePoster(self, poster=None):
         try:
@@ -2101,8 +2030,9 @@ class movieBrowserMetrix(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+                if self["backdrop"].instance:
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
@@ -2334,7 +2264,7 @@ class movieBrowserMetrix(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if self.content in line and self.filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             self.movies.append((movieline[0], movieline[1], movieline[12]))
                         except IndexError:
@@ -2502,7 +2432,7 @@ class movieBrowserMetrix(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             genre = movieline[7]
                         except IndexError:
@@ -2547,7 +2477,7 @@ class movieBrowserMetrix(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             actor = movieline[6]
                         except IndexError:
@@ -2591,7 +2521,7 @@ class movieBrowserMetrix(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             director = movieline[5]
                         except IndexError:
@@ -2631,7 +2561,7 @@ class movieBrowserMetrix(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if line.startswith(filter) and content in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             season = movieline[0]
                             season = season + 'FIN'
@@ -2854,29 +2784,29 @@ class movieBrowserMetrix(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: str(line).split(':::')[4])
+                lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: str(line).split(':::')[8])
+                lines.sort(key=lambda line: line.split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: str(line).split(':::')[2])
+                lines.sort(key=lambda line: line.split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: str(line).split(':::')[1])
+                lines.sort(key=lambda line: line.split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -3000,7 +2930,7 @@ class movieBrowserBackdrop(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
+        self.toogleHelp = self.session.instantiateDialog(helpScreen)
         self.hideflag = True
         self.ready = False
         self.renew = False
@@ -3101,17 +3031,7 @@ class movieBrowserBackdrop(Screen):
         self['videomode'] = MultiPixmap()
         self['videocodec'] = MultiPixmap()
         self['aspectratio'] = MultiPixmap()
-        self['actions'] = ActionMap(['OkCancelActions',
-                                     'DirectionActions',
-                                     'ColorActions',
-                                     'ChannelSelectBaseActions',
-                                     'HelpActions',
-                                     'InfobarActions',
-                                     'InfobarTeletextActions',
-                                     'MovieSelectionActions',
-                                     'MoviePlayerActions',
-                                     'InfobarEPGActions',
-                                     'NumberActions'], {
+        self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions', 'ChannelSelectBaseActions', 'HelpActions', 'InfobarActions', 'InfobarTeletextActions', 'MovieSelectionActions', 'MoviePlayerActions', 'InfobarEPGActions', 'NumberActions'], {
             'ok': self.ok,
             'cancel': self.exit,
             'right': self.rightDown,
@@ -3127,7 +3047,7 @@ class movieBrowserBackdrop(Screen):
             'blue': self.hideScreen,
             'contextMenu': self.config,
             'showEventInfo': self.togglePlot,
-            # 'EPGPressed': self.togglePlot,
+            'EPGPressed': self.togglePlot,
             'startTeletext': self.editDatabase,
             'showMovies': self.updateDatabase,
             'showRadio': self.deleteMovie,
@@ -3163,11 +3083,13 @@ class movieBrowserBackdrop(Screen):
                 os.remove(self.database)
 
         if fileExists(infosmallBackPNG):
-            self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
-            self['infoback'].show()
+            if self["infoback"].instance:
+                self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
+                self['infoback'].show()
         if fileExists(infoBackPNG):
-            self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
-            self['plotfullback'].hide()
+            if self["plotfullback"].instance:
+                self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
+                self['plotfullback'].hide()
 
         if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
@@ -3248,41 +3170,25 @@ class movieBrowserBackdrop(Screen):
             self.filter = filter
             if fileExists(self.database):
                 with open(self.database, 'r', encoding='utf-8') as f:
-                    name = ""
-                    filename = ""
-                    date = ""
-                    runtime = ""
-                    rating = ""
-                    director = ""
-                    actors = ""
-                    genres = ""
-                    year = ""
-                    country = ""
-                    plotfull = ""
-                    poster = str(default_poster)
-                    backdrop = str(default_backdrop)
-                    seen = 'unseen'
-                    content = 'Movie:Top'
-                    media = '\n'
                     for line in f:
                         if self.content in line and filter in line:
-                            # name = ""
-                            # filename = ""
-                            # date = ""
-                            # runtime = ""
-                            # rating = ""
-                            # director = ""
-                            # actors = ""
-                            # genres = ""
-                            # year = ""
-                            # country = ""
-                            # plotfull = ""
-                            # poster = str(default_poster)
-                            # backdrop = str(default_backdrop)
-                            # seen = 'unseen'
-                            # content = 'Movie:Top'
-                            # media = '\n'
-                            movieline = str(line).split(':::')
+                            name = ""
+                            filename = ""
+                            date = ""
+                            runtime = ""
+                            rating = ""
+                            director = ""
+                            actors = ""
+                            genres = ""
+                            year = ""
+                            country = ""
+                            plotfull = ""
+                            poster = str(default_poster)
+                            backdrop = str(default_backdrop)
+                            seen = 'unseen'
+                            content = 'Movie:Top'
+                            media = '\n'
+                            movieline = line.split(':::')
                             try:
                                 name = movieline[0]
                                 name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
@@ -3392,7 +3298,6 @@ class movieBrowserBackdrop(Screen):
 
             if fileExists(self.database):
                 self.runTimer = eTimer()
-
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
         OnclearMem()
@@ -3664,9 +3569,10 @@ class movieBrowserBackdrop(Screen):
                     return
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
-                self.name = name
-                name = convtext(name)
+                # self.name = name
+                name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
+                self.name = name
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
@@ -3685,14 +3591,14 @@ class movieBrowserBackdrop(Screen):
             return
 
         output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
-        output = sub(r'"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
-        output = sub(r'"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
-        rating = findall(r'"vote_average":(.*?),', output)
-        year = findall(r'"release_date":"(.*?)"', output)
-        titles = findall(r'"title":"(.*?)"', output)
-        poster = findall(r'"poster_path":"(.*?)"', output)
-        id = findall(r'"id":(.*?),', output)
-        country = findall(r'"backdrop(.*?)_path"', output)
+        output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
+        output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
+        rating = findall('"vote_average":(.*?),', output)
+        year = findall('"release_date":"(.*?)"', output)
+        titles = findall('"title":"(.*?)"', output)
+        poster = findall('"poster_path":"(.*?)"', output)
+        id = findall('"id":(.*?),', output)
+        country = findall('"backdrop(.*?)_path"', output)
         titel = _('TMDb Results')
         if not titles:
             self.session.open(MessageBox, _('\nNo TMDb Results for %s.') % self.name, MessageBox.TYPE_INFO, close_on_any_key=True)
@@ -3732,12 +3638,13 @@ class movieBrowserBackdrop(Screen):
             try:
                 name = self.movielist[self.index]
                 name = _renewTVDb(name)
-                self.name = name
+                # self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
+                self.name = name
                 url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
@@ -3775,17 +3682,17 @@ class movieBrowserBackdrop(Screen):
                 except Exception:
                     output = ''
 
-                output = sub(r'<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
-                output = sub(r'<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
-                output = sub(r'<Rating></Rating>', '<Rating>0.0</Rating>', output)
-                output = sub(r'&amp;', '&', output)
-                Rating = findall(r'<Rating>(.*?)</Rating>', output)
-                Year = findall(r'<FirstAired>([0-9]+)-', output)
-                Added = findall(r'<added>([0-9]+)-', output)
-                Titles = findall(r'<SeriesName>(.*?)</SeriesName>', output)
-                Poster = findall(r'<poster>(.*?)</poster>', output)
-                TVDbid = findall(r'<id>(.*?)</id>', output)
-                Country = findall(r'<Status>(.*?)</Status>', output)
+                output = sub('<poster>', '<poster>https://www.thetvdb.com/banners/_cache/', output)
+                output = sub('<poster>https://www.thetvdb.com/banners/_cache/</poster>', '<poster>' + wiki_png + '</poster>', output)
+                output = sub('<Rating></Rating>', '<Rating>0.0</Rating>', output)
+                output = sub('&amp;', '&', output)
+                Rating = findall('<Rating>(.*?)</Rating>', output)
+                Year = findall('<FirstAired>([0-9]+)-', output)
+                Added = findall('<added>([0-9]+)-', output)
+                Titles = findall('<SeriesName>(.*?)</SeriesName>', output)
+                Poster = findall('<poster>(.*?)</poster>', output)
+                TVDbid = findall('<id>(.*?)</id>', output)
+                Country = findall('<Status>(.*?)</Status>', output)
                 try:
                     rating.append(Rating[0])
                 except IndexError:
@@ -4370,9 +4277,8 @@ class movieBrowserBackdrop(Screen):
                         banner = sub('.*?[/]', '', bannerurl)
                         banner = config.plugins.moviebrowser.cachefolder.value + '/' + banner
                         if fileExists(banner):
-                            if self['banner'].instance:
-                                self["banner"].instance.setPixmapFromFile(banner)
-                                self['banner'].show()
+                            self["banner"].instance.setPixmapFromFile(banner)
+                            self['banner'].show()
                         else:
                             if pythonVer == 3:
                                 bannerurl = bannerurl.encode()
@@ -4427,9 +4333,9 @@ class movieBrowserBackdrop(Screen):
         try:
             open(banner, 'wb').write(output)
             if fileExists(banner):
+                self['plotfull'].hide()
                 self["banner"].instance.setPixmapFromFile(banner)
                 self['banner'].show()
-                self['plotfull'].hide()
         except Exception as e:
             print('error ', str(e))
             self['banner'].hide()
@@ -4448,9 +4354,8 @@ class movieBrowserBackdrop(Screen):
                 poster = sub('.*?[/]', '', posterurl)
                 poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
                 if fileExists(poster):
-                    if self['poster' + str(x)].instance:
-                        self['poster' + str(x)].instance.setPixmapFromFile(poster)
-                        self['poster' + str(x)].show()
+                    self['poster' + str(x)].instance.setPixmapFromFile(poster)
+                    self['poster' + str(x)].show()
                 else:
                     if pythonVer == 3:
                         posterurl = posterurl.encode()
@@ -4509,16 +4414,17 @@ class movieBrowserBackdrop(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+                if self["backdrop"].instance:
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
         return
 
     def showDefaultBackdrop(self):
-        backdrop = default_backdrop
-        backdrop_m1v = default_backdropm1v
+        backdrop = default_backdrop  # config.plugins.moviebrowser.cachefolder.value + '/default_backdrop.png'
+        backdrop_m1v = default_backdropm1v  # config.plugins.moviebrowser.cachefolder.value + '/default_backdrop.m1v'
         if config.plugins.moviebrowser.m1v.value is True:
             if fileExists(backdrop_m1v):
                 self['backdrop'].hide()
@@ -4631,20 +4537,20 @@ class movieBrowserBackdrop(Screen):
                 self.session.open(MessageBox, _('Series Folder: No Info possible'), MessageBox.TYPE_ERROR)
                 return
             self.movies = []
-            # if fileExists(self.database):
-            f = open(self.database, 'r')
-            for line in f:
-                if self.content in line and self.filter in line:
-                    movieline = str(line).split(':::')
-                    try:
-                        self.movies.append((movieline[0], movieline[1], movieline[12]))
-                    except IndexError:
-                        pass
+            if fileExists(self.database):
+                f = open(self.database, 'r')
+                for line in f:
+                    if self.content in line and self.filter in line:
+                        movieline = line.split(':::')
+                        try:
+                            self.movies.append((movieline[0], movieline[1], movieline[12]))
+                        except IndexError:
+                            pass
 
-            if self.showfolder is True:
-                self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
-            f.close()
-            self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
+                if self.showfolder is True:
+                    self.movies.append(_('<List of Movie Folder>'), config.plugins.moviebrowser.moviefolder.value + '...', str(default_backdrop))
+                f.close()
+                self.session.openWithCallback(self.gotoMovie, movieControlList, self.movies, self.index, self.content)
 
     def gotoMovie(self, index, rebuild):
         if index is not None:
@@ -4767,7 +4673,7 @@ class movieBrowserBackdrop(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             genre = movieline[7]
                         except IndexError:
@@ -4814,7 +4720,7 @@ class movieBrowserBackdrop(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             actor = movieline[6]
                         except IndexError:
@@ -4861,7 +4767,7 @@ class movieBrowserBackdrop(Screen):
                 max = 25
                 for line in f:
                     if filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             director = movieline[5]
                         except IndexError:
@@ -4903,7 +4809,7 @@ class movieBrowserBackdrop(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if line.startswith(filter) and content in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             season = movieline[0]
                             season = season + 'FIN'
@@ -5194,29 +5100,29 @@ class movieBrowserBackdrop(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: str(line).split(':::')[4])
+                lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: str(line).split(':::')[8])
+                lines.sort(key=lambda line: line.split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: str(line).split(':::')[2])
+                lines.sort(key=lambda line: line.split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: str(line).split(':::')[1])
+                lines.sort(key=lambda line: line.split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -5230,6 +5136,7 @@ class movieBrowserBackdrop(Screen):
             for name in files:
                 with open(name, 'r') as infile:
                     outfile.write(infile.read())
+
         if fileExists(self.database + '.movies'):
             os.remove(self.database + '.movies')
         if fileExists(self.database + '.series'):
@@ -5340,9 +5247,9 @@ class movieBrowserPosterwall(Screen):
             self.posterALL = 24
             self.posterREST = 0
 
-            skincontent += '<screen name="movieBrowserPosterwall" position="0,0" size="1920,1080" flags="wfNoBorder" title="  ">'
+            skincontent += '<screen name="movieBrowserPosterwall" position="center,center" size="1920,1080" flags="wfNoBorder" title="  ">'
             skincontent += ' <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4"/>'
-            skincontent += ' <widget name="backdrop" position="0,0" size="1920,1080" scale="1" alphatest="on" transparent="0" zPosition="-3"/>'
+            skincontent += ' <widget name="backdrop" position="0,0" size="1920,1080" scale="1" alphatest="on" transparent="0" zPosition="-5"/>'
             skincontent += ' <!-- Titolo e Visto -->'
             skincontent += ' <widget name="name" position="503,930" size="915,143" font="Regular; 48" halign="center" valign="center" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3"/>'
             skincontent += ' <widget name="seen" position="1425,965" size="60,60" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/browser/seen.png" transparent="1" alphatest="on" scale="1" zPosition="3"/>'
@@ -5400,7 +5307,7 @@ class movieBrowserPosterwall(Screen):
             self.posterALL = 27
             self.posterREST = 0
             skincontent += ' <screen name="movieBrowserPosterwall" position="center,center" size="1280,720" flags="wfNoBorder" title="  ">'
-            skincontent += ' <widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-3"/>'
+            skincontent += ' <widget name="backdrop" position="0,0" size="1280,720" scale="1" alphatest="on" transparent="0" zPosition="-5"/>'
             skincontent += ' <widget name="infoback" position="5,620" size="1270,95" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="2"/>'
             skincontent += ' <widget name="plotfullback" position="730,25" size="525,430" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/overlay.png" scale="1" alphatest="blend" transparent="1" zPosition="-1"/>'
             skincontent += ' <widget name="episodes" position="742,151" size="500,270" scrollbarMode="showOnDemand" transparent="1" zPosition="30"/>'
@@ -5482,7 +5389,7 @@ class movieBrowserPosterwall(Screen):
         Screen.__init__(self, session)
         self.oldService = self.session.nav.getCurrentlyPlayingServiceReference()
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evEOF: self.seenEOF})
-        self.toogleHelp = self.session.instantiateDialog(helpScreenx)
+        self.toogleHelp = self.session.instantiateDialog(helpScreen)
         self.hideflag = True
         self.ready = False
         self.renew = False
@@ -5648,14 +5555,17 @@ class movieBrowserPosterwall(Screen):
                 os.remove(self.database)
 
         if fileExists(infosmallBackPNG):
-            self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
-            self['infoback'].show()
+            if self["infoback"].instance:
+                self["infoback"].instance.setPixmapFromFile(infosmallBackPNG)
+                self['infoback'].show()
         if fileExists(infoBackPNG):
-            self["2infoback"].instance.setPixmapFromFile(infoBackPNG)
-            self['2infoback'].hide()
+            if self["2infoback"].instance:
+                self["2infoback"].instance.setPixmapFromFile(infoBackPNG)
+                self['2infoback'].hide()
         if fileExists(infoBackPNG):
-            self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
-            self['plotfullback'].hide()
+            if self["plotfullback"].instance:
+                self["plotfullback"].instance.setPixmapFromFile(infoBackPNG)
+                self['plotfullback'].hide()
 
         if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
             self.session.nav.stopService()
@@ -5690,6 +5600,7 @@ class movieBrowserPosterwall(Screen):
             self.openTimer = eTimer()
             self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
+
         return
 
     def openInfo(self):
@@ -5737,135 +5648,119 @@ class movieBrowserPosterwall(Screen):
             self.medialist = []
             self.dddlist = []
             self.filter = filter
-            # if fileExists(self.database):
-            with open(self.database, 'r', encoding='utf-8') as f:
-                name = ""
-                filename = ""
-                date = ""
-                runtime = ""
-                rating = ""
-                director = ""
-                actors = ""
-                genres = ""
-                year = ""
-                country = ""
-                plotfull = ""
-                poster = str(default_poster)
-                backdrop = str(default_backdrop)
-                seen = 'unseen'
-                content = 'Movie:Top'
-                media = '\n'
-                for line in f:
-                    if self.content in line and filter in line:
-                        # name = ""
-                        # filename = ""
-                        # date = ""
-                        # runtime = ""
-                        # rating = ""
-                        # director = ""
-                        # actors = ""
-                        # genres = ""
-                        # year = ""
-                        # country = ""
-                        # plotfull = ""
-                        # poster = str(default_poster)
-                        # backdrop = str(default_backdrop)
-                        # seen = 'unseen'
-                        # content = 'Movie:Top'
-                        # media = '\n'
-                        movieline = str(line).split(':::')
-                        try:
-                            name = movieline[0]
-                            name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
-                            filename = movieline[1]
-                            date = movieline[2]
-                            runtime = movieline[3]
-                            rating = movieline[4]
-                            director = movieline[5]
-                            actors = movieline[6]
-                            genres = movieline[7]
-                            year = movieline[8]
-                            country = movieline[9]
-                            plotfull = movieline[10]
-                            poster = movieline[11]
-                            backdrop = movieline[12]
-                            content = movieline[13]
-                            seen = movieline[14]
-                            media = movieline[15]
-                        except IndexError:
-                            pass
-                        self.namelist.append(name)
-                        self.movielist.append(filename)
-                        self.dddlist.append('yes' if '3d' in filename.lower() else 'no')
-                        self.datelist.append(date)
-                        res = [runtime, rating, director, actors, genres, year, country]
-                        self.infolist.append(res)
-                        self.plotlist.append(plotfull)
-                        self.posterlist.append(poster)
-                        self.backdroplist.append(backdrop)
-                        self.contentlist.append(content)
-                        self.seenlist.append(seen)
-                        self.medialist.append(media)
-            if self.showfolder is True:
-                self.namelist.append(_('<List of Movie Folder>'))
-                self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
-                self.datelist.append('')
-                res = []
-                res.append('')
-                res.append('0.0')
-                res.append('')
-                res.append('')
-                res.append('')
-                res.append('')
-                res.append('')
-                self.infolist.append(res)
-                self.plotlist.append('')
-                self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
-                self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
-                self.contentlist.append(':Top')
-                self.seenlist.append('unseen')
-                self.medialist.append('\n')
-            self.maxentry = len(self.namelist)
-            self.posterREST = self.maxentry % self.posterALL
-            if self.posterREST == 0:
-                self.posterREST = self.posterALL
-            self.pagemax = self.maxentry // self.posterALL
-            if self.maxentry % self.posterALL > 0:
-                self.pagemax += 1
-            self.makePoster(self.pagecount - 1)
-            self.paintFrame()
-            if self.backdrops != 'hide':
+            if fileExists(self.database):
+                with open(self.database, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        if self.content in line and filter in line:
+                            name = ""
+                            filename = ""
+                            date = ""
+                            runtime = ""
+                            rating = ""
+                            director = ""
+                            actors = ""
+                            genres = ""
+                            year = ""
+                            country = ""
+                            plotfull = ""
+                            poster = str(default_poster)
+                            backdrop = str(default_backdrop)
+                            seen = 'unseen'
+                            content = 'Movie:Top'
+                            media = '\n'
+                            movieline = line.split(':::')
+                            try:
+                                name = movieline[0]
+                                name = sub(r'[Ss][0]+[Ee]', 'Special ', name)
+                                filename = movieline[1]
+                                date = movieline[2]
+                                runtime = movieline[3]
+                                rating = movieline[4]
+                                director = movieline[5]
+                                actors = movieline[6]
+                                genres = movieline[7]
+                                year = movieline[8]
+                                country = movieline[9]
+                                plotfull = movieline[10]
+                                poster = movieline[11]
+                                backdrop = movieline[12]
+                                content = movieline[13]
+                                seen = movieline[14]
+                                media = movieline[15]
+                            except IndexError:
+                                pass
+                            self.namelist.append(name)
+                            self.movielist.append(filename)
+                            self.dddlist.append('yes' if '3d' in filename.lower() else 'no')
+                            self.datelist.append(date)
+                            res = [runtime, rating, director, actors, genres, year, country]
+                            self.infolist.append(res)
+                            self.plotlist.append(plotfull)
+                            self.posterlist.append(poster)
+                            self.backdroplist.append(backdrop)
+                            self.contentlist.append(content)
+                            self.seenlist.append(seen)
+                            self.medialist.append(media)
+                if self.showfolder is True:
+                    self.namelist.append(_('<List of Movie Folder>'))
+                    self.movielist.append(config.plugins.moviebrowser.moviefolder.value + '...')
+                    self.datelist.append('')
+                    res = []
+                    res.append('')
+                    res.append('0.0')
+                    res.append('')
+                    res.append('')
+                    res.append('')
+                    res.append('')
+                    res.append('')
+                    self.infolist.append(res)
+                    self.plotlist.append('')
+                    self.posterlist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_folder.png')
+                    self.backdroplist.append('https://sites.google.com/site/kashmirplugins/home/movie-browser/default_backdrop.png')
+                    self.contentlist.append(':Top')
+                    self.seenlist.append('unseen')
+                    self.medialist.append('\n')
+                self.maxentry = len(self.namelist)
+                self.posterREST = self.maxentry % self.posterALL
+                if self.posterREST == 0:
+                    self.posterREST = self.posterALL
+                self.pagemax = self.maxentry // self.posterALL
+                if self.maxentry % self.posterALL > 0:
+                    self.pagemax += 1
+                self.makePoster(self.pagecount - 1)
+                self.paintFrame()
+                if self.backdrops != 'hide':
+                    try:
+                        self.showBackdrops(self.index)
+                    except IndexError:
+                        pass
+
+                else:
+                    self.showDefaultBackdrop()
                 try:
-                    self.showBackdrops(self.index)
+                    self.makeName(self.index)
                 except IndexError:
                     pass
 
-            else:
-                self.showDefaultBackdrop()
-            try:
-                self.makeName(self.index)
-            except IndexError:
-                pass
+                try:
+                    self.makeInfo(self.index)
+                except IndexError:
+                    pass
 
-            try:
-                self.makeInfo(self.index)
-            except IndexError:
-                pass
+                try:
+                    content = self.contentlist[self.index]
+                    if content == 'Series:Top':
+                        self.infofull = True
+                        self.plotfull = True
+                        self.episodes = True
+                    if self.infofull is True:
+                        self.makeInfo2(self.index)
+                    if self.plotfull is True:
+                        self.makePlot(self.index)
+                except IndexError:
+                    pass
 
-            try:
-                content = self.contentlist[self.index]
-                if content == 'Series:Top':
-                    self.infofull = True
-                    self.plotfull = True
-                    self.episodes = True
-                if self.infofull is True:
-                    self.makeInfo2(self.index)
-                if self.plotfull is True:
-                    self.makePlot(self.index)
-            except IndexError:
-                pass
-
-            self.ready = True
+                self.ready = True
         OnclearMem()
         return
 
@@ -6192,9 +6087,10 @@ class movieBrowserPosterwall(Screen):
                     return
                 name = self.movielist[self.index]
                 name = _renewTMDb(name)
-                self.name = name
-                name = convtext(name)
+                # self.name = name
+                name = transMOVIE(name)
                 name = sub('\\+[1-2][0-9][0-9][0-9]', '', name)
+                self.name = name
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), name, self.language)
                 self.getTMDbMovies(url)
             except IndexError:
@@ -6260,12 +6156,13 @@ class movieBrowserPosterwall(Screen):
             try:
                 name = self.movielist[self.index]
                 name = _renewTVDb(name)
-                self.name = name
+                # self.name = name
                 name = name + 'FIN'
                 name = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                 name = sub('FIN', '', name)
                 name = transSERIES(name)
+                self.name = name
                 url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (name, self.language)
                 self.getTVDbMovies(url)
             except IndexError:
@@ -6933,6 +6830,7 @@ class movieBrowserPosterwall(Screen):
             except ValueError:
                 ratings = '0.0'
                 rating = int(10 * round(float(ratings), 1))
+
             self['2Rating'].show()
             self['2ratings'].setValue(rating)
             self['2ratings'].show()
@@ -7123,9 +7021,8 @@ class movieBrowserPosterwall(Screen):
                 poster = sub('.*?[/]', '', posterurl)
                 poster = config.plugins.moviebrowser.cachefolder.value + '/' + poster
                 if fileExists(poster):
-                    if self['poster' + str(x)].instance:
-                        self['poster' + str(x)].instance.setPixmapFromFile(poster)
-                        self['poster' + str(x)].show()
+                    self['poster' + str(x)].instance.setPixmapFromFile(poster)
+                    self['poster' + str(x)].show()
                 else:
                     if pythonVer == 3:
                         posterurl = posterurl.encode()
@@ -7203,8 +7100,9 @@ class movieBrowserPosterwall(Screen):
         try:
             open(backdrop, 'wb').write(output)
             if fileExists(backdrop):
-                self["backdrop"].instance.setPixmapFromFile(backdrop)
-                self['backdrop'].show()
+                if self["backdrop"].instance:
+                    self["backdrop"].instance.setPixmapFromFile(backdrop)
+                    self['backdrop'].show()
         except Exception as e:
             print('error ', str(e))
             self['backdrop'].hide()
@@ -7519,7 +7417,7 @@ class movieBrowserPosterwall(Screen):
                 f = open(self.database, 'r')
                 for line in f:
                     if self.content in line and self.filter in line:
-                        movieline = str(line).split(':::')
+                        movieline = line.split(':::')
                         try:
                             self.movies.append((movieline[0], movieline[1], movieline[12]))
                         except IndexError:
@@ -7754,8 +7652,8 @@ class movieBrowserPosterwall(Screen):
                 filter = self.content
             directors = ''
             if fileExists(self.database):
-                max = 25
                 f = open(self.database, 'r')
+                max = 25
                 for line in f:
                     if filter in line:
                         movieline = line.split(':::')
@@ -8094,29 +7992,29 @@ class movieBrowserPosterwall(Screen):
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: str(line).split(':::')[4])
+                lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: str(line).split(':::')[8])
+                lines.sort(key=lambda line: line.split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: str(line).split(':::')[2])
+                lines.sort(key=lambda line: line.split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: str(line).split(':::')[1])
+                lines.sort(key=lambda line: line.split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -8306,7 +8204,7 @@ class UpdateDatabase():
                 self.fileCount = count
 
         for line in data.split('\n'):
-            movieline = str(line).split(':::')
+            movieline = line.split(':::')
             try:
                 moviefolder = sub('\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
             except IndexError:
@@ -8340,7 +8238,7 @@ class UpdateDatabase():
                 url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
                 self.getTVDbData(url, '0')
             else:
-                movie = convtext(self.name)
+                movie = transMOVIE(self.name)
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                 self.getTMDbData(url, '0', False)
         return
@@ -8890,7 +8788,7 @@ class UpdateDatabase():
                     except RuntimeError:
                         return (1, self.orphaned, self.moviecount, self.seriescount)
                 else:
-                    movie = convtext(self.name)
+                    movie = transMOVIE(self.name)
                     movie = sub('\\+[1-2][0-9][0-9][0-9]', '', movie)
                     url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api_key), movie, self.language)
                     try:
@@ -8946,6 +8844,7 @@ class UpdateDatabase():
         for line in f:
             if ':::Series:::' not in line:
                 movies = movies + line
+
         f.close()
         fmovies = open(self.database + '.movies', 'w')
         fmovies.write(movies)
@@ -8956,29 +8855,29 @@ class UpdateDatabase():
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
             elif self.sortorder == 'rating':
-                lines.sort(key=lambda line: str(line).split(':::')[4])
+                lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
             elif self.sortorder == 'year':
-                lines.sort(key=lambda line: str(line).split(':::')[8])
+                lines.sort(key=lambda line: line.split(':::')[8])
             elif self.sortorder == 'year_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
             elif self.sortorder == 'date':
-                lines.sort(key=lambda line: str(line).split(':::')[2])
+                lines.sort(key=lambda line: line.split(':::')[2])
             elif self.sortorder == 'date_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
             elif self.sortorder == 'folder':
-                lines.sort(key=lambda line: str(line).split(':::')[1])
+                lines.sort(key=lambda line: line.split(':::')[1])
             elif self.sortorder == 'folder_reverse':
-                lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
+                lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
@@ -9080,7 +8979,7 @@ class movieControlList(Screen):
         movies = 'Movies'
         series = 'Series'
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -9449,88 +9348,88 @@ class movieDatabase(Screen):
         self.medialist = []
         self.list = []
         self.listentries = []
-        # if fileExists(self.database):
-        count = 0
-        index = 0
-        f = open(self.database, 'r')
-        for line in f:
-            name = ""
-            movie = ""
-            date = ""
-            runtime = ""
-            rating = ""
-            director = ""
-            actors = ""
-            genres = ""
-            year = ""
-            country = ""
-            poster = str(default_poster)
-            backdrop = str(default_backdrop)
-            media = '\n'
-            movieline = str(line).split(':::')
-            try:
-                name = movieline[0]
-                name = sub('[Ss][0]+[Ee]', 'Special ', name)
-                movie = movieline[1]
-                if movie == self.movie:
-                    index = count
-                date = movieline[2]
-                runtime = movieline[3]
-                rating = movieline[4]
-                director = movieline[5]
-                actors = movieline[6]
-                genres = movieline[7]
-                year = movieline[8]
-                country = movieline[9]
-                poster = movieline[11]
-                backdrop = movieline[12]
-                media = movieline[15]
-            except IndexError:
-                pass
-            self.namelist.append(name)
-            self.movielist.append(movie)
-            self.datelist.append(date)
-            self.runtimelist.append(runtime)
-            self.ratinglist.append(rating)
-            self.directorlist.append(director)
-            self.actorslist.append(actors)
-            self.genreslist.append(genres)
-            self.yearlist.append(year)
-            self.countrylist.append(country)
-            self.posterlist.append(poster)
-            self.backdroplist.append(backdrop)
-            self.medialist.append(media)
-            self.list.append(name)
-            count += 1
-            res = ['']
-            if screenwidth.width() == 1920:
-                res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
-            else:
-                res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
-            self.listentries.append(res)
+        if fileExists(self.database):
+            count = 0
+            index = 0
+            f = open(self.database, 'r')
+            for line in f:
+                name = ""
+                movie = ""
+                date = ""
+                runtime = ""
+                rating = ""
+                director = ""
+                actors = ""
+                genres = ""
+                year = ""
+                country = ""
+                poster = str(default_poster)
+                backdrop = str(default_backdrop)
+                media = '\n'
+                movieline = line.split(':::')
+                try:
+                    name = movieline[0]
+                    name = sub('[Ss][0]+[Ee]', 'Special ', name)
+                    movie = movieline[1]
+                    if movie == self.movie:
+                        index = count
+                    date = movieline[2]
+                    runtime = movieline[3]
+                    rating = movieline[4]
+                    director = movieline[5]
+                    actors = movieline[6]
+                    genres = movieline[7]
+                    year = movieline[8]
+                    country = movieline[9]
+                    poster = movieline[11]
+                    backdrop = movieline[12]
+                    media = movieline[15]
+                except IndexError:
+                    pass
+                self.namelist.append(name)
+                self.movielist.append(movie)
+                self.datelist.append(date)
+                self.runtimelist.append(runtime)
+                self.ratinglist.append(rating)
+                self.directorlist.append(director)
+                self.actorslist.append(actors)
+                self.genreslist.append(genres)
+                self.yearlist.append(year)
+                self.countrylist.append(country)
+                self.posterlist.append(poster)
+                self.backdroplist.append(backdrop)
+                self.medialist.append(media)
+                self.list.append(name)
+                count += 1
+                res = ['']
+                if screenwidth.width() == 1920:
+                    res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
+                else:
+                    res.append(MultiContentEntryText(pos=(5, 0), size=(710, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=name))
+                self.listentries.append(res)
 
-        self['list'].l.setList(self.listentries)
-        self['list'].moveToIndex(index)
-        self.selectList()
-        self.ready = True
-        totalMovies = len(self.list)
-        database = _('Database')
-        free = _('Free Space')
-        folder = _('Movie Folder')
-        movies = _('Movies')
-        if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
-            try:
-                stat = movieFolder
-                freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
-            except Exception as e:
-                print(e)
-                freeSize = "-?-"
-            title = '%s Editor: %s %s (%s %s)' % (database, str(totalMovies), movies, str(freeSize), free)
-            self.setTitle(title)
-        else:
-            title = '%s Editor: %s %s (%s offline)' % (database, str(totalMovies), movies, folder)
-            self.setTitle(title)
+            self['list'].l.setList(self.listentries)
+            self['list'].moveToIndex(index)
+            self.selectList()
+            self.ready = True
+            totalMovies = len(self.list)
+            database = _('Database')
+            free = _('Free Space')
+            folder = _('Movie Folder')
+            movies = _('Movies')
+            if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
+                movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+                try:
+                    stat = movieFolder
+                    freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
+                except Exception as e:
+                    print(e)
+                    freeSize = "-?-"
+                title = '%s Editor: %s %s (%s %s)' % (database, str(totalMovies), movies, str(freeSize), free)
+                self.setTitle(title)
+            else:
+                title = '%s Editor: %s %s (%s offline)' % (database, str(totalMovies), movies, folder)
+                self.setTitle(title)
 
     def makeList2(self):
         self.list2 = []
@@ -9712,6 +9611,7 @@ class moviesList(Screen):
         self.movie = movie
         self.top = top
         self.choice = 'movie'
+        self.language = config.plugins.moviebrowser.language.value
         self.language = '&language=%s' % config.plugins.moviebrowser.language.value
         self.movielist = []
         self.imagelist = []
@@ -10677,105 +10577,100 @@ class moviesList(Screen):
         self.leftUp()
 
     def getPoster1(self, output):
-        with open_func(self.poster1, 'wb', encoding='utf-8') as file:
+        with open(self.poster1, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster1(self.poster1)
 
     def showPoster1(self, poster1):
         if fileExists(poster1):
-            if self['poster1'].instance:
-                self['poster1'].instance.setPixmapFromFile(poster1)
-                self['poster1'].show()
+            self["poster1"].instance.setPixmapFromFile(poster1)
+            self['poster1'].show()
         return
 
     def getPoster2(self, output):
-        with open_func(self.poster2, 'wb', encoding='utf-8') as file:
+        with open(self.poster2, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster2(self.poster2)
 
     def showPoster2(self, poster2):
         if fileExists(poster2):
-            if self['poster2'].instance:
-                self['poster2'].instance.setPixmapFromFile(poster2)
-                self['poster2'].show()
+            self["poster2"].instance.setPixmapFromFile(poster2)
+            self['poster2'].show()
         return
 
     def getPoster3(self, output):
-        with open_func(self.poster3, 'wb', encoding='utf-8') as file:
+        with open(self.poster3, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster3(self.poster3)
 
     def showPoster3(self, poster3):
         if fileExists(poster3):
-            if self['poster3'].instance:
-                self['poster3'].instance.setPixmapFromFile(poster3)
-                self['poster3'].show()
+            self["poster3"].instance.setPixmapFromFile(poster3)
+            self['poster3'].show()
         return
 
     def getPoster4(self, output):
-        with open_func(self.poster4, 'wb', encoding='utf-8') as file:
+        with open(self.poster4, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showPoster4(self.poster4)
 
     def showPoster4(self, poster4):
         if fileExists(poster4):
-            if self['poster4'].instance:
-                self['poster4'].instance.setPixmapFromFile(poster4)
-                self['poster4'].show()
+            self["poster4"].instance.setPixmapFromFile(poster4)
+            self['poster4'].show()
         return
 
     def getBanner1(self, output):
-        with open_func(self.banner1, 'wb', encoding='utf-8') as file:
+        with open(self.banner1, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner1(self.banner1)
 
     def showBanner1(self, banner1):
         if fileExists(banner1):
-            if self['banner1'].instance:
-                self["banner1"].instance.setPixmapFromFile(banner1)
-                self['banner1'].show()
+            self["banner1"].instance.setPixmapFromFile(banner1)
+            self['banner1'].show()
         return
 
     def getBanner2(self, output):
-        with open_func(self.banner2, 'wb', encoding='utf-8') as file:
+        with open(self.banner2, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner2(self.banner2)
 
     def showBanner2(self, banner2):
         if fileExists(banner2):
-            if self['banner2'].instance:
-                self["banner2"].instance.setPixmapFromFile(banner2)
-                self['banner2'].show()
+            self["banner2"].instance.setPixmapFromFile(banner2)
+            self['banner2'].show()
         return
 
     def getBanner3(self, output):
-        with open_func(self.banner3, 'wb', encoding='utf-8') as file:
+        with open(self.banner3, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner3(self.banner3)
 
     def showBanner3(self, banner3):
         if fileExists(banner3):
-            if self['banner3'].instance:
-                self["banner3"].instance.setPixmapFromFile(banner3)
-                self['banner3'].show()
+            self["banner3"].instance.setPixmapFromFile(banner3)
+            self['banner3'].show()
         return
 
     def getBanner4(self, output):
-        with open_func(self.banner4, 'wb', encoding='utf-8') as file:
+        with open(self.banner4, 'wb', encoding='utf-8') as file:
             file.write(output)
         self.showBanner4(self.banner4)
 
     def showBanner4(self, banner4):
         if fileExists(banner4):
-            if self['banner4'].instance:
-                self["banner4"].instance.setPixmapFromFile(banner4)
-                self['banner4'].show()
+            self["banner4"].instance.setPixmapFromFile(banner4)
+            self['banner4'].show()
         return
 
     def download(self, link, name):
-        if pythonVer == 3:
-            link = link.encode()
-        callInThread(threadGetPage, url=link, file=None, key=None, success=name, fail=self.downloadError)
+        try:
+            if pythonVer == 3:
+                link = link.encode()
+            callInThread(threadGetPage, url=link, file=None, key=None, success=name, fail=self.downloadError)
+        except Exception as e:
+            print(str(e))
 
     def downloadError(self, output):
         pass
@@ -10944,7 +10839,7 @@ class filterSeasonList(Screen):
         free = _('Free Space:')
         folder = _('Movie Folder')
         if os.path.exists(config.plugins.moviebrowser.moviefolder.value):
-            movieFolder = os.statvfs(config.plugins.moviebrowser.moviefolder.value)
+            movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
             try:
                 stat = movieFolder
                 freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -11031,133 +10926,214 @@ class getABC(Screen):
 
     def ABC(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'A': 'DEF', 'B': 'DEF', 'C': 'DEF',
-            'D': 'GHI', 'E': 'GHI', 'F': 'GHI',
-            'G': 'JKL', 'H': 'JKL', 'I': 'JKL',
-            'J': 'MNO', 'K': 'MNO', 'L': 'MNO',
-            'M': 'PQRS', 'N': 'PQRS', 'O': 'PQRS',
-            'P': 'TUV', 'Q': 'TUV', 'R': 'TUV', 'S': 'TUV',
-            'T': 'WXYZ', 'U': 'WXYZ', 'V': 'WXYZ',
-            'W': 'ABC', 'X': 'ABC', 'Y': 'ABC', 'Z': 'ABC'
-        }
-        self.field = transitions.get(self.field, 'DEF')
+        if self.field.startswith('A') or self.field.startswith('B') or self.field.startswith('C'):
+            self.field = 'DEF'
+        elif self.field.startswith('D') or self.field.startswith('E') or self.field.startswith('F'):
+            self.field = 'GHI'
+        elif self.field.startswith('G') or self.field.startswith('H') or self.field.startswith('I'):
+            self.field = 'JKL'
+        elif self.field.startswith('J') or self.field.startswith('K') or self.field.startswith('L'):
+            self.field = 'MNO'
+        elif self.field.startswith('M') or self.field.startswith('N') or self.field.startswith('O'):
+            self.field = 'PQRS'
+        elif self.field.startswith('P') or self.field.startswith('Q') or self.field.startswith('R') or self.field.startswith('S'):
+            self.field = 'TUV'
+        elif self.field.startswith('T') or self.field.startswith('U') or self.field.startswith('V'):
+            self.field = 'WXYZ'
+        elif self.field.startswith('W') or self.field.startswith('X') or self.field.startswith('Y') or self.field.startswith('Z'):
+            self.field = 'ABC'
         self['ABC'].setText(self.field)
 
     def WXYZ(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'W': 'TUV', 'X': 'TUV', 'Y': 'TUV', 'Z': 'TUV',
-            'T': 'PQRS', 'U': 'PQRS', 'V': 'PQRS',
-            'P': 'MNO', 'Q': 'MNO', 'R': 'MNO', 'S': 'MNO',
-            'M': 'JKL', 'N': 'JKL', 'O': 'JKL',
-            'J': 'GHI', 'K': 'GHI', 'L': 'GHI',
-            'G': 'DEF', 'H': 'DEF', 'I': 'DEF',
-            'D': 'ABC', 'E': 'ABC', 'F': 'ABC',
-            'A': 'WXYZ', 'B': 'WXYZ', 'C': 'WXYZ'
-        }
-        self.field = transitions.get(self.field, 'TUV')
+        if self.field.startswith('W') or self.field.startswith('X') or self.field.startswith('Y') or self.field.startswith('Z'):
+            self.field = 'TUV'
+        elif self.field.startswith('T') or self.field.startswith('U') or self.field.startswith('V'):
+            self.field = 'PQRS'
+        elif self.field.startswith('P') or self.field.startswith('Q') or self.field.startswith('R') or self.field.startswith('S'):
+            self.field = 'MNO'
+        elif self.field.startswith('M') or self.field.startswith('N') or self.field.startswith('O'):
+            self.field = 'JKL'
+        elif self.field.startswith('J') or self.field.startswith('K') or self.field.startswith('L'):
+            self.field = 'GHI'
+        elif self.field.startswith('G') or self.field.startswith('H') or self.field.startswith('I'):
+            self.field = 'DEF'
+        elif self.field.startswith('D') or self.field.startswith('E') or self.field.startswith('F'):
+            self.field = 'ABC'
+        elif self.field.startswith('A') or self.field.startswith('B') or self.field.startswith('C'):
+            self.field = 'WXYZ'
         self['ABC'].setText(self.field)
 
     def _ABC(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'A': 'B', 'B': 'C', 'C': 'A'
-        }
-        self.field = transitions.get(self.field, 'A')
+        if self.field != 'A' and self.field != 'B' and self.field != 'C':
+            self.field = 'A'
+        elif self.field == 'A':
+            self.field = 'B'
+        elif self.field == 'B':
+            self.field = 'C'
+        elif self.field == 'C':
+            self.field = 'A'
         self['ABC'].setText(self.field)
 
     def _DEF(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'D': 'E', 'E': 'F', 'F': 'D'
-        }
-        self.field = transitions.get(self.field, 'D')
+        if self.field != 'D' and self.field != 'E' and self.field != 'F':
+            self.field = 'D'
+        elif self.field == 'D':
+            self.field = 'E'
+        elif self.field == 'E':
+            self.field = 'F'
+        elif self.field == 'F':
+            self.field = 'D'
         self['ABC'].setText(self.field)
 
     def _GHI(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'G': 'H', 'H': 'I', 'I': 'G'
-        }
-        self.field = transitions.get(self.field, 'G')
+        if self.field != 'G' and self.field != 'H' and self.field != 'I':
+            self.field = 'G'
+        elif self.field == 'G':
+            self.field = 'H'
+        elif self.field == 'H':
+            self.field = 'I'
+        elif self.field == 'I':
+            self.field = 'G'
         self['ABC'].setText(self.field)
 
     def _JKL(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'J': 'K', 'K': 'L', 'L': 'J'
-        }
-        self.field = transitions.get(self.field, 'J')
+        if self.field != 'J' and self.field != 'K' and self.field != 'L':
+            self.field = 'J'
+        elif self.field == 'J':
+            self.field = 'K'
+        elif self.field == 'K':
+            self.field = 'L'
+        elif self.field == 'L':
+            self.field = 'J'
         self['ABC'].setText(self.field)
 
     def _MNO(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'M': 'N',
-            'N': 'O',
-            'O': 'M'
-        }
-        if self.field not in transitions:
+        if self.field != 'M' and self.field != 'N' and self.field != 'O':
             self.field = 'M'
-        else:
-            self.field = transitions[self.field]
+        elif self.field == 'M':
+            self.field = 'N'
+        elif self.field == 'N':
+            self.field = 'O'
+        elif self.field == 'O':
+            self.field = 'M'
         self['ABC'].setText(self.field)
 
     def _PQRS(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'P': 'Q',
-            'Q': 'R',
-            'R': 'S',
-            'S': 'P'
-        }
-        if self.field not in transitions:
+        if self.field != 'P' and self.field != 'Q' and self.field != 'R' and self.field != 'S':
             self.field = 'P'
-        else:
-            self.field = transitions[self.field]
+        elif self.field == 'P':
+            self.field = 'Q'
+        elif self.field == 'Q':
+            self.field = 'R'
+        elif self.field == 'R':
+            self.field = 'S'
+        elif self.field == 'S':
+            self.field = 'P'
         self['ABC'].setText(self.field)
 
     def _TUV(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'T': 'U',
-            'U': 'V',
-            'V': 'T'
-        }
-        if self.field not in transitions:
+        if self.field != 'T' and self.field != 'U' and self.field != 'V':
             self.field = 'T'
-        else:
-            self.field = transitions[self.field]
+        elif self.field == 'T':
+            self.field = 'U'
+        elif self.field == 'U':
+            self.field = 'V'
+        elif self.field == 'V':
+            self.field = 'T'
         self['ABC'].setText(self.field)
 
     def _WXYZ(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'W': 'X',
-            'X': 'Y',
-            'Y': 'Z',
-            'Z': 'W'
-        }
-        if self.field not in transitions:
+        if self.field != 'W' and self.field != 'X' and self.field != 'Y' and self.field != 'Z':
             self.field = 'W'
-        else:
-            self.field = transitions[self.field]
+        elif self.field == 'W':
+            self.field = 'X'
+        elif self.field == 'X':
+            self.field = 'Y'
+        elif self.field == 'Y':
+            self.field = 'Z'
+        elif self.field == 'Z':
+            self.field = 'W'
         self['ABC'].setText(self.field)
 
     def OK(self):
         self.Timer.start(2000, True)
-        transitions = {
-            'ABC': 'B', 'B': 'C', 'C': 'A', 'A': 'B',
-            'DEF': 'E', 'E': 'F', 'F': 'D', 'D': 'E',
-            'GHI': 'H', 'H': 'I', 'I': 'G', 'G': 'H',
-            'JKL': 'K', 'K': 'L', 'L': 'J', 'J': 'K',
-            'MNO': 'N', 'N': 'O', 'O': 'M', 'M': 'N',
-            'PQRS': 'Q', 'Q': 'R', 'R': 'S', 'S': 'P', 'P': 'Q',
-            'TUV': 'U', 'U': 'V', 'V': 'T', 'T': 'U',
-            'WXYZ': 'X', 'X': 'Y', 'Y': 'Z', 'Z': 'W', 'W': 'X'
-        }
-        self.field = transitions.get(self.field, self.field)
+        if self.field == 'ABC':
+            self.field = 'B'
+        elif self.field == 'B':
+            self.field = 'C'
+        elif self.field == 'C':
+            self.field = 'A'
+        elif self.field == 'A':
+            self.field = 'B'
+        elif self.field == 'DEF':
+            self.field = 'E'
+        elif self.field == 'E':
+            self.field = 'F'
+        elif self.field == 'F':
+            self.field = 'D'
+        elif self.field == 'D':
+            self.field = 'E'
+        elif self.field == 'GHI':
+            self.field = 'H'
+        elif self.field == 'H':
+            self.field = 'I'
+        elif self.field == 'I':
+            self.field = 'G'
+        elif self.field == 'G':
+            self.field = 'H'
+        elif self.field == 'JKL':
+            self.field = 'K'
+        elif self.field == 'K':
+            self.field = 'L'
+        elif self.field == 'L':
+            self.field = 'J'
+        elif self.field == 'J':
+            self.field = 'K'
+        elif self.field == 'MNO':
+            self.field = 'N'
+        elif self.field == 'N':
+            self.field = 'O'
+        elif self.field == 'O':
+            self.field = 'M'
+        elif self.field == 'M':
+            self.field = 'N'
+        elif self.field == 'PQRS':
+            self.field = 'Q'
+        elif self.field == 'Q':
+            self.field = 'R'
+        elif self.field == 'R':
+            self.field = 'S'
+        elif self.field == 'S':
+            self.field = 'P'
+        elif self.field == 'P':
+            self.field = 'Q'
+        elif self.field == 'TUV':
+            self.field = 'U'
+        elif self.field == 'U':
+            self.field = 'V'
+        elif self.field == 'V':
+            self.field = 'T'
+        elif self.field == 'T':
+            self.field = 'U'
+        elif self.field == 'WXYZ':
+            self.field = 'X'
+        elif self.field == 'X':
+            self.field = 'Y'
+        elif self.field == 'Y':
+            self.field = 'Z'
+        elif self.field == 'Z':
+            self.field = 'W'
+        elif self.field == 'W':
+            self.field = 'X'
         self['ABC'].setText(self.field)
 
     def returnABC(self):
@@ -11368,7 +11344,7 @@ class switchStart(Screen):
         self.close()
 
 
-class helpScreenx(Screen):
+class helpScreen(Screen):
 
     def __init__(self, session):
         skin = os.path.join(skin_path + "helpScreen.xml")
@@ -11672,78 +11648,78 @@ class movieBrowserConfig(ConfigListScreen, Screen):
             self.ready = False
             series = ''
             if config.plugins.moviebrowser.sortorder.value != self.sortorder:
-                # if fileExists(self.database):
-                f = open(self.database, 'r')
-                for line in f:
-                    if ':::Series:::' in line:
-                        series = series + line
-                f.close()
-                fseries = open(self.database + '.series', 'w')
-                fseries.write(series)
-                fseries.close()
-                fseries = open(self.database + '.series', 'r')
-                series = fseries.readlines()
-                series.sort(key=lambda line: line.split(':::')[0])
-                fseries.close()
-                fseries = open(self.database + '.series', 'w')
-                fseries.writelines(series)
-                fseries.close()
-                f = open(self.database, 'r')
-                movies = ''
-                for line in f:
-                    if ':::Series:::' not in line:
-                        movies = movies + line
-                f.close()
-                fmovies = open(self.database + '.movies', 'w')
-                fmovies.write(movies)
-                fmovies.close()
-                fmovies = open(self.database + '.movies', 'r')
-                lines = fmovies.readlines()
-                fmovies.close()
-                try:
-                    if config.plugins.moviebrowser.sortorder.value == 'name':
-                        lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
-                    elif config.plugins.moviebrowser.sortorder.value == 'name_reverse':
-                        lines.sort(key=lambda line: str(line).split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
-                    elif config.plugins.moviebrowser.sortorder.value == 'rating':
-                        lines.sort(key=lambda line: str(line).split(':::')[4])
-                    elif config.plugins.moviebrowser.sortorder.value == 'rating_reverse':
-                        lines.sort(key=lambda line: str(line).split(':::')[4], reverse=True)
-                    elif config.plugins.moviebrowser.sortorder.value == 'year':
-                        lines.sort(key=lambda line: str(line).split(':::')[8])
-                    elif config.plugins.moviebrowser.sortorder.value == 'year_reverse':
-                        lines.sort(key=lambda line: str(line).split(':::')[8], reverse=True)
-                    elif config.plugins.moviebrowser.sortorder.value == 'date':
-                        lines.sort(key=lambda line: str(line).split(':::')[2])
-                    elif config.plugins.moviebrowser.sortorder.value == 'date_reverse':
-                        lines.sort(key=lambda line: str(line).split(':::')[2], reverse=True)
-                    elif config.plugins.moviebrowser.sortorder.value == 'folder':
-                        lines.sort(key=lambda line: str(line).split(':::')[1])
-                    elif config.plugins.moviebrowser.sortorder.value == 'folder_reverse':
-                        lines.sort(key=lambda line: str(line).split(':::')[1], reverse=True)
-                    elif config.plugins.moviebrowser.sortorder.value == 'runtime':
-                        lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')))
-                    elif config.plugins.moviebrowser.sortorder.value == 'runtime_reverse':
-                        lines.sort(key=lambda line: int(str(line).split(':::')[3].replace(' min', '')), reverse=True)
-                except IndexError:
-                    pass
-                except ValueError:
-                    self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+                if fileExists(self.database):
+                    f = open(self.database, 'r')
+                    for line in f:
+                        if ':::Series:::' in line:
+                            series = series + line
+                    f.close()
+                    fseries = open(self.database + '.series', 'w')
+                    fseries.write(series)
+                    fseries.close()
+                    fseries = open(self.database + '.series', 'r')
+                    series = fseries.readlines()
+                    series.sort(key=lambda line: line.split(':::')[0])
+                    fseries.close()
+                    fseries = open(self.database + '.series', 'w')
+                    fseries.writelines(series)
+                    fseries.close()
+                    f = open(self.database, 'r')
+                    movies = ''
+                    for line in f:
+                        if ':::Series:::' not in line:
+                            movies = movies + line
+                    f.close()
+                    fmovies = open(self.database + '.movies', 'w')
+                    fmovies.write(movies)
+                    fmovies.close()
+                    fmovies = open(self.database + '.movies', 'r')
+                    lines = fmovies.readlines()
+                    fmovies.close()
+                    try:
+                        if config.plugins.moviebrowser.sortorder.value == 'name':
+                            lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                        elif config.plugins.moviebrowser.sortorder.value == 'name_reverse':
+                            lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                        elif config.plugins.moviebrowser.sortorder.value == 'rating':
+                            lines.sort(key=lambda line: line.split(':::')[4])
+                        elif config.plugins.moviebrowser.sortorder.value == 'rating_reverse':
+                            lines.sort(key=lambda line: line.split(':::')[4], reverse=True)
+                        elif config.plugins.moviebrowser.sortorder.value == 'year':
+                            lines.sort(key=lambda line: line.split(':::')[8])
+                        elif config.plugins.moviebrowser.sortorder.value == 'year_reverse':
+                            lines.sort(key=lambda line: line.split(':::')[8], reverse=True)
+                        elif config.plugins.moviebrowser.sortorder.value == 'date':
+                            lines.sort(key=lambda line: line.split(':::')[2])
+                        elif config.plugins.moviebrowser.sortorder.value == 'date_reverse':
+                            lines.sort(key=lambda line: line.split(':::')[2], reverse=True)
+                        elif config.plugins.moviebrowser.sortorder.value == 'folder':
+                            lines.sort(key=lambda line: line.split(':::')[1])
+                        elif config.plugins.moviebrowser.sortorder.value == 'folder_reverse':
+                            lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
+                        elif config.plugins.moviebrowser.sortorder.value == 'runtime':
+                            lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+                        elif config.plugins.moviebrowser.sortorder.value == 'runtime_reverse':
+                            lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+                    except IndexError:
+                        pass
+                    except ValueError:
+                        self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
 
-                f = open(self.database + '.movies', 'w')
-                f.writelines(lines)
-                f.close()
-                files = [self.database + '.movies', self.database + '.series']
-                with open(self.database + '.sorted', 'w', encoding='utf-8') as outfile:
-                    for name in files:
-                        with open(name, 'r', encoding='utf-8') as infile:
-                            outfile.write(infile.read())
+                    f = open(self.database + '.movies', 'w')
+                    f.writelines(lines)
+                    f.close()
+                    files = [self.database + '.movies', self.database + '.series']
+                    with open(self.database + '.sorted', 'w', encoding='utf-8') as outfile:
+                        for name in files:
+                            with open(name, 'r', encoding='utf-8') as infile:
+                                outfile.write(infile.read())
 
-                if fileExists(self.database + '.movies'):
-                    os.remove(self.database + '.movies')
-                if fileExists(self.database + '.series'):
-                    os.remove(self.database + '.series')
-                os.rename(self.database + '.sorted', self.database)
+                    if fileExists(self.database + '.movies'):
+                        os.remove(self.database + '.movies')
+                    if fileExists(self.database + '.series'):
+                        os.remove(self.database + '.series')
+                    os.rename(self.database + '.sorted', self.database)
             if config.plugins.moviebrowser.timerupdate.value is True:
                 if self.timer_hour != config.plugins.moviebrowser.timer.value[0] or self.timer_min != config.plugins.moviebrowser.timer.value[1] or self.timer_update is False:
                     if timerupdate.session is None:

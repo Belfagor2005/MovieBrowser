@@ -1,5 +1,10 @@
 # MovieBrowser
 
+[![Python package](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml/badge.svg)](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml)
+
+
+![](https://komarev.com/ghpvc/?username=Belfagor2005)
+
 from @kashmir
 python2 & Python3 compatible
 

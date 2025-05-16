@@ -187,6 +187,8 @@ UPDATE_LOG_PATH = join(log_dir, "update.log")
 TIMER_LOG_PATH = join(log_dir, "timer.log")
 CLEANUP_LOG_PATH = join(log_dir, "cleanup.log")
 
+infobarsession = None
+timerupdate = timerUpdate()
 
 skin_directory = "/".join([dir_plugins, "skin", "hd", ""])
 if isFHD():
@@ -11267,7 +11269,7 @@ def main(session, **kwargs):
 
 
 def mainInfoBar(session, **kwargs):
-	global infobarsession
+	# global infobarsession
 	if config.plugins.moviebrowser.filter.value == ':::Movie:Top:::':
 		number = 1
 	elif config.plugins.moviebrowser.filter.value == ':::Series:Top:::':
@@ -11295,10 +11297,6 @@ def menu(menuid, **kwargs):
 	if menuid == 'mainmenu':
 		return [('Movie Browser', main, 'moviebrowser', 42)]
 	return []
-
-
-infobarsession = None
-timerupdate = timerUpdate()
 
 
 def autostart(reason, **kwargs):

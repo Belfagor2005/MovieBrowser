@@ -188,7 +188,6 @@ TIMER_LOG_PATH = join(log_dir, "timer.log")
 CLEANUP_LOG_PATH = join(log_dir, "cleanup.log")
 
 infobarsession = None
-timerupdate = timerUpdate()
 
 skin_directory = "/".join([dir_plugins, "skin", "hd", ""])
 if isFHD():
@@ -11348,6 +11347,9 @@ def autostart(reason, **kwargs):
 				with open(CLEANUP_LOG_PATH, 'w') as f:
 					f.write(info)
 	return
+
+
+timerupdate = timerUpdate()
 
 
 def Plugins(**kwargs):

@@ -1,4 +1,4 @@
-<screen name="moviesList" position="320,180" size="1280,720" title=" ">
+<screen name="moviesList" position="center,center" size="1280,720" title=" ">
 	<!-- <ePixmap position="0,0" size="730,28" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logo.png" zPosition="1"/> -->
 	<widget name="list" position="100,33" size="620,500" scrollbarMode="showNever" zPosition="1"/>
 	<widget name="piclist" position="10,33" size="710,500" scrollbarMode="showNever" transparent="1" zPosition="0"/>

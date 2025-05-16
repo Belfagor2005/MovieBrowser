@@ -1,4 +1,4 @@
-<screen name="movieBrowserMetrix" position="0,0" size="1920,1080" flags="wfNoBorder" title="  ">
+<screen name="movieBrowserMetrix" position="center,center" size="1920,1080" flags="wfNoBorder" title="  ">
 	<!-- Sfondo - BackDrop - Overlay -->
 	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/default_backdrop.png" position="0,0" size="1920,1080" transparent="0" zPosition="-4"/>
 	<widget name="backdrop" position="0,0" size="1920,1080" scale="1" zPosition="-3"/>
@@ -6,7 +6,7 @@
 	<!-- <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/fhd/pic/setup/overlay-mx.png" position="0,0" size="1920,1080" alphatest="blend" zPosition="-2" />		 -->
 	<eLabel position="15,90" size="920,3" backgroundColor="#101010"/>
 	<eLabel position="1000,90" size="900,3" backgroundColor="#101010"/>
-	<widget name="list" position="30,125" size="890,800" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="50" font="Regular;30" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" backgroundColorSelected="#001b3c85"/>
+	<widget name="list" position="30,125" size="890,800" scrollbarMode="showOnDemand" scrollbarWidth="10" itemHeight="50" font="Regular;32" transparent="1" zPosition="5" foregroundColor="#a0a0a0" foregroundColorSelected="#ffffff" backgroundColor="#000000" backgroundColorSelected="#001b3c85"/>
 	<!-- Info -->
 	<widget name="label" position="30,25" size="800,40" font="Regular;36" foregroundColor="yellow" backgroundColor="#000000" halign="left" valign="center" transparent="1" zPosition="30"/>
 	<widget name="label3" position="620,25" size="300,40" font="Regular;36" foregroundColor="white" backgroundColor="#000000" halign="right" valign="center" transparent="1" zPosition="30"/>
@@ -32,8 +32,8 @@
 	<!-- Episodi -->
 	<!-- <widget name="banner"   position="1005,104" size="899,157" alphatest="blend" transparent="1" scale="1" zPosition="21" /> -->
 	<widget name="banner" position="1005,104" size="899,157" transparent="1" scale="1" zPosition="21"/>
-	<widget name="episodes" position="1025,290" size="860,300" scrollbarMode="showNever" transparent="1" zPosition="21"/>
-	<widget name="seasons" position="1025,290" size="860,300" scrollbarMode="showNever" transparent="1" zPosition="20"/>
+	<widget name="episodes" position="1025,290" size="860,300" font="Regular;32" scrollbarMode="showNever" transparent="1" zPosition="21"/>
+	<widget name="seasons" position="1025,290" size="860,300" font="Regular;32" scrollbarMode="showNever" transparent="1" zPosition="20"/>
 	<!-- Trama -->
 	<widget name="plotname" position="1025,640" size="880,50" font="Regular;36" foregroundColor="yellow" valign="center" transparent="1" zPosition="20"/>
 	<widget name="plotfull" position="1025,700" size="880,200" font="Regular;30" foregroundColor="#FFFFFF" transparent="1" zPosition="20"/>

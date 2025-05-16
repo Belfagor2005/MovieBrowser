@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: moviebrowser\n"
-"POT-Creation-Date: 2024-10-02 14:12+0200\n"
+"POT-Creation-Date: 2025-05-16 22:57+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: lululla\n"
@@ -10,144 +10,144 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: plugin.py\n"
 
-#: plugin.py:213 plugin.py:9420
+#: plugin.py:228 plugin.py:9427
 msgid "Movies"
 msgstr "Film"
 
-#: plugin.py:213
+#: plugin.py:229
 msgid "Series"
 msgstr "Serie"
 
-#: plugin.py:213
+#: plugin.py:230
 msgid "Movies & Series"
 msgstr "Film & Serie"
 
-#: plugin.py:215
+#: plugin.py:233
 msgid "Movie Creation Date Descending"
 msgstr "Data di creazione Film Decrescente"
 
-#: plugin.py:216
+#: plugin.py:234
 msgid "Movie Creation Date Ascending"
 msgstr "Data di creazione Film Crescente"
 
-#: plugin.py:217
+#: plugin.py:235
 msgid "Movie Title A-Z"
 msgstr "Titolo Film A-Z"
 
-#: plugin.py:218
+#: plugin.py:236
 msgid "Movie Title Z-A"
 msgstr "Titolo Film Z-A"
 
-#: plugin.py:219
+#: plugin.py:237
 msgid "Movie Rating 10-0"
 msgstr "Valutazione Film 10-0"
 
-#: plugin.py:220
+#: plugin.py:238
 msgid "Movie Rating 0-10"
 msgstr "Valutazione Film 0-10"
 
-#: plugin.py:221
+#: plugin.py:239
 msgid "Movie Release Date Descending"
 msgstr "Data di uscita Film Decrescente"
 
-#: plugin.py:222
+#: plugin.py:240
 msgid "Movie Release Date Ascending"
 msgstr "Data di uscita Film Crescente"
 
-#: plugin.py:223
+#: plugin.py:241
 msgid "Movie Runtime Descending"
 msgstr "Durata Film Decrescente"
 
-#: plugin.py:224
+#: plugin.py:242
 msgid "Movie Runtime Ascending"
 msgstr "Durata Film Crescente"
 
-#: plugin.py:225
+#: plugin.py:243
 msgid "Movie Folder Ascending"
 msgstr "Percorso Film Crescente"
 
-#: plugin.py:226
+#: plugin.py:244
 msgid "Movie Folder Descending"
 msgstr "Percorso Film Decrescente"
 
-#: plugin.py:229 plugin.py:244
+#: plugin.py:248 plugin.py:282
 msgid "Info Button"
 msgstr "Pulsante Info"
 
-#: plugin.py:229 plugin.py:244
+#: plugin.py:249 plugin.py:283
 msgid "Automatic"
 msgstr "Automatico"
 
-#: plugin.py:229 plugin.py:233 plugin.py:235
+#: plugin.py:250 plugin.py:261 plugin.py:266
 msgid "Hide"
 msgstr "Nascondi"
 
-#: plugin.py:230
+#: plugin.py:253
 msgid "On First Access"
 msgstr "Al Primo Accesso"
 
-#: plugin.py:230
+#: plugin.py:254
 msgid "On Database Update"
 msgstr "Su Aggiornamento del Database"
 
-#: plugin.py:233 plugin.py:235
+#: plugin.py:260 plugin.py:265
 msgid "Show"
 msgstr "Mostra"
 
-#: plugin.py:239
+#: plugin.py:273
 msgid "Yes"
 msgstr "Si"
 
-#: plugin.py:239
+#: plugin.py:274
 msgid "No"
 msgstr "No"
 
-#: plugin.py:239
+#: plugin.py:275
 msgid "Folder Selection"
 msgstr "Seleziona percorso"
 
-#: plugin.py:402 plugin.py:2968 plugin.py:5466
+#: plugin.py:572 plugin.py:3038 plugin.py:5529
 msgid "Director:"
 msgstr "Regista:"
 
-#: plugin.py:403 plugin.py:2969 plugin.py:5467
+#: plugin.py:573 plugin.py:3039 plugin.py:5530
 msgid "Actors:"
 msgstr "Attori:"
 
-#: plugin.py:404 plugin.py:2970 plugin.py:5468
+#: plugin.py:574 plugin.py:3040 plugin.py:5531
 msgid "Years:"
 msgstr "Anno:"
 
-#: plugin.py:405 plugin.py:2971 plugin.py:5469
+#: plugin.py:575 plugin.py:3041 plugin.py:5532
 msgid "Runtime:"
 msgstr "Durata:"
 
-#: plugin.py:406 plugin.py:2972 plugin.py:5470
+#: plugin.py:576 plugin.py:3042 plugin.py:5533
 msgid "Country:"
 msgstr "Paese:"
 
-#: plugin.py:407
+#: plugin.py:577
 msgid "Update"
 msgstr "Aggiorna"
 
-#: plugin.py:408
+#: plugin.py:578
 msgid "Style"
 msgstr "Switch Screen"
 
-#: plugin.py:409
+#: plugin.py:579 plugin.py:10667
 msgid "Help"
 msgstr "Aiuto"
 
-#: plugin.py:410 plugin.py:2973 plugin.py:5471
+#: plugin.py:580 plugin.py:3043 plugin.py:5534
 msgid "Genres:"
 msgstr "Genere:"
 
-#: plugin.py:575 plugin.py:3135 plugin.py:5613
+#: plugin.py:749 plugin.py:3207 plugin.py:5679
 msgid ""
 "Before the Database will be rebuild, check your settings in the setup of the "
 "plugin:\n"
@@ -163,32 +163,32 @@ msgstr ""
 "- Controlla la tua lingua TMDb/TheTVDb\n"
 "- Modificare la cartella della cache sul disco rigido."
 
-#: plugin.py:670 plugin.py:739 plugin.py:741 plugin.py:744 plugin.py:746
-#: plugin.py:2279 plugin.py:3230 plugin.py:4554 plugin.py:5708 plugin.py:7428
+#: plugin.py:844 plugin.py:913 plugin.py:915 plugin.py:918 plugin.py:920
+#: plugin.py:2354 plugin.py:3302 plugin.py:4622 plugin.py:5774
 msgid "<List of Movie Folder>"
 msgstr "<Lista Cartella Film>"
 
-#: plugin.py:790 plugin.py:9418
+#: plugin.py:964 plugin.py:9425
 msgid "Free Space"
 msgstr "Spazio Libero"
 
-#: plugin.py:791 plugin.py:9419 plugin.py:10841
+#: plugin.py:965 plugin.py:9426 plugin.py:10322
 msgid "Movie Folder"
 msgstr "Cartella Film"
 
-#: plugin.py:792
+#: plugin.py:966
 msgid "MOVIES"
 msgstr ""
 
-#: plugin.py:793
+#: plugin.py:967
 msgid "SERIES"
 msgstr ""
 
-#: plugin.py:794
+#: plugin.py:968
 msgid "EPISODES"
 msgstr ""
 
-#: plugin.py:841 plugin.py:3289 plugin.py:5775
+#: plugin.py:1015 plugin.py:3361 plugin.py:5841
 #, python-format
 msgid ""
 "\n"
@@ -199,7 +199,7 @@ msgstr ""
 "Cartella film %s non raggiungibile:\n"
 "Aggiornamento del database del browser dei film annullato."
 
-#: plugin.py:843 plugin.py:3291 plugin.py:5777
+#: plugin.py:1017 plugin.py:3363 plugin.py:5843
 #, python-format
 msgid ""
 "\n"
@@ -210,7 +210,7 @@ msgstr ""
 "Cartella cache %s non raggiungibile:\n"
 "Aggiornamento del database del browser dei film annullato."
 
-#: plugin.py:891 plugin.py:3332 plugin.py:5822
+#: plugin.py:1064 plugin.py:3403 plugin.py:5887
 msgid ""
 "\n"
 "No new Movies or Series found:\n"
@@ -220,7 +220,7 @@ msgstr ""
 "Nessun nuovo film o serie trovato:\n"
 "Il tuo database è aggiornato."
 
-#: plugin.py:895 plugin.py:3336 plugin.py:5826
+#: plugin.py:1068 plugin.py:3407 plugin.py:5891
 #, python-format
 msgid ""
 "\n"
@@ -231,7 +231,7 @@ msgstr ""
 "Nessun nuovo film o serie trovato.\n"
 "%s voce di database orfana eliminata."
 
-#: plugin.py:897 plugin.py:3338 plugin.py:5828
+#: plugin.py:1070 plugin.py:3409 plugin.py:5893
 #, python-format
 msgid ""
 "\n"
@@ -242,7 +242,7 @@ msgstr ""
 "Nessun nuovo film o serie trovato.\n"
 "%s voci di database orfane eliminate."
 
-#: plugin.py:901 plugin.py:3342 plugin.py:5832
+#: plugin.py:1074 plugin.py:3413 plugin.py:5897
 #, python-format
 msgid ""
 "\n"
@@ -251,8 +251,8 @@ msgstr ""
 "\n"
 "%s Film importato nel database."
 
-#: plugin.py:903 plugin.py:907 plugin.py:3344 plugin.py:3348 plugin.py:5834
-#: plugin.py:5838
+#: plugin.py:1076 plugin.py:1080 plugin.py:3415 plugin.py:3419 plugin.py:5899
+#: plugin.py:5903
 #, python-format
 msgid ""
 "\n"
@@ -261,7 +261,7 @@ msgstr ""
 "\n"
 "%s serie importata nel database."
 
-#: plugin.py:905 plugin.py:3346 plugin.py:5836
+#: plugin.py:1078 plugin.py:3417 plugin.py:5901
 #, python-format
 msgid ""
 "\n"
@@ -270,7 +270,7 @@ msgstr ""
 "\n"
 "%s film importati nel database."
 
-#: plugin.py:909 plugin.py:3350 plugin.py:5840
+#: plugin.py:1082 plugin.py:3421 plugin.py:5905
 #, python-format
 msgid ""
 "\n"
@@ -279,7 +279,7 @@ msgstr ""
 "\n"
 "%s film e %s serie importati nel database."
 
-#: plugin.py:913 plugin.py:3354 plugin.py:5844
+#: plugin.py:1086 plugin.py:3425 plugin.py:5909
 #, python-format
 msgid ""
 "\n"
@@ -290,8 +290,8 @@ msgstr ""
 "%s film importato nel database.\n"
 "%s voce di database orfana eliminata."
 
-#: plugin.py:915 plugin.py:924 plugin.py:3356 plugin.py:3365 plugin.py:5846
-#: plugin.py:5855
+#: plugin.py:1088 plugin.py:1097 plugin.py:3427 plugin.py:3436 plugin.py:5911
+#: plugin.py:5920
 #, python-format
 msgid ""
 "\n"
@@ -302,7 +302,7 @@ msgstr ""
 "%s serie importata nel database.\n"
 "%s voce di database orfana eliminata."
 
-#: plugin.py:917 plugin.py:3358 plugin.py:5848
+#: plugin.py:1090 plugin.py:3429 plugin.py:5913
 #, python-format
 msgid ""
 "\n"
@@ -313,8 +313,8 @@ msgstr ""
 "%s film importato nel database.\n"
 "%s voci di database orfane eliminate."
 
-#: plugin.py:919 plugin.py:930 plugin.py:3360 plugin.py:3371 plugin.py:5850
-#: plugin.py:5861
+#: plugin.py:1092 plugin.py:1103 plugin.py:3431 plugin.py:3442 plugin.py:5915
+#: plugin.py:5926
 #, python-format
 msgid ""
 "\n"
@@ -325,7 +325,7 @@ msgstr ""
 "%s serie importata nel database.\n"
 "%s voci di database orfane eliminate."
 
-#: plugin.py:922 plugin.py:3363 plugin.py:5853
+#: plugin.py:1095 plugin.py:3434 plugin.py:5918
 #, python-format
 msgid ""
 "\n"
@@ -336,7 +336,7 @@ msgstr ""
 "%s film importati nel database.\n"
 "%s voce di database orfana eliminata."
 
-#: plugin.py:926 plugin.py:3367 plugin.py:5857
+#: plugin.py:1099 plugin.py:3438 plugin.py:5922
 #, python-format
 msgid ""
 "\n"
@@ -347,7 +347,7 @@ msgstr ""
 "%s film e %s serie importati nel database.\n"
 "%s voce di database orfana eliminata."
 
-#: plugin.py:928 plugin.py:3369 plugin.py:5859
+#: plugin.py:1101 plugin.py:3440 plugin.py:5924
 #, python-format
 msgid ""
 "\n"
@@ -358,7 +358,7 @@ msgstr ""
 "%s film importati nel database.\n"
 "%s voci di database orfane eliminate."
 
-#: plugin.py:932 plugin.py:3373 plugin.py:5863
+#: plugin.py:1105 plugin.py:3444 plugin.py:5928
 #, python-format
 msgid ""
 "\n"
@@ -369,8 +369,8 @@ msgstr ""
 "%s film e %s serie importati nel database.\n"
 "%s voci di database orfane eliminate."
 
-#: plugin.py:986 plugin.py:993 plugin.py:1001 plugin.py:3421 plugin.py:3428
-#: plugin.py:3436 plugin.py:5921 plugin.py:5928 plugin.py:5936
+#: plugin.py:1159 plugin.py:1166 plugin.py:1174 plugin.py:3492 plugin.py:3499
+#: plugin.py:3507 plugin.py:5986 plugin.py:5993 plugin.py:6001
 #, python-format
 msgid ""
 "\n"
@@ -379,7 +379,7 @@ msgstr ""
 "\n"
 "File filmato %s non disponibile."
 
-#: plugin.py:995 plugin.py:3430 plugin.py:5930
+#: plugin.py:1168 plugin.py:3501 plugin.py:5995
 msgid ""
 "\n"
 "DVD Player Plugin not installed."
@@ -387,7 +387,7 @@ msgstr ""
 "\n"
 "Il plugin del lettore DVD non è installato."
 
-#: plugin.py:1138 plugin.py:3573 plugin.py:6089
+#: plugin.py:1311 plugin.py:3643 plugin.py:6153
 msgid ""
 "\n"
 "TMDb Movie Update Error:\n"
@@ -397,7 +397,7 @@ msgstr ""
 "Errore di aggiornamento del film TMDb:\n"
 "Cartella Serie"
 
-#: plugin.py:1159 plugin.py:3594 plugin.py:6110 plugin.py:9793 plugin.py:9812
+#: plugin.py:1334 plugin.py:3666 plugin.py:6176 plugin.py:9804 plugin.py:9823
 msgid ""
 "\n"
 "TMDb API Server is not reachable."
@@ -405,11 +405,11 @@ msgstr ""
 "\n"
 "Il server API TMDb non è raggiungibile."
 
-#: plugin.py:1171 plugin.py:3606 plugin.py:6122
+#: plugin.py:1346 plugin.py:3678 plugin.py:6188
 msgid "TMDb Results"
 msgstr "Risuktati TMDb"
 
-#: plugin.py:1173 plugin.py:3608 plugin.py:6124
+#: plugin.py:1348 plugin.py:3680 plugin.py:6190
 #, python-format
 msgid ""
 "\n"
@@ -418,7 +418,7 @@ msgstr ""
 "\n"
 "Nessun risultato TMDb per %s."
 
-#: plugin.py:1239 plugin.py:3671 plugin.py:6187 plugin.py:9854 plugin.py:9869
+#: plugin.py:1414 plugin.py:3743 plugin.py:6248 plugin.py:9865 plugin.py:9880
 msgid ""
 "\n"
 "TheTVDb API Server is not reachable."
@@ -426,11 +426,11 @@ msgstr ""
 "\n"
 "Il server API TVDb non è raggiungibile."
 
-#: plugin.py:1299 plugin.py:3729 plugin.py:6246
+#: plugin.py:1486 plugin.py:3801 plugin.py:6307
 msgid "TheTVDb Results"
 msgstr "Risultati TheTVDb"
 
-#: plugin.py:1301 plugin.py:3731 plugin.py:6248
+#: plugin.py:1489 plugin.py:3803 plugin.py:6309
 #, python-format
 msgid ""
 "\n"
@@ -439,7 +439,7 @@ msgstr ""
 "\n"
 "Nessun risultato TheTVDb per %s."
 
-#: plugin.py:1360 plugin.py:3784 plugin.py:6306 plugin.py:9117
+#: plugin.py:1549 plugin.py:3856 plugin.py:6367 plugin.py:9126
 msgid ""
 "\n"
 "The List of Movie Folder can not be deleted."
@@ -447,7 +447,7 @@ msgstr ""
 "\n"
 "L'elenco della cartella dei Film non può essere eliminato."
 
-#: plugin.py:1362 plugin.py:3786 plugin.py:6308 plugin.py:9119
+#: plugin.py:1551 plugin.py:3858 plugin.py:6369 plugin.py:9128
 #, python-format
 msgid ""
 "\n"
@@ -461,7 +461,7 @@ msgstr ""
 "\n"
 "Vuoi continuare?"
 
-#: plugin.py:1364 plugin.py:3788 plugin.py:6310 plugin.py:9121
+#: plugin.py:1553 plugin.py:3860 plugin.py:6371 plugin.py:9130
 #, python-format
 msgid ""
 "\n"
@@ -474,7 +474,7 @@ msgstr ""
 "\n"
 "Vuoi continuare?"
 
-#: plugin.py:1437 plugin.py:3861 plugin.py:6384 plugin.py:9196
+#: plugin.py:1625 plugin.py:3932 plugin.py:6446 plugin.py:9204
 #, python-format
 msgid ""
 "\n"
@@ -489,27 +489,27 @@ msgstr ""
 "\n"
 "Vuoi continuare?"
 
-#: plugin.py:2265 plugin.py:4540 plugin.py:7414
+#: plugin.py:2340 plugin.py:4608 plugin.py:7422
 msgid "Series Folder: No Info possible"
 msgstr "Cartella Serie: nessuna informazione possibile"
 
-#: plugin.py:2418 plugin.py:4656 plugin.py:7546
+#: plugin.py:2493 plugin.py:4724 plugin.py:7554
 msgid "Movie Folder Selection"
 msgstr "Selezione cartella Film"
 
-#: plugin.py:2463 plugin.py:4703 plugin.py:7592
+#: plugin.py:2538 plugin.py:4771 plugin.py:7600
 msgid "Genre Selection"
 msgstr "Selezione Genere"
 
-#: plugin.py:2507 plugin.py:4750 plugin.py:7637
+#: plugin.py:2582 plugin.py:4818 plugin.py:7645
 msgid "Actor Selection"
 msgstr "Selezione Attore"
 
-#: plugin.py:2551 plugin.py:4797 plugin.py:7683
+#: plugin.py:2626 plugin.py:4865 plugin.py:7691
 msgid "Director Selection"
 msgstr "Selezione Regista"
 
-#: plugin.py:2818 plugin.py:5132 plugin.py:8022 plugin.py:8885 plugin.py:11708
+#: plugin.py:2891 plugin.py:5189 plugin.py:8025 plugin.py:8894 plugin.py:11016
 msgid ""
 "\n"
 "Database Error: Entry without runtime"
@@ -517,11 +517,11 @@ msgstr ""
 "\n"
 "Errore database: voce senza runtime"
 
-#: plugin.py:2974 plugin.py:5472
+#: plugin.py:3044 plugin.py:5535
 msgid "Rating:"
 msgstr "Valutazione:"
 
-#: plugin.py:3133 plugin.py:5611
+#: plugin.py:3205 plugin.py:5677
 msgid ""
 "The Movie Browser Database will be rebuild now. Depending on the number of "
 "your Movies this can take several minutes.\n"
@@ -539,7 +539,7 @@ msgstr ""
 "\n"
 "Ricostruire il database ora?"
 
-#: plugin.py:5773
+#: plugin.py:5839
 msgid ""
 "\n"
 "Update Movie Browser Database?"
@@ -547,7 +547,7 @@ msgstr ""
 "\n"
 "Aggiornare il database del browser dei Film?"
 
-#: plugin.py:8812
+#: plugin.py:8821
 #, python-format
 msgid ""
 "Start time: %s\n"
@@ -569,316 +569,297 @@ msgstr ""
 "Nuova Serie: %s\n"
 "Nuovi Film: %s\n"
 
-#: plugin.py:9018
+#: plugin.py:9027
 msgid "Movie File Informations"
 msgstr "Informazioni file Film"
 
-#: plugin.py:9019
+#: plugin.py:9028
 msgid "Delete Movie File"
 msgstr "Elimina file Film"
 
-#: plugin.py:9020
+#: plugin.py:9029
 msgid "Blacklist Movie File"
 msgstr "File di Film nella lista nera"
 
-#: plugin.py:9021
+#: plugin.py:9030
 msgid "Database Update Log"
 msgstr "Aggiornamento Database Log"
 
-#: plugin.py:9022
+#: plugin.py:9031
 msgid "Database Timer Log"
 msgstr "Log Timer Database"
 
-#: plugin.py:9023
+#: plugin.py:9032
 msgid "Cleanup Cache Folder Log"
 msgstr "Pulisci il registro delle cartelle della cache"
 
-#: plugin.py:9417
+#: plugin.py:9424
 msgid "Database"
 msgstr "Database"
 
-#: plugin.py:9516
+#: plugin.py:9523
 msgid "Database Editor:"
 msgstr "Editor del Database:"
 
-#: plugin.py:9737
+#: plugin.py:9748
 msgid "movie"
 msgstr "film"
 
-#: plugin.py:9737
+#: plugin.py:9748
 msgid "poster"
 msgstr "poster"
 
-#: plugin.py:9737 plugin.py:9740
+#: plugin.py:9748 plugin.py:9751
 msgid "backdrop"
 msgstr "backdrop"
 
-#: plugin.py:9740
+#: plugin.py:9751
 msgid "banner"
 msgstr "banner"
 
-#: plugin.py:9741 plugin.py:9744
+#: plugin.py:9752 plugin.py:9755
 msgid "Update Series"
 msgstr "Aggiorna Serie"
 
-#: plugin.py:9743
+#: plugin.py:9754
 msgid "series"
 msgstr "serie"
 
-#: plugin.py:9772
+#: plugin.py:9783
 msgid "All /tmp/posters Cleaned"
 msgstr "Tutti i /tmp/poster puliti"
 
-#: plugin.py:10839
+#: plugin.py:10320
 msgid "Series Episodes"
 msgstr "Episodi Serie"
 
-#: plugin.py:10840
+#: plugin.py:10321
 msgid "Free Space:"
 msgstr "Spazio Libero:"
 
-#: plugin.py:11356
+#: plugin.py:10652
 msgid "Movie Browser Key Assignment"
 msgstr "Assegnazione dei tasti del browser dei Film"
 
-#: plugin.py:11369 plugin.py:12046
+#: plugin.py:10666 plugin.py:11354
 #, python-format
 msgid "Manage your Movies & Series V.%s"
 msgstr "Gestisci i tuoi film e serie V.%s"
 
-#: plugin.py:11370
-msgid "Help\n"
-msgstr "Aiuto\n"
+#: plugin.py:10668
+msgid "Toggle Plugin Style"
+msgstr "Attiva/disattiva lo stile del plugin"
 
-#: plugin.py:11371
-msgid "Toggle Plugin Style\n"
-msgstr "Attiva/disattiva lo stile del plugin\n"
+#: plugin.py:10669
+msgid "Toggle hide/show plugin"
+msgstr "Attiva/disattiva il plug-in Nascondi/Mostra"
 
-#: plugin.py:11372
-msgid "Toggle hide/show plugin\n"
-msgstr "Attiva/disattiva il plug-in Nascondi/Mostra\n"
+#: plugin.py:10670
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Pulsante Info: Attiva/disattiva mostra/nascondi le informazioni"
 
-#: plugin.py:11373
-msgid "Info Button: Toggle show/hide infos\n"
-msgstr "Pulsante Info: Attiva/disattiva mostra/nascondi le informazioni\n"
+#: plugin.py:10671
+msgid "Video Button: Update Database"
+msgstr "Pulsante Video: Aggiorna database"
 
-#: plugin.py:11374
-msgid "Video Button: Update Database\n"
-msgstr "Pulsante Video: Aggiorna database\n"
+#: plugin.py:10672
+msgid "Text Button: Edit Database"
+msgstr "Pulsante Testo: Modifica database"
 
-#: plugin.py:11375
-msgid "Text Button: Edit Database\n"
-msgstr "Pulsante Testo: Modifica database\n"
+#: plugin.py:10673
+msgid "Stop Button: Mark movie as seen"
+msgstr "Pulsante Stop: contrassegna il film come visto"
 
-#: plugin.py:11376
-msgid "Stop Button: Mark movie as seen\n"
-msgstr "Pulsante Stop: contrassegna il film come visto\n"
+#: plugin.py:10674
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Pulsante di opzione: Elimina/Metti in blacklist il film"
 
-#: plugin.py:11377
-msgid "Radio Button: Delete/Blacklist movie\n"
-msgstr "Pulsante di opzione: Elimina/Metti in blacklist il film\n"
+#: plugin.py:10675
+msgid "<- -> Button: Go to first letter"
+msgstr "<--> Pulsante: Vai alla prima lettera"
 
-#: plugin.py:11378
-msgid "<- -> Button: Go to first letter\n"
-msgstr "<--> Pulsante: Vai alla prima lettera\n"
+#: plugin.py:10676
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Pulsante 1: CutListEditor/MovieCut/LogView"
 
-#: plugin.py:11379
-msgid "Button 1: CutListEditor/MovieCut/LogView\n"
-msgstr "Pulsante 1: CutListEditor/MovieCut/LogView\n"
+#: plugin.py:10677
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Pulsante 2: Rinnova le informazioni su TMDb"
 
-#: plugin.py:11380
-msgid "Button 2: Renew infos on TMDb\n"
-msgstr "Pulsante 2: Rinnova le informazioni su TMDb\n"
+#: plugin.py:10678
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Pulsante 3: Rinnova le informazioni su TheTVDb"
 
-#: plugin.py:11381
-msgid "Button 3: Renew infos on TheTVDb\n"
-msgstr "Pulsante 3: Rinnova le informazioni su TheTVDb\n"
+#: plugin.py:10679
+msgid "Button 4: Hide/show seen movies"
+msgstr "Button 4: Hide/show seen movies"
 
-#: plugin.py:11382
-msgid "Button 4: Hide/show seen movies\n"
-msgstr "Button 4: Hide/show seen movies\n"
+#: plugin.py:10680
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Pulsante 5: Attiva/disattiva la visualizzazione di film/serie"
 
-#: plugin.py:11383
-msgid "Button 5: Toggle Movies/Series view\n"
-msgstr "Pulsante 5: Attiva/disattiva la visualizzazione di film/serie\n"
+#: plugin.py:10681
+msgid "Button 6: Movie Folder Selection"
+msgstr "Pulsante 6: Selezione della cartella del film"
 
-#: plugin.py:11384
-msgid "Button 6: Movie Folder Selection\n"
-msgstr "Pulsante 6: Selezione della cartella del film\n"
+#: plugin.py:10682
+msgid "Button 7: Movie Director Selection"
+msgstr "Pulsante 7: Selezione del regista"
 
-#: plugin.py:11385
-msgid "Button 7: Movie Director Selection\n"
-msgstr "Pulsante 7: Selezione del regista\n"
+#: plugin.py:10683
+msgid "Button 8: Movie Actor Selection"
+msgstr "Pulsante 8: Selezione dell'attore cinematografico"
 
-#: plugin.py:11386
-msgid "Button 8: Movie Actor Selection\n"
-msgstr "Pulsante 8: Selezione dell'attore cinematografico\n"
+#: plugin.py:10684
+msgid "Button 9: Movie Genre Selection"
+msgstr "Pulsante 9: Selezione del genere del film"
 
-#: plugin.py:11387
-msgid "Button 9: Movie Genre Selection\n"
-msgstr "Pulsante 9: Selezione del genere del film\n"
-
-#: plugin.py:11388
+#: plugin.py:10685
 msgid "Button 0: Go to end of list"
 msgstr "Pulsante 0: Vai alla fine dell'elenco"
 
-#: plugin.py:11410
+#: plugin.py:10708
 msgid "Save"
 msgstr "Salva"
 
-#: plugin.py:11411
+#: plugin.py:10709
 msgid "Cancel"
 msgstr "Annulla"
 
-#: plugin.py:11440 plugin.py:11485
+#: plugin.py:10738 plugin.py:10802
 msgid "Movies Style:"
 msgstr "Stile Film:"
 
-#: plugin.py:11441 plugin.py:11490
+#: plugin.py:10739 plugin.py:10804
 msgid "Series Style:"
 msgstr "Stile Serie:"
 
-#: plugin.py:11442 plugin.py:11498
+#: plugin.py:10740 plugin.py:10811
 msgid "Goto last Movie on Start:"
 msgstr "Vai all'ultimo film all'avvio:"
 
-#: plugin.py:11443
+#: plugin.py:10741
 msgid "Load last Selection/Filter on Start:"
 msgstr "Carica l'ultima Selezione/Filtro all'avvio:"
 
-#: plugin.py:11444
+#: plugin.py:10742
 msgid "Movie Folder:"
 msgstr "Cartella Film:"
 
-#: plugin.py:11445
+#: plugin.py:10743
 msgid "Cache Folder:"
 msgstr "Cartella Cache:"
 
-#: plugin.py:11446
+#: plugin.py:10744
 msgid "Movie Sort Order:"
 msgstr "Ordinamento Film:"
 
-#: plugin.py:11447
+#: plugin.py:10745
 msgid "Show List of Movie Folder:"
 msgstr "Mostra l'elenco della cartella dei film:"
 
-#: plugin.py:11448
+#: plugin.py:10746
 msgid "Movies or Series:"
 msgstr "Film o Serie:"
 
-#: plugin.py:11449
+#: plugin.py:10747
 msgid "Movies or Series Selection at Start:"
 msgstr "Selezione Film o Serie all'inizio:"
 
-#: plugin.py:11450
+#: plugin.py:10748
 msgid "Show Backdrops:"
 msgstr "Mostra Backdrops:"
 
-#: plugin.py:11451 plugin.py:11495
+#: plugin.py:10749 plugin.py:10807
 msgid "Use m1v Backdrops:"
 msgstr "Mostra Movie Backdrops:"
 
-#: plugin.py:11452 plugin.py:11495
+#: plugin.py:10750 plugin.py:10808
 msgid "Show TV in Background (no m1v):"
 msgstr "Mostra TV in Background (no m1v):"
 
-#: plugin.py:11453
+#: plugin.py:10751
 msgid "Download new Backdrops:"
 msgstr "Download nuovi Backdrops:"
 
-#: plugin.py:11454
+#: plugin.py:10752
 msgid "Posterwall/Backdrop Show Plot:"
 msgstr "Mostra Trama Posterwall/Backdrop:"
 
-#: plugin.py:11456
+#: plugin.py:10753
 msgid "Metrix List Selection Color:"
 msgstr "Elenco selezione colore Metrix:"
 
-#: plugin.py:11457
+#: plugin.py:10754
 msgid "TMDb/TheTVDb Language:"
 msgstr "Lingua TMDb/TheTVDb:"
 
-#: plugin.py:11458
-msgid "Load TMDB Apikey from /tmp/tmdbapikey.txt"
-msgstr "Carica TMDB Apikey da /tmp/tmdbapikey.txt"
+#: plugin.py:10755
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Carica TMDB Apikey da /tmp/tmdb_api.txt"
 
-#: plugin.py:11459
+#: plugin.py:10756
 msgid "Signup on TMDB and input free personal ApiKey"
 msgstr "Iscriviti su TMDB e inserisci l'ApiKey personale gratuita"
 
-#: plugin.py:11460
-msgid "Load TheTVDb Apikey from /tmp/tvdbapikey.txt"
-msgstr "Carica TheTVDb Apikey da /tmp/tvdbapikey.txt"
+#: plugin.py:10757
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Carica TheTVDb Apikey da /tmp/thetvdb_api.txt"
 
-#: plugin.py:11461
+#: plugin.py:10758
 msgid "Signup on TheTVDb and input free personal ApiKey"
 msgstr "Iscriviti su TheTVDb e inserisci l'ApiKey personale gratuita"
 
-#: plugin.py:11462
+#: plugin.py:10759
 msgid "Update Database with Timer:"
 msgstr "Aggiorna database con timer:"
 
-#: plugin.py:11464
+#: plugin.py:10761
 msgid "Timer Database Update:"
 msgstr "Timer Aggiornamento del Database:"
 
-#: plugin.py:11465
+#: plugin.py:10762
 msgid "Hide Plugin during Update:"
 msgstr "Nascondi plugin durante l'aggiornamento:"
 
-#: plugin.py:11471
+#: plugin.py:10764
 msgid "Reset Database:"
 msgstr "Reset Database:"
 
-#: plugin.py:11472 plugin.py:11535
+#: plugin.py:10765 plugin.py:10820
 msgid "Cleanup Cache Folder:"
 msgstr "Pulizia Cartella Cache:"
 
-#: plugin.py:11473 plugin.py:11501
+#: plugin.py:10766 plugin.py:10814
 msgid "Backup Database:"
 msgstr "Backup Database:"
 
-#: plugin.py:11474
+#: plugin.py:10767 plugin.py:10817
 msgid "Restore Database:"
 msgstr "Ripristino Database:"
 
-#: plugin.py:11475
+#: plugin.py:10768
 msgid "Select skin *Restart GUI Required:"
 msgstr "Seleziona la skin \"Riavvio Necessario\":"
 
-#: plugin.py:11476
+#: plugin.py:10769
 msgid "Start Plugin with Video Button:"
 msgstr "Avvia Plugin con Bottone Video:"
 
-#: plugin.py:11477
+#: plugin.py:10770
 msgid "Plugin Transparency:"
 msgstr "Trasparenza Plugin:"
 
-#: plugin.py:11478
+#: plugin.py:10771
 msgid "Plugin in Enigma Menu:"
 msgstr "Plugin in Menu Enigma:"
 
-#: plugin.py:11513
+#: plugin.py:10793
 #, python-format
-msgid ""
-"\n"
-"Database backuped to %s"
+msgid "Error moving cache folder: %s"
 msgstr ""
-"\n"
-"Backup Database in %s"
 
-#: plugin.py:11515
-#, python-format
-msgid ""
-"\n"
-"Database %s not found:\n"
-"Movie Browser Database Backup canceled."
-msgstr ""
-"\n"
-"Database %s non trovato:\n"
-"Backup del database del browser dei film annullato."
-
-#: plugin.py:11519
+#: plugin.py:10840
 #, python-format
 msgid ""
 "\n"
@@ -889,16 +870,38 @@ msgstr ""
 "Cartella cache %s non raggiungibile:\n"
 "Backup del database del browser dei film annullato."
 
-#: plugin.py:11528
+#: plugin.py:10843
 #, python-format
 msgid ""
 "\n"
-"Database restored from %s"
+"Database %s not found:\n"
+"Movie Browser Database Backup canceled."
 msgstr ""
 "\n"
-"Ripristino Database da %s"
+"Database %s non trovato:\n"
+"Backup del database del browser dei film annullato."
 
-#: plugin.py:11530
+#: plugin.py:10854
+#, python-format
+msgid ""
+"\n"
+"Database backed up to %s"
+msgstr ""
+"\n"
+"Backup Database in %s"
+
+#: plugin.py:10860
+#, python-format
+msgid ""
+"\n"
+"Cache Folder %s not reachable:\n"
+"Movie Browser Database Restore canceled."
+msgstr ""
+"\n"
+"Cartella cache %s non raggiungibile:\n"
+"Ripristino del database del browser dei film annullato."
+
+#: plugin.py:10864
 #, python-format
 msgid ""
 "\n"
@@ -909,52 +912,27 @@ msgstr ""
 "Backup del database %s non trovato:\n"
 "Ripristino del database del browser dei film annullato."
 
-#: plugin.py:11534
+#: plugin.py:10871
+#, python-format
+msgid ""
+"\n"
+"Database restored from %s"
+msgstr ""
+"\n"
+"Ripristino Database da %s"
+
+#: plugin.py:10877
 #, python-format
 msgid ""
 "\n"
 "Cache Folder %s not reachable:\n"
-"Movie Browser Database Restore canceled."
+"Cleanup Cache Folder canceled."
 msgstr ""
 "\n"
 "Cartella cache %s non raggiungibile:\n"
-"Ripristino del database del browser dei film annullato."
+"Pulisci cartella cache annullata."
 
-#: plugin.py:11555
-msgid ""
-"\n"
-"No orphaned Backdrops or Posters found:\n"
-"Your Cache Folder is clean."
-msgstr ""
-"\n"
-"Non sono stati trovati Backdrops o Poster orfani:\n"
-"La tua cartella cache è pulita."
-
-#: plugin.py:11557
-#, python-format
-msgid ""
-"\n"
-"Cleanup Cache Folder finished:\n"
-"%s orphaned Backdrops or Posters removed."
-msgstr ""
-"\n"
-"Pulizia cartella cache terminata:\n"
-"%s Backdrops orfani o Poster rimossi."
-
-#: plugin.py:11559
-#, python-format
-msgid ""
-"Start time: %s\n"
-"End time: %s\n"
-"Orphaned Backdrops/Posters removed: %s\n"
-"\n"
-msgstr ""
-"Ora di inizio: %s\n"
-"Ora di fine: %s\n"
-"Backdrops/Poster orfani rimossi: %s\n"
-"\n"
-
-#: plugin.py:11564
+#: plugin.py:10880
 #, python-format
 msgid ""
 "\n"
@@ -965,93 +943,61 @@ msgstr ""
 "Database %s non trovato:\n"
 "Pulisci cartella cache annullata."
 
-#: plugin.py:11568
+#: plugin.py:10897
+msgid ""
+"\n"
+"No orphaned Backdrops or Posters found:\n"
+"Your Cache Folder is clean."
+msgstr ""
+"\n"
+"Non sono stati trovati Backdrops o Poster orfani:\n"
+"La tua cartella cache è pulita."
+
+#: plugin.py:10899
 #, python-format
 msgid ""
 "\n"
-"Cache Folder %s not reachable:\n"
-"Cleanup Cache Folder canceled."
+"Cleanup Cache Folder finished:\n"
+"%s orphaned Backdrops or Posters removed."
 msgstr ""
 "\n"
-"Cartella cache %s non raggiungibile:\n"
-"Pulisci cartella cache annullata."
+"Pulizia cartella cache terminata:\n"
+"%s Backdrops orfani o Poster rimossi."
 
-#: plugin.py:11587
+#: plugin.py:10919
 msgid "Choose Directory:"
 msgstr "Scegli Percorso Cartella:"
 
-#: plugin.py:11588
+#: plugin.py:10920
 msgid "Choose Directory"
 msgstr "Scegli Percorso Cartella"
 
-#: plugin.py:11608
-msgid ""
-"Import Api Key TMDB from\n"
-"/tmp/tmdbapikey.txt?"
-msgstr ""
-"Importa chiave API TMDB da\n"
-"/tmp/tmdbapikey.txt?"
-
-#: plugin.py:11610 plugin.py:11621 plugin.py:11630 plugin.py:11641
+#: plugin.py:10938
 #, python-format
-msgid "Missing %s !"
-msgstr "%s mancante!"
-
-#: plugin.py:11619
-msgid "TMDB ApiKey Imported & Stored!"
-msgstr "TMDB ApiKey importato e memorizzato!"
-
-#: plugin.py:11628
-msgid ""
-"Import Api Key TheTVDb from\n"
-"/tmp/tvdbapikey.txt?"
+msgid "File %s non trovato!"
 msgstr ""
-"Importa la chiave API TheTVDb da\n"
-"/tmp/tvdbapikey.txt?"
 
-#: plugin.py:11639
-msgid "TheTVDb ApiKey Imported & Stored!"
-msgstr "TheTVDb ApiKey importato e memorizzato!"
+#: plugin.py:10952
+msgid "TMDB API key successfully imported!"
+msgstr ""
 
-#: plugin.py:11785
+#: plugin.py:10959
+msgid "TheTVDb API key successfully imported!"
+msgstr ""
+
+#: plugin.py:11104
 msgid "Really close without saving settings?"
 msgstr "Chiudi davvero senza salvare le impostazioni?"
 
-#: plugin.py:11889
-#, python-format
-msgid ""
-"*******Movie Browser Database Update Timer*******\n"
-"Initial Update Timer started: %s\n"
-"Timer Value (min): %s\n"
-msgstr ""
-"*******Timer di aggiornamento del database del browser di film*******\n"
-"Timer di aggiornamento iniziale avviato: %s\n"
-"Valore timer (min): %s\n"
+#: plugin.py:11240
+msgid "*******Movie Browser Database Update Timer*******\n"
+msgstr "*******Movie Browser Database Update Timer*******\n"
 
-#: plugin.py:11910
-#, python-format
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Timer aggiornamento database interrotto: %s\n"
-
-#: plugin.py:11923
-#, python-format
-msgid ""
-"Database Update Timer started: %s\n"
-"Timer Value (min): %s\n"
-msgstr ""
-"Timer aggiornamento database avviato: %s\n"
-"Valore timer (min): %s\n"
-
-#: plugin.py:11930
-#, python-format
-msgid "Movie Database Update started: %s\n"
-msgstr "Aggiornamento del database dei film avviato: %s\n"
-
-#: plugin.py:11997
+#: plugin.py:11305
 msgid "*******Movie Browser Database Update*******\n"
 msgstr "*******Aggiornamento del database del browser dei film*******\n"
 
-#: plugin.py:12015
+#: plugin.py:11323
 #, python-format
 msgid ""
 "*******Movie Browser Database Update*******\n"
@@ -1064,7 +1010,7 @@ msgstr ""
 "Errori: %s\n"
 "Motivo: %s"
 
-#: plugin.py:12039
+#: plugin.py:11347
 #, python-format
 msgid ""
 "*******Cleanup Cache Folder*******\n"
@@ -1078,6 +1024,71 @@ msgstr ""
 "Ora di fine: %s\n"
 "Backdrops/Poster orfani rimossi: %s\n"
 "\n"
+
+#~ msgid "Help\n"
+#~ msgstr "Aiuto\n"
+
+#, python-format
+#~ msgid ""
+#~ "Start time: %s\n"
+#~ "End time: %s\n"
+#~ "Orphaned Backdrops/Posters removed: %s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Ora di inizio: %s\n"
+#~ "Ora di fine: %s\n"
+#~ "Backdrops/Poster orfani rimossi: %s\n"
+#~ "\n"
+
+#~ msgid ""
+#~ "Import Api Key TMDB from\n"
+#~ "/tmp/tmdbapikey.txt?"
+#~ msgstr ""
+#~ "Importa chiave API TMDB da\n"
+#~ "/tmp/tmdbapikey.txt?"
+
+#, python-format
+#~ msgid "Missing %s !"
+#~ msgstr "%s mancante!"
+
+#~ msgid "TMDB ApiKey Imported & Stored!"
+#~ msgstr "TMDB ApiKey importato e memorizzato!"
+
+#~ msgid ""
+#~ "Import Api Key TheTVDb from\n"
+#~ "/tmp/tvdbapikey.txt?"
+#~ msgstr ""
+#~ "Importa la chiave API TheTVDb da\n"
+#~ "/tmp/tvdbapikey.txt?"
+
+#~ msgid "TheTVDb ApiKey Imported & Stored!"
+#~ msgstr "TheTVDb ApiKey importato e memorizzato!"
+
+#, python-format
+#~ msgid ""
+#~ "*******Movie Browser Database Update Timer*******\n"
+#~ "Initial Update Timer started: %s\n"
+#~ "Timer Value (min): %s\n"
+#~ msgstr ""
+#~ "*******Timer di aggiornamento del database del browser di film*******\n"
+#~ "Timer di aggiornamento iniziale avviato: %s\n"
+#~ "Valore timer (min): %s\n"
+
+#, python-format
+#~ msgid "Database Update Timer stopped: %s\n"
+#~ msgstr "Timer aggiornamento database interrotto: %s\n"
+
+#, python-format
+#~ msgid ""
+#~ "Database Update Timer started: %s\n"
+#~ "Timer Value (min): %s\n"
+#~ msgstr ""
+#~ "Timer aggiornamento database avviato: %s\n"
+#~ "Valore timer (min): %s\n"
+
+#, python-format
+#~ msgid "Movie Database Update started: %s\n"
+#~ msgstr "Aggiornamento del database dei film avviato: %s\n"
 
 #~ msgid ""
 #~ "\n"

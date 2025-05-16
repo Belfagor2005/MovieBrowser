@@ -1,4 +1,4 @@
-<screen name="movieControlList" position="320,180" size="1280,720" title=" ">
+<screen name="movieControlList" position="center,center" size="1280,720" title=" ">
 	<!-- <ePixmap position="15,0" size="1205,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logoList.png" zPosition="1"/> -->
 	<!-- 	<ePixmap position="20,5" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="2"/>
 	<ePixmap position="20,27" size="18,18" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="2"/> -->

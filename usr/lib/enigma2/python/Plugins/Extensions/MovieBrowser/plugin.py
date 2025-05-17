@@ -533,6 +533,17 @@ def transSERIES(text):
 	return text
 
 
+def fetch_url(url):
+	headers = {'Accept': 'application/json'}
+	request = Request(url, headers=headers)
+	try:
+		response = urlopen(request, timeout=10)
+		data = response.read()
+		return data.decode("utf-8") if PY3 else data
+	except Exception:
+		return ""
+
+
 class movieBrowserMetrix(Screen):
 
 	def __init__(self, session, index, content, filter):
@@ -1325,17 +1336,11 @@ class movieBrowserMetrix(Screen):
 				pass
 
 	def getTMDbMovies(self, url):
-		headers = {'Accept': 'application/json'}
-		request = Request(url, headers=headers)
 		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
+			output = fetch_url(url)
 		except Exception:
 			self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
-
 		output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
 		output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
 		output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
@@ -1404,36 +1409,20 @@ class movieBrowserMetrix(Screen):
 		poster = []
 		id = []
 		country = []
-
-		request = Request(url, headers=agents)
-
 		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
+			output = fetch_url(url)
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
 
 		output = output.replace('&amp;', '&')
-
 		# Extract series IDs
 		seriesid = findall('<seriesid>(.*?)</seriesid>', output)
 
 		for x in range(len(seriesid)):
 			url = ('https://www.thetvdb.com/api/%s/series/' + seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 			print('getTVDbMovies url=', url)
-			request = Request(url, headers=agents)
-
-			try:
-				if PY3:
-					output = urlopen(request, timeout=10).read().decode('utf-8')
-				else:
-					output = urlopen(request, timeout=10).read()
-			except Exception:
-				output = ''
-
+			output = fetch_url(url)
 			# Fix poster URL base path
 			output = sub('<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
 
@@ -2693,6 +2682,10 @@ class movieBrowserMetrix(Screen):
 	def filter_return(self, filter):
 		if filter and filter is not None:
 			self.index = 0
+			if screenwidth.width() >= 1280:
+				self.posterindex = 6
+			else:
+				self.posterindex = 5
 			self.makeMovies(filter)
 		return
 
@@ -8251,16 +8244,7 @@ class UpdateDatabase():
 
 	def getTMDbData(self, url, tmdbid, renew):
 		self.tmdbCount += 1
-		headers = {'Accept': 'application/json'}
-		request = Request(url, headers=headers)
-		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read()
-			else:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-		except Exception:
-			output = ''
-
+		output = fetch_url(url)
 		if search('"total_results":0', output) is not None:
 			series = self.name + 'FIN'
 			series = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
@@ -8298,16 +8282,7 @@ class UpdateDatabase():
 					self.posterlist.append(str(default_poster))
 				url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api))
 				print('getTMDbData  url - tmdb =', url)
-				headers = {'Accept': 'application/json'}
-				request = Request(url, headers=headers)
-				try:
-					if PY3:
-						output = urlopen(request, timeout=10).read().decode('utf-8')
-					else:
-						output = urlopen(request, timeout=10).read()
-				except Exception:
-					output = ''
-
+				output = fetch_url(url)
 			plot = findall('"overview":"(.*?)","', output)
 			if renew is True:
 				output = sub('"belongs_to_collection":{.*?}', '', output)
@@ -8316,16 +8291,7 @@ class UpdateDatabase():
 				poster = findall('"poster_path":"(.*?)"', output)
 			url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, str(tmdb_api))
 			print('getTMDbData tmdbid url - tmdb =', url)
-			headers = {'Accept': 'application/json'}
-			request = Request(url, headers=headers)
-			try:
-				if PY3:
-					output = urlopen(request, timeout=10).read().decode('utf-8')
-				else:
-					output = urlopen(request, timeout=10).read()
-			except Exception:
-				output = ''
-
+			output = fetch_url(url)
 			output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
 			output = sub('"belongs_to_collection":{.*?}', '', output)
 			if not plot:
@@ -8359,16 +8325,7 @@ class UpdateDatabase():
 					self.posterlist.append(str(default_poster))
 			url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, str(tmdb_api))
 			print('getTMDbData tmdbid 2 url - tmdb =', url)
-			headers = {'Accept': 'application/json'}
-			request = Request(url, headers=headers)
-			try:
-				if PY3:
-					output = urlopen(request, timeout=10).read().decode('utf-8')
-				else:
-					output = urlopen(request, timeout=10).read()
-			except Exception:
-				output = ''
-
+			output = fetch_url(url)
 			actor = findall('"name":"(.*?)"', output)
 			actor2 = findall('"name":".*?"name":"(.*?)"', output)
 			actor3 = findall('"name":".*?"name":".*?"name":"(.*?)"', output)
@@ -8443,15 +8400,7 @@ class UpdateDatabase():
 
 	def getTVDbData(self, url, seriesid):
 		self.tvdbCount += 1
-		request = Request(url, headers=agents)
-		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
-		except Exception:
-			output = ''
-
+		output = fetch_url(url)
 		if search('<Series>', output) is None:
 			res = []
 			res.append(' ')
@@ -8498,15 +8447,7 @@ class UpdateDatabase():
 				episode = episode.group(1).lstrip('0')
 				url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 				print('getTVDbData url thetvdb =', url)
-				request = Request(url, headers=agents)
-				try:
-					if PY3:
-						output = urlopen(request, timeout=10).read().decode('utf-8')
-					else:
-						output = urlopen(request, timeout=10).read()
-				except Exception:
-					output = ''
-
+				output = fetch_url(url)
 				output = sub('\n', '', output)
 				output = sub('&amp;', '&', output)
 				episode = findall('<EpisodeName>(.*?)</EpisodeName>', output)
@@ -8531,15 +8472,7 @@ class UpdateDatabase():
 				eposter = []
 			url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 			print('getTVDbData url - thetvdb =', url)
-			request = Request(url, headers=agents)
-			try:
-				if PY3:
-					output = urlopen(request, timeout=10).read().decode('utf-8')
-				else:
-					output = urlopen(request, timeout=10).read()
-			except Exception:
-				output = ''
-
+			output = fetch_url(url)
 			output = sub('\n', '', output)
 			output = sub('&amp;', '&', output)
 			output = sub('&quot;', '"', output)
@@ -8723,16 +8656,8 @@ class UpdateDatabase():
 					if fileExists(backdrop):
 						pass
 					else:
-						try:
-							headers = {'Accept': 'application/json'}
-							request = Request(url, headers=headers)
-							if PY3:
-								output = urlopen(request).read().decode('utf-8')
-							else:
-								output = urlopen(request).read()
-							open(backdrop, 'wb').write(output)
-						except Exception:
-							pass
+						output = fetch_url(url)
+						open(backdrop, 'wb').write(output)
 			except IndexError:
 				pass
 
@@ -9795,13 +9720,8 @@ class moviesList(Screen):
 
 	def getTMDbPosters(self, url):
 		try:
-			headers = {'Accept': 'application/json'}
-			request = Request(url, headers=headers)
 			try:
-				if PY3:
-					output = urlopen(request, timeout=10).read().decode('utf-8')
-				else:
-					output = urlopen(request, timeout=10).read()
+				output = fetch_url(url)
 			except Exception:
 				self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 				return
@@ -9814,13 +9734,8 @@ class moviesList(Screen):
 			print('error get ', str(e))
 
 	def getTMDbBackdrops(self, url):
-		headers = {'Accept': 'application/json'}
-		request = Request(url, headers=headers)
 		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
+			output = fetch_url(url)
 		except Exception:
 			self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
@@ -9856,13 +9771,8 @@ class moviesList(Screen):
 			print('error get ', str(e))
 
 	def getTVDbBanners(self, url):
-		headers = {'Accept': 'application/json'}
-		request = Request(url, headers=headers)
 		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
+			output = fetch_url(url)
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
@@ -9871,13 +9781,8 @@ class moviesList(Screen):
 		self.makeList()
 
 	def getTVDbBackdrops(self, url):
-		headers = {'Accept': 'application/json'}
-		request = Request(url, headers=headers)
 		try:
-			if PY3:
-				output = urlopen(request, timeout=10).read().decode('utf-8')
-			else:
-				output = urlopen(request, timeout=10).read()
+			output = fetch_url(url)
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
@@ -10202,25 +10107,22 @@ class filterList(Screen):
 		self.onLayoutFinish.append(self.onLayoutFinished)
 
 	def onLayoutFinished(self):
-		self.listentries = []
-		for item in self.list:
+		idx = 0
+		for x in self.list:
+			idx += 1
+
+		for i in range(idx):
 			try:
+				res = ['']
 				if screenwidth.width() == 1920:
-					entry = MultiContentEntryText(
-						pos=(10, 0), size=(1240, 40), font=30,
-						color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF,
-						flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=item
-					)
+					res.append(MultiContentEntryText(pos=(10, 0), size=(1240, 40), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
 				else:
-					entry = MultiContentEntryText(
-						pos=(5, 0), size=(700, 30), font=26,
-						color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF,
-						flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=item
-					)
-				self.listentries.append([entry])
-			except Exception:
+					res.append(MultiContentEntryText(pos=(5, 0), size=(700, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT | RT_VALIGN_CENTER, text=self.list[i]))
+				self.listentries.append(res)
+			except IndexError:
 				pass
-		self["list"].l.setList(self.listentries)
+
+		self['list'].l.setList(self.listentries)
 
 	def ok(self):
 		index = self['list'].getSelectedIndex()

@@ -5633,6 +5633,7 @@ class movieBrowserPosterwall(Screen):
 
 		if config.plugins.moviebrowser.showtv.value == 'hide' or config.plugins.moviebrowser.m1v.value is True:
 			self.session.nav.stopService()
+
 		if fileExists(DATABASE_PATH):
 			if self.index == 0:
 				if config.plugins.moviebrowser.lastfilter.value is True:
@@ -9941,6 +9942,31 @@ class moviesList(Screen):
 					return
 				offset = {0: 4, 1: 3, 2: 2, 3: 1}.get(d, 0)
 				load_group(c + offset)
+			except IndexError:
+				return
+
+	def leftUp(self):
+		if self.ready is True and self.first is True:
+			def load_group(start):
+				for i in range(4):
+					widget = "poster" + str(i + 1)
+					try:
+						item = self.poster[start + i]
+						callback = getattr(self, "getPoster" + str(i + 1))
+						self.download(item, callback)
+						self[widget].show()
+					except IndexError:
+						self[widget].hide()
+
+			try:
+				c = self["list"].getSelectedIndex()
+				self["list"].pageUp()
+				d = c % 4
+				offset = {0: 4, 1: 5, 2: 6, 3: 7}.get(d, 4)
+				start_index = c - offset
+				if start_index < 0:
+					return
+				load_group(start_index)
 			except IndexError:
 				return
 

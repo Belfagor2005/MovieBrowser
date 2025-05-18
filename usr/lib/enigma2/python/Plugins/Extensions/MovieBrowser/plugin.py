@@ -538,10 +538,9 @@ def fetch_url(url):
 	request = Request(url, headers=headers)
 	try:
 		response = urlopen(request, timeout=10)
-		data = response.read()
-		return data.decode("utf-8") if PY3 else data
+		return response.read()
 	except Exception:
-		return ""
+		return b"" 
 
 
 class movieBrowserMetrix(Screen):

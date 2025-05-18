@@ -1341,6 +1341,7 @@ class movieBrowserMetrix(Screen):
 		except Exception:
 			self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
+		output = str(output)
 		output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
 		output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
 		output = sub('"poster_path":null', '"poster_path":"https://www.themoviedb.org/images/apps/moviebase.png"', output)
@@ -1414,8 +1415,7 @@ class movieBrowserMetrix(Screen):
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
-
-		output = output.replace('&amp;', '&')
+		output = str(output).replace('&amp;', '&')
 		# Extract series IDs
 		seriesid = findall('<seriesid>(.*?)</seriesid>', output)
 
@@ -1424,6 +1424,7 @@ class movieBrowserMetrix(Screen):
 			print('getTVDbMovies url=', url)
 			output = fetch_url(url)
 			# Fix poster URL base path
+			output = str(output)
 			output = sub('<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
 
 			# Rebuild URL (looks redundant, but kept to match original code)
@@ -8245,44 +8246,45 @@ class UpdateDatabase():
 	def getTMDbData(self, url, tmdbid, renew):
 		self.tmdbCount += 1
 		output = fetch_url(url)
+		output = str(output)
 		if search('"total_results":0', output) is not None:
-			series = self.name + 'FIN'
-			series = sub(' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
-			series = sub('[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
-			series = sub('FIN', '', series)
+			series = self.name + "FIN"
+			series = sub(" - [Ss][0-9]+[Ee][0-9]+.*?FIN", "", series)
+			series = sub("[Ss][0-9]+[Ee][0-9]+.*?FIN", "", series)
+			series = sub("FIN", "", series)
 			series = transSERIES(series)
-			url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
-			print('getTMDbData  url  tmdb =', url)
-			self.getTVDbData(url, '0')
+			url = "https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s" % (series, self.language)
+			print("getTMDbData  url  tmdb =", url)
+			self.getTVDbData(url, "0")
 		else:
-			output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
-			if tmdbid == '0':
+			output = output.replace("&amp;", "&").replace("\\/", "/").replace("}", ",")
+			if tmdbid == "0":
 				tmdbid = findall('"id":(.*?),', output)
 				try:
 					tmdbid = tmdbid[0]
 				except IndexError:
-					tmdbid = '0'
+					tmdbid = "0"
 
-				name = findall('"title":"(.*?)"', output)
-				backdrop = findall('"backdrop_path":"(.*?)"', output)
-				year = findall('"release_date":"(.*?)"', output)
-				poster = findall('"poster_path":"(.*?)"', output)
-				rating = findall('"vote_average":(.*?),', output)
-				try:
-					self.namelist[self.dbcount - 1] = name[0]
-				except IndexError:
-					self.namelist[self.dbcount - 1] = self.name
-				try:
-					self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop[0])
-				except IndexError:
-					self.backdroplist.append(str(default_backdrop))
-				try:
-					self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster[0])
-				except IndexError:
-					self.posterlist.append(str(default_poster))
-				url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api))
-				print('getTMDbData  url - tmdb =', url)
-				output = fetch_url(url)
+			name = findall('"title":"(.*?)"', output)
+			backdrop = findall('"backdrop_path":"(.*?)"', output)
+			year = findall('"release_date":"(.*?)"', output)
+			poster = findall('"poster_path":"(.*?)"', output)
+			rating = findall('"vote_average":(.*?),', output)
+			try:
+				self.namelist[self.dbcount - 1] = name[0]
+			except IndexError:
+				self.namelist[self.dbcount - 1] = self.name
+			try:
+				self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop[0])
+			except IndexError:
+				self.backdroplist.append(str(default_backdrop))
+			try:
+				self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster[0])
+			except IndexError:
+				self.posterlist.append(str(default_poster))
+			url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api))
+			print('getTMDbData  url - tmdb =', url)
+			output = fetch_url(url)
 			plot = findall('"overview":"(.*?)","', output)
 			if renew is True:
 				output = sub('"belongs_to_collection":{.*?}', '', output)
@@ -8292,6 +8294,7 @@ class UpdateDatabase():
 			url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, str(tmdb_api))
 			print('getTMDbData tmdbid url - tmdb =', url)
 			output = fetch_url(url)
+			output = str(output)
 			output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
 			output = sub('"belongs_to_collection":{.*?}', '', output)
 			if not plot:
@@ -8326,6 +8329,7 @@ class UpdateDatabase():
 			url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, str(tmdb_api))
 			print('getTMDbData tmdbid 2 url - tmdb =', url)
 			output = fetch_url(url)
+			output = str(output)
 			actor = findall('"name":"(.*?)"', output)
 			actor2 = findall('"name":".*?"name":"(.*?)"', output)
 			actor3 = findall('"name":".*?"name":".*?"name":"(.*?)"', output)
@@ -8401,6 +8405,7 @@ class UpdateDatabase():
 	def getTVDbData(self, url, seriesid):
 		self.tvdbCount += 1
 		output = fetch_url(url)
+		output = str(output)
 		if search('<Series>', output) is None:
 			res = []
 			res.append(' ')
@@ -8448,6 +8453,7 @@ class UpdateDatabase():
 				url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 				print('getTVDbData url thetvdb =', url)
 				output = fetch_url(url)
+				output = str(output)
 				output = sub('\n', '', output)
 				output = sub('&amp;', '&', output)
 				episode = findall('<EpisodeName>(.*?)</EpisodeName>', output)
@@ -8473,6 +8479,7 @@ class UpdateDatabase():
 			url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 			print('getTVDbData url - thetvdb =', url)
 			output = fetch_url(url)
+			output = str(output)
 			output = sub('\n', '', output)
 			output = sub('&amp;', '&', output)
 			output = sub('&quot;', '"', output)
@@ -9725,7 +9732,7 @@ class moviesList(Screen):
 			except Exception:
 				self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 				return
-
+			output = str(output)
 			output = sub('"backdrops".*?"posters"', '', output, flags=S)
 			output = sub('"file_path":"', '"file_path":"https://image.tmdb.org/t/p/w185', output)
 			self.banner = findall('"file_path":"(.*?)"', output)
@@ -9739,7 +9746,7 @@ class moviesList(Screen):
 		except Exception:
 			self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
-
+		output = str(output)
 		output = output + 'FIN'
 		output = sub('"posters".*?FIN', '', output, flags=S)
 		output = sub('"file_path":"', '"file_path":"https://image.tmdb.org/t/p/w1280', output)
@@ -9776,6 +9783,7 @@ class moviesList(Screen):
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
+		output = str(output)
 		output = sub('<BannerPath>graphical', '<BannerPath>https://www.thetvdb.com/banners/graphical', output)
 		self.banner = findall('<BannerPath>(.*?)</BannerPath>\n\\s+<BannerType>series</BannerType>', output)
 		self.makeList()
@@ -9786,6 +9794,7 @@ class moviesList(Screen):
 		except Exception:
 			self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
 			return
+		output = str(output)
 		output = sub('<BannerPath>fanart', '<BannerPath>https://www.thetvdb.com/banners/fanart', output)
 		self.banner = findall('<BannerPath>(.*?)</BannerPath>\n\\s+<BannerType>fanart</BannerType>', output)
 		self.makeList()

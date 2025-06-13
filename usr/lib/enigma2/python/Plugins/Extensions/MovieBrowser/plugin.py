@@ -10064,8 +10064,6 @@ class UpdateDatabase():
                 return None
 
             output = output.decode("utf-8", "ignore")
-
-
             output = sub('\n', '', output)
             output = sub('&amp;', '&', output)
             output = sub('&quot;', '"', output)

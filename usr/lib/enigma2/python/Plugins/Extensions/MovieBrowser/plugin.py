@@ -651,7 +651,9 @@ def fetch_url(url):
             response = urlopen(request)
             return response.read()
         except HTTPError as e:
-            print("HTTPError: code={}, reason={}, url={}".format(e.code, e.reason, url))
+            print(
+                "HTTPError: code={}, reason={}, url={}".format(
+                    e.code, e.reason, url))
             return None
         except URLError as e:
             print("URLError: reason={}, url={}".format(e.reason, url))
@@ -1785,7 +1787,7 @@ class movieBrowserMetrix(Screen):
         seriesid = findall('<seriesid>(.*?)</seriesid>', output)
 
         for x in range(len(seriesid)):
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbMovies url=', url)
             output = fetch_url(url)
@@ -1796,9 +1798,12 @@ class movieBrowserMetrix(Screen):
                 return None
 
             output = output.decode("utf-8", "ignore")
-            output = sub('<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
+            output = sub(
+                '<poster>',
+                '<poster>https://artworks.thetvdb.com/banners/_cache/',
+                output)
             # Rebuild URL (looks redundant, but kept to match original code)
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 
             # Replace empty ratings with default 0.0
@@ -1889,7 +1894,7 @@ class movieBrowserMetrix(Screen):
             if select == "series":
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" +
+                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" + \
                        config.plugins.moviebrowser.language.value + ".xml") % str(thetvdb_api)
                 print("makeTVDbUpdate url=", url)
                 UpdateDatabase(
@@ -4508,7 +4513,7 @@ class movieBrowserBackdrop(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall('<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies url tmdb=', url)
                 request = Request(url, headers=agents)
@@ -4615,7 +4620,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate url tmdb=', url)
                 UpdateDatabase(
@@ -7451,7 +7456,7 @@ class movieBrowserPosterwall(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall('<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies  url tmdb =', url)
                 request = Request(url, headers=agents)
@@ -7559,7 +7564,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate  url tmdb =', url)
                 UpdateDatabase(
@@ -9806,7 +9811,8 @@ class UpdateDatabase():
                 return None
 
             output = output.decode("utf-8", "ignore")
-            output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
+            output = output.replace('&amp;', '&').replace(
+                '\\/', '/').replace('}', ',')
             output = sub('"belongs_to_collection":{.*?}', '', output)
             if not plot:
                 plot = findall('"overview":"(.*?)","', output)
@@ -10049,7 +10055,7 @@ class UpdateDatabase():
                 plotfull = []
                 rating = []
                 eposter = []
-            url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + \
                    config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbData url - thetvdb =', url)
             output = fetch_url(url)

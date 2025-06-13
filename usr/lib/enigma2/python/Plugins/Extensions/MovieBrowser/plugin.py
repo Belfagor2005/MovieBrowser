@@ -24,7 +24,7 @@ import sys
 
 # Third-party modules
 from requests import get
-from requests.exceptions import HTTPError
+from urllib.error import HTTPError, URLError
 from twisted.internet.reactor import callInThread
 
 # Enigma2 imports
@@ -550,12 +550,26 @@ def transSERIES(text):
 
 def fetch_url(url):
     if url.startswith("http://") or url.startswith("https://"):
-        request = Request(url, headers=agents)
-        response = urlopen(request)
-        return response.read()
+        try:
+            request = Request(url, headers=agents)
+            response = urlopen(request)
+            return response.read()
+        except HTTPError as e:
+            print("HTTPError: code={}, reason={}, url={}".format(e.code, e.reason, url))
+            return None
+        except URLError as e:
+            print("URLError: reason={}, url={}".format(e.reason, url))
+            return None
+        except Exception as e:
+            print("Unexpected error: {}, url={}".format(str(e), url))
+            return None
     elif exists(url):
-        with open(url, "rb") as f:
-            return f.read()
+        try:
+            with open(url, "rb") as f:
+                return f.read()
+        except Exception as e:
+            print("Error reading file {}: {}".format(url, e))
+            return None
     else:
         raise ValueError("Invalid URL or file path: %s" % url)
 
@@ -1369,6 +1383,11 @@ class movieBrowserMetrix(Screen):
         except Exception:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
         output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
         output = sub('"poster_path":"', '"poster_path":"https://image.tmdb.org/t/p/w185', output)
@@ -1443,6 +1462,11 @@ class movieBrowserMetrix(Screen):
         except Exception:
             self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
         # Extract series IDs
         seriesid = findall('<seriesid>(.*?)</seriesid>', output)
@@ -1452,7 +1476,13 @@ class movieBrowserMetrix(Screen):
             print('getTVDbMovies url=', url)
             output = fetch_url(url)
             # Fix poster URL base path
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
             output = output.decode("utf-8", "ignore")
+
             output = sub('<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
 
             # Rebuild URL (looks redundant, but kept to match original code)
@@ -8275,7 +8305,13 @@ class UpdateDatabase():
     def getTMDbData(self, url, tmdbid, renew):
         self.tmdbCount += 1
         output = fetch_url(url)
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
+
         if search('"total_results":0', output) is not None:
             series = self.name + "FIN"
             series = sub(" - [Ss][0-9]+[Ee][0-9]+.*?FIN", "", series)
@@ -8314,7 +8350,13 @@ class UpdateDatabase():
             url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api))
             print('getTMDbData  url - tmdb =', url)
             output = fetch_url(url)
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
             output = output.decode("utf-8", "ignore")
+
             plot = findall('"overview":"(.*?)","', output)
             if renew is True:
                 output = sub('"belongs_to_collection":{.*?}', '', output)
@@ -8324,7 +8366,13 @@ class UpdateDatabase():
             url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, str(tmdb_api))
             print('getTMDbData tmdbid url - tmdb =', url)
             output = fetch_url(url)
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
             output = output.decode("utf-8", "ignore")
+
             output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
             output = sub('"belongs_to_collection":{.*?}', '', output)
             if not plot:
@@ -8359,7 +8407,13 @@ class UpdateDatabase():
             url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, str(tmdb_api))
             print('getTMDbData tmdbid 2 url - tmdb =', url)
             output = fetch_url(url)
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
             output = output.decode("utf-8", "ignore")
+
             actor = findall('"name":"(.*?)"', output)
             actor2 = findall('"name":".*?"name":"(.*?)"', output)
             actor3 = findall('"name":".*?"name":".*?"name":"(.*?)"', output)
@@ -8435,7 +8489,18 @@ class UpdateDatabase():
     def getTVDbData(self, url, seriesid):
         self.tvdbCount += 1
         output = fetch_url(url)
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
+
         if search('<Series>', output) is None:
             res = []
             res.append(' ')
@@ -8483,7 +8548,18 @@ class UpdateDatabase():
                 url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbData url thetvdb =', url)
                 output = fetch_url(url)
+                if output is None:
+                    # Handle error: log, skip, or ritorna un valore di fallback
+                    print("Failed to fetch URL: " + url)
+                    return None
+
+                if output is None:
+                    # Handle error: log, skip, or ritorna un valore di fallback
+                    print("Failed to fetch URL: " + url)
+                    return None
+
                 output = output.decode("utf-8", "ignore")
+
                 output = sub('\n', '', output)
                 output = sub('&amp;', '&', output)
                 episode = findall('<EpisodeName>(.*?)</EpisodeName>', output)
@@ -8509,7 +8585,19 @@ class UpdateDatabase():
             url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbData url - thetvdb =', url)
             output = fetch_url(url)
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
+
             output = output.decode("utf-8", "ignore")
+
+
             output = sub('\n', '', output)
             output = sub('&amp;', '&', output)
             output = sub('&quot;', '"', output)
@@ -9829,6 +9917,10 @@ class moviesList(Screen):
             except Exception:
                 self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
                 return
+            if output is None:
+                # Handle error: log, skip, or ritorna un valore di fallback
+                print("Failed to fetch URL: " + url)
+                return None
             output = output.decode("utf-8", "ignore")
             output = sub('"backdrops".*?"posters"', '', output, flags=S)
             output = sub('"file_path":"', '"file_path":"https://image.tmdb.org/t/p/w185', output)
@@ -9843,7 +9935,13 @@ class moviesList(Screen):
         except Exception:
             self.session.open(MessageBox, _('\nTMDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
+
         output = output + 'FIN'
         output = sub('"posters".*?FIN', '', output, flags=S)
         output = sub('"file_path":"', '"file_path":"https://image.tmdb.org/t/p/w1280', output)
@@ -9880,6 +9978,11 @@ class moviesList(Screen):
         except Exception:
             self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
         output = sub('<BannerPath>graphical', '<BannerPath>https://www.thetvdb.com/banners/graphical', output)
         self.banner = findall('<BannerPath>(.*?)</BannerPath>\n\\s+<BannerType>series</BannerType>', output)
@@ -9891,6 +9994,11 @@ class moviesList(Screen):
         except Exception:
             self.session.open(MessageBox, _('\nTheTVDb API Server is not reachable.'), MessageBox.TYPE_ERROR)
             return
+        if output is None:
+            # Handle error: log, skip, or ritorna un valore di fallback
+            print("Failed to fetch URL: " + url)
+            return None
+
         output = output.decode("utf-8", "ignore")
         output = sub('<BannerPath>fanart', '<BannerPath>https://www.thetvdb.com/banners/fanart', output)
         self.banner = findall('<BannerPath>(.*?)</BannerPath>\n\\s+<BannerType>fanart</BannerType>', output)

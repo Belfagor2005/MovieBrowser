@@ -1,8 +1,4 @@
 <screen name="helpScreen" position="center,center" size="700,900" flags="wfNoBorder" title=" ">
-	<widget source="Title" render="Label" position="28,13" size="652,53" font="LCD; 24" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5"/>
-	<ePixmap position="40,120" size="18,18" pixmap="skin_default/buttons/yellow.png" alphatest="blend" zPosition="3"/>
-	<ePixmap position="40,151" size="18,18" pixmap="skin_default/buttons/green.png" alphatest="blend" zPosition="3"/>
-	<ePixmap position="40,182" size="18,18" pixmap="skin_default/buttons/red.png" alphatest="blend" zPosition="3"/>
-	<ePixmap position="40,218" size="18,18" pixmap="skin_default/buttons/blue.png" alphatest="blend" zPosition="3"/>
-	<widget name="label" position="15,88" size="680,780" font="Regular; 26" transparent="1" zPosition="2"/>
+	<widget source="Title" render="Label" position="28,13" size="652,53" font="LCD; 24" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+	<widget name="label" position="53,75" size="640,809" font="Regular; 22" transparent="1" zPosition="2" />
 </screen>

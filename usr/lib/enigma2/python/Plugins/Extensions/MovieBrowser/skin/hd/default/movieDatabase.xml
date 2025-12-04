@@ -1,5 +1,9 @@
-<screen name="movieDatabase" position="center,center" size="1280,720" title=" ">
-	<!-- <ePixmap position="10,0" size="1200,50" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logo.png" zPosition="1"/> -->
-	<widget name="list" position="10,73" size="120,500" scrollbarMode="showOnDemand" zPosition="1"/>
-	<widget name="list2" position="11,74" size="1200,500" scrollbarMode="showOnDemand" zPosition="1"/>
+<screen name="movieDatabase" position="center,center" size="1280,720" title=" " backgroundColor="#FF000000" flags="wfNoBorder">
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/default_backdrop.png" position="0,0" size="1280,720" transparent="0" zPosition="-4" />
+	
+	<!-- Lista dei film a sinistra -->
+	<widget name="list" position="10,73" size="400,584" scrollbarMode="showOnDemand" zPosition="1"/>
+	
+	<!-- Dettagli del film a destra -->
+	<widget name="list2" position="420,73" size="850,584" scrollbarMode="showOnDemand" zPosition="1"/>
 </screen>

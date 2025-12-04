@@ -1,4 +1,6 @@
 <screen name="filterList" position="center,center" size="720,700" title=" ">
-	<!-- <ePixmap position="15,5" size="680,35" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logofilter.png" zPosition="1"/> -->
+	<!--
+	<ePixmap position="15,5" size="680,35" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/logofilter.png" zPosition="1"/>
+	-->
 	<widget name="list" position="23,48" size="665,594" scrollbarMode="showOnDemand" zPosition="1"/>
 </screen>

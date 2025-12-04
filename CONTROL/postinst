@@ -1,7 +1,17 @@
 #!/bin/sh
-FILE=/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/Movie_Browser.png
-DIR=/usr/lib/enigma2/python/Plugins/Extensions/navibar/icons
-if [ -d "$DIR" ]; then
-		mv -n "$FILE" "$DIR"
-fi
-echo "Movie Browser successfully installed!"
+echo ""
+echo "╔══════════════════════════════════════╗"
+echo "║     Movie Browser Installation       ║"
+echo "╚══════════════════════════════════════╝"
+echo ""
+echo "✓ Plugin successfully installed!"
+echo ""
+echo "To start Movie Browser:"
+echo "  • Press VIDEO button"
+echo "  • Or find in Extensions menu"
+echo ""
+echo "For setup:"
+echo "  • Press MENU in Movie Browser"
+echo ""
+echo "Enjoy your movies!"
+echo ""

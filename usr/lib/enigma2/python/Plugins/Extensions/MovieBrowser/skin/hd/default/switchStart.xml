@@ -1,11 +1,23 @@
-<screen name="switchStart" position="center,center" size="300,300" flags="wfNoBorder" title=" ">
-	<widget name="label_1" position="0,0" size="300,100" font="Regular;32" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="label_2" position="0,100" size="300,100" font="Regular;32" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="label_3" position="0,200" size="300,100" font="Regular;32" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="label_select_1" position="0,0" size="300,100" font="Regular;32" backgroundColor="#D9D9D9" foregroundColor="#000000" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="label_select_2" position="0,100" size="300,100" font="Regular;32" backgroundColor="#D9D9D9" foregroundColor="#000000" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="label_select_3" position="0,200" size="300,100" font="Regular;32" backgroundColor="#D9D9D9" foregroundColor="#000000" halign="center" valign="center" transparent="1" zPosition="1"/>
-	<widget name="select_1" position="0,0" size="300,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
-	<widget name="select_2" position="0,100" size="300,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
-	<widget name="select_3" position="0,200" size="300,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
+<screen name="switchStart" position="center,center" size="1280,720" backgroundColor="#20000000" flags="wfNoBorder" title=" ">
+	<widget name="Title" render="Label" position="153,5" size="427,73" font="LCD;32" foregroundColor="#007fcfff" backgroundColor="#000000" transparent="1" zPosition="5" />
+	
+	<eLabel position="153,80" size="540,2" backgroundColor="#303030" zPosition="4" />
+	<ePixmap position="0,0" size="1280,720" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/setup/main1.png" zPosition="-1" />
+	<eLabel position="153,640" size="540,2" backgroundColor="#303030" zPosition="4" />
+	<eLabel text="MovieBrowser" position="280,7" size="467,80" font="LCD;68" foregroundColor="yellow" backgroundColor="#000000" transparent="1" zPosition="3" />
+	
+	<!-- Label normali -->
+	<widget name="label_1" position="147,107" size="547,40" font="Regular;27" halign="center" valign="center" foregroundColor="#007fcfff" backgroundColor="#001b3c85" transparent="1" zPosition="1"/>
+	<widget name="label_2" position="147,147" size="547,40" font="Regular;27" halign="center" valign="center" foregroundColor="#007fcfff" backgroundColor="#001b3c85" transparent="1" zPosition="1"/>
+	<widget name="label_3" position="147,187" size="547,40" font="Regular;27" halign="center" valign="center" foregroundColor="#007fcfff" backgroundColor="#001b3c85" transparent="1" zPosition="1"/>
+	
+	<!-- Label selezionate -->
+	<widget name="label_select_1" position="147,107" size="547,40" font="Regular;27" backgroundColor="#001b3c85" foregroundColor="#ffffff" halign="center" valign="center" transparent="0" zPosition="1"/>
+	<widget name="label_select_2" position="147,147" size="547,40" font="Regular;27" backgroundColor="#001b3c85" foregroundColor="#ffffff" halign="center" valign="center" transparent="0" zPosition="1"/>
+	<widget name="label_select_3" position="147,187" size="547,40" font="Regular;27" backgroundColor="#001b3c85" foregroundColor="#ffffff" halign="center" valign="center" transparent="0" zPosition="1"/>
+	
+	<!-- SELECT -->
+	<widget name="select_1" position="147,107" size="547,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
+	<widget name="select_2" position="147,147" size="547,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
+	<widget name="select_3" position="147,187" size="547,40" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/skin/hd/pic/browser/menu_select.png" transparent="1" alphatest="blend" zPosition="-1"/>
 </screen>

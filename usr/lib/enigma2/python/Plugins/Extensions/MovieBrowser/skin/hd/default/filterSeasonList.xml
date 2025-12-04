@@ -1,4 +1,6 @@
 <screen name="filterSeasonList" position="center,center" size="530,523" title=" ">
-	<!-- <ePixmap position="0,0" size="530,28" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/pic/setup/logoConfig.png" zPosition="1"/> -->
+	<!--
+	<ePixmap position="0,0" size="530,28" scale="1" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser/pic/setup/logoConfig.png" zPosition="1"/>
+	-->
 	<widget name="list" position="10,38" size="510,475" scrollbarMode="showOnDemand" zPosition="1"/>
 </screen>

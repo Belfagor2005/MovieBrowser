@@ -4,18 +4,39 @@
 # <!-- **************************************  -->
 echo "   recoded by lululla                 "
 echo "*****************************************"
-echo "*    Uninstall Moviebrowser Plugin      *"
+echo "*     Install Moviebrowser Plugin       *"
 echo "*****************************************"
 
 EXTDIR="/usr/lib/enigma2/python/Plugins/Extensions/MovieBrowser"
 
-if [ -d "$EXTDIR" ]; then
-   rm -rf "$EXTDIR" > /dev/null 2>&1
+# Check installation
+if [ ! -d "$EXTDIR" ]; then
+    echo "*   ERROR: Plugin not installed!      *"
+    echo "*   Check opkg installation log       *"
+    exit 1
 fi
 
+# Check basic files exist
+REQUIRED_FILES="plugin.py __init__.py"
+for file in $REQUIRED_FILES; do
+    if [ ! -f "$EXTDIR/$file" ]; then
+        echo "*   WARNING: Missing $file          *"
+    fi
+done
+
+echo "*   ✓ Installation verified            *"
+echo "*****************************************"
+echo "*          Quick Guide:                *"
+echo "*   • VIDEO button: Start plugin       *"
+echo "*   • MENU in plugin: Setup            *"
+echo "*   • INFO button: Toggle info        *"
+echo "*   • TEXT button: Edit database      *"
 echo "*****************************************"
 echo "*          ....done                     *"
 echo "*****************************************"
+
+# Optional: Set executable permissions
+chmod 755 "$EXTDIR/plugin.py" 2>/dev/null
+chmod 755 "$EXTDIR/"*.py 2>/dev/null
+
 exit 0
-
-

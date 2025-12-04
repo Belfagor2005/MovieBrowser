@@ -1,7 +1,16 @@
 #!/bin/bash
 
-version='3.9-rc0'
-changelog='\nRefactoryzed - recode all code'
+version='4.0'
+changelog = (
+    '\nRefactoryzed - recode all code'
+    '\nFixed screen (rewrite) - code source - API URL'
+    '\nSeparate libraries into other modules'
+    '\nDatabase rewrite code'
+    '\nRemoved unused code'
+    '\nNew API v4'
+    '\nFixed banner on MovieList'
+)
+
 
 TMPPATH=/tmp/MovieBrowser-install
 FILEPATH=/tmp/MovieBrowser-main.tar.gz

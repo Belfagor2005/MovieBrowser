@@ -1,9 +1,9 @@
 Package: enigma2-plugin-extensions-moviebrowser
-Version: 3.9-rc0
+Version: 4.0
 Description: Movie Browser Plugin
 Architecture: all
 Section: extra
 Priority: optional
-Maintainer: kashmir
-Homepage: http://www.kashmir-plugins.de
+Maintainer: kashmir, lululla
+Homepage:
 Source: enigma2-plugin-extensions-moviebrowser

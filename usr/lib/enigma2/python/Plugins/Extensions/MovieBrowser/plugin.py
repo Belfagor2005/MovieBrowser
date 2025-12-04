@@ -719,12 +719,14 @@ class movieBrowserMetrix(Screen):
             elif exists(config.plugins.moviebrowser.cachefolder.value):
                 self.session.open(
                     MessageBox,
-                    _('\nMovie Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(config.plugins.moviebrowser.moviefolder.value),
+                    _('\nMovie Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(
+                        config.plugins.moviebrowser.moviefolder.value),
                     MessageBox.TYPE_ERROR)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\nCache Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(config.plugins.moviebrowser.cachefolder.value),
+                    _('\nCache Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(
+                        config.plugins.moviebrowser.cachefolder.value),
                     MessageBox.TYPE_ERROR)
 
     def database_return(self, answer):
@@ -785,87 +787,111 @@ class movieBrowserMetrix(Screen):
             if orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
             if moviecount == 1 and seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movie imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movie imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movies imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             else:
                 self.session.open(
-                    MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies and %s Series imported into Database.') %
+                    (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 1 and seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif orphaned == 1:
                 if seriescount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount),  str(orphaned)),
+                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 elif moviecount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(seriescount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 else:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(seriescount),
+                            str(orphaned)),
                         MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(seriescount),
+                        str(orphaned)),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         OnclearMem()
@@ -922,8 +948,8 @@ class movieBrowserMetrix(Screen):
                             self.session.open(MoviePlayer, sref)
                         else:
                             self.session.open(
-                                MessageBox, _('\nMovie file %s not available.') % filename,
-                                MessageBox.TYPE_ERROR)
+                                MessageBox, _('\nMovie file %s not available.') %
+                                filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
                         if exists(
                                 '/usr/lib/enigma2/python/Plugins/Extensions/DVDPlayer/'):
@@ -933,8 +959,8 @@ class movieBrowserMetrix(Screen):
                                     DVDPlayer, dvd_filelist=[filename])
                             else:
                                 self.session.open(
-                                    MessageBox, _('\nMovie file %s not available.') % filename,
-                                    MessageBox.TYPE_ERROR)
+                                    MessageBox, _('\nMovie file %s not available.') %
+                                    filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(
                                 MessageBox,
@@ -947,8 +973,8 @@ class movieBrowserMetrix(Screen):
                         self.session.open(MoviePlayer, sref)
                     else:
                         self.session.open(
-                            MessageBox, _('\nMovie file %s not available.') % filename,
-                            MessageBox.TYPE_ERROR)
+                            MessageBox, _('\nMovie file %s not available.') %
+                            filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
                     self.makeMovieBrowserTimer.callback.append(
                         self.getMediaInfo)
@@ -1245,7 +1271,7 @@ class movieBrowserMetrix(Screen):
         seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
 
         for x in range(len(seriesid)):
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbMovies url=', url)
             output = fetch_url(url)
@@ -1260,9 +1286,12 @@ class movieBrowserMetrix(Screen):
                     print("Decode error for URL {}: {}".format(url, str(e)))
                     output = output.decode("latin-1", "ignore")
 
-            output = sub(r'<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
+            output = sub(
+                r'<poster>',
+                '<poster>https://artworks.thetvdb.com/banners/_cache/',
+                output)
             # Rebuild URL (looks redundant, but kept to match original code)
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 
             # Replace empty ratings with default 0.0
@@ -1352,7 +1381,7 @@ class movieBrowserMetrix(Screen):
             if select == "series":
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" +
+                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" + \
                        config.plugins.moviebrowser.language.value + ".xml") % str(thetvdb_api)
                 print("makeTVDbUpdate url=", url)
                 UpdateDatabase(
@@ -1414,13 +1443,15 @@ class movieBrowserMetrix(Screen):
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') % name,
+                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
                 else:
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') % name,
+                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -1501,7 +1532,8 @@ class movieBrowserMetrix(Screen):
                 self.session.openWithCallback(
                     self.blacklist_return,
                     MessageBox,
-                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name,
+                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') %
+                    name,
                     MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -3005,7 +3037,10 @@ class movieBrowserMetrix(Screen):
 
     def downloadError(self, output=None):
         if output:
-            print("[MovieBrowser] Download error: {}".format(str(output)[:100]))
+            print(
+                "[MovieBrowser] Download error: {}".format(
+                    str(output)[
+                        :100]))
         else:
             print("[MovieBrowser] Download error")
 
@@ -3564,87 +3599,111 @@ class movieBrowserBackdrop(Screen):
             if orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
             if moviecount == 1 and seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movie imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movie imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movies imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             else:
                 self.session.open(
-                    MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies and %s Series imported into Database.') %
+                    (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 1 and seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif orphaned == 1:
                 if seriescount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)),
+                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 elif moviecount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(seriescount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 else:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(seriescount),
+                            str(orphaned)),
                         MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(seriescount),
+                        str(orphaned)),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         OnclearMem()
@@ -3695,8 +3754,8 @@ class movieBrowserBackdrop(Screen):
                             self.session.open(MoviePlayer, sref)
                         else:
                             self.session.open(
-                                MessageBox, _('\nMovie file %s not available.') % filename,
-                                MessageBox.TYPE_ERROR)
+                                MessageBox, _('\nMovie file %s not available.') %
+                                filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
                         if exists(
                                 '/usr/lib/enigma2/python/Plugins/Extensions/DVDPlayer/'):
@@ -3706,8 +3765,8 @@ class movieBrowserBackdrop(Screen):
                                     DVDPlayer, dvd_filelist=[filename])
                             else:
                                 self.session.open(
-                                    MessageBox, _('\nMovie file %s not available.') % filename,
-                                    MessageBox.TYPE_ERROR)
+                                    MessageBox, _('\nMovie file %s not available.') %
+                                    filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(
                                 MessageBox,
@@ -3720,8 +3779,8 @@ class movieBrowserBackdrop(Screen):
                         self.session.open(MoviePlayer, sref)
                     else:
                         self.session.open(
-                            MessageBox, _('\nMovie file %s not available.') % filename,
-                            MessageBox.TYPE_ERROR)
+                            MessageBox, _('\nMovie file %s not available.') %
+                            filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
                     self.makeMovieBrowserTimer.callback.append(
                         self.getMediaInfo)
@@ -4020,7 +4079,7 @@ class movieBrowserBackdrop(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies url tmdb=', url)
                 output = fetch_url(url)
@@ -4033,7 +4092,9 @@ class movieBrowserBackdrop(Screen):
                     try:
                         output = output.decode("utf-8", "ignore")
                     except Exception as e:
-                        print("Decode error for URL {}: {}".format(url, str(e)))
+                        print(
+                            "Decode error for URL {}: {}".format(
+                                url, str(e)))
                         output = output.decode("latin-1", "ignore")
 
                 output = sub(
@@ -4129,7 +4190,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate url tmdb=', url)
                 UpdateDatabase(
@@ -4183,13 +4244,15 @@ class movieBrowserBackdrop(Screen):
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') % name,
+                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
                 else:
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') % name,
+                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -4271,7 +4334,8 @@ class movieBrowserBackdrop(Screen):
                 self.session.openWithCallback(
                     self.blacklist_return,
                     MessageBox,
-                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name,
+                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') %
+                    name,
                     MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -4668,7 +4732,8 @@ class movieBrowserBackdrop(Screen):
                         self["banner"].instance.setPixmapFromFile(banner)
                         self['banner'].show()
                     else:
-                        bannerurl_str = bannerurl.decode('utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
+                        bannerurl_str = bannerurl.decode(
+                            'utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
                         if 'themoviedb.org' in bannerurl_str or 'image.tmdb.org' in bannerurl_str:
                             headers_to_use = agents_json
                         else:
@@ -4715,7 +4780,8 @@ class movieBrowserBackdrop(Screen):
                             self["banner"].instance.setPixmapFromFile(banner)
                             self['banner'].show()
                         else:
-                            bannerurl_str = bannerurl.decode('utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
+                            bannerurl_str = bannerurl.decode(
+                                'utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
                             if 'themoviedb.org' in bannerurl_str or 'image.tmdb.org' in bannerurl_str:
                                 headers_to_use = agents_json
                             else:
@@ -4752,7 +4818,8 @@ class movieBrowserBackdrop(Screen):
                         self["eposter"].instance.setPixmapFromFile(eposter)
                         self['eposter'].show()
                     else:
-                        eposterurl_str = eposterurl.decode('utf-8') if PY3 and isinstance(eposterurl, bytes) else str(eposterurl)
+                        eposterurl_str = eposterurl.decode(
+                            'utf-8') if PY3 and isinstance(eposterurl, bytes) else str(eposterurl)
                         if 'themoviedb.org' in eposterurl_str or 'image.tmdb.org' in eposterurl_str:
                             headers_to_use = agents_json
                         else:
@@ -4818,7 +4885,8 @@ class movieBrowserBackdrop(Screen):
                     self['poster' + str(x)].instance.setPixmapFromFile(poster)
                     self['poster' + str(x)].show()
                 else:
-                    posterurl_str = posterurl.decode('utf-8') if PY3 and isinstance(posterurl, bytes) else str(posterurl)
+                    posterurl_str = posterurl.decode(
+                        'utf-8') if PY3 and isinstance(posterurl, bytes) else str(posterurl)
                     if 'themoviedb.org' in posterurl_str or 'image.tmdb.org' in posterurl_str:
                         headers_to_use = agents_json
                     else:
@@ -5795,7 +5863,10 @@ class movieBrowserBackdrop(Screen):
 
     def downloadError(self, output=None):
         if output:
-            print("[MovieBrowser] Download error: {}".format(str(output)[:100]))
+            print(
+                "[MovieBrowser] Download error: {}".format(
+                    str(output)[
+                        :100]))
         else:
             print("[MovieBrowser] Download error")
 
@@ -6446,12 +6517,14 @@ class movieBrowserPosterwall(Screen):
             elif exists(config.plugins.moviebrowser.cachefolder.value):
                 self.session.open(
                     MessageBox,
-                    _('\nMovie Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(config.plugins.moviebrowser.moviefolder.value),
+                    _('\nMovie Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(
+                        config.plugins.moviebrowser.moviefolder.value),
                     MessageBox.TYPE_ERROR)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\nCache Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(config.plugins.moviebrowser.cachefolder.value),
+                    _('\nCache Folder %s not reachable:\nMovie Browser Database Update canceled.') % str(
+                        config.plugins.moviebrowser.cachefolder.value),
                     MessageBox.TYPE_ERROR)
 
     def database_return(self, answer):
@@ -6510,87 +6583,111 @@ class movieBrowserPosterwall(Screen):
             if orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entry deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') % str(orphaned),
+                    _('\nNo new Movies or Series found.\n%s orphaned Database Entries deleted.') %
+                    str(orphaned),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         elif orphaned == 0:
             if moviecount == 1 and seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movie imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movie imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Movies imported into Database.') % str(moviecount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies imported into Database.') %
+                    str(moviecount), MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
-                    MessageBox, _('\n%s Series imported into Database.') % str(seriescount),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Series imported into Database.') %
+                    str(seriescount), MessageBox.TYPE_INFO)
             else:
                 self.session.open(
-                    MessageBox, _('\n%s Movies and %s Series imported into Database.') % (str(moviecount), str(seriescount)),
-                    MessageBox.TYPE_INFO)
+                    MessageBox, _('\n%s Movies and %s Series imported into Database.') %
+                    (str(moviecount), str(seriescount)), MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         else:
             if moviecount == 1 and seriescount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0 and orphaned == 1:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 1 and seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount),  str(orphaned)),
+                    _('\n%s Movie imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif seriescount == 1 and moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount), str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif orphaned == 1:
                 if seriescount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(orphaned)),
+                        _('\n%s Movies imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 elif moviecount == 0:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(seriescount), str(orphaned)),
+                        _('\n%s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(seriescount),
+                         str(orphaned)),
                         MessageBox.TYPE_INFO)
                 else:
                     self.session.open(
                         MessageBox,
-                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                        _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entry deleted.') %
+                        (str(moviecount),
+                         str(seriescount),
+                            str(orphaned)),
                         MessageBox.TYPE_INFO)
             elif seriescount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(orphaned)),
+                    _('\n%s Movies imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             elif moviecount == 0:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(seriescount),  str(orphaned)),
+                    _('\n%s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(seriescount),
+                     str(orphaned)),
                     MessageBox.TYPE_INFO)
             else:
                 self.session.open(
                     MessageBox,
-                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') % (str(moviecount), str(seriescount), str(orphaned)),
+                    _('\n%s Movies and %s Series imported into Database.\n%s orphaned Database Entries deleted.') %
+                    (str(moviecount),
+                     str(seriescount),
+                        str(orphaned)),
                     MessageBox.TYPE_INFO)
             self.makeMovies(self.filter)
         OnclearMem()
@@ -6651,8 +6748,8 @@ class movieBrowserPosterwall(Screen):
                             self.session.open(MoviePlayer, sref)
                         else:
                             self.session.open(
-                                MessageBox, _('\nMovie file %s not available.') % filename,
-                                MessageBox.TYPE_ERROR)
+                                MessageBox, _('\nMovie file %s not available.') %
+                                filename, MessageBox.TYPE_ERROR)
                     elif filename.endswith('.iso') or filename.endswith('.ISO'):
                         if exists(
                                 '/usr/lib/enigma2/python/Plugins/Extensions/DVDPlayer/'):
@@ -6662,8 +6759,8 @@ class movieBrowserPosterwall(Screen):
                                     DVDPlayer, dvd_filelist=[filename])
                             else:
                                 self.session.open(
-                                    MessageBox, _('\nMovie file %s not available.') % filename,
-                                    MessageBox.TYPE_ERROR)
+                                    MessageBox, _('\nMovie file %s not available.') %
+                                    filename, MessageBox.TYPE_ERROR)
                         else:
                             self.session.open(
                                 MessageBox,
@@ -6676,8 +6773,8 @@ class movieBrowserPosterwall(Screen):
                         self.session.open(MoviePlayer, sref)
                     else:
                         self.session.open(
-                            MessageBox, _('\nMovie file %s not available.') % filename,
-                            MessageBox.TYPE_ERROR)
+                            MessageBox, _('\nMovie file %s not available.') %
+                            filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
                     self.makeMovieBrowserTimer.callback.append(
                         self.getMediaInfo)
@@ -6988,7 +7085,7 @@ class movieBrowserPosterwall(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies  url tmdb =', url)
                 series_data = fetch_url(url)
@@ -7000,7 +7097,9 @@ class movieBrowserPosterwall(Screen):
                 try:
                     output = series_data.decode("utf-8", "ignore")
                 except Exception as e:
-                    print("Decode error for series URL {}: {}".format(url, str(e)))
+                    print(
+                        "Decode error for series URL {}: {}".format(
+                            url, str(e)))
                     output = series_data.decode("latin-1", "ignore")
 
                 output = sub(
@@ -7103,7 +7202,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate  url tmdb =', url)
                 UpdateDatabase(
@@ -7162,13 +7261,15 @@ class movieBrowserPosterwall(Screen):
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') % name,
+                        _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
                 else:
                     self.session.openWithCallback(
                         self.delete_return,
                         MessageBox,
-                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') % name,
+                        _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') %
+                        name,
                         MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -7253,7 +7354,8 @@ class movieBrowserPosterwall(Screen):
                 self.session.openWithCallback(
                     self.blacklist_return,
                     MessageBox,
-                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name,
+                    _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') %
+                    name,
                     MessageBox.TYPE_YESNO)
             except IndexError:
                 pass
@@ -7796,7 +7898,8 @@ class movieBrowserPosterwall(Screen):
                         self["banner"].instance.setPixmapFromFile(banner)
                         self['banner'].show()
                     else:
-                        bannerurl_str = bannerurl.decode('utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
+                        bannerurl_str = bannerurl.decode(
+                            'utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
                         if 'themoviedb.org' in bannerurl_str or 'image.tmdb.org' in bannerurl_str:
                             headers_to_use = agents_json
                         else:
@@ -7844,7 +7947,8 @@ class movieBrowserPosterwall(Screen):
                             self["banner"].instance.setPixmapFromFile(banner)
                             self['banner'].show()
                         else:
-                            bannerurl_str = bannerurl.decode('utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
+                            bannerurl_str = bannerurl.decode(
+                                'utf-8') if PY3 and isinstance(bannerurl, bytes) else str(bannerurl)
                             if 'themoviedb.org' in bannerurl_str or 'image.tmdb.org' in bannerurl_str:
                                 headers_to_use = agents_json
                             else:
@@ -7881,7 +7985,8 @@ class movieBrowserPosterwall(Screen):
                         self["eposter"].instance.setPixmapFromFile(eposter)
                         self['eposter'].show()
                     else:
-                        eposterurl_str = eposterurl.decode('utf-8') if PY3 and isinstance(eposterurl, bytes) else str(eposterurl)
+                        eposterurl_str = eposterurl.decode(
+                            'utf-8') if PY3 and isinstance(eposterurl, bytes) else str(eposterurl)
                         if 'themoviedb.org' in eposterurl_str or 'image.tmdb.org' in eposterurl_str:
                             headers_to_use = agents_json
                         else:
@@ -7943,7 +8048,8 @@ class movieBrowserPosterwall(Screen):
                     self['poster' + str(x)].instance.setPixmapFromFile(poster)
                     self['poster' + str(x)].show()
                 else:
-                    posterurl_str = posterurl_clean.decode('utf-8') if PY3 and isinstance(posterurl_clean, bytes) else str(posterurl_clean)
+                    posterurl_str = posterurl_clean.decode(
+                        'utf-8') if PY3 and isinstance(posterurl_clean, bytes) else str(posterurl_clean)
                     if 'themoviedb.org' in posterurl_str or 'image.tmdb.org' in posterurl_str:
                         headers_to_use = agents_json
                     else:
@@ -8644,7 +8750,8 @@ class movieBrowserPosterwall(Screen):
                                 season = sub(r'[(]s00', 'specials', season)
                                 season = sub(r'[(]S', 'Season ', season)
                                 season = sub(r'[(]s', 'season ', season)
-                                season = sub(r'[Ee][0-9]+[)].*?FIN', '', season)
+                                season = sub(
+                                    r'[Ee][0-9]+[)].*?FIN', '', season)
                                 season = sub('FIN', '', season)
                                 season = sub(r',', '', season)
                             except IndexError:
@@ -9114,7 +9221,10 @@ class movieBrowserPosterwall(Screen):
 
     def downloadError(self, output=None):
         if output:
-            print("[MovieBrowser] Download error: {}".format(str(output)[:100]))
+            print(
+                "[MovieBrowser] Download error: {}".format(
+                    str(output)[
+                        :100]))
         else:
             print("[MovieBrowser] Download error")
 
@@ -9237,7 +9347,8 @@ class UpdateDatabase():
             self.makeUpdate()
 
     def makeUpdate(self):
-        self.starttime = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        self.starttime = str(
+            datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         with open(DATABASE_PATH, 'r', encoding='utf-8') as data_file:
             data = data_file.read()
         if fileExists(BLACKLIST_PATH):
@@ -9249,7 +9360,8 @@ class UpdateDatabase():
         allfiles = ':::'
         count = 0
         folder = config.plugins.moviebrowser.moviefolder.value
-        for root, dirs, files in walk(folder, topdown=False, onerror=None, followlinks=True):
+        for root, dirs, files in walk(
+                folder, topdown=False, onerror=None, followlinks=True):
             for name in files:
                 count += 1
                 if (name.endswith('.ts') or name.endswith('.avi') or name.endswith('.divx') or
@@ -9263,7 +9375,8 @@ class UpdateDatabase():
                     if search(movie, alldata) is None:
                         self.movielist.append(filename)
                         date = getmtime(filename)
-                        self.datelist.append(str(datetime.datetime.fromtimestamp(date)))
+                        self.datelist.append(
+                            str(datetime.datetime.fromtimestamp(date)))
                         if name.endswith('.ts'):
                             name = sub(r'_', ' ', name)
                             name = sub(r'^.*? - .*? - ', '', name)
@@ -9281,18 +9394,21 @@ class UpdateDatabase():
         for line in data.split('\n'):
             movieline = line.split(':::')
             try:
-                moviefolder = sub(r'\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
+                moviefolder = sub(
+                    r'\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
             except IndexError:
                 moviefolder = ''
 
-            if (search(config.plugins.moviebrowser.moviefolder.value, moviefolder) is not None and
-                    search(moviefolder, allfiles) is None):
+            if (search(config.plugins.moviebrowser.moviefolder.value, moviefolder)
+                    is not None and search(moviefolder, allfiles) is None):
                 self.orphaned += 1
                 data = data.replace(line + '\n', '')
 
         if self.orphaned > 0:
             if search('https://cf2.imgobject.com/t/p/', data) is not None:
-                data = data.replace('https://cf2.imgobject.com/t/p/', 'https://image.tmdb.org/t/p/')
+                data = data.replace(
+                    'https://cf2.imgobject.com/t/p/',
+                    'https://image.tmdb.org/t/p/')
             with open(DATABASE_PATH, "w", encoding='utf-8') as f:
                 f.write(data)
         del data
@@ -9300,7 +9416,11 @@ class UpdateDatabase():
         del allfiles
         self.dbcountmax = len(self.movielist)
         if self.dbcountmax == 0:
-            self.results = (0, self.orphaned, self.moviecount, self.seriescount)
+            self.results = (
+                0,
+                self.orphaned,
+                self.moviecount,
+                self.seriescount)
             self.showResult(False)
         else:
             self.name = self.namelist[0]
@@ -9317,7 +9437,8 @@ class UpdateDatabase():
                 encoded_series = quote(series)
 
                 # Option A: Use TVDB (old)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (encoded_series, self.language)
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (
+                    encoded_series, self.language)
                 print("TVDB URL for series= " + url)
                 self.getTVDbData(url, '0')
 
@@ -9327,7 +9448,9 @@ class UpdateDatabase():
                 # self.getTMDbTVData(url, '0', False)
 
             else:
-                print("[DEBUG] No series pattern, treating as movie: " + self.name)
+                print(
+                    "[DEBUG] No series pattern, treating as movie: " +
+                    self.name)
                 movie = transMOVIE(self.name)
 
                 encoded_movie = quote(movie)
@@ -9410,11 +9533,13 @@ class UpdateDatabase():
 
             # 3b. Extract genres
             genres_list = movie_data.get('genres', [])
-            genres = ', '.join([g.get('name', '') for g in genres_list]) if genres_list else ' '
+            genres = ', '.join([g.get('name', '')
+                               for g in genres_list]) if genres_list else ' '
 
             # 3c. Extract country of manufacture
             countries_list = movie_data.get('production_countries', [])
-            country = countries_list[0].get('iso_3166_1', '') if countries_list else ' '
+            country = countries_list[0].get(
+                'iso_3166_1', '') if countries_list else ' '
 
             # 3d. Extract YEAR from the release date
             year = release_date.split('-')[0] if release_date else ' '
@@ -9445,27 +9570,35 @@ class UpdateDatabase():
 
             # Poster and backdrop
             if poster_path:
-                self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster_path)
+                self.posterlist.append(
+                    'https://image.tmdb.org/t/p/w185' + poster_path)
             else:
                 self.posterlist.append(str(default_poster))
 
             if backdrop_path:
-                self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop_path)
+                self.backdroplist.append(
+                    'https://image.tmdb.org/t/p/w1280' + backdrop_path)
             else:
                 self.backdroplist.append(str(default_backdrop))
 
             # 6. BUILD THE 'res' LIST
             res = []
             # 1. Runtime
-            res.append(str(runtime) + ' min' if runtime and runtime > 0 else ' ')
+            res.append(
+                str(runtime) +
+                ' min' if runtime and runtime > 0 else ' ')
             # 2. Rating
-            res.append(str(vote_average) if vote_average and vote_average > 0 else '0.0')
+            res.append(
+                str(vote_average) if vote_average and vote_average > 0 else '0.0')
             # 3. Director
             res.append(director_string if director_string else ' ')
             # 4. Actors
             res.append(actors_string if actors_string else ' ')
             # 5. Genres
-            res.append(genres.replace('Science Fiction', 'Sci-Fi') if genres else ' ')
+            res.append(
+                genres.replace(
+                    'Science Fiction',
+                    'Sci-Fi') if genres else ' ')
             # 6. Year
             res.append(year if year else ' ')
             # 7. Country
@@ -9473,13 +9606,21 @@ class UpdateDatabase():
 
             # 7. ADD TO FINAL LISTS
             self.infolist.append(res)
-            self.plotlist.append(overview.replace('\r', '').replace('\n', ' ').replace('\\', ''))
+            self.plotlist.append(
+                overview.replace(
+                    '\r',
+                    '').replace(
+                    '\n',
+                    ' ').replace(
+                    '\\',
+                    ''))
 
             # print("[SUCCESS] Movie '{}' elaborate. Directors found: {}".format(title, director_string))
 
         except json.JSONDecodeError as e:
             print("CRITICAL ERROR in JSON parsing: {}".format(e))
-            print("Problematic API response (first 500 characters): {}".format(output[:500] if output else "No response"))
+            print("Problematic API response (first 500 characters): {}".format(
+                output[:500] if output else "No response"))
             # Fallback: use empty values ​​but continue
             res = [' ', '0.0', ' ', ' ', ' ', ' ', ' ']
             self.infolist.append(res)
@@ -9572,17 +9713,26 @@ class UpdateDatabase():
                 output_episode = sub(r'&amp;', '&', output_episode)
 
                 # Episode data extraction
-                episode_data['name'] = findall(r'<EpisodeName>(.*?)</EpisodeName>', output_episode)
-                episode_data['year'] = findall(r'<FirstAired>([0-9]+)-', output_episode)
-                episode_data['guest'] = findall(r'<GuestStars>[|](.*?)[|]</GuestStars>', output_episode)
-                episode_data['director'] = findall(r'<Director>[|](.*?)[|]</Director>', output_episode)
+                episode_data['name'] = findall(
+                    r'<EpisodeName>(.*?)</EpisodeName>', output_episode)
+                episode_data['year'] = findall(
+                    r'<FirstAired>([0-9]+)-', output_episode)
+                episode_data['guest'] = findall(
+                    r'<GuestStars>[|](.*?)[|]</GuestStars>', output_episode)
+                episode_data['director'] = findall(
+                    r'<Director>[|](.*?)[|]</Director>', output_episode)
                 if not episode_data['director']:
-                    episode_data['director'] = findall(r'<Director>(.*?)[|]', output_episode)
+                    episode_data['director'] = findall(
+                        r'<Director>(.*?)[|]', output_episode)
                     if not episode_data['director']:
-                        episode_data['director'] = findall(r'<Director>[|](.*?)[|]', output_episode)
-                episode_data['plot'] = findall(r'<Overview>(.*?)</Overview>', output_episode, S)
-                episode_data['rating'] = findall(r'<Rating>(.*?)</Rating>', output_episode)
-                episode_data['poster'] = findall(r'<filename>(.*?)</filename>', output_episode)
+                        episode_data['director'] = findall(
+                            r'<Director>[|](.*?)[|]', output_episode)
+                episode_data['plot'] = findall(
+                    r'<Overview>(.*?)</Overview>', output_episode, S)
+                episode_data['rating'] = findall(
+                    r'<Rating>(.*?)</Rating>', output_episode)
+                episode_data['poster'] = findall(
+                    r'<filename>(.*?)</filename>', output_episode)
             else:
                 print("[TVDB] Impossibile recuperare dati episodio")
 
@@ -9607,47 +9757,57 @@ class UpdateDatabase():
         series_data = {}
 
         # Series Title
-        series_data['name'] = findall(r'<SeriesName>(.*?)</SeriesName>', output_series)
-        series_data['runtime'] = findall(r'<Runtime>(.*?)</Runtime>', output_series)
+        series_data['name'] = findall(
+            r'<SeriesName>(.*?)</SeriesName>', output_series)
+        series_data['runtime'] = findall(
+            r'<Runtime>(.*?)</Runtime>', output_series)
 
         # Rating (use episode if available, otherwise series)
         if episode_data.get('rating'):
             series_data['rating'] = episode_data['rating']
         else:
-            series_data['rating'] = findall(r'<Rating>(.*?)</Rating>', output_series)
+            series_data['rating'] = findall(
+                r'<Rating>(.*?)</Rating>', output_series)
 
         # Actors
         actors_text = findall(r'<Actors>(.*?)</Actors>', output_series)
         actors_list = []
         if actors_text:
             actors_split = actors_text[0].split('|')
-            actors_list = [actor.strip() for actor in actors_split if actor.strip()]
+            actors_list = [actor.strip()
+                           for actor in actors_split if actor.strip()]
 
         # Generes
         genres_text = findall(r'<Genre>(.*?)</Genre>', output_series)
         genres_list = []
         if genres_text:
             genres_split = genres_text[0].split('|')
-            genres_list = [genre.strip() for genre in genres_split if genre.strip()]
+            genres_list = [genre.strip()
+                           for genre in genres_split if genre.strip()]
 
         # Year (priority: episode > series)
         if episode_data.get('year'):
             series_data['year'] = episode_data['year']
         else:
-            series_data['year'] = findall(r'<FirstAired>([0-9]+)-', output_series)
+            series_data['year'] = findall(
+                r'<FirstAired>([0-9]+)-', output_series)
 
         # Plot (priority: episode > series)
         if episode_data.get('plot'):
             series_data['plot'] = episode_data['plot']
         else:
-            series_data['plot'] = findall(r'<Overview>(.*?)</Overview>', output_series, S)
+            series_data['plot'] = findall(
+                r'<Overview>(.*?)</Overview>', output_series, S)
 
         # Image
-        series_data['backdrop'] = findall(r'<fanart>(.*?)</fanart>', output_series)
-        series_data['poster'] = findall(r'<poster>(.*?)</poster>', output_series)
+        series_data['backdrop'] = findall(
+            r'<fanart>(.*?)</fanart>', output_series)
+        series_data['poster'] = findall(
+            r'<poster>(.*?)</poster>', output_series)
 
         if self.newseries is True:
-            series_data['banner'] = findall(r'<banner>(.*?)</banner>', output_series)
+            series_data['banner'] = findall(
+                r'<banner>(.*?)</banner>', output_series)
 
         # New series entry management
         if self.newseries is False:
@@ -9743,7 +9903,8 @@ class UpdateDatabase():
 
         # Image
         try:
-            backdrop_url = 'https://www.thetvdb.com/banners/' + series_data['backdrop'][0] if series_data['backdrop'] else str(default_backdrop)
+            backdrop_url = 'https://www.thetvdb.com/banners/' + \
+                series_data['backdrop'][0] if series_data['backdrop'] else str(default_backdrop)
             self.backdroplist.append(backdrop_url)
         except (IndexError, KeyError):
             self.backdroplist.append(str(default_backdrop))
@@ -9752,22 +9913,36 @@ class UpdateDatabase():
             if self.newseries is True:
                 banner_url = ''
                 if series_data.get('banner'):
-                    banner_url = series_data['banner'][0] if series_data['banner'][0] else str(default_banner)
+                    banner_url = series_data['banner'][0] if series_data['banner'][0] else str(
+                        default_banner)
                 else:
                     banner_url = str(default_banner)
 
-                poster_url = 'https://www.thetvdb.com/banners/_cache/' + series_data['poster'][0] if series_data['poster'] else str(default_poster)
-                self.posterlist.append(poster_url + '<episode>' + banner_url + '<episode>')
+                poster_url = 'https://www.thetvdb.com/banners/_cache/' + \
+                    series_data['poster'][0] if series_data['poster'] else str(default_poster)
+                self.posterlist.append(
+                    poster_url + '<episode>' + banner_url + '<episode>')
             elif episode_data.get('poster'):
-                poster_url = 'https://www.thetvdb.com/banners/_cache/' + series_data['poster'][0] if series_data['poster'] else str(default_poster)
-                episode_poster = 'https://www.thetvdb.com/banners/' + episode_data['poster'][0]
-                self.posterlist.append(poster_url + '<episode>' + episode_poster + '<episode>')
+                poster_url = 'https://www.thetvdb.com/banners/_cache/' + \
+                    series_data['poster'][0] if series_data['poster'] else str(default_poster)
+                episode_poster = 'https://www.thetvdb.com/banners/' + \
+                    episode_data['poster'][0]
+                self.posterlist.append(
+                    poster_url +
+                    '<episode>' +
+                    episode_poster +
+                    '<episode>')
             else:
-                poster_url = 'https://www.thetvdb.com/banners/_cache/' + series_data['poster'][0] if series_data['poster'] else str(default_poster)
+                poster_url = 'https://www.thetvdb.com/banners/_cache/' + \
+                    series_data['poster'][0] if series_data['poster'] else str(default_poster)
                 self.posterlist.append(poster_url)
         except (IndexError, KeyError):
             if self.newseries is True:
-                self.posterlist.append(str(default_poster) + '<episode>' + str(default_banner) + '<episode>')
+                self.posterlist.append(
+                    str(default_poster) +
+                    '<episode>' +
+                    str(default_banner) +
+                    '<episode>')
             else:
                 self.posterlist.append(str(default_poster))
 
@@ -9870,7 +10045,8 @@ class UpdateDatabase():
 
                         if not fileExists(cache_path):
                             try:
-                                if url.startswith("http://") or url.startswith("https://"):
+                                if url.startswith(
+                                        "http://") or url.startswith("https://"):
                                     output = fetch_url(url)
                                 elif exists(url):
                                     with open(url, "rb") as f:
@@ -9879,7 +10055,9 @@ class UpdateDatabase():
                                     print("Invalid backdrop path or URL:", url)
                                     output = None
                             except Exception as e:
-                                print("Error fetching backdrop {}: {}".format(url, str(e)))
+                                print(
+                                    "Error fetching backdrop {}: {}".format(
+                                        url, str(e)))
                                 output = None
 
                                 if output:
@@ -10135,20 +10313,26 @@ class movieControlList(Screen):
         self['log'] = ScrollLabel()
         self['log'].hide()
         self['label3'] = Label('Info')
-        self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions', 'ColorActions', 'ChannelSelectBaseActions', 'HelpActions', 'NumberActions'], {
-            'ok': self.ok,
-            'cancel': self.exit,
-            'right': self.rightDown,
-            'left': self.leftUp,
-            'down': self.down,
-            'up': self.up,
-            'nextBouquet': self.zap,
-            'prevBouquet': self.zap,
-            'yellow': self.showInfo,
-            'blue': self.hideScreen,
-            '0': self.gotoEnd,
-            '1': self.gotoFirst,
-        }, -1)
+        self['actions'] = ActionMap(['OkCancelActions',
+                                     'DirectionActions',
+                                     'ColorActions',
+                                     'ChannelSelectBaseActions',
+                                     'HelpActions',
+                                     'NumberActions'],
+                                    {'ok': self.ok,
+                                     'cancel': self.exit,
+                                     'right': self.rightDown,
+                                     'left': self.leftUp,
+                                     'down': self.down,
+                                     'up': self.up,
+                                     'nextBouquet': self.zap,
+                                     'prevBouquet': self.zap,
+                                     'yellow': self.showInfo,
+                                     'blue': self.hideScreen,
+                                     '0': self.gotoEnd,
+                                     '1': self.gotoFirst,
+                                     },
+                                    -1)
         self.onLayoutFinish.append(self.onLayoutFinished)
 
     def onLayoutFinished(self):
@@ -10404,13 +10588,15 @@ class movieControlList(Screen):
                 self.session.openWithCallback(
                     self.delete_return,
                     MessageBox,
-                    _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') % name,
+                    _('\nThis will delete all %s entries from the Database but not from the Movie Folder.\n\nDo you want to continue?') %
+                    name,
                     MessageBox.TYPE_YESNO)
             else:
                 self.session.openWithCallback(
                     self.delete_return,
                     MessageBox,
-                    _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') % name,
+                    _('\nThis will delete %s from the Database and from the Movie Folder!\n\nDo you want to continue?') %
+                    name,
                     MessageBox.TYPE_YESNO)
         except IndexError:
             pass
@@ -10494,7 +10680,8 @@ class movieControlList(Screen):
             self.session.openWithCallback(
                 self.blacklist_return,
                 MessageBox,
-                _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') % name,
+                _('\nThis will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n\nDo you want to continue?') %
+                name,
                 MessageBox.TYPE_YESNO)
         except IndexError:
             pass
@@ -10762,7 +10949,8 @@ class movieDatabase(Screen):
             movies = _('Movies')
 
             if exists(config.plugins.moviebrowser.moviefolder.value):
-                movieFolder = statvfs(config.plugins.moviebrowser.moviefolder.value)
+                movieFolder = statvfs(
+                    config.plugins.moviebrowser.moviefolder.value)
                 try:
                     stat = movieFolder
                     freeSize = convert_size(float(stat.f_bfree * stat.f_bsize))
@@ -11168,29 +11356,177 @@ class moviesList(Screen):
             png2 = '%spic/browser/ratings.png' % skin_directory
             try:
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryText(pos=(10, 0), size=(1210, 225), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(10, 13), size=(800, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.titles[x]))
-                    res.append(MultiContentEntryText(pos=(10, 54), size=(200, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.year[x]))
-                    res.append(MultiContentEntryText(pos=(10, 260), size=(200, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.country[x]))
-                    rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                10,
+                                0),
+                            size=(
+                                1210,
+                                225),
+                            font=30,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=''))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                10,
+                                13),
+                            size=(
+                                800,
+                                45),
+                            font=30,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.titles[x]))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                10,
+                                54),
+                            size=(
+                                200,
+                                45),
+                            font=30,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.year[x]))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                10,
+                                260),
+                            size=(
+                                200,
+                                45),
+                            font=30,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.country[x]))
+                    rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(
+                        10 * round(float(self.rating[x]), 1)) // 10
                 else:
-                    res.append(MultiContentEntryText(pos=(5, 0), size=(810, 145), font=24, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=''))
-                    res.append(MultiContentEntryText(pos=(5, 13), size=(610, 30), font=24, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.titles[x]))
-                    res.append(MultiContentEntryText(pos=(5, 48), size=(200, 30), font=24, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.year[x]))
-                    res.append(MultiContentEntryText(pos=(5, 200), size=(200, 30), font=26, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.country[x]))
-                    rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(10 * round(float(self.rating[x]), 1)) // 10
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                5,
+                                0),
+                            size=(
+                                810,
+                                145),
+                            font=24,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=''))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                5,
+                                13),
+                            size=(
+                                610,
+                                30),
+                            font=24,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.titles[x]))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                5,
+                                48),
+                            size=(
+                                200,
+                                30),
+                            font=24,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.year[x]))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                5,
+                                200),
+                            size=(
+                                200,
+                                30),
+                            font=26,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.country[x]))
+                    rating = int(10 * round(float(self.rating[x]), 1)) * 2 + int(
+                        10 * round(float(self.rating[x]), 1)) // 10
             except (IndexError, ValueError):
                 rating = 0
 
             try:
                 if screenwidth.width() == 1920:
-                    res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(350, 45), png=loadPNG(png)))
-                    res.append(MultiContentEntryPixmapAlphaTest(pos=(10, 90), size=(rating, 45), png=loadPNG(png2)))
-                    res.append(MultiContentEntryText(pos=(400, 90), size=(50, 45), font=30, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.rating[x]))
+                    res.append(
+                        MultiContentEntryPixmapAlphaTest(
+                            pos=(
+                                10, 90), size=(
+                                350, 45), png=loadPNG(png)))
+                    res.append(
+                        MultiContentEntryPixmapAlphaTest(
+                            pos=(
+                                10, 90), size=(
+                                rating, 45), png=loadPNG(png2)))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                400,
+                                90),
+                            size=(
+                                50,
+                                45),
+                            font=30,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.rating[x]))
                 else:
-                    res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 80), size=(210, 21), png=loadPNG(png)))
-                    res.append(MultiContentEntryPixmapAlphaTest(pos=(5, 80), size=(rating, 21), png=loadPNG(png2)))
-                    res.append(MultiContentEntryText(pos=(240, 75), size=(50, 30), font=24, color=0xFFFFFF, backcolor_sel=0x0043ac, color_sel=0xFFFFFF, flags=RT_HALIGN_LEFT, text=self.rating[x]))
+                    res.append(
+                        MultiContentEntryPixmapAlphaTest(
+                            pos=(
+                                5, 80), size=(
+                                210, 21), png=loadPNG(png)))
+                    res.append(
+                        MultiContentEntryPixmapAlphaTest(
+                            pos=(
+                                5, 80), size=(
+                                rating, 21), png=loadPNG(png2)))
+                    res.append(
+                        MultiContentEntryText(
+                            pos=(
+                                240,
+                                75),
+                            size=(
+                                50,
+                                30),
+                            font=24,
+                            color=0xFFFFFF,
+                            backcolor_sel=0x0043ac,
+                            color_sel=0xFFFFFF,
+                            flags=RT_HALIGN_LEFT,
+                            text=self.rating[x]))
             except IndexError:
                 pass
 
@@ -11281,7 +11617,8 @@ class moviesList(Screen):
 
             if banners and len(banners) > 0:
                 self.banners_cache.append(banners[0])
-                print("[DEBUG] Saved in cache[" + str(i) + "]: " + str(banners[0]))
+                print("[DEBUG] Saved in cache[" +
+                      str(i) + "]: " + str(banners[0]))
             else:
                 self.banners_cache.append(None)
                 print("[DEBUG] No banner, saved None in cache[" + str(i) + "]")
@@ -11309,7 +11646,8 @@ class moviesList(Screen):
             return
 
         if index < 0 or index >= len(self.banners_cache):
-            print("[DEBUG] Index " + str(index) + " out of range (0-" + str(len(self.banners_cache) - 1) + ")")
+            print("[DEBUG] Index " + str(index) +
+                  " out of range (0-" + str(len(self.banners_cache) - 1) + ")")
             return
 
         banner_url = self.banners_cache[index]
@@ -11381,7 +11719,11 @@ class moviesList(Screen):
 
     def downloadAndShowBanner(self, banner_url, index):
         """Download and display a banner"""
-        print("[DEBUG] Download banner: " + str(banner_url) + " for index " + str(index))
+        print(
+            "[DEBUG] Download banner: " +
+            str(banner_url) +
+            " for index " +
+            str(index))
 
         if index == 0:
             banner_file = self.banner1
@@ -11394,11 +11736,14 @@ class moviesList(Screen):
         else:
             banner_file = "/tmp/banner_" + str(index) + ".jpg"
 
-        downloadPage(banner_url.encode(), banner_file).addCallback(
-            lambda result, idx=index: self.onBannerDownloaded(idx)
-        ).addErrback(
-            lambda failure: print("[ERROR] Banner download failed: " + str(failure))
-        )
+        downloadPage(
+            banner_url.encode(),
+            banner_file).addCallback(
+            lambda result,
+            idx=index: self.onBannerDownloaded(idx)).addErrback(
+            lambda failure: print(
+                "[ERROR] Banner download failed: " +
+                str(failure)))
 
     def onBannerDownloaded(self, index):
         """Callback when the banner is downloaded"""
@@ -11519,17 +11864,18 @@ class moviesList(Screen):
         # 2. Extract ONLY poster-type paths (680x1000)
         self.banner = findall(
             r'<BannerPath>(https://artworks\.thetvdb\.com/banners/.*?)</BannerPath>.*?<BannerType2>680x1000</BannerType2>',
-            output, flags=S
-        )
+            output,
+            flags=S)
 
         # Fallback: also search for <BannerType>poster</BannerType>
         if not self.banner:
             self.banner = findall(
                 r'<BannerPath>(https://artworks\.thetvdb\.com/banners/.*?)</BannerPath>.*?<BannerType>poster</BannerType>',
-                output, flags=S
-            )
+                output,
+                flags=S)
 
-        print("[DEBUG] getTVDbBanners found " + str(len(self.banner)) + " banners")
+        print("[DEBUG] getTVDbBanners found " +
+              str(len(self.banner)) + " banners")
         self.makeList()
 
     def getTVDbBackdrops(self, url):
@@ -11557,23 +11903,28 @@ class moviesList(Screen):
         # 2. Extract ONLY fanart-type paths (1920x1080)
         self.banner = findall(
             r'<BannerPath>(https://artworks\.thetvdb\.com/banners/.*?)</BannerPath>.*?<BannerType2>1920x1080</BannerType2>',
-            output, flags=S
-        )
+            output,
+            flags=S)
 
         # Fallback: also search for <BannerType>fanart</BannerType>
         if not self.banner:
             self.banner = findall(
                 r'<BannerPath>(https://artworks\.thetvdb\.com/banners/.*?)</BannerPath>.*?<BannerType>fanart</BannerType>',
-                output, flags=S
-            )
+                output,
+                flags=S)
 
-        print("[DEBUG] getTVDbBackdrops found " + str(len(self.banner)) + " backdrops")
+        print("[DEBUG] getTVDbBackdrops found " +
+              str(len(self.banner)) + " backdrops")
         self.makeList()
 
     def fetchBannersForSeries(self, series_id):
         """Find horizontal banners (fanart)"""
-        url = 'https://www.thetvdb.com/api/' + str(thetvdb_api) + '/series/' + str(series_id) + '/banners.xml'
-        print("[DEBUG] === FETCH BANNERS for series " + str(series_id) + " ===")
+        url = 'https://www.thetvdb.com/api/' + \
+            str(thetvdb_api) + '/series/' + str(series_id) + '/banners.xml'
+        print(
+            "[DEBUG] === FETCH BANNERS for series " +
+            str(series_id) +
+            " ===")
 
         output = fetch_url(url)
         if output is None:
@@ -11591,18 +11942,24 @@ class moviesList(Screen):
         for section in banner_sections:
             if '<BannerPath>' in section and '<BannerType2>' in section:
                 # Extract BannerPath
-                banner_path_start = section.find('<BannerPath>') + len('<BannerPath>')
-                banner_path_end = section.find('</BannerPath>', banner_path_start)
+                banner_path_start = section.find(
+                    '<BannerPath>') + len('<BannerPath>')
+                banner_path_end = section.find(
+                    '</BannerPath>', banner_path_start)
 
                 # Extract BannerType2 (size)
-                banner_type2_start = section.find('<BannerType2>') + len('<BannerType2>')
-                banner_type2_end = section.find('</BannerType2>', banner_type2_start)
+                banner_type2_start = section.find(
+                    '<BannerType2>') + len('<BannerType2>')
+                banner_type2_end = section.find(
+                    '</BannerType2>', banner_type2_start)
 
                 if banner_path_start > 0 and banner_path_end > 0:
-                    banner_path = section[banner_path_start:banner_path_end].strip()
+                    banner_path = section[banner_path_start:banner_path_end].strip(
+                    )
 
                     if banner_type2_start > 0 and banner_type2_end > 0:
-                        banner_type2 = section[banner_type2_start:banner_type2_end].strip()
+                        banner_type2 = section[banner_type2_start:banner_type2_end].strip(
+                        )
 
                         # Check if horizontal (e.g., 1920x1080)
                         if 'x' in banner_type2:
@@ -11613,20 +11970,30 @@ class moviesList(Screen):
 
                                 # Look for horizontal FANART
                                 if width > height and width >= 1000:
-                                    print("[DEBUG] Found horizontal fanart: " + banner_path + " (" + str(width) + "x" + str(height) + ")")
+                                    print(
+                                        "[DEBUG] Found horizontal fanart: " +
+                                        banner_path +
+                                        " (" +
+                                        str(width) +
+                                        "x" +
+                                        str(height) +
+                                        ")")
                                     banners.append(banner_path)
-                            except:
+                            except BaseException:
                                 pass
 
         # If no fanart found, look for any banner containing "fanart/"
         if not banners:
             for section in banner_sections:
                 if '<BannerPath>' in section:
-                    banner_path_start = section.find('<BannerPath>') + len('<BannerPath>')
-                    banner_path_end = section.find('</BannerPath>', banner_path_start)
+                    banner_path_start = section.find(
+                        '<BannerPath>') + len('<BannerPath>')
+                    banner_path_end = section.find(
+                        '</BannerPath>', banner_path_start)
 
                     if banner_path_start > 0 and banner_path_end > 0:
-                        banner_path = section[banner_path_start:banner_path_end].strip()
+                        banner_path = section[banner_path_start:banner_path_end].strip(
+                        )
 
                         # Look for paths containing "fanart/"
                         if 'fanart/' in banner_path.lower():
@@ -11956,7 +12323,8 @@ class moviesList(Screen):
 
     def download(self, link, name):
         try:
-            link_str = link.decode('utf-8') if PY3 and isinstance(link, bytes) else str(link)
+            link_str = link.decode(
+                'utf-8') if PY3 and isinstance(link, bytes) else str(link)
 
             print("[DEBUG] download original link: " + link_str)
 
@@ -11992,12 +12360,15 @@ class moviesList(Screen):
 
             # --- 5. FIX DOMAIN ---
             if 'www.thetvdb.com/banners' in link_str:
-                link_str = link_str.replace('www.thetvdb.com/banners', 'artworks.thetvdb.com/banners')
+                link_str = link_str.replace(
+                    'www.thetvdb.com/banners',
+                    'artworks.thetvdb.com/banners')
 
             print("[DEBUG] final download URL: " + link_str)
 
             # Headers
-            if ('themoviedb.org' in link_str) or ('api.themoviedb.org' in link_str):
+            if ('themoviedb.org' in link_str) or (
+                    'api.themoviedb.org' in link_str):
                 headers_to_use = agents_json
             else:
                 headers_to_use = agents
@@ -12019,7 +12390,10 @@ class moviesList(Screen):
 
     def downloadError(self, output=None):
         if output:
-            print("[MovieBrowser] Download error: {}".format(str(output)[:100]))
+            print(
+                "[MovieBrowser] Download error: {}".format(
+                    str(output)[
+                        :100]))
         else:
             print("[MovieBrowser] Download error")
 

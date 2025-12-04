@@ -2,11 +2,8 @@
 
 ![](https://komarev.com/ghpvc/?username=Belfagor2005&label=Repository%20Views&color=blueviolet)
 [![Python package](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml/badge.svg)](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml)
-[![Build Status](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/build.yml/badge.svg)](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/build.yml)
 [![Python Compatibility](https://img.shields.io/badge/python-2.7%20%7C%203.x-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![GitHub release](https://img.shields.io/github/v/release/Belfagor2005/MovieBrowser?include_prereleases)](https://github.com/Belfagor2005/MovieBrowser/releases)
-[![Downloads](https://img.shields.io/github/downloads/Belfagor2005/MovieBrowser/total?color=success)](https://github.com/Belfagor2005/MovieBrowser/releases)
 [![GitHub stars](https://img.shields.io/github/stars/Belfagor2005/MovieBrowser?style=social)](https://github.com/Belfagor2005/MovieBrowser/stargazers)
 
 **Advanced movie and series management plugin for Enigma2-based set-top boxes**  

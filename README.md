@@ -77,7 +77,7 @@
 wget -q --no-check-certificate https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/installer.sh -O - | /bin/sh
 
 # Install on Enigma2
-opkg install moviebrowser_4.0_all.ipk
+opkg enigma2-plugin-extensions-moviebrowser
 
 # Restart GUI
 init 4 && init 3

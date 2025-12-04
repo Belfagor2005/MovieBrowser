@@ -494,6 +494,16 @@ class movieBrowserMetrix(Screen):
                     self.seenlist.append('unseen')
                     self.medialist.append('\n')
                 self.maxentry = len(self.namelist)
+
+                if self.index is None:
+                    self.index = 0
+                elif self.index < 0:
+                    self.index = 0
+                elif self.maxentry > 0 and self.index >= self.maxentry:
+                    self.index = self.maxentry - 1
+                elif self.maxentry == 0:
+                    self.index = 0
+
                 self.makeList()
                 if self.backdrops != 'hide':
                     try:
@@ -1327,7 +1337,7 @@ class movieBrowserMetrix(Screen):
             try:
                 poster.append(Poster[0])
             except IndexError:
-                poster.append(wiki_png)
+                poster.append(str(wiki_png))
 
             try:
                 id.append(TVDbid[0])
@@ -3394,6 +3404,7 @@ class movieBrowserBackdrop(Screen):
                 remove(BLACKLIST_PATH)
             open(DATABASE_PATH, 'w').close()
             self.makeMovieBrowserTimer = eTimer()
+
             self.resetTimer = eTimer()
             self.resetTimer.callback.append(self.database_return(True))
             self.resetTimer.start(500, True)
@@ -3491,6 +3502,14 @@ class movieBrowserBackdrop(Screen):
                     self.medialist.append('\n')
                 self.maxentry = len(self.namelist)
                 self.makePoster()
+
+                if self.index is None:
+                    self.index = 0
+                elif self.index < 0:
+                    self.index = 0
+                elif self.maxentry > 0 and self.index >= self.maxentry:
+                    self.index = self.maxentry - 1
+
                 if self.backdrops != 'hide':
                     try:
                         self.showBackdrops(self.index)
@@ -3499,6 +3518,7 @@ class movieBrowserBackdrop(Screen):
 
                 else:
                     self.showDefaultBackdrop()
+
                 try:
                     self.makeName(self.index)
                 except IndexError:
@@ -3587,6 +3607,7 @@ class movieBrowserBackdrop(Screen):
 
         if self.startupdate is True:
             self.startupdate = False
+
             self.makeMovieBrowserTimer.callback.append(
                 self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
@@ -3781,6 +3802,7 @@ class movieBrowserBackdrop(Screen):
                         self.session.open(
                             MessageBox, _('\nMovie file %s not available.') %
                             filename, MessageBox.TYPE_ERROR)
+
                     self.makeMovieBrowserTimer.stop()
                     self.makeMovieBrowserTimer.callback.append(
                         self.getMediaInfo)
@@ -4137,7 +4159,7 @@ class movieBrowserBackdrop(Screen):
                 try:
                     poster.append(Poster[0])
                 except IndexError:
-                    poster.append(wiki_png)
+                    poster.append(str(wiki_png))
 
                 try:
                     id.append(TVDbid[0])
@@ -4703,10 +4725,25 @@ class movieBrowserBackdrop(Screen):
     def makePlot(self, index):
         self['plotfullback'].show()
         try:
-            plot = self.plotlist[self.index]
+            plot = None
+
+            # Basic control to avoid IndexError
+            if (hasattr(self, 'plotlist') and
+                self.plotlist is not None and
+                    0 <= index < len(self.plotlist)):
+                plot = self.plotlist[index]
+
+            # # If plot is None or list not valid
+            # if plot is None:
+                # plot = _("Description not available")
+            # elif isinstance(plot, text_type):
+                # plot = plot.encode('utf-8')
+
             self['plotfull'].setText(plot)
-        except IndexError:
-            pass
+
+        except Exception as e:
+            print("[MovieBrowser] Error in makePlot: " + str(e))
+            self['plotfull'].setText(_("Error while loading"))
 
         self['plotfull'].hide()
         self.makeEPoster()
@@ -6320,6 +6357,7 @@ class movieBrowserPosterwall(Screen):
                     self.index = sum((1 for line in open(DATABASE_PATH)))
                     self.wallindex = self.index % self.posterALL
                     self.pagecount = self.index // self.posterALL + 1
+
             self.makeMovieBrowserTimer = eTimer()
             self.makeMovieBrowserTimer.callback.append(
                 self.makeMovies(self.filter))
@@ -6463,6 +6501,14 @@ class movieBrowserPosterwall(Screen):
                     self.seenlist.append('unseen')
                     self.medialist.append('\n')
                 self.maxentry = len(self.namelist)
+
+                if self.index is None:
+                    self.index = 0
+                elif self.index < 0:
+                    self.index = 0
+                elif self.maxentry > 0 and self.index >= self.maxentry:
+                    self.index = self.maxentry - 1
+
                 self.posterREST = self.maxentry % self.posterALL
                 if self.posterREST == 0:
                     self.posterREST = self.posterALL
@@ -6479,6 +6525,7 @@ class movieBrowserPosterwall(Screen):
 
                 else:
                     self.showDefaultBackdrop()
+
                 try:
                     self.makeName(self.index)
                 except IndexError:
@@ -6774,6 +6821,7 @@ class movieBrowserPosterwall(Screen):
                         self.session.open(
                             MessageBox, _('\nMovie file %s not available.') %
                             filename, MessageBox.TYPE_ERROR)
+
                     self.makeMovieBrowserTimer.stop()
                     self.makeMovieBrowserTimer.callback.append(
                         self.getMediaInfo)
@@ -7860,14 +7908,28 @@ class movieBrowserPosterwall(Screen):
     def makePlot(self, index):
         self['plotfullback'].show()
         try:
-            plot = self.plotlist[self.index]
+            plot = None
+
+            # Basic control to avoid IndexError
+            if (hasattr(self, 'plotlist') and
+                    self.plotlist is not None and
+                    0 <= index < len(self.plotlist)):
+                plot = self.plotlist[index]
+
+            # # If plot is None or list not valid
+            # if plot is None:
+                # plot = _("Description not available")
+            # elif isinstance(plot, text_type):
+                # plot = plot.encode('utf-8')
+
             self['plotfull'].setText(plot)
-        except IndexError:
-            pass
+
+        except Exception as e:
+            print("[MovieBrowser] Error in makePlot: " + str(e))
+            self['plotfull'].setText(_("Error while loading"))
 
         self['plotfull'].hide()
         self.makeEPoster()
-        return
 
     def makeEPoster(self):
         if self.content == ':::Movie:Top:::':
@@ -11181,6 +11243,7 @@ class moviesList(Screen):
         skin = join(skin_path, "moviesList.xml")
         with open(skin, "r") as f:
             self.skin = f.read()
+
         self.titel = titel
         self.rating = rating
         self.year = year
@@ -11188,9 +11251,12 @@ class moviesList(Screen):
         self.poster = poster
         self.id = id
         self.country = country
+
+        print("[moviesList.__init__] Received: movie=" + str(movie) + ", top=" + str(top))
         self.movie = movie
         self.top = top
         self.choice = 'movie'
+
         self.movielist = []
         self.imagelist = []
 
@@ -11204,6 +11270,7 @@ class moviesList(Screen):
         self['poster4'] = Pixmap()
 
         self.banners_cache = []
+
         self.banner1 = '/tmp/moviebrowser5.jpg'
         self.banner2 = '/tmp/moviebrowser6.jpg'
         self.banner3 = '/tmp/moviebrowser7.jpg'
@@ -11540,32 +11607,145 @@ class moviesList(Screen):
     def ok(self):
         if self.ready is True:
             if self.first is True:
-                if self.movie is True:
-                    choicelist = [('Update Movie', _('movie')), ('Update Poster', _(
-                        'poster')), ('Update Backdrop', _('backdrop'))]
-                    self.session.openWithCallback(
-                        self.updateMovie, ChoiceBox, title='Update Movie', list=choicelist)
-                elif self.top is True:
-                    choicelist = [('Update Banner', _('banner')),
-                                  ('Update Backdrop', _('backdrop'))]
-                    self.session.openWithCallback(
-                        self.updateSeries, ChoiceBox, title=_('Update Series'), list=choicelist)
-                else:
-                    choicelist = [('Update Series', _('series'))]
-                    self.session.openWithCallback(
-                        self.updateSeries, ChoiceBox, title=_('Update Series'), list=choicelist)
+                # DEBUG: show what we have
+                print("[DEBUG moviesList.ok] Showing ALL options")
+                print("[DEBUG] Parameters: movie=" + str(self.movie) + ", top=" + str(self.top))
+
+                if self.id and len(self.id) > 0:
+                    print("[DEBUG] First ID: " + str(self.id[0]))
+                    print("[DEBUG] Is numeric ID: " + str(self.id[0].isdigit()))
+
+                # ALWAYS SHOW ALL OPTIONS
+                # User decides what to update
+
+                choicelist = [
+                    ('Update Movie', 'movie'),
+                    ('Update Poster', 'poster'),
+                    ('Update Backdrop', 'backdrop'),
+                    ('Update Series', 'series'),
+                    ('Update Banner', 'banner')
+                ]
+
+                # Smart title based on data
+                title = _('Update Selection')
+                if self.id and len(self.id) > 0:
+                    first_id = str(self.id[0])
+                    if first_id.isdigit() and len(first_id) >= 4:
+                        title = _('Update Movie/Series') + " (TMDb ID: " + first_id + ")"
+                    else:
+                        title = _('Update Movie/Series') + " (TVDb ID: " + first_id + ")"
+
+                self.session.openWithCallback(
+                    self.smartUpdate,
+                    ChoiceBox,
+                    title=title,
+                    list=choicelist
+                )
             else:
+                # Second screen (banner/poster selection)
                 c = self['piclist'].getSelectedIndex()
-                current = self.banner[c]
-                if fileExists(self.banner1):
-                    remove(self.banner1)
-                if fileExists(self.banner2):
-                    remove(self.banner2)
-                if fileExists(self.banner3):
-                    remove(self.banner3)
-                if fileExists(self.banner4):
-                    remove(self.banner4)
+                try:
+                    current = self.banner[c]
+                except IndexError:
+                    current = None
+
+                # Clean temp files
+                for i in range(1, 5):
+                    filepath = getattr(self, 'banner' + str(i), None)
+                    if filepath and fileExists(filepath):
+                        try:
+                            remove(filepath)
+                        except Exception:
+                            pass
+
                 self.close(current, self.choice)
+
+    def smartUpdate(self, choice):
+        """Handles all update options with intelligent checks"""
+        if choice is None:
+            return
+            
+        self.choice = choice[1]
+        print("[DEBUG smartUpdate] User selected: " + self.choice)
+        
+        try:
+            c = self['list'].getSelectedIndex()
+            if c < 0 or c >= len(self.id):
+                self.session.open(
+                    MessageBox,
+                    _('Invalid selection'),
+                    MessageBox.TYPE_ERROR)
+                return
+                
+            current = self.id[c]
+            print("[DEBUG] Selected ID: " + str(current))
+            
+            # INTELLIGENT CONTROLS BEFORE CONTINUING
+            if self.choice in ['poster', 'backdrop', 'movie']:
+                # For TMDb, check if the ID is numeric
+                if not str(current).strip().isdigit():
+                    self.session.open(
+                        MessageBox,
+                        _('Cannot update with TMDb: ID is not numeric\nThis appears to be a TV series, not a movie.'),
+                        MessageBox.TYPE_ERROR)
+                    return
+                    
+            elif self.choice in ['series', 'banner']:
+                # For TVDb, check if it looks like a valid ID
+                if str(current).strip().isdigit() and len(str(current)) > 5:
+                    # Long numeric ID = probably TMDb, not TVDb
+                    self.session.open(
+                        MessageBox,
+                        _('Cannot update with TheTVDb: ID appears to be a movie ID\nTry "Update Movie" instead.'),
+                        MessageBox.TYPE_ERROR)
+                    return
+            
+            # OPERATION HANDLING
+            if self.choice == 'movie':
+                print("[DEBUG] Movie update with TMDb")
+                # Clean temporary posters
+                for i in range(1, 5):
+                    filepath = getattr(self, 'poster' + str(i), None)
+                    if filepath and fileExists(filepath):
+                        remove(filepath)
+                self.close(current, self.choice)
+                
+            elif self.choice == 'poster':
+                print("[DEBUG] Poster update with TMDb")
+                movie_id = str(current).strip()
+                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (
+                    movie_id, str(tmdb_api))
+                self.getTMDbPosters(url)
+                
+            elif self.choice == 'backdrop':
+                print("[DEBUG] Backdrop update with TMDb")
+                movie_id = str(current).strip()
+                url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (
+                    movie_id, str(tmdb_api))
+                self.getTMDbBackdrops(url)
+                
+            elif self.choice == 'series':
+                print("[DEBUG] Series update with TheTVDb")
+                # Clean temporary posters
+                for i in range(1, 5):
+                    filepath = getattr(self, 'poster' + str(i), None)
+                    if filepath and fileExists(filepath):
+                        remove(filepath)
+                self.close(current, self.choice)
+                
+            elif self.choice == 'banner':
+                print("[DEBUG] Banner update with TheTVDb")
+                url = 'https://thetvdb.com/api/%s/series/%s/banners.xml' % (
+                    thetvdb_api, current)
+                self.getTVDbBanners(url)
+                    
+        except Exception as e:
+            print('[ERROR smartUpdate] ' + str(e))
+            self.session.open(
+                MessageBox,
+                _('Update error: ') + str(e),
+                MessageBox.TYPE_ERROR
+            )
 
     def updateMovie(self, choice):
         try:

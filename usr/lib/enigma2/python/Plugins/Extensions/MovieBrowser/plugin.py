@@ -1271,7 +1271,7 @@ class movieBrowserMetrix(Screen):
         seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
 
         for x in range(len(seriesid)):
-            url = ('https://www.thetvdb.com/api/%s/series/' + \
+            url = ('https://www.thetvdb.com/api/%s/series/' +
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbMovies url=', url)
             output = fetch_url(url)
@@ -1291,7 +1291,7 @@ class movieBrowserMetrix(Screen):
                 '<poster>https://artworks.thetvdb.com/banners/_cache/',
                 output)
             # Rebuild URL (looks redundant, but kept to match original code)
-            url = ('https://www.thetvdb.com/api/%s/series/' + \
+            url = ('https://www.thetvdb.com/api/%s/series/' +
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 
             # Replace empty ratings with default 0.0
@@ -1381,7 +1381,7 @@ class movieBrowserMetrix(Screen):
             if select == "series":
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" + \
+                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" +
                        config.plugins.moviebrowser.language.value + ".xml") % str(thetvdb_api)
                 print("makeTVDbUpdate url=", url)
                 UpdateDatabase(
@@ -4079,7 +4079,7 @@ class movieBrowserBackdrop(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' + \
+                url = ('https://www.thetvdb.com/api/%s/series/' +
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies url tmdb=', url)
                 output = fetch_url(url)
@@ -4190,7 +4190,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate url tmdb=', url)
                 UpdateDatabase(
@@ -6017,7 +6017,6 @@ class movieBrowserPosterwall(Screen):
 
         else:
             self.xd = False
-            self.xd = False
             self.spaceTop = 0
             self.spaceLeft = 16
             self.spaceX = 5
@@ -6541,7 +6540,7 @@ class movieBrowserPosterwall(Screen):
                 self.runTimer = eTimer()
                 self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
-        OnclearMem()
+            OnclearMem()
 
     def database_run(self):
         if config.plugins.moviebrowser.hideupdate.value is True:
@@ -7085,7 +7084,7 @@ class movieBrowserPosterwall(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' + \
+                url = ('https://www.thetvdb.com/api/%s/series/' +
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies  url tmdb =', url)
                 series_data = fetch_url(url)
@@ -7122,7 +7121,6 @@ class movieBrowserPosterwall(Screen):
                 Poster = findall(r'<poster>(.*?)</poster>', output)
                 TVDbid = findall(r'<id>(.*?)</id>', output)
                 Country = findall(r'<Status>(.*?)</Status>', output)
-                # Banner = findall(r'<banner>(.*?)</banner>', output)
                 try:
                     rating.append(Rating[0])
                 except IndexError:
@@ -7145,11 +7143,6 @@ class movieBrowserPosterwall(Screen):
                     poster.append(Poster[0])
                 except IndexError:
                     poster.append(str(wiki_png))
-
-                # try:
-                    # banner.append(Banner[0])
-                # except IndexError:
-                    # banner.append('')
 
                 try:
                     id.append(TVDbid[0])
@@ -7202,7 +7195,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate  url tmdb =', url)
                 UpdateDatabase(
@@ -8014,6 +8007,7 @@ class movieBrowserPosterwall(Screen):
         try:
             open(eposter, 'wb').write(output)
             if fileExists(eposter):
+                self["eposter"].instance.setScale(1)
                 self["eposter"].instance.setPixmapFromFile(eposter)
                 self['eposter'].show()
                 self['plotfull'].hide()
@@ -10313,26 +10307,31 @@ class movieControlList(Screen):
         self['log'] = ScrollLabel()
         self['log'].hide()
         self['label3'] = Label('Info')
-        self['actions'] = ActionMap(['OkCancelActions',
-                                     'DirectionActions',
-                                     'ColorActions',
-                                     'ChannelSelectBaseActions',
-                                     'HelpActions',
-                                     'NumberActions'],
-                                    {'ok': self.ok,
-                                     'cancel': self.exit,
-                                     'right': self.rightDown,
-                                     'left': self.leftUp,
-                                     'down': self.down,
-                                     'up': self.up,
-                                     'nextBouquet': self.zap,
-                                     'prevBouquet': self.zap,
-                                     'yellow': self.showInfo,
-                                     'blue': self.hideScreen,
-                                     '0': self.gotoEnd,
-                                     '1': self.gotoFirst,
-                                     },
-                                    -1)
+        self['actions'] = ActionMap(
+            [
+                'OkCancelActions',
+                'DirectionActions',
+                'ColorActions',
+                'ChannelSelectBaseActions',
+                'HelpActions',
+                'NumberActions'
+            ],
+            {
+                'ok': self.ok,
+                'cancel': self.exit,
+                'right': self.rightDown,
+                'left': self.leftUp,
+                'down': self.down,
+                'up': self.up,
+                'nextBouquet': self.zap,
+                'prevBouquet': self.zap,
+                'yellow': self.showInfo,
+                'blue': self.hideScreen,
+                '0': self.gotoEnd,
+                '1': self.gotoFirst,
+
+            }, -1
+        )
         self.onLayoutFinish.append(self.onLayoutFinished)
 
     def onLayoutFinished(self):
@@ -11205,7 +11204,6 @@ class moviesList(Screen):
         self['poster4'] = Pixmap()
 
         self.banners_cache = []
-        # self.banner = banner or []
         self.banner1 = '/tmp/moviebrowser5.jpg'
         self.banner2 = '/tmp/moviebrowser6.jpg'
         self.banner3 = '/tmp/moviebrowser7.jpg'

@@ -122,10 +122,7 @@ if dir_plugins not in path:
 db_dir = join(dir_plugins, "db")
 log_dir = join(dir_plugins, "log")
 
-           
-                                                               
-                                                               
-                                                               
+
 UPDATE_LOG_PATH = join(log_dir, "update.log")
 TIMER_LOG_PATH = join(log_dir, "timer.log")
 DATABASE_PATH = join(db_dir, "database")
@@ -6058,7 +6055,7 @@ class movieBrowserPosterwall(Screen):
 
         else:
             self.xd = False
-                           
+
             self.spaceTop = 0
             self.spaceLeft = 16
             self.spaceX = 5
@@ -7174,7 +7171,7 @@ class movieBrowserPosterwall(Screen):
                 Poster = findall(r'<poster>(.*?)</poster>', output)
                 TVDbid = findall(r'<id>(.*?)</id>', output)
                 Country = findall(r'<Status>(.*?)</Status>', output)
-                                                                     
+
                 try:
                     rating.append(Rating[0])
                 except IndexError:
@@ -7197,11 +7194,6 @@ class movieBrowserPosterwall(Screen):
                     poster.append(Poster[0])
                 except IndexError:
                     poster.append(str(wiki_png))
-
-                      
-                                              
-                                    
-                                       
 
                 try:
                     id.append(TVDbid[0])
@@ -7941,7 +7933,6 @@ class movieBrowserPosterwall(Screen):
 
         self['plotfull'].hide()
         self.makeEPoster()
-              
 
     def makeEPoster(self):
         if self.content == ':::Movie:Top:::':
@@ -11263,15 +11254,13 @@ class moviesList(Screen):
         self.poster = poster
         self.id = id
         self.country = country
-            
-       
 
-              
-        print("[moviesList.__init__] Received: movie=" + str(movie) + ", top=" + str(top))
-                        
-                      
-                     
-                                                
+        print(
+            "[moviesList.__init__] Received: movie=" +
+            str(movie) +
+            ", top=" +
+            str(top))
+
         self.movie = movie
         self.top = top
         self.choice = 'movie'
@@ -11626,31 +11615,17 @@ class moviesList(Screen):
     def ok(self):
         if self.ready is True:
             if self.first is True:
-            
-                                      
-                                                                                    
-                                                                       
-                                                  
-                                                                                           
-                                      
-                                                                 
-                                                                     
-                                                  
-                                                                                                
-                     
-                                                                 
-                                                  
-                                                                                                
-       
+
                 # DEBUG: show what we have
                 print("[DEBUG moviesList.ok] Showing ALL options")
-                                                    
-                print("[DEBUG] Parameters: movie=" + str(self.movie) + ", top=" + str(self.top))
+
+                print("[DEBUG] Parameters: movie=" +
+                      str(self.movie) + ", top=" + str(self.top))
 
                 if self.id and len(self.id) > 0:
                     print("[DEBUG] First ID: " + str(self.id[0]))
-                    print("[DEBUG] Is numeric ID: " + str(self.id[0].isdigit()))
-                                                    
+                    print("[DEBUG] Is numeric ID: " +
+                          str(self.id[0].isdigit()))
 
                 # ALWAYS SHOW ALL OPTIONS
                 # User decides what to update
@@ -11668,11 +11643,12 @@ class moviesList(Screen):
                 if self.id and len(self.id) > 0:
                     first_id = str(self.id[0])
                     if first_id.isdigit() and len(first_id) >= 4:
-                        title = _('Update Movie/Series') + " (TMDb ID: " + first_id + ")"
-                                                          
+                        title = _('Update Movie/Series') + \
+                            " (TMDb ID: " + first_id + ")"
+
                     else:
-                        title = _('Update Movie/Series') + " (TVDb ID: " + first_id + ")"
-                                                          
+                        title = _('Update Movie/Series') + \
+                            " (TVDb ID: " + first_id + ")"
 
                 self.session.openWithCallback(
                     self.smartUpdate,
@@ -11680,7 +11656,7 @@ class moviesList(Screen):
                     title=title,
                     list=choicelist
                 )
-                                                
+
             else:
                 # Second screen (banner/poster selection)
                 c = self['piclist'].getSelectedIndex()
@@ -11700,16 +11676,14 @@ class moviesList(Screen):
 
                 self.close(current, self.choice)
 
-            
-       
     def smartUpdate(self, choice):
         """Handles all update options with intelligent checks"""
         if choice is None:
             return
-            
+
         self.choice = choice[1]
         print("[DEBUG smartUpdate] User selected: " + self.choice)
-        
+
         try:
             c = self['list'].getSelectedIndex()
             if c < 0 or c >= len(self.id):
@@ -11718,10 +11692,10 @@ class moviesList(Screen):
                     _('Invalid selection'),
                     MessageBox.TYPE_ERROR)
                 return
-                
+
             current = self.id[c]
             print("[DEBUG] Selected ID: " + str(current))
-            
+
             # INTELLIGENT CONTROLS BEFORE CONTINUING
             if self.choice in ['poster', 'backdrop', 'movie']:
                 # For TMDb, check if the ID is numeric
@@ -11731,7 +11705,7 @@ class moviesList(Screen):
                         _('Cannot update with TMDb: ID is not numeric\nThis appears to be a TV series, not a movie.'),
                         MessageBox.TYPE_ERROR)
                     return
-                    
+
             elif self.choice in ['series', 'banner']:
                 # For TVDb, check if it looks like a valid ID
                 if str(current).strip().isdigit() and len(str(current)) > 5:
@@ -11741,7 +11715,7 @@ class moviesList(Screen):
                         _('Cannot update with TheTVDb: ID appears to be a movie ID\nTry "Update Movie" instead.'),
                         MessageBox.TYPE_ERROR)
                     return
-            
+
             # OPERATION HANDLING
             if self.choice == 'movie':
                 print("[DEBUG] Movie update with TMDb")
@@ -11751,21 +11725,21 @@ class moviesList(Screen):
                     if filepath and fileExists(filepath):
                         remove(filepath)
                 self.close(current, self.choice)
-                
+
             elif self.choice == 'poster':
                 print("[DEBUG] Poster update with TMDb")
                 movie_id = str(current).strip()
                 url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (
                     movie_id, str(tmdb_api))
                 self.getTMDbPosters(url)
-                
+
             elif self.choice == 'backdrop':
                 print("[DEBUG] Backdrop update with TMDb")
                 movie_id = str(current).strip()
                 url = 'https://api.themoviedb.org/3/movie/%s/images?api_key=%s' % (
                     movie_id, str(tmdb_api))
                 self.getTMDbBackdrops(url)
-                
+
             elif self.choice == 'series':
                 print("[DEBUG] Series update with TheTVDb")
                 # Clean temporary posters
@@ -11774,13 +11748,13 @@ class moviesList(Screen):
                     if filepath and fileExists(filepath):
                         remove(filepath)
                 self.close(current, self.choice)
-                
+
             elif self.choice == 'banner':
                 print("[DEBUG] Banner update with TheTVDb")
                 url = 'https://thetvdb.com/api/%s/series/%s/banners.xml' % (
                     thetvdb_api, current)
                 self.getTVDbBanners(url)
-                    
+
         except Exception as e:
             print('[ERROR smartUpdate] ' + str(e))
             self.session.open(
@@ -11789,7 +11763,6 @@ class moviesList(Screen):
                 MessageBox.TYPE_ERROR
             )
 
-                                                
     def updateMovie(self, choice):
         try:
             c = self['list'].getSelectedIndex()

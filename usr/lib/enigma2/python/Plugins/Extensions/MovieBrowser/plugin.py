@@ -13,7 +13,7 @@
 #  dabase rewrite code
 #  removed unused code
 #  new api v4
-# fixed banner on MovieList
+#  fixed banner on MovieList
 
 from __future__ import print_function
 import datetime

@@ -361,16 +361,19 @@ class movieBrowserMetrix(Screen):
             self.makeMovieBrowserTimer = eTimer()
             try:
                 # Dreambox-specific implementation
-                self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
             except AttributeError:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
 
             self.makeMovieBrowserTimer.start(500, True)
         else:
             self.openTimer = eTimer()
             try:
-                self.openTimer_conn = self.openTimer.timeout.connect(self.openInfo)
-            except:
+                self.openTimer_conn = self.openTimer.timeout.connect(
+                    self.openInfo)
+            except BaseException:
                 self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
         return
@@ -410,9 +413,11 @@ class movieBrowserMetrix(Screen):
             self.makeMovieBrowserTimer = eTimer()
             self.resetTimer = eTimer()
             try:
-                self.resetTimer_conn = self.resetTimer.timeout.connect(lambda: self.database_return(True))
-            except:
-                self.resetTimer.callback.append(lambda: self.database_return(True))
+                self.resetTimer_conn = self.resetTimer.timeout.connect(
+                    lambda: self.database_return(True))
+            except BaseException:
+                self.resetTimer.callback.append(
+                    lambda: self.database_return(True))
             self.resetTimer.start(500, True)
         else:
             self.close()
@@ -765,8 +770,9 @@ class movieBrowserMetrix(Screen):
             if fileExists(DATABASE_PATH):
                 self.runTimer = eTimer()
                 try:
-                    self.runTimer_conn = self.runTimer.timeout.connect(self.database_run)
-                except:
+                    self.runTimer_conn = self.runTimer.timeout.connect(
+                        self.database_run)
+                except BaseException:
                     self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
         OnclearMem()
@@ -804,9 +810,11 @@ class movieBrowserMetrix(Screen):
 
             self.makeMovieBrowserTimer = eTimer()
             try:
-                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
-            except:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
+            except BaseException:
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
             self.session.open(
                 MessageBox,
@@ -1007,9 +1015,11 @@ class movieBrowserMetrix(Screen):
                             filename, MessageBox.TYPE_ERROR)
                     self.makeMovieBrowserTimer.stop()
                     try:
-                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(self.getMediaInfo)
-                    except:
-                        self.makeMovieBrowserTimer.callback.append(self.getMediaInfo)
+                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                            self.getMediaInfo)
+                    except BaseException:
+                        self.makeMovieBrowserTimer.callback.append(
+                            self.getMediaInfo)
 
                     self.makeMovieBrowserTimer.start(2000, True)
             except IndexError:
@@ -1304,7 +1314,7 @@ class movieBrowserMetrix(Screen):
         seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
 
         for x in range(len(seriesid)):
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
             print('getTVDbMovies url=', url)
             output = fetch_url(url)
@@ -1324,7 +1334,7 @@ class movieBrowserMetrix(Screen):
                 '<poster>https://artworks.thetvdb.com/banners/_cache/',
                 output)
             # Rebuild URL (looks redundant, but kept to match original code)
-            url = ('https://www.thetvdb.com/api/%s/series/' +
+            url = ('https://www.thetvdb.com/api/%s/series/' + \
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
 
             # Replace empty ratings with default 0.0
@@ -1399,7 +1409,7 @@ class movieBrowserMetrix(Screen):
             if select == "series":
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" +
+                url = ("https://www.thetvdb.com/api/%s/series/" + new + "/" + \
                        config.plugins.moviebrowser.language.value + ".xml") % str(thetvdb_api)
                 print("makeTVDbUpdate url=", url)
                 UpdateDatabase(
@@ -3381,15 +3391,18 @@ class movieBrowserBackdrop(Screen):
 
             self.makeMovieBrowserTimer = eTimer()
             try:
-                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
-            except:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
+            except BaseException:
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
             self.makeMovieBrowserTimer.start(500, True)
         else:
             self.openTimer = eTimer()
             try:
-                self.openTimer_conn = self.openTimer.timeout.connect(self.openInfo)
-            except:
+                self.openTimer_conn = self.openTimer.timeout.connect(
+                    self.openInfo)
+            except BaseException:
                 self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
         return
@@ -3431,9 +3444,11 @@ class movieBrowserBackdrop(Screen):
             self.resetTimer = eTimer()
             # if fileExists(self.database):
             try:
-                self.resetTimer_conn = self.resetTimer.timeout.connect(lambda: self.database_return(True))
-            except:
-                self.resetTimer.callback.append(lambda: self.database_return(True))
+                self.resetTimer_conn = self.resetTimer.timeout.connect(
+                    lambda: self.database_return(True))
+            except BaseException:
+                self.resetTimer.callback.append(
+                    lambda: self.database_return(True))
             self.resetTimer.start(500, True)
         else:
             self.close()
@@ -3608,8 +3623,9 @@ class movieBrowserBackdrop(Screen):
             if fileExists(DATABASE_PATH):
                 self.runTimer = eTimer()
                 try:
-                    self.runTimer_conn = self.runTimer.timeout.connect(self.database_run)
-                except:
+                    self.runTimer_conn = self.runTimer.timeout.connect(
+                        self.database_run)
+                except BaseException:
                     self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
             OnclearMem()
@@ -3640,9 +3656,11 @@ class movieBrowserBackdrop(Screen):
 
             self.makeMovieBrowserTimer = eTimer()
             try:
-                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
-            except:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
+            except BaseException:
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
 
         elif found == 0 and orphaned == 0:
             self.session.open(
@@ -3839,9 +3857,11 @@ class movieBrowserBackdrop(Screen):
 
                     self.makeMovieBrowserTimer.stop()
                     try:
-                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(self.getMediaInfo)
-                    except:
-                        self.makeMovieBrowserTimer.callback.append(self.getMediaInfo)
+                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                            self.getMediaInfo)
+                    except BaseException:
+                        self.makeMovieBrowserTimer.callback.append(
+                            self.getMediaInfo)
                     self.makeMovieBrowserTimer.start(2000, True)
             except IndexError:
                 pass
@@ -4137,7 +4157,7 @@ class movieBrowserBackdrop(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies url tmdb=', url)
                 output = fetch_url(url)
@@ -4233,7 +4253,7 @@ class movieBrowserBackdrop(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate url tmdb=', url)
                 UpdateDatabase(
@@ -6387,15 +6407,18 @@ class movieBrowserPosterwall(Screen):
 
             self.makeMovieBrowserTimer = eTimer()
             try:
-                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
-            except:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
+            except BaseException:
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
             self.makeMovieBrowserTimer.start(500, True)
         else:
             self.openTimer = eTimer()
             try:
-                self.openTimer_conn = self.openTimer.timeout.connect(self.openInfo)
-            except:
+                self.openTimer_conn = self.openTimer.timeout.connect(
+                    self.openInfo)
+            except BaseException:
                 self.openTimer.callback.append(self.openInfo)
             self.openTimer.start(500, True)
         return
@@ -6436,9 +6459,11 @@ class movieBrowserPosterwall(Screen):
             self.resetTimer = eTimer()
             # if fileExists(self.database):
             try:
-                self.resetTimer_conn = self.resetTimer.timeout.connect(lambda: self.database_return(True))
-            except:
-                self.resetTimer.callback.append(lambda: self.database_return(True))
+                self.resetTimer_conn = self.resetTimer.timeout.connect(
+                    lambda: self.database_return(True))
+            except BaseException:
+                self.resetTimer.callback.append(
+                    lambda: self.database_return(True))
             self.resetTimer.start(500, True)
         else:
             self.close()
@@ -6621,8 +6646,9 @@ class movieBrowserPosterwall(Screen):
             if fileExists(DATABASE_PATH):
                 self.runTimer = eTimer()
                 try:
-                    self.runTimer_conn = self.runTimer.timeout.connect(self.database_run)
-                except:
+                    self.runTimer_conn = self.runTimer.timeout.connect(
+                        self.database_run)
+                except BaseException:
                     self.runTimer.callback.append(self.database_run)
                 self.runTimer.start(500, True)
             OnclearMem()
@@ -6658,9 +6684,11 @@ class movieBrowserPosterwall(Screen):
 
             self.makeMovieBrowserTimer = eTimer()
             try:
-                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(lambda: self.makeMovies(self.filter))
-            except:
-                self.makeMovieBrowserTimer.callback.append(lambda: self.makeMovies(self.filter))
+                self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                    lambda: self.makeMovies(self.filter))
+            except BaseException:
+                self.makeMovieBrowserTimer.callback.append(
+                    lambda: self.makeMovies(self.filter))
         elif found == 0 and orphaned == 0:
             self.session.open(
                 MessageBox,
@@ -6866,9 +6894,11 @@ class movieBrowserPosterwall(Screen):
 
                     self.makeMovieBrowserTimer.stop()
                     try:
-                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(self.getMediaInfo)
-                    except:
-                        self.makeMovieBrowserTimer.callback.append(self.getMediaInfo)
+                        self.makeMovieBrowserTimer_conn = self.makeMovieBrowserTimer.timeout.connect(
+                            self.getMediaInfo)
+                    except BaseException:
+                        self.makeMovieBrowserTimer.callback.append(
+                            self.getMediaInfo)
                     self.makeMovieBrowserTimer.start(2000, True)
             except IndexError:
                 pass
@@ -7176,7 +7206,7 @@ class movieBrowserPosterwall(Screen):
             output = output.replace('&amp;', '&')
             seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
             for x in range(len(seriesid)):
-                url = ('https://www.thetvdb.com/api/%s/series/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + \
                        seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('getTVDbMovies  url tmdb =', url)
                 series_data = fetch_url(url)
@@ -7272,7 +7302,7 @@ class movieBrowserPosterwall(Screen):
             if select == 'series':
                 movie = self.movielist[self.index]
                 date = self.datelist[self.index]
-                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' +
+                url = ('https://www.thetvdb.com/api/%s/series/' + new + '/' + \
                        config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
                 print('makeTVDbUpdate  url tmdb =', url)
                 UpdateDatabase(
@@ -9524,50 +9554,54 @@ class UpdateDatabase():
             self.name = self.namelist[0]
             # Get current language
             current_language = config.plugins.moviebrowser.language.value
-            print("[DEBUG] File: " + self.name + " | Lang: " + current_language)
-            
+            print(
+                "[DEBUG] File: " +
+                self.name +
+                " | Lang: " +
+                current_language)
+
             # Check if it's a TV series
             is_series = self.isTVSeries(self.name)
-            
+
             if is_series:
                 print("[DEBUG] Detected as TV series")
-                
+
                 # Clean the name for TVDB search
                 series_name = cleanSeriesFilename(self.name)
                 print("[DEBUG] Cleaned series name: " + series_name)
-                
+
                 if series_name and len(series_name) > 2:
                     # Search on TVDB with correct language
                     search_name = transSERIES(series_name)
                     encoded_name = quote(search_name)
-                    
+
                     url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s' % (
                         encoded_name, current_language)
                     print("[DEBUG] TVDB URL: " + url)
-                    
+
                     self.getTVDbData(url, '0')
                 else:
                     # Fallback to movie search
                     print("[DEBUG] Invalid series name, trying as movie")
                     is_series = False
-            
+
             if not is_series:
                 print("[DEBUG] Detected as movie")
-                
+
                 # Clean for TMDB search
                 movie_name = self.name
                 movie_name = sub(r'\.[a-zA-Z0-9]+$', '', movie_name)
                 movie_name = transMOVIE(movie_name)
-                
+
                 # Remove year patterns
                 movie_name = sub(r'\+[1-2][0-9][0-9][0-9]', '', movie_name)
-                
+
                 encoded_movie = quote(movie_name)
-                
+
                 url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s&language=%s' % (
                     str(tmdb_api), encoded_movie, current_language)
                 print("[DEBUG] TMDB URL: " + url)
-                
+
                 self.getTMDbData(url, '0', False)
 
         return
@@ -9575,45 +9609,47 @@ class UpdateDatabase():
     def isTVSeries(self, filename):
         """Determine if a filename is a TV series - Multilingual"""
         import re
-        
+
         filename_str = str(filename)
         filename_lower = filename_str.lower()
-        
+
         # Get configured language
         lang = config.plugins.moviebrowser.language.value.lower()
-        
+
         print("[DEBUG isTVSeries] File: " + filename_str + " | Lang: " + lang)
-        
+
         # HIGH CONFIDENCE patterns (always TV series)
         high_confidence = [
             # Standard episode formats
             r'[Ss][0-9]+[Ee][0-9]+',          # S01E01
             r'[0-9]+[Xx][0-9]+',              # 1x01
             r'\.S[0-9]+\.E[0-9]+\.',          # .S01.E01.
-            
+
             # Season folders
             r'/season[0-9]+/',                # /season1/
             r'/s[0-9]+/',                     # /s01/
         ]
-        
+
         for pattern in high_confidence:
             if re.search(pattern, filename_str):
                 print("[DEBUG] High confidence TV pattern: " + pattern)
                 return True
-        
+
         # LANGUAGE-SPECIFIC patterns
         language_patterns = {
             'it': [  # Italian
                 r'stagione[ ._-]*[0-9]+',     # stagione 1
                 r'episodio[ ._-]*[0-9]+',     # episodio 8
-                r'stagione[ ._-]*[0-9]+[ ._-]*[-–—][ ._-]*episodio[ ._-]*[0-9]+',  # stagione 1 - episodio 8
+                # stagione 1 - episodio 8
+                r'stagione[ ._-]*[0-9]+[ ._-]*[-–—][ ._-]*episodio[ ._-]*[0-9]+',
                 r'parte[ ._-]*[0-9]+',        # parte 1
                 r'puntata[ ._-]*[0-9]+',      # puntata 1
             ],
             'en': [  # English
                 r'season[ ._-]*[0-9]+',       # season 1
                 r'episode[ ._-]*[0-9]+',      # episode 8
-                r'season[ ._-]*[0-9]+[ ._-]*[-–—][ ._-]*episode[ ._-]*[0-9]+',     # season 1 - episode 8
+                # season 1 - episode 8
+                r'season[ ._-]*[0-9]+[ ._-]*[-–—][ ._-]*episode[ ._-]*[0-9]+',
                 r'part[ ._-]*[0-9]+',         # part 1
             ],
             'de': [  # German
@@ -9633,13 +9669,14 @@ class UpdateDatabase():
                 r'epis[oó]dio[ ._-]*[0-9]+',  # episódio 8
             ]
         }
-        
+
         # Check patterns for current language
         if lang in language_patterns:
             for pattern in language_patterns[lang]:
                 if re.search(pattern, filename_lower):
-                    print("[DEBUG] Language-specific pattern (" + lang + "): " + pattern)
-                    
+                    print(
+                        "[DEBUG] Language-specific pattern (" + lang + "): " + pattern)
+
                     # SPECIAL CASE: "Parte X" might be a film
                     if 'parte' in pattern or 'part' in pattern:
                         # Check if it's likely a film (like "Wicked - Parte 2")
@@ -9651,21 +9688,22 @@ class UpdateDatabase():
                             'documentary',
                             'doc',
                         ]
-                        
+
                         for film_ind in film_indicators:
                             if film_ind in filename_lower:
-                                print("[DEBUG] 'Parte X' but has film indicator: " + film_ind)
+                                print(
+                                    "[DEBUG] 'Parte X' but has film indicator: " + film_ind)
                                 return False
-                    
+
                     return True
-        
+
         # Also check English patterns as fallback
         if lang != 'en' and 'en' in language_patterns:
             for pattern in language_patterns['en']:
                 if re.search(pattern, filename_lower):
                     print("[DEBUG] English fallback pattern: " + pattern)
                     return True
-        
+
         print("[DEBUG] Not a TV series")
         return False
 
@@ -9676,13 +9714,18 @@ class UpdateDatabase():
             # Check if this was supposed to be a series
             if hasattr(self, 'newseries') and self.newseries:
                 # It's a series entry
-                self.posterlist.append(str(default_poster) + '<episode>' + str(default_banner) + '<episode>')
-                self.contentlist.append('Series:Top' if self.newseries else 'Series')
+                self.posterlist.append(
+                    str(default_poster) +
+                    '<episode>' +
+                    str(default_banner) +
+                    '<episode>')
+                self.contentlist.append(
+                    'Series:Top' if self.newseries else 'Series')
             else:
                 # It's a movie entry
                 self.posterlist.append(str(default_poster))
                 self.contentlist.append('Movie:Top')
-                
+
             self.backdroplist.append(str(default_backdrop))
             res = [' ', '0.0', ' ', ' ', ' ', ' ', ' ']
             self.infolist.append(res)
@@ -9788,11 +9831,13 @@ class UpdateDatabase():
 
             # Extract genres
             genres_list = movie_data.get('genres', [])
-            genres = ', '.join([g.get('name', '') for g in genres_list]) if genres_list else ' '
+            genres = ', '.join([g.get('name', '')
+                               for g in genres_list]) if genres_list else ' '
 
             # Extract country
             countries_list = movie_data.get('production_countries', [])
-            country = countries_list[0].get('iso_3166_1', '') if countries_list else ' '
+            country = countries_list[0].get(
+                'iso_3166_1', '') if countries_list else ' '
 
             # Extract year
             year = release_date.split('-')[0] if release_date else ' '
@@ -9823,28 +9868,43 @@ class UpdateDatabase():
 
             # Poster and backdrop
             if poster_path:
-                self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster_path)
+                self.posterlist.append(
+                    'https://image.tmdb.org/t/p/w185' + poster_path)
             else:
                 self.posterlist.append(str(default_poster))
 
             if backdrop_path:
-                self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop_path)
+                self.backdroplist.append(
+                    'https://image.tmdb.org/t/p/w1280' + backdrop_path)
             else:
                 self.backdroplist.append(str(default_backdrop))
 
             # Build result list
             res = []
-            res.append(str(runtime) + ' min' if runtime and runtime > 0 else ' ')
-            res.append(str(vote_average) if vote_average and vote_average > 0 else '0.0')
+            res.append(
+                str(runtime) +
+                ' min' if runtime and runtime > 0 else ' ')
+            res.append(
+                str(vote_average) if vote_average and vote_average > 0 else '0.0')
             res.append(director_string if director_string else ' ')
             res.append(actors_string if actors_string else ' ')
-            res.append(genres.replace('Science Fiction', 'Sci-Fi') if genres else ' ')
+            res.append(
+                genres.replace(
+                    'Science Fiction',
+                    'Sci-Fi') if genres else ' ')
             res.append(year if year else ' ')
             res.append(country.replace('US', 'USA') if country else ' ')
 
             # Add to final lists
             self.infolist.append(res)
-            self.plotlist.append(overview.replace('\r', '').replace('\n', ' ').replace('\\', ''))
+            self.plotlist.append(
+                overview.replace(
+                    '\r',
+                    '').replace(
+                    '\n',
+                    ' ').replace(
+                    '\\',
+                    ''))
 
             print("[DEBUG] Successfully processed movie: " + title)
 
@@ -9921,7 +9981,7 @@ class UpdateDatabase():
         # Episode management for TV series - EXPANDED
         episode_data = {}
         data = ''
-        
+
         # Check for multiple episode patterns
         episode_patterns = [
             r'[Ss][0-9]+[Ee][0-9]+',          # S01E01
@@ -9931,28 +9991,32 @@ class UpdateDatabase():
             r'[Ee]pisodio[ ._-]*[0-9]+',      # Episodio 1
             r'[Ee]pisode[ ._-]*[0-9]+',       # Episode 1
         ]
-        
+
         for pattern in episode_patterns:
-            if search(pattern, self.name) is not None and self.newseries is False:
+            if search(
+                    pattern,
+                    self.name) is not None and self.newseries is False:
                 match = search(pattern, self.name)
                 if match:
                     data = match.group(0)  # Get the matched pattern
                     print("[DEBUG] Found episode pattern: " + data)
                     break
-        
+
         # If we found an episode pattern, extract season/episode
         if data:
             # Try to extract season number for SxxExx format
             if search(r'[Ss][0-9]+', data):
                 season_match = search(r'[Ss]([0-9]+)', data)
-                season = season_match.group(1).lstrip('0') if season_match else '0'
+                season = season_match.group(1).lstrip(
+                    '0') if season_match else '0'
                 if season == '':
                     season = '0'
-                    
+
                 # Try to extract episode number
                 episode_match = search(r'[Ee]([0-9]+)', data)
-                episode = episode_match.group(1).lstrip('0') if episode_match else '0'
-                
+                episode = episode_match.group(1).lstrip(
+                    '0') if episode_match else '0'
+
             # # For "Parte X" format, treat as specials (season 0)
             elif search(r'[Pp]arte[ ._-]*[0-9]+', data):
                 season = '0'  # Specials
@@ -9963,7 +10027,8 @@ class UpdateDatabase():
             elif search(r'[Pp]arte\s*[0-9]+', self.name) and self.newseries is False:
                 match = search(r'[Pp]arte\s*([0-9]+)', self.name)
                 if match:
-                    data = "S00E" + match.group(1).zfill(2)  # Convert to S00EXX format
+                    # Convert to S00EXX format
+                    data = "S00E" + match.group(1).zfill(2)
                     print("[DEBUG] Converted 'Parte' to: " + data)
 
             # For Italian "Episodio X" without season
@@ -11474,7 +11539,11 @@ class moviesList(Screen):
         self.id = id
         self.country = country
 
-        print("[moviesList.__init__] Received: movie=" + str(movie) + ", top=" + str(top))
+        print(
+            "[moviesList.__init__] Received: movie=" +
+            str(movie) +
+            ", top=" +
+            str(top))
         self.movie = movie
         self.top = top
         self.choice = 'movie'
@@ -11581,8 +11650,9 @@ class moviesList(Screen):
 
         self.startup_timer = eTimer()
         try:
-            self.startup_timer_conn = self.startup_timer.timeout.connect(self.showInitialBanner)
-        except:
+            self.startup_timer_conn = self.startup_timer.timeout.connect(
+                self.showInitialBanner)
+        except BaseException:
             self.startup_timer.callback.append(self.showInitialBanner)
         self.startup_timer.start(1000)
 
@@ -11834,11 +11904,13 @@ class moviesList(Screen):
             if self.first is True:
                 # DEBUG: show what we have
                 print("[DEBUG moviesList.ok] Showing ALL options")
-                print("[DEBUG] Parameters: movie=" + str(self.movie) + ", top=" + str(self.top))
+                print("[DEBUG] Parameters: movie=" +
+                      str(self.movie) + ", top=" + str(self.top))
 
                 if self.id and len(self.id) > 0:
                     print("[DEBUG] First ID: " + str(self.id[0]))
-                    print("[DEBUG] Is numeric ID: " + str(self.id[0].isdigit()))
+                    print("[DEBUG] Is numeric ID: " +
+                          str(self.id[0].isdigit()))
 
                 # ALWAYS SHOW ALL OPTIONS
                 # User decides what to update
@@ -11856,9 +11928,11 @@ class moviesList(Screen):
                 if self.id and len(self.id) > 0:
                     first_id = str(self.id[0])
                     if first_id.isdigit() and len(first_id) >= 4:
-                        title = _('Update Movie/Series') + " (TMDb ID: " + first_id + ")"
+                        title = _('Update Movie/Series') + \
+                            " (TMDb ID: " + first_id + ")"
                     else:
-                        title = _('Update Movie/Series') + " (TVDb ID: " + first_id + ")"
+                        title = _('Update Movie/Series') + \
+                            " (TVDb ID: " + first_id + ")"
 
                 self.session.openWithCallback(
                     self.smartUpdate,
@@ -13094,7 +13168,7 @@ class getABC(Screen):
         self.Timer = eTimer()
         try:
             self.Timer_conn = self.Timer.timeout.connect(self.returnABC)
-        except:
+        except BaseException:
             self.Timer.callback.append(self.returnABC)
         self.Timer.start(1000)
 
@@ -13218,7 +13292,7 @@ class switchScreen(Screen):
         self.Timer = eTimer()
         try:
             self.Timer_conn = self.Timer.timeout.connect(self.returnNumber)
-        except:
+        except BaseException:
             self.Timer.callback.append(self.returnNumber)
         self.Timer.start(2500, True)
 

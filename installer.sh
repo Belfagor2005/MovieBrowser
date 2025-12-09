@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version='4.0'
+version='4.1'
 changelog = (
     '\nRefactoryzed - recode all code'
     '\nFixed screen (rewrite) - code source - API URL'

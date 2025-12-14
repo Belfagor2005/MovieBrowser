@@ -11,6 +11,18 @@
 
 ---
 
+## 📺 Screenshots
+
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie1.png" width="32%">
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie2.png" width="32%">
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie3.png" width="32%">
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie4.png" width="32%">
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie5.png" width="32%">
+<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screen/screenmovie6.png" width="32%">
+
+---
+
+
 ## 📋 Table of Contents
 - [✨ Features](#-features)
 - [📦 Installation](#-installation)

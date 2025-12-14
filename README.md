@@ -13,12 +13,18 @@
 
 ## 📺 Screenshots
 
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie1.png" width="32%">
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie2.png" width="32%">
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie3.png" width="32%">
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie4.png" width="32%">
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie5.png" width="32%">
-<img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie6.png" width="32%">
+<table>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie1.png" width="100%"></td>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie2.png" width="100%"></td>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie3.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie4.png" width="100%"></td>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie5.png" width="100%"></td>
+    <td><img src="https://raw.githubusercontent.com/Belfagor2005/MovieBrowser/main/screenshot/screenmovie6.png" width="100%"></td>
+  </tr>
+</table>
 
 ---
 

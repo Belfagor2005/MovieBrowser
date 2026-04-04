@@ -1,922 +1,391 @@
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: moviebrowser\n"
-"POT-Creation-Date: 2025-12-05 11:15+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: lululla\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.8\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: library.py\n"
-"X-Poedit-SearchPath-1: movie_config.py\n"
-"X-Poedit-SearchPath-2: plugin_timer.py\n"
-
-#: movie_config.py:122 plugin_timer.py:11232
-msgid "Movies"
-msgstr ""
-
-#: movie_config.py:124
-msgid "Series"
-msgstr ""
-
-#: movie_config.py:126
-msgid "Movies & Series"
-msgstr ""
-
-#: movie_config.py:128
-msgid "Movie Creation Date Descending"
-msgstr ""
-
-#: movie_config.py:129
-msgid "Movie Creation Date Ascending"
-msgstr ""
-
-#: movie_config.py:130
-msgid "Movie Title A-Z"
-msgstr ""
-
-#: movie_config.py:131
-msgid "Movie Title Z-A"
-msgstr ""
-
-#: movie_config.py:132
-msgid "Movie Rating 10-0"
-msgstr ""
-
-#: movie_config.py:133
-msgid "Movie Rating 0-10"
-msgstr ""
-
-#: movie_config.py:134
-msgid "Movie Release Date Descending"
-msgstr ""
-
-#: movie_config.py:135
-msgid "Movie Release Date Ascending"
-msgstr ""
-
-#: movie_config.py:136
-msgid "Movie Runtime Descending"
-msgstr ""
-
-#: movie_config.py:137
-msgid "Movie Runtime Ascending"
-msgstr ""
-
-#: movie_config.py:138
-msgid "Movie Folder Ascending"
-msgstr ""
-
-#: movie_config.py:139
-msgid "Movie Folder Descending"
-msgstr ""
-
-#: movie_config.py:143 movie_config.py:174
-msgid "Info Button"
-msgstr ""
-
-#: movie_config.py:144 movie_config.py:174
-msgid "Automatic"
-msgstr ""
-
-#: movie_config.py:145 movie_config.py:154 movie_config.py:157
-msgid "Hide"
-msgstr ""
-
-#: movie_config.py:149
-msgid "On First Access"
-msgstr ""
-
-#: movie_config.py:149
-msgid "On Database Update"
-msgstr ""
-
-#: movie_config.py:154 movie_config.py:157
-msgid "Show"
-msgstr ""
-
-#: movie_config.py:163
-msgid "Yes"
-msgstr ""
-
-#: movie_config.py:164
-msgid "No"
-msgstr ""
-
-#: movie_config.py:165
-msgid "Folder Selection"
-msgstr ""
-
-#: movie_config.py:1211 plugin_timer.py:10466
-#, python-format
-msgid ""
-"Start time: %s\n"
-"End time: %s\n"
-"Total scanned files: %s\n"
-"TheTVDb Database Requests: %s\n"
-"TMDb Database Requests: %s\n"
-"Orphaned Movies/Series: %s\n"
-"New Series: %s\n"
-"New Movies: %s\n"
-"\n"
-msgstr ""
-
-#: movie_config.py:1274 movie_config.py:1953 plugin_timer.py:3024
-#: plugin_timer.py:5887 plugin_timer.py:9269 plugin_timer.py:10554
-msgid ""
-"\n"
-"Database Error: Entry without runtime"
-msgstr ""
-
-#: movie_config.py:1358
-#, python-format
-msgid ""
-"*******Movie Browser Database Update Timer*******\n"
-"Initial Update Timer started: %s\n"
-"Timer Value (min): %s\n"
-msgstr ""
-
-#: movie_config.py:1379
-#, python-format
-msgid "Database Update Timer stopped: %s\n"
-msgstr ""
-
-#: movie_config.py:1401
-#, python-format
-msgid ""
-"Database Update Timer started: %s\n"
-"Timer Value (min): %s\n"
-msgstr ""
-
-#: movie_config.py:1411
-#, python-format
-msgid "Movie Database Update started: %s\n"
-msgstr ""
-
-#: movie_config.py:1439
-msgid "Save"
-msgstr ""
-
-#: movie_config.py:1440
-msgid "Cancel"
-msgstr ""
-
-#: movie_config.py:1484 movie_config.py:1644
-msgid "Movies Style:"
-msgstr ""
-
-#: movie_config.py:1488 movie_config.py:1647
-msgid "Series Style:"
-msgstr ""
-
-#: movie_config.py:1492 movie_config.py:1655
-msgid "Goto last Movie on Start:"
-msgstr ""
-
-#: movie_config.py:1496
-msgid "Load last Selection/Filter on Start:"
-msgstr ""
-
-#: movie_config.py:1500
-msgid "Movie Folder:"
-msgstr ""
-
-#: movie_config.py:1504
-msgid "Cache Folder:"
-msgstr ""
-
-#: movie_config.py:1508
-msgid "Movie Sort Order:"
-msgstr ""
-
-#: movie_config.py:1512
-msgid "Show List of Movie Folder:"
-msgstr ""
-
-#: movie_config.py:1516
-msgid "Movies or Series:"
-msgstr ""
-
-#: movie_config.py:1520
-msgid "Movies or Series Selection at Start:"
-msgstr ""
-
-#: movie_config.py:1524
-msgid "Show Backdrops:"
-msgstr ""
-
-#: movie_config.py:1528 movie_config.py:1651
-msgid "Use m1v Backdrops:"
-msgstr ""
-
-#: movie_config.py:1532 movie_config.py:1652
-msgid "Show TV in Background (no m1v):"
-msgstr ""
-
-#: movie_config.py:1536
-msgid "Download new Backdrops:"
-msgstr ""
-
-#: movie_config.py:1540
-msgid "Posterwall/Backdrop Show Plot:"
-msgstr ""
-
-#: movie_config.py:1544
-msgid "Metrix List Selection Color:"
-msgstr ""
-
-#: movie_config.py:1548
-msgid "TMDb/TheTVDb Language:"
-msgstr ""
-
-#: movie_config.py:1552
-msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
-msgstr ""
-
-#: movie_config.py:1556
-msgid "Signup on TMDB and input free personal ApiKey"
-msgstr ""
-
-#: movie_config.py:1560
-msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
-msgstr ""
-
-#: movie_config.py:1564
-msgid "Signup on TheTVDb and input free personal ApiKey"
-msgstr ""
-
-#: movie_config.py:1568
-msgid "Update Database with Timer:"
-msgstr ""
-
-#: movie_config.py:1573
-msgid "Timer Database Update:"
-msgstr ""
-
-#: movie_config.py:1577
-msgid "Hide Plugin during Update:"
-msgstr ""
-
-#: movie_config.py:1582
-msgid "Reset Database:"
-msgstr ""
-
-#: movie_config.py:1586 movie_config.py:1664
-msgid "Cleanup Cache Folder:"
-msgstr ""
-
-#: movie_config.py:1590 movie_config.py:1658
-msgid "Backup Database:"
-msgstr ""
-
-#: movie_config.py:1594 movie_config.py:1661
-msgid "Restore Database:"
-msgstr ""
-
-#: movie_config.py:1598
-msgid "Select skin *Restart GUI Required:"
-msgstr ""
-
-#: movie_config.py:1602
-msgid "Start Plugin with Video Button:"
-msgstr ""
-
-#: movie_config.py:1606
-msgid "Plugin Transparency:"
-msgstr ""
-
-#: movie_config.py:1610
-msgid "Plugin in Enigma Menu:"
-msgstr ""
-
-#: movie_config.py:1633
-#, python-format
-msgid "Error moving cache folder: %s"
-msgstr ""
-
-#: movie_config.py:1686
-#, python-format
-msgid ""
-"\n"
-"Cache Folder %s not reachable:\n"
-"Movie Browser Database Backup canceled."
-msgstr ""
-
-#: movie_config.py:1693
-#, python-format
-msgid ""
-"\n"
-"Database %s not found:\n"
-"Movie Browser Database Backup canceled."
-msgstr ""
-
-#: movie_config.py:1708
-#, python-format
-msgid ""
-"\n"
-"Database backed up to %s"
-msgstr ""
-
-#: movie_config.py:1720
-#, python-format
-msgid ""
-"\n"
-"Cache Folder %s not reachable:\n"
-"Movie Browser Database Restore canceled."
-msgstr ""
-
-#: movie_config.py:1728
-#, python-format
-msgid ""
-"\n"
-"Database Backup %s not found:\n"
-"Movie Browser Database Restore canceled."
-msgstr ""
-
-#: movie_config.py:1739
-#, python-format
-msgid ""
-"\n"
-"Database restored from %s"
-msgstr ""
-
-#: movie_config.py:1751
-#, python-format
-msgid ""
-"\n"
-"Cache Folder %s not reachable:\n"
-"Cleanup Cache Folder canceled."
-msgstr ""
-
-#: movie_config.py:1758
-#, python-format
-msgid ""
-"\n"
-"Database %s not found:\n"
-"Cleanup Cache Folder canceled."
-msgstr ""
-
-#: movie_config.py:1779
-msgid ""
-"\n"
-"No orphaned Backdrops or Posters found:\n"
-"Your Cache Folder is clean."
-msgstr ""
-
-#: movie_config.py:1785
-#, python-format
-msgid ""
-"\n"
-"Cleanup Cache Folder finished:\n"
-"%s orphaned Backdrops or Posters removed."
-msgstr ""
-
-#: movie_config.py:1811
-msgid "Choose Directory:"
-msgstr ""
-
-#: movie_config.py:1812
-msgid "Choose Directory"
-msgstr ""
-
-#: movie_config.py:1841
-#, python-format
-msgid "File %s not found!"
-msgstr ""
-
-#: movie_config.py:1856
-msgid "TMDB API key successfully imported!"
-msgstr ""
-
-#: movie_config.py:1863
-msgid "TheTVDb API key successfully imported!"
-msgstr ""
-
-#: movie_config.py:2052
-msgid "Really close without saving settings?"
-msgstr ""
-
-#: plugin_timer.py:200 plugin_timer.py:3195 plugin_timer.py:6237
-msgid "Director:"
-msgstr ""
-
-#: plugin_timer.py:201 plugin_timer.py:3196 plugin_timer.py:6238
-msgid "Actors:"
-msgstr ""
-
-#: plugin_timer.py:202 plugin_timer.py:3197 plugin_timer.py:6239
-msgid "Years:"
-msgstr ""
-
-#: plugin_timer.py:203 plugin_timer.py:3198 plugin_timer.py:6240
-msgid "Runtime:"
-msgstr ""
-
-#: plugin_timer.py:204 plugin_timer.py:3199 plugin_timer.py:6241
-msgid "Country:"
-msgstr ""
-
-#: plugin_timer.py:205
-msgid "Update"
-msgstr ""
-
-#: plugin_timer.py:206
-msgid "Style"
-msgstr ""
-
-#: plugin_timer.py:207 plugin_timer.py:13313
-msgid "Help"
-msgstr ""
-
-#: plugin_timer.py:208 plugin_timer.py:3200 plugin_timer.py:6242
-msgid "Genres:"
-msgstr ""
-
-#: plugin_timer.py:389 plugin_timer.py:3408 plugin_timer.py:6414
-msgid ""
-"Before the Database will be rebuild, check your settings in the setup of the plugin:\n"
-"\n"
-"- Check the path to the Movie Folder\n"
-"- Check your TMDb/TheTVDb Language\n"
-"- Change the Cache Folder to your hard disk drive."
-msgstr ""
-
-#: plugin_timer.py:490 plugin_timer.py:594 plugin_timer.py:608
-#: plugin_timer.py:624 plugin_timer.py:638 plugin_timer.py:2371
-#: plugin_timer.py:3511 plugin_timer.py:5183 plugin_timer.py:6517
-msgid "<List of Movie Folder>"
-msgstr ""
-
-#: plugin_timer.py:683 plugin_timer.py:11230
-msgid "Free Space"
-msgstr ""
-
-#: plugin_timer.py:684 plugin_timer.py:11231 plugin_timer.py:13007
-msgid "Movie Folder"
-msgstr ""
-
-#: plugin_timer.py:685
-msgid "MOVIES"
-msgstr ""
-
-#: plugin_timer.py:686
-msgid "SERIES"
-msgstr ""
-
-#: plugin_timer.py:687
-msgid "EPISODES"
-msgstr ""
-
-#: plugin_timer.py:745 plugin_timer.py:3588 plugin_timer.py:6601
-#, python-format
-msgid ""
-"\n"
-"Movie Folder %s not reachable:\n"
-"Movie Browser Database Update canceled."
-msgstr ""
-
-#: plugin_timer.py:751 plugin_timer.py:3594 plugin_timer.py:6607
-#, python-format
-msgid ""
-"\n"
-"Cache Folder %s not reachable:\n"
-"Movie Browser Database Update canceled."
-msgstr ""
-
-#: plugin_timer.py:813 plugin_timer.py:3650 plugin_timer.py:6667
-msgid ""
-"\n"
-"No new Movies or Series found:\n"
-"Your Database is up to date."
-msgstr ""
-
-#: plugin_timer.py:820 plugin_timer.py:3657 plugin_timer.py:6674
-#, python-format
-msgid ""
-"\n"
-"No new Movies or Series found.\n"
-"%s orphaned Database Entry deleted."
-msgstr ""
-
-#: plugin_timer.py:826 plugin_timer.py:3663 plugin_timer.py:6680
-#, python-format
-msgid ""
-"\n"
-"No new Movies or Series found.\n"
-"%s orphaned Database Entries deleted."
-msgstr ""
-
-#: plugin_timer.py:833 plugin_timer.py:3670 plugin_timer.py:6687
-#, python-format
-msgid ""
-"\n"
-"%s Movie imported into Database."
-msgstr ""
-
-#: plugin_timer.py:837 plugin_timer.py:845 plugin_timer.py:3674
-#: plugin_timer.py:3682 plugin_timer.py:6691 plugin_timer.py:6699
-#, python-format
-msgid ""
-"\n"
-"%s Series imported into Database."
-msgstr ""
-
-#: plugin_timer.py:841 plugin_timer.py:3678 plugin_timer.py:6695
-#, python-format
-msgid ""
-"\n"
-"%s Movies imported into Database."
-msgstr ""
-
-#: plugin_timer.py:849 plugin_timer.py:3686 plugin_timer.py:6703
-#, python-format
-msgid ""
-"\n"
-"%s Movies and %s Series imported into Database."
-msgstr ""
-
-#: plugin_timer.py:856 plugin_timer.py:3693 plugin_timer.py:6710
-#, python-format
-msgid ""
-"\n"
-"%s Movie imported into Database.\n"
-"%s orphaned Database Entry deleted."
-msgstr ""
-
-#: plugin_timer.py:863 plugin_timer.py:892 plugin_timer.py:3700
-#: plugin_timer.py:3729 plugin_timer.py:6717 plugin_timer.py:6746
-#, python-format
-msgid ""
-"\n"
-"%s Series imported into Database.\n"
-"%s orphaned Database Entry deleted."
-msgstr ""
-
-#: plugin_timer.py:870 plugin_timer.py:3707 plugin_timer.py:6724
-#, python-format
-msgid ""
-"\n"
-"%s Movie imported into Database.\n"
-"%s orphaned Database Entries deleted."
-msgstr ""
-
-#: plugin_timer.py:877 plugin_timer.py:914 plugin_timer.py:3714
-#: plugin_timer.py:3751 plugin_timer.py:6731 plugin_timer.py:6768
-#, python-format
-msgid ""
-"\n"
-"%s Series imported into Database.\n"
-"%s orphaned Database Entries deleted."
-msgstr ""
-
-#: plugin_timer.py:885 plugin_timer.py:3722 plugin_timer.py:6739
-#, python-format
-msgid ""
-"\n"
-"%s Movies imported into Database.\n"
-"%s orphaned Database Entry deleted."
-msgstr ""
-
-#: plugin_timer.py:899 plugin_timer.py:3736 plugin_timer.py:6753
-#, python-format
-msgid ""
-"\n"
-"%s Movies and %s Series imported into Database.\n"
-"%s orphaned Database Entry deleted."
-msgstr ""
-
-#: plugin_timer.py:907 plugin_timer.py:3744 plugin_timer.py:6761
-#, python-format
-msgid ""
-"\n"
-"%s Movies imported into Database.\n"
-"%s orphaned Database Entries deleted."
-msgstr ""
-
-#: plugin_timer.py:921 plugin_timer.py:3758 plugin_timer.py:6775
-#, python-format
-msgid ""
-"\n"
-"%s Movies and %s Series imported into Database.\n"
-"%s orphaned Database Entries deleted."
-msgstr ""
-
-#: plugin_timer.py:981 plugin_timer.py:992 plugin_timer.py:1006
-#: plugin_timer.py:3812 plugin_timer.py:3823 plugin_timer.py:3837
-#: plugin_timer.py:6839 plugin_timer.py:6850 plugin_timer.py:6864
-#, python-format
-msgid ""
-"\n"
-"Movie file %s not available."
-msgstr ""
-
-#: plugin_timer.py:997 plugin_timer.py:3828 plugin_timer.py:6855
-msgid ""
-"\n"
-"DVD Player Plugin not installed."
-msgstr ""
-
-#: plugin_timer.py:1152 plugin_timer.py:3984 plugin_timer.py:7027
-msgid ""
-"\n"
-"TMDb Movie Update Error:\n"
-"Series Folder"
-msgstr ""
-
-#: plugin_timer.py:1176 plugin_timer.py:4007 plugin_timer.py:7050
-#: plugin_timer.py:12171 plugin_timer.py:12199
-msgid ""
-"\n"
-"TMDb API Server is not reachable."
-msgstr ""
-
-#: plugin_timer.py:1205 plugin_timer.py:4035 plugin_timer.py:7079
-msgid "TMDb Results"
-msgstr ""
-
-#: plugin_timer.py:1209 plugin_timer.py:4039 plugin_timer.py:7083
-#, python-format
-msgid ""
-"\n"
-"No TMDb Results for %s."
-msgstr ""
-
-#: plugin_timer.py:1292 plugin_timer.py:4125 plugin_timer.py:7164
-#: plugin_timer.py:12250 plugin_timer.py:12289
-msgid ""
-"\n"
-"TheTVDb API Server is not reachable."
-msgstr ""
-
-#: plugin_timer.py:1375 plugin_timer.py:4208 plugin_timer.py:7247
-msgid "TheTVDb Results"
-msgstr ""
-
-#: plugin_timer.py:1380 plugin_timer.py:4212 plugin_timer.py:7251
-#, python-format
-msgid ""
-"\n"
-"No TheTVDb Results for %s."
-msgstr ""
-
-#: plugin_timer.py:1458 plugin_timer.py:4284 plugin_timer.py:7328
-#: plugin_timer.py:10868
-msgid ""
-"\n"
-"The List of Movie Folder can not be deleted."
-msgstr ""
-
-#: plugin_timer.py:1464 plugin_timer.py:4290 plugin_timer.py:7334
-#: plugin_timer.py:10874
-#, python-format
-msgid ""
-"\n"
-"This will delete all %s entries from the Database but not from the Movie Folder.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-
-#: plugin_timer.py:1471 plugin_timer.py:4297 plugin_timer.py:7341
-#: plugin_timer.py:10881
-#, python-format
-msgid ""
-"\n"
-"This will delete %s from the Database and from the Movie Folder!\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-
-#: plugin_timer.py:1553 plugin_timer.py:4380 plugin_timer.py:7427
-#: plugin_timer.py:10966
-#, python-format
-msgid ""
-"\n"
-"This will delete %s from the Database and put it on the Blacklist, so the Movie will be ignored by future Database Updates.\n"
-"\n"
-"Do you want to continue?"
-msgstr ""
-
-#: plugin_timer.py:2354 plugin_timer.py:5166 plugin_timer.py:8528
-msgid "Series Folder: No Info possible"
-msgstr ""
-
-#: plugin_timer.py:2534 plugin_timer.py:5305 plugin_timer.py:8683
-msgid "Movie Folder Selection"
-msgstr ""
-
-#: plugin_timer.py:2580 plugin_timer.py:5353 plugin_timer.py:8730
-msgid "Genre Selection"
-msgstr ""
-
-#: plugin_timer.py:2625 plugin_timer.py:5401 plugin_timer.py:8776
-msgid "Actor Selection"
-msgstr ""
-
-#: plugin_timer.py:2670 plugin_timer.py:5449 plugin_timer.py:8822
-msgid "Director Selection"
-msgstr ""
-
-#: plugin_timer.py:3201 plugin_timer.py:6243
-msgid "Rating:"
-msgstr ""
-
-#: plugin_timer.py:3402 plugin_timer.py:6408
-msgid ""
-"The Movie Browser Database will be rebuild now. Depending on the number of your Movies this can take several minutes.\n"
-"\n"
-"If the plugin terminates after a few minutes, restart the plugin and make a manual Database Update (Video button).\n"
-"\n"
-"Rebuild the Database now?"
-msgstr ""
-
-#: plugin_timer.py:4773 plugin_timer.py:7967
-msgid "Error while loading"
-msgstr ""
-
-#: plugin_timer.py:6597
-msgid ""
-"\n"
-"Update Movie Browser Database?"
-msgstr ""
-
-#: plugin_timer.py:10758
-msgid "Movie File Informations"
-msgstr ""
-
-#: plugin_timer.py:10759
-msgid "Delete Movie File"
-msgstr ""
-
-#: plugin_timer.py:10760
-msgid "Blacklist Movie File"
-msgstr ""
-
-#: plugin_timer.py:10761
-msgid "Database Update Log"
-msgstr ""
-
-#: plugin_timer.py:10762
-msgid "Database Timer Log"
-msgstr ""
-
-#: plugin_timer.py:10763
-msgid "Cleanup Cache Folder Log"
-msgstr ""
-
-#: plugin_timer.py:11229
-msgid "Database"
-msgstr ""
-
-#: plugin_timer.py:11362
-msgid "Database Editor:"
-msgstr ""
-
-#: plugin_timer.py:11855
-msgid "Update Selection"
-msgstr ""
-
-#: plugin_timer.py:11859 plugin_timer.py:11861
-msgid "Update Movie/Series"
-msgstr ""
-
-#: plugin_timer.py:11901
-msgid "Invalid selection"
-msgstr ""
-
-#: plugin_timer.py:11914
-msgid ""
-"Cannot update with TMDb: ID is not numeric\n"
-"This appears to be a TV series, not a movie."
-msgstr ""
-
-#: plugin_timer.py:11924
-msgid ""
-"Cannot update with TheTVDb: ID appears to be a movie ID\n"
-"Try \"Update Movie\" instead."
-msgstr ""
-
-#: plugin_timer.py:11971
-msgid "Update error: "
-msgstr ""
-
-#: plugin_timer.py:11991
-msgid "All /tmp/posters Cleaned"
-msgstr ""
-
-#: plugin_timer.py:13005
-msgid "Series Episodes"
-msgstr ""
-
-#: plugin_timer.py:13006
-msgid "Free Space:"
-msgstr ""
-
-#: plugin_timer.py:13298
-msgid "Movie Browser Key Assignment"
-msgstr ""
-
-#: plugin_timer.py:13312 plugin_timer.py:13503
-#, python-format
-msgid "Manage your Movies & Series V.%s"
-msgstr ""
-
-#: plugin_timer.py:13314
-msgid "Toggle Plugin Style"
-msgstr ""
-
-#: plugin_timer.py:13315
-msgid "Toggle hide/show plugin"
-msgstr ""
-
-#: plugin_timer.py:13316
-msgid "Info Button: Toggle show/hide infos"
-msgstr ""
-
-#: plugin_timer.py:13317
-msgid "Video Button: Update Database"
-msgstr ""
-
-#: plugin_timer.py:13318
-msgid "Text Button: Edit Database"
-msgstr ""
-
-#: plugin_timer.py:13319
-msgid "Stop Button: Mark movie as seen"
-msgstr ""
-
-#: plugin_timer.py:13320
-msgid "Radio Button: Delete/Blacklist movie"
-msgstr ""
-
-#: plugin_timer.py:13321
-msgid "<- -> Button: Go to first letter"
-msgstr ""
-
-#: plugin_timer.py:13322
-msgid "Button 1: CutListEditor/MovieCut/LogView"
-msgstr ""
-
-#: plugin_timer.py:13323
-msgid "Button 2: Renew infos on TMDb"
-msgstr ""
-
-#: plugin_timer.py:13324
-msgid "Button 3: Renew infos on TheTVDb"
-msgstr ""
-
-#: plugin_timer.py:13325
-msgid "Button 4: Hide/show seen movies"
-msgstr ""
-
-#: plugin_timer.py:13326
-msgid "Button 5: Toggle Movies/Series view"
-msgstr ""
-
-#: plugin_timer.py:13327
-msgid "Button 6: Movie Folder Selection"
-msgstr ""
-
-#: plugin_timer.py:13328
-msgid "Button 7: Movie Director Selection"
-msgstr ""
-
-#: plugin_timer.py:13329
-msgid "Button 8: Movie Actor Selection"
-msgstr ""
-
-#: plugin_timer.py:13330
-msgid "Button 9: Movie Genre Selection"
-msgstr ""
 
-#: plugin_timer.py:13331
-msgid "Button 0: Go to end of list"
+msgid "*******Movie Browser Database Update Timer*******\n"
 msgstr ""
 
-#: plugin_timer.py:13448
 msgid "*******Movie Browser Database Update*******\n"
 msgstr ""
 
-#: plugin_timer.py:13467
-#, python-format
-msgid ""
-"*******Movie Browser Database Update*******\n"
-"Time: %s\n"
-"Error: %s\n"
-"Reason: %s"
+msgid "<- -> Button: Go to first letter"
 msgstr ""
 
-#: plugin_timer.py:13495
-#, python-format
-msgid ""
-"*******Cleanup Cache Folder*******\n"
-"Start time: %s\n"
-"End time: %s\n"
-"Orphaned Backdrops/Posters removed: %s\n"
-"\n"
+msgid "<List of Movie Folder>"
+msgstr ""
+
+msgid "Actor Selection"
+msgstr ""
+
+msgid "Actors:"
+msgstr ""
+
+msgid "All /tmp/posters Cleaned"
+msgstr ""
+
+msgid "Automatic"
+msgstr ""
+
+msgid "Backup Database:"
+msgstr ""
+
+msgid "Blacklist Movie File"
+msgstr ""
+
+msgid "Button 0: Go to end of list"
+msgstr ""
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr ""
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr ""
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr ""
+
+msgid "Button 4: Hide/show seen movies"
+msgstr ""
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr ""
+
+msgid "Button 6: Movie Folder Selection"
+msgstr ""
+
+msgid "Button 7: Movie Director Selection"
+msgstr ""
+
+msgid "Button 8: Movie Actor Selection"
+msgstr ""
+
+msgid "Button 9: Movie Genre Selection"
+msgstr ""
+
+msgid "Cache Folder:"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Choose Directory"
+msgstr ""
+
+msgid "Choose Directory:"
+msgstr ""
+
+msgid "Cleanup Cache Folder Log"
+msgstr ""
+
+msgid "Cleanup Cache Folder:"
+msgstr ""
+
+msgid "Country:"
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Database Editor:"
+msgstr ""
+
+msgid "Database Timer Log"
+msgstr ""
+
+msgid "Database Update Log"
+msgstr ""
+
+msgid "Database Update Timer stopped: %s\n"
+msgstr ""
+
+msgid "Delete Movie File"
+msgstr ""
+
+msgid "Director Selection"
+msgstr ""
+
+msgid "Director:"
+msgstr ""
+
+msgid "Download new Backdrops:"
+msgstr ""
+
+msgid "EPISODES"
+msgstr ""
+
+msgid "Error moving cache folder: %s"
+msgstr ""
+
+msgid "File %s non trovato!"
+msgstr ""
+
+msgid "File %s not found!"
+msgstr ""
+
+msgid "Folder Selection"
+msgstr ""
+
+msgid "Free Space"
+msgstr ""
+
+msgid "Free Space:"
+msgstr ""
+
+msgid "Genre Selection"
+msgstr ""
+
+msgid "Genres:"
+msgstr ""
+
+msgid "Goto last Movie on Start:"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Hide"
+msgstr ""
+
+msgid "Hide Plugin during Update:"
+msgstr ""
+
+msgid "Info Button"
+msgstr ""
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr ""
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr ""
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr ""
+
+msgid "Load last Selection/Filter on Start:"
+msgstr ""
+
+msgid "MOVIES"
+msgstr ""
+
+msgid "Manage your Movies & Series V.%s"
+msgstr ""
+
+msgid "Metrix List Selection Color:"
+msgstr ""
+
+msgid "Movie Browser Key Assignment"
+msgstr ""
+
+msgid "Movie Creation Date Ascending"
+msgstr ""
+
+msgid "Movie Creation Date Descending"
+msgstr ""
+
+msgid "Movie Database Update started: %s\n"
+msgstr ""
+
+msgid "Movie File Informations"
+msgstr ""
+
+msgid "Movie Folder"
+msgstr ""
+
+msgid "Movie Folder Ascending"
+msgstr ""
+
+msgid "Movie Folder Descending"
+msgstr ""
+
+msgid "Movie Folder Selection"
+msgstr ""
+
+msgid "Movie Folder:"
+msgstr ""
+
+msgid "Movie Rating 0-10"
+msgstr ""
+
+msgid "Movie Rating 10-0"
+msgstr ""
+
+msgid "Movie Release Date Ascending"
+msgstr ""
+
+msgid "Movie Release Date Descending"
+msgstr ""
+
+msgid "Movie Runtime Ascending"
+msgstr ""
+
+msgid "Movie Runtime Descending"
+msgstr ""
+
+msgid "Movie Sort Order:"
+msgstr ""
+
+msgid "Movie Title A-Z"
+msgstr ""
+
+msgid "Movie Title Z-A"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "Movies & Series"
+msgstr ""
+
+msgid "Movies Style:"
+msgstr ""
+
+msgid "Movies or Series Selection at Start:"
+msgstr ""
+
+msgid "Movies or Series:"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "On Database Update"
+msgstr ""
+
+msgid "On First Access"
+msgstr ""
+
+msgid "Plugin Transparency:"
+msgstr ""
+
+msgid "Plugin in Enigma Menu:"
+msgstr ""
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr ""
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr ""
+
+msgid "Rating:"
+msgstr ""
+
+msgid "Really close without saving settings?"
+msgstr ""
+
+msgid "Reset Database:"
+msgstr ""
+
+msgid "Restore Database:"
+msgstr ""
+
+msgid "Runtime:"
+msgstr ""
+
+msgid "SERIES"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Select skin *Restart GUI Required:"
+msgstr ""
+
+msgid "Series"
+msgstr ""
+
+msgid "Series Episodes"
+msgstr ""
+
+msgid "Series Folder: No Info possible"
+msgstr ""
+
+msgid "Series Style:"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+msgid "Show Backdrops:"
+msgstr ""
+
+msgid "Show List of Movie Folder:"
+msgstr ""
+
+msgid "Show TV in Background (no m1v):"
+msgstr ""
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr ""
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr ""
+
+msgid "Start Plugin with Video Button:"
+msgstr ""
+
+msgid "Stop Button: Mark movie as seen"
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid "TMDB API key successfully imported!"
+msgstr ""
+
+msgid "TMDb Results"
+msgstr ""
+
+msgid "TMDb/TheTVDb Language:"
+msgstr ""
+
+msgid "Text Button: Edit Database"
+msgstr ""
+
+msgid "TheTVDb API key successfully imported!"
+msgstr ""
+
+msgid "TheTVDb Results"
+msgstr ""
+
+msgid "Timer Database Update:"
+msgstr ""
+
+msgid "Toggle Plugin Style"
+msgstr ""
+
+msgid "Toggle hide/show plugin"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Update Database with Timer:"
+msgstr ""
+
+msgid "Update Series"
+msgstr ""
+
+msgid "Use m1v Backdrops:"
+msgstr ""
+
+msgid "Video Button: Update Database"
+msgstr ""
+
+msgid "Years:"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "backdrop"
+msgstr ""
+
+msgid "banner"
+msgstr ""
+
+msgid "movie"
+msgstr ""
+
+msgid "poster"
+msgstr ""
+
+msgid "series"
 msgstr ""

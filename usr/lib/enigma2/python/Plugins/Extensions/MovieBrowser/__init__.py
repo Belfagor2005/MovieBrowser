@@ -1,32 +1,28 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from Components.Language import language
-from Tools.Directories import resolveFilename, SCOPE_PLUGINS
-import gettext
+from __future__ import absolute_import
+
 from os import environ
 from os.path import exists
 from sys import version_info
+import gettext
 
-PluginLanguageDomain = 'moviebrowser'
-PluginLanguagePath = 'Extensions/MovieBrowser/locale'
+from Components.Language import language
+from Tools.Directories import resolveFilename, SCOPE_PLUGINS
+__version__ = "3.9-rc0"
+PluginLanguageDomain = "moviebrowser"
+PluginLanguagePath = "Extensions/MovieBrowser/locale"
 
+isDreambox = exists("/usr/bin/apt-get")
 PY3 = version_info.major >= 3
-
-isDreambox = False
-if exists("/usr/bin/apt-get"):
-    isDreambox = True
 
 
 def localeInit():
     if isDreambox:
         lang = language.getLanguage()[:2]
         environ["LANGUAGE"] = lang
-    gettext.bindtextdomain(
-        PluginLanguageDomain,
-        resolveFilename(
-            SCOPE_PLUGINS,
-            PluginLanguagePath))
+    if PluginLanguageDomain and PluginLanguagePath:
+        gettext.bindtextdomain(PluginLanguageDomain, resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
 
 
 if isDreambox:
@@ -38,8 +34,7 @@ else:
         if translated:
             return translated
         else:
-            print(("[%s] fallback to default translation for %s" %
-                  (PluginLanguageDomain, txt)))
+            print("[%s] fallback to default translation for %s" % (PluginLanguageDomain, txt))
             return gettext.gettext(txt)
 
 localeInit()

@@ -26,7 +26,7 @@ from requests import get
 from urllib.error import HTTPError, URLError
 from twisted.internet.reactor import callInThread
 try:
-    from urllib.request import urlretrievee
+    from urllib.request import urlretrieve
 except ImportError:  # Python 2
     from urllib import urlretrieve
 

@@ -79,11 +79,9 @@ from Screens.Standby import TryQuitMainloop
 from Screens.VirtualKeyBoard import VirtualKeyBoard
 
 
-
 from Tools.Directories import fileExists
 
 from . import _, isDreambox, PY3, __version__
-
 
 
 try:
@@ -144,12 +142,23 @@ class ItemList(MenuList):
 
 
 def threadGetPage(url=None, file=None, key=None, success=None, fail=None):
-    print('[MovieBrowser][threadGetPage] url, file, key ', url, "   ", file, "   ", key)
+    print(
+        '[MovieBrowser][threadGetPage] url, file, key ',
+        url,
+        "   ",
+        file,
+        "   ",
+        key)
     print('ulr e file e key=', url, file, key)
     try:
         response = urlopen(url)
         if response.getcode() != 200:
-            raise HTTPError(url, response.getcode(), 'HTTP Error', response.headers, None)
+            raise HTTPError(
+                url,
+                response.getcode(),
+                'HTTP Error',
+                response.headers,
+                None)
         if file is not None:
             makedirs(dirname(file), exist_ok=True)
             urlretrieve(url, file)
@@ -169,6 +178,7 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None):
         print('[MovieBrowser][threadGetPage] error: ', error)
         if fail is not None:
             fail(error)
+
 
 """ constants """
 
@@ -646,7 +656,9 @@ def fetch_url(url):
             response = urlopen(request)
             return response.read()
         except HTTPError as e:
-            print("HTTPError: code={}, reason={}, url={}".format(e.code, e.reason, url))
+            print(
+                "HTTPError: code={}, reason={}, url={}".format(
+                    e.code, e.reason, url))
             return None
         except URLError as e:
             print("URLError: reason={}, url={}".format(e.reason, url))
@@ -1783,7 +1795,10 @@ class movieBrowserMetrix(Screen):
                 return None
 
             output = output.decode("utf-8", "ignore")
-            output = sub('<poster>', '<poster>https://artworks.thetvdb.com/banners/_cache/', output)
+            output = sub(
+                '<poster>',
+                '<poster>https://artworks.thetvdb.com/banners/_cache/',
+                output)
             # Rebuild URL (looks redundant, but kept to match original code)
             url = ('https://www.thetvdb.com/api/%s/series/' +
                    seriesid[x] + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
@@ -9801,7 +9816,8 @@ class UpdateDatabase():
                 return None
 
             output = output.decode("utf-8", "ignore")
-            output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
+            output = output.replace('&amp;', '&').replace(
+                '\\/', '/').replace('}', ',')
             output = sub('"belongs_to_collection":{.*?}', '', output)
             if not plot:
                 plot = findall('"overview":"(.*?)","', output)
@@ -13857,7 +13873,25 @@ def Plugins(**kwargs):
     return plugin_list
 
     if config.plugins.moviebrowser.showmenu.value:
-        list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_MENU], fnc=menu))
-    list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_EXTENSIONSMENU], fnc=main))
-    list.append(PluginDescriptor(name=pluginname, description=plugindesc, where=[PluginDescriptor.WHERE_SESSIONSTART], fnc=autostart))
+        list.append(
+            PluginDescriptor(
+                name=pluginname,
+                description=plugindesc,
+                where=[
+                    PluginDescriptor.WHERE_MENU],
+                fnc=menu))
+    list.append(
+        PluginDescriptor(
+            name=pluginname,
+            description=plugindesc,
+            where=[
+                PluginDescriptor.WHERE_EXTENSIONSMENU],
+            fnc=main))
+    list.append(
+        PluginDescriptor(
+            name=pluginname,
+            description=plugindesc,
+            where=[
+                PluginDescriptor.WHERE_SESSIONSTART],
+            fnc=autostart))
     return list

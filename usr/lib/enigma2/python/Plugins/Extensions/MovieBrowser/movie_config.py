@@ -7,7 +7,8 @@
 # 20221222 Lululla recoded, major fix
 # 20240920 Lululla recoded - clean unnecessary code
 # 20250516 Lululla refactoryzed all Cls and clean unnecessary all code
-# 20251202 Lululla all recoded: fixed screen- code - url - bad code - separate libraries into other modules
+# 20251202 Lululla all recoded: fixed screen- code - url - bad code -
+# separate libraries into other modules
 from __future__ import print_function
 import datetime
 from sys import path
@@ -279,7 +280,7 @@ def _import_browser_class(class_name):
         try:
             module = __import__('plugin')
             return getattr(module, class_name)
-        except:
+        except BaseException:
             return None
 
 
@@ -327,7 +328,7 @@ class switchStart(Screen):
         self['label_select_1'].hide()
         self['label_select_2'].hide()
         self['label_select_3'].hide()
-        
+
         self.number = number
         if self.number == 1:
             self['label_1'].hide()
@@ -361,25 +362,25 @@ class switchStart(Screen):
         self.Timer = eTimer()
         try:
             self.Timer_conn = self.Timer.timeout.connect(self.returnNumber)
-        except:
+        except BaseException:
             self.Timer.callback.append(self.returnNumber)
         self.Timer.start(4000, True)
 
     def next(self):
         self.Timer.start(2000, True)
-        
+
         for i in range(1, 4):
             self[f'select_{i}'].hide()
             self[f'label_{i}'].show()
             self[f'label_select_{i}'].hide()
-        
+
         if self.number == 1:
             self.number = 2
         elif self.number == 2:
             self.number = 3
         elif self.number == 3:
             self.number = 1
-        
+
         self[f'label_{self.number}'].hide()
         self[f'select_{self.number}'].show()
         self[f'label_select_{self.number}'].show()
@@ -412,7 +413,8 @@ class switchStart(Screen):
             else:
                 from Plugins.Extensions.MovieBrowser.plugin import movieBrowserPosterwall as BrowserClass
 
-            self.session.openWithCallback(self.close, BrowserClass, 0, content_type, content_type)
+            self.session.openWithCallback(
+                self.close, BrowserClass, 0, content_type, content_type)
 
         except ImportError as e:
             print("[MovieBrowser] Errore import in returnNumber:", e)
@@ -465,7 +467,8 @@ class UpdateDatabase():
 
         self._in_make_update = True
         try:
-            self.starttime = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+            self.starttime = str(
+                datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
             with open(DATABASE_PATH, 'r', encoding='utf-8') as data:
                 data = data.read()
             if fileExists(BLACKLIST_PATH):
@@ -477,17 +480,20 @@ class UpdateDatabase():
             allfiles = ':::'
             count = 0
             folder = config.plugins.moviebrowser.moviefolder.value
-            for root, dirs, files in walk(folder, topdown=False, onerror=None, followlinks=True):
+            for root, dirs, files in walk(
+                    folder, topdown=False, onerror=None, followlinks=True):
                 for name in files:
                     count += 1
-                    if name.endswith('.ts') or name.endswith('.avi') or name.endswith('.divx') or name.endswith('.flv') or name.lower().endswith('.iso') or name.endswith('.m2ts') or name.endswith('.m4v') or name.endswith('.mov') or name.endswith('.mp4') or name.endswith('.mpg') or name.endswith('.mpeg') or name.endswith('.mkv') or name.endswith('.vob'):
+                    if name.endswith('.ts') or name.endswith('.avi') or name.endswith('.divx') or name.endswith('.flv') or name.lower().endswith('.iso') or name.endswith('.m2ts') or name.endswith(
+                            '.m4v') or name.endswith('.mov') or name.endswith('.mp4') or name.endswith('.mpg') or name.endswith('.mpeg') or name.endswith('.mkv') or name.endswith('.vob'):
                         filename = join(root, name)
                         allfiles = allfiles + filename + ':::'
                         movie = sub(r'\\(|\\)|\\[|\\]|\\+|\\?', '.', filename)
                         if search(movie, alldata) is None:
                             self.movielist.append(filename)
                             date = getmtime(filename)
-                            self.datelist.append(str(datetime.datetime.fromtimestamp(date)))
+                            self.datelist.append(
+                                str(datetime.datetime.fromtimestamp(date)))
                             if name.endswith('.ts'):
                                 name = sub(r'_', ' ', name)
                                 name = sub(r'^.*? - .*? - ', '', name)
@@ -495,24 +501,34 @@ class UpdateDatabase():
                                 name = sub(r'^[0-9]+ - ', '', name)
                                 name = sub(r'[.]ts', '', name)
                             else:
-                                name = sub(r'\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob', '', name)
+                                name = sub(
+                                    r'\\.avi|\\.divx|\\.flv|\\.iso|\\.ISO|\\.m2ts|\\.m4v|\\.mov|\\.mp4|\\.mpg|\\.mpeg|\\.mkv|\\.vob',
+                                    '',
+                                    name)
                             self.namelist.append(name)
                     self.fileCount = count
 
             for line in data.split('\n'):
                 movieline = line.split(':::')
                 try:
-                    moviefolder = sub(r'\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
+                    moviefolder = sub(
+                        r'\\(|\\)|\\[|\\]|\\+|\\?', '.', movieline[1])
                 except IndexError:
                     moviefolder = ''
 
-                if search(config.plugins.moviebrowser.moviefolder.value, moviefolder) is not None and search(moviefolder, allfiles) is None:
+                if search(
+                        config.plugins.moviebrowser.moviefolder.value,
+                        moviefolder) is not None and search(
+                        moviefolder,
+                        allfiles) is None:
                     self.orphaned += 1
                     data = data.replace(line + '\n', '')
 
             if self.orphaned > 0:
                 if search('https://cf2.imgobject.com/t/p/', data) is not None:
-                    data = data.replace('https://cf2.imgobject.com/t/p/', 'https://image.tmdb.org/t/p/')
+                    data = data.replace(
+                        'https://cf2.imgobject.com/t/p/',
+                        'https://image.tmdb.org/t/p/')
                 with open(DATABASE_PATH, 'w', encoding='utf-8') as f:
                     f.write(data)
             del data
@@ -525,7 +541,11 @@ class UpdateDatabase():
 
             self.dbcountmax = len(self.movielist)
             if self.dbcountmax == 0:
-                self.results = (0, self.orphaned, self.moviecount, self.seriescount)
+                self.results = (
+                    0,
+                    self.orphaned,
+                    self.moviecount,
+                    self.seriescount)
                 self.showResult(False)
             else:
                 self.name = self.namelist[0]
@@ -535,13 +555,15 @@ class UpdateDatabase():
                     series = sub(r'[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                     series = sub('FIN', '', series)
                     series = transSERIES(series)
-                    url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
+                    url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (
+                        series, self.language)
 
                     if not self._in_tvdb_data:
                         self.getTVDbData(url, '0')
                 else:
                     movie = transMOVIE(self.name)
-                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=True&query=%s%s' % (str(tmdb_api), movie, self.language)
+                    url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=True&query=%s%s' % (
+                        str(tmdb_api), movie, self.language)
 
                     if not self._in_tmdb_data:
                         self.getTMDbData(url, '0', False)
@@ -569,7 +591,8 @@ class UpdateDatabase():
             request = Request(url, headers=headers)
             try:
                 if PY3:
-                    output = urlopen(request, timeout=10).read().decode('utf-8')
+                    output = urlopen(
+                        request, timeout=10).read().decode('utf-8')
                 else:
                     output = urlopen(request, timeout=10).read()
             except Exception:
@@ -581,15 +604,18 @@ class UpdateDatabase():
                 series = sub(r'[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                 series = sub('FIN', '', series)
                 series = transSERIES(series)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (
+                    series, self.language)
 
                 if not self._in_tvdb_data:
                     self.getTVDbData(url, '0')
                 else:
-                    print("[MovieBrowser] Warning: getTVDbData già in esecuzione, salto chiamata")
+                    print(
+                        "[MovieBrowser] Warning: getTVDbData già in esecuzione, salto chiamata")
 
             else:
-                output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
+                output = output.replace('&amp;', '&').replace(
+                    '\\/', '/').replace('}', ',')
                 if tmdbid == '0':
                     tmdbid = findall(r'"id":(.*?),', output)
                     try:
@@ -607,19 +633,23 @@ class UpdateDatabase():
                     except IndexError:
                         self.namelist[self.dbcount - 1] = self.name
                     try:
-                        self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop[0])
+                        self.backdroplist.append(
+                            'https://image.tmdb.org/t/p/w1280' + backdrop[0])
                     except IndexError:
                         self.backdroplist.append(str(default_backdrop))
                     try:
-                        self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster[0])
+                        self.posterlist.append(
+                            'https://image.tmdb.org/t/p/w185' + poster[0])
                     except IndexError:
                         self.posterlist.append(str(default_poster))
-                    url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (tmdbid, self.language, str(tmdb_api))
+                    url = 'https://api.themoviedb.org/3/movie/%s%s?api_key=%s' % (
+                        tmdbid, self.language, str(tmdb_api))
                     headers = {'Accept': 'application/json'}
                     request = Request(url, headers=headers)
                     try:
                         if PY3:
-                            output = urlopen(request, timeout=10).read().decode('utf-8')
+                            output = urlopen(
+                                request, timeout=10).read().decode('utf-8')
                         else:
                             output = urlopen(request, timeout=10).read()
 
@@ -632,26 +662,37 @@ class UpdateDatabase():
                     name = findall(r'"title":"(.*?)"', output)
                     backdrop = findall(r'"backdrop_path":"(.*?)"', output)
                     poster = findall(r'"poster_path":"(.*?)"', output)
-                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (tmdbid, str(tmdb_api))
+                url = 'https://api.themoviedb.org/3/movie/%s?api_key=%s' % (
+                    tmdbid, str(tmdb_api))
                 headers = {'Accept': 'application/json'}
                 request = Request(url, headers=headers)
                 try:
                     if PY3:
-                        output = urlopen(request, timeout=10).read().decode('utf-8')
+                        output = urlopen(
+                            request, timeout=10).read().decode('utf-8')
                     else:
                         output = urlopen(request, timeout=10).read()
                 except Exception:
                     output = ''
 
-                output = output.replace('&amp;', '&').replace('\\/', '/').replace('}', ',')
+                output = output.replace('&amp;', '&').replace(
+                    '\\/', '/').replace('}', ',')
                 output = sub(r'"belongs_to_collection":{.*?}', '', output)
                 if not plot:
                     plot = findall(r'"overview":"(.*?)","', output)
-                genre = findall(r'"genres":[[]."id":[0-9]+,"name":"(.*?)"', output)
-                genre2 = findall(r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"', output)
-                genre3 = findall(r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"', output)
-                genre4 = findall(r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"', output)
-                genre5 = findall(r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"', output)
+                genre = findall(
+                    r'"genres":[[]."id":[0-9]+,"name":"(.*?)"', output)
+                genre2 = findall(
+                    r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"', output)
+                genre3 = findall(
+                    r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"',
+                    output)
+                genre4 = findall(
+                    r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"',
+                    output)
+                genre5 = findall(
+                    r'"genres":[[]."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":".*?".,."id":[0-9]+,"name":"(.*?)"',
+                    output)
                 country = findall(r'"iso_3166_1":"(.*?)"', output)
                 runtime = findall(r'"runtime":(.*?),', output)
                 if renew is True:
@@ -667,19 +708,23 @@ class UpdateDatabase():
                         self.namelist[self.dbcount - 1] = self.name
 
                     try:
-                        self.backdroplist.append('https://image.tmdb.org/t/p/w1280' + backdrop[0])
+                        self.backdroplist.append(
+                            'https://image.tmdb.org/t/p/w1280' + backdrop[0])
                     except IndexError:
                         self.backdroplist.append(str(default_backdrop))
                     try:
-                        self.posterlist.append('https://image.tmdb.org/t/p/w185' + poster[0])
+                        self.posterlist.append(
+                            'https://image.tmdb.org/t/p/w185' + poster[0])
                     except IndexError:
                         self.posterlist.append(str(default_poster))
-                url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (tmdbid, str(tmdb_api))
+                url = 'https://api.themoviedb.org/3/movie/%s/casts?api_key=%s' % (
+                    tmdbid, str(tmdb_api))
                 headers = {'Accept': 'application/json'}
                 request = Request(url, headers=headers)
                 try:
                     if PY3:
-                        output = urlopen(request, timeout=10).read().decode('utf-8')
+                        output = urlopen(
+                            request, timeout=10).read().decode('utf-8')
                     else:
                         output = urlopen(request, timeout=10).read()
                 except Exception:
@@ -687,13 +732,22 @@ class UpdateDatabase():
 
                 actor = findall(r'"name":"(.*?)"', output)
                 actor2 = findall(r'"name":".*?"name":"(.*?)"', output)
-                actor3 = findall(r'"name":".*?"name":".*?"name":"(.*?)"', output)
-                actor4 = findall(r'"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
-                actor5 = findall(r'"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
-                actor6 = findall(r'"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
-                actor7 = findall(r'"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
+                actor3 = findall(
+                    r'"name":".*?"name":".*?"name":"(.*?)"', output)
+                actor4 = findall(
+                    r'"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
+                actor5 = findall(
+                    r'"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"', output)
+                actor6 = findall(
+                    r'"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"',
+                    output)
+                actor7 = findall(
+                    r'"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":".*?"name":"(.*?)"',
+                    output)
                 director = findall(r'"job":"Director","name":"(.*?)"', output)
-                # director = findall(r'"known_for_department":"Writing","name":"(.*?)"', output)  # director fixed
+                # director =
+                # findall(r'"known_for_department":"Writing","name":"(.*?)"',
+                # output)  # director fixed
                 res = []
                 try:
                     res.append(runtime[0] + ' min')
@@ -750,14 +804,22 @@ class UpdateDatabase():
 
                 self.infolist.append(res)
                 try:
-                    self.plotlist.append(plot[0].replace('\r', '').replace('\n', ' ').replace('\\', ''))
+                    self.plotlist.append(
+                        plot[0].replace(
+                            '\r',
+                            '').replace(
+                            '\n',
+                            ' ').replace(
+                            '\\',
+                            ''))
                 except IndexError:
                     self.plotlist.append(' ')
 
                 if not self._in_make_data:
                     self.makeDataEntry(self.dbcount - 1, True)
                 else:
-                    print("[MovieBrowser] Warning: makeDataEntry già in esecuzione, salto chiamata")
+                    print(
+                        "[MovieBrowser] Warning: makeDataEntry già in esecuzione, salto chiamata")
 
         except Exception as e:
             print("[MovieBrowser] Errore in getTMDbData:", str(e))
@@ -785,11 +847,13 @@ class UpdateDatabase():
             return
 
         try:
-            agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
+            agents = {
+                'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
             request = Request(url, headers=agents)
             try:
                 if PY3:
-                    output = urlopen(request, timeout=10).read().decode('utf-8')
+                    output = urlopen(
+                        request, timeout=10).read().decode('utf-8')
                 else:
                     output = urlopen(request, timeout=10).read()
             except Exception:
@@ -813,14 +877,20 @@ class UpdateDatabase():
                     name = sub('FIN', '', name)
                     self.namelist.insert(self.dbcount - 1, name)
                     self.movielist.insert(self.dbcount - 1, name)
-                    self.datelist.insert(self.dbcount - 1, str(datetime.datetime.now()))
+                    self.datelist.insert(
+                        self.dbcount - 1, str(datetime.datetime.now()))
                     self.backdroplist.append(str(default_backdrop))
-                    self.posterlist.append(str(default_poster) + '<episode>' + str(default_banner) + '<episode>')
+                    self.posterlist.append(
+                        str(default_poster) +
+                        '<episode>' +
+                        str(default_banner) +
+                        '<episode>')
 
                     if not self._in_make_data:
                         self.makeDataEntry(self.dbcount - 1, False)
                     else:
-                        print("[MovieBrowser] Warning: makeDataEntry già in esecuzione")
+                        print(
+                            "[MovieBrowser] Warning: makeDataEntry già in esecuzione")
                 else:
                     self.backdroplist.append(str(default_backdrop))
                     self.posterlist.append(str(default_poster))
@@ -829,7 +899,8 @@ class UpdateDatabase():
                     if not self._in_make_data:
                         self.makeDataEntry(self.dbcount - 1, True)
                     else:
-                        print("[MovieBrowser] Warning: makeDataEntry già in esecuzione")
+                        print(
+                            "[MovieBrowser] Warning: makeDataEntry già in esecuzione")
             else:
                 if seriesid == '0':
                     seriesid = findall(r'<seriesid>(.*?)</seriesid>', output)
@@ -838,7 +909,8 @@ class UpdateDatabase():
                     except IndexError:
                         seriesid = '0'
 
-                if search('[Ss][0-9]+[Ee][0-9]+', self.name) is not None and self.newseries is False:
+                if search('[Ss][0-9]+[Ee][0-9]+',
+                          self.name) is not None and self.newseries is False:
                     data = search('([Ss][0-9]+[Ee][0-9]+)', self.name)
                     data = data.group(1)
                     season = search('[Ss]([0-9]+)[Ee]', data)
@@ -847,12 +919,15 @@ class UpdateDatabase():
                         season = '0'
                     episode = search('[Ss][0-9]+[Ee]([0-9]+)', data)
                     episode = episode.group(1).lstrip('0')
-                    url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' + episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
-                    agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
+                    url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/default/' + season + '/' +
+                           episode + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
+                    agents = {
+                        'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                     request = Request(url, headers=agents)
                     try:
                         if PY3:
-                            output = urlopen(request, timeout=10).read().decode('utf-8')
+                            output = urlopen(
+                                request, timeout=10).read().decode('utf-8')
                         else:
                             output = urlopen(request, timeout=10).read()
                     except Exception:
@@ -860,15 +935,19 @@ class UpdateDatabase():
 
                     output = sub(r'\n', '', output)
                     output = sub(r'&amp;', '&', output)
-                    episode = findall(r'<EpisodeName>(.*?)</EpisodeName>', output)
+                    episode = findall(
+                        r'<EpisodeName>(.*?)</EpisodeName>', output)
                     year = findall(r'<FirstAired>([0-9]+)-', output)
-                    guest = findall(r'<GuestStars>[|](.*?)[|]</GuestStars>', output)
-                    director = findall('<Director>[|](.*?)[|]</Director>', output)
+                    guest = findall(
+                        r'<GuestStars>[|](.*?)[|]</GuestStars>', output)
+                    director = findall(
+                        '<Director>[|](.*?)[|]</Director>', output)
                     if not director:
                         director = findall('<Director>(.*?)[|]', output)
                         if not director:
                             director = findall('<Director>[|](.*?)[|]', output)
-                    plotfull = findall(r'<Overview>(.*?)</Overview>', output, S)
+                    plotfull = findall(
+                        r'<Overview>(.*?)</Overview>', output, S)
                     rating = findall(r'<Rating>(.*?)</Rating>', output)
                     eposter = findall(r'<filename>(.*?)</filename>', output)
                 else:
@@ -880,12 +959,15 @@ class UpdateDatabase():
                     plotfull = []
                     rating = []
                     eposter = []
-                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' + config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
-                agents = {'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
+                url = ('https://www.thetvdb.com/api/%s/series/' + seriesid + '/' +
+                       config.plugins.moviebrowser.language.value + '.xml') % str(thetvdb_api)
+                agents = {
+                    'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)'}
                 request = Request(url, headers=agents)
                 try:
                     if PY3:
-                        output = urlopen(request, timeout=10).read().decode('utf-8')
+                        output = urlopen(
+                            request, timeout=10).read().decode('utf-8')
                     else:
                         output = urlopen(request, timeout=10).read()
                 except Exception:
@@ -904,10 +986,14 @@ class UpdateDatabase():
                     actor = findall(r'[|](.*?)[|]', actors[0])
                     actor2 = findall(r'[|].*?[|](.*?)[|]', actors[0])
                     actor3 = findall(r'[|].*?[|].*?[|](.*?)[|]', actors[0])
-                    actor4 = findall(r'[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
-                    actor5 = findall(r'[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
-                    actor6 = findall(r'[|].*?[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
-                    actor7 = findall(r'[|].*?[|].*?[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
+                    actor4 = findall(
+                        r'[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
+                    actor5 = findall(
+                        r'[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
+                    actor6 = findall(
+                        r'[|].*?[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
+                    actor7 = findall(
+                        r'[|].*?[|].*?[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', actors[0])
                 except IndexError:
                     pass
 
@@ -916,14 +1002,17 @@ class UpdateDatabase():
                     genre = findall(r'[|](.*?)[|]', genres[0])
                     genre2 = findall(r'[|].*?[|](.*?)[|]', genres[0])
                     genre3 = findall(r'[|].*?[|].*?[|](.*?)[|]', genres[0])
-                    genre4 = findall(r'[|].*?[|].*?[|].*?[|](.*?)[|]', genres[0])
-                    genre5 = findall(r'[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', genres[0])
+                    genre4 = findall(
+                        r'[|].*?[|].*?[|].*?[|](.*?)[|]', genres[0])
+                    genre5 = findall(
+                        r'[|].*?[|].*?[|].*?[|].*?[|](.*?)[|]', genres[0])
                 except IndexError:
                     pass
                 if not year:
                     year = findall(r'<FirstAired>([0-9]+)-', output)
                 if not plotfull:
-                    plotfull = findall(r'<Overview>(.*?)</Overview>', output, S)
+                    plotfull = findall(
+                        r'<Overview>(.*?)</Overview>', output, S)
                 backdrop = findall(r'<fanart>(.*?)</fanart>', output)
                 poster = findall(r'<poster>(.*?)</poster>', output)
                 if self.newseries is True:
@@ -932,10 +1021,12 @@ class UpdateDatabase():
                     try:
                         name = name[0]
                         if not episode:
-                            self.namelist[self.dbcount - 1] = name + ' - (S00E00) - TheTVDb: ' + data + ' not found.'
+                            self.namelist[self.dbcount - 1] = name + \
+                                ' - (S00E00) - TheTVDb: ' + data + ' not found.'
                             self.name = name
                         else:
-                            self.namelist[self.dbcount - 1] = name + ' - (' + data + ') ' + episode[0]
+                            self.namelist[self.dbcount - 1] = name + \
+                                ' - (' + data + ') ' + episode[0]
                             self.name = name + ' ' + data
                     except IndexError:
                         self.namelist[self.dbcount - 1] = self.name
@@ -945,11 +1036,13 @@ class UpdateDatabase():
                         name = name[0]
                         self.namelist.insert(self.dbcount - 1, name)
                         self.movielist.insert(self.dbcount - 1, name)
-                        self.datelist.insert(self.dbcount - 1, str(datetime.datetime.now()))
+                        self.datelist.insert(
+                            self.dbcount - 1, str(datetime.datetime.now()))
                     except IndexError:
                         self.namelist.insert(self.dbcount - 1, self.name)
                         self.movielist.insert(self.dbcount - 1, self.name)
-                        self.datelist.insert(self.dbcount - 1, str(datetime.datetime.now()))
+                        self.datelist.insert(
+                            self.dbcount - 1, str(datetime.datetime.now()))
 
                 res = []
                 try:
@@ -1013,33 +1106,78 @@ class UpdateDatabase():
                 self.infolist.append(res)
                 try:
                     if not guest:
-                        plotfull = plotfull[0].replace('\r', '').replace('\n', ' ').replace('\\', '').replace('&quot;', '"')
+                        plotfull = plotfull[0].replace(
+                            '\r',
+                            '').replace(
+                            '\n',
+                            ' ').replace(
+                            '\\',
+                            '').replace(
+                            '&quot;',
+                            '"')
                     else:
-                        plotfull = plotfull[0].replace('\r', '').replace('\n', ' ').replace('\\', '').replace('&quot;', '"')
-                        plotfull = plotfull + ' Guest Stars: ' + guest[0].replace('|', ', ') + '.'
+                        plotfull = plotfull[0].replace(
+                            '\r',
+                            '').replace(
+                            '\n',
+                            ' ').replace(
+                            '\\',
+                            '').replace(
+                            '&quot;',
+                            '"')
+                        plotfull = plotfull + ' Guest Stars: ' + \
+                            guest[0].replace('|', ', ') + '.'
                     self.plotlist.append(plotfull)
                 except IndexError:
                     self.plotlist.append(' ')
 
                 try:
-                    self.backdroplist.append('https://www.thetvdb.com/banners/' + backdrop[0])
+                    self.backdroplist.append(
+                        'https://www.thetvdb.com/banners/' + backdrop[0])
                 except IndexError:
                     self.backdroplist.append(str(default_backdrop))
                 try:
                     if self.newseries is True:
                         if not eposter:
-                            self.posterlist.append('https://www.thetvdb.com/banners/_cache/' + poster[0] + '<episode>' + str(default_banner) + '<episode>')
+                            self.posterlist.append(
+                                'https://www.thetvdb.com/banners/_cache/' +
+                                poster[0] +
+                                '<episode>' +
+                                str(default_banner) +
+                                '<episode>')
                         elif eposter[0] == '':
-                            self.posterlist.append('https://www.thetvdb.com/banners/_cache/' + poster[0] + '<episode>' + str(default_banner) + '<episode>')
+                            self.posterlist.append(
+                                'https://www.thetvdb.com/banners/_cache/' +
+                                poster[0] +
+                                '<episode>' +
+                                str(default_banner) +
+                                '<episode>')
                         else:
-                            self.posterlist.append('https://www.thetvdb.com/banners/_cache/' + poster[0] + '<episode>' + 'https://www.thetvdb.com/banners/' + eposter[0] + '<episode>')
+                            self.posterlist.append(
+                                'https://www.thetvdb.com/banners/_cache/' +
+                                poster[0] +
+                                '<episode>' +
+                                'https://www.thetvdb.com/banners/' +
+                                eposter[0] +
+                                '<episode>')
                     elif not eposter:
-                        self.posterlist.append('https://www.thetvdb.com/banners/_cache/' + poster[0])
+                        self.posterlist.append(
+                            'https://www.thetvdb.com/banners/_cache/' + poster[0])
                     else:
-                        self.posterlist.append('https://www.thetvdb.com/banners/_cache/' + poster[0] + '<episode>' + 'https://www.thetvdb.com/banners/' + eposter[0] + '<episode>')
+                        self.posterlist.append(
+                            'https://www.thetvdb.com/banners/_cache/' +
+                            poster[0] +
+                            '<episode>' +
+                            'https://www.thetvdb.com/banners/' +
+                            eposter[0] +
+                            '<episode>')
                 except IndexError:
                     if self.newseries is True:
-                        self.posterlist.append(str(default_poster) + '<episode>' + str(default_banner) + '<episode>')
+                        self.posterlist.append(
+                            str(default_poster) +
+                            '<episode>' +
+                            str(default_banner) +
+                            '<episode>')
                     else:
                         self.posterlist.append(str(default_poster))
 
@@ -1078,13 +1216,16 @@ class UpdateDatabase():
                     try:
                         if content is True:
                             self.moviecount += 1
-                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Movie:Top:::unseen:::\n'
+                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(
+                                self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Movie:Top:::unseen:::\n'
                         elif self.newseries is True:
                             self.newseries = False
-                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:Top:::unseen:::\n'
+                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(
+                                self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:Top:::unseen:::\n'
                         else:
                             name = self.namelist[count] + 'FIN'
-                            name = sub(r'\\([Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
+                            name = sub(
+                                r'\\([Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                             name = sub('FIN', '', name)
                             name = sub(r'[\\(\\)\\[\\]\\+\\?]', '.', name)
                             with open(DATABASE_PATH, 'r', encoding='utf-8') as db_file:
@@ -1092,44 +1233,53 @@ class UpdateDatabase():
                             if search(name + r'\\(', data) is None:
                                 self.newseries = True
                             self.seriescount += 1
-                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:::unseen:::\n'
+                            data = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + ':::'.join(
+                                self.infolist[count][:7]) + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:::unseen:::\n'
                         f.write(data)
                         if config.plugins.moviebrowser.download.value == 'update':
                             url = self.backdroplist[count]
                             backdrop = sub(r'.*?/', '', url)
-                            backdrop = join(config.plugins.moviebrowser.cachefolder.value, backdrop)
+                            backdrop = join(
+                                config.plugins.moviebrowser.cachefolder.value, backdrop)
                             if not exists(backdrop):
                                 try:
                                     headers = {'Accept': 'application/json'}
                                     request = Request(url, headers=headers)
                                     if PY3:
-                                        output = urlopen(request).read().decode('utf-8')
+                                        output = urlopen(
+                                            request).read().decode('utf-8')
                                     else:
                                         output = urlopen(request).read()
 
                                     with open(backdrop, 'wb', encoding='utf-8') as f_backdrop:
                                         f_backdrop.write(output)
                                 except Exception as e:
-                                    print("Errore nel download del backdrop:", e)
+                                    print(
+                                        "Errore nel download del backdrop:", e)
                     except IndexError:
                         pass
             else:
                 try:
                     if content is True:
                         self.moviecount += 1
-                        newdata = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + self.infolist[count][0] + ':::' + self.infolist[count][1] + ':::' + self.infolist[count][2] + ':::' + self.infolist[count][3] + ':::' + self.infolist[count][4] + ':::' + self.infolist[count][5] + ':::' + self.infolist[count][6] + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Movie:Top:::unseen:::'
+                        newdata = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + self.infolist[count][0] + ':::' + self.infolist[count][1] + ':::' + self.infolist[count][2] + ':::' + self.infolist[count][3] + \
+                            ':::' + self.infolist[count][4] + ':::' + self.infolist[count][5] + ':::' + self.infolist[count][6] + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Movie:Top:::unseen:::'
                     else:
                         name = self.namelist[count] + 'FIN'
-                        name = sub(r' - \\([Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
+                        name = sub(
+                            r' - \\([Ss][0-9]+[Ee][0-9]+.*?FIN', '', name)
                         name = sub('FIN', '', name)
                         name = sub(r'\\(|\\)|\\[|\\]|\\+|\\?', '.', name)
                         with open(DATABASE_PATH, 'r', encoding='utf-8') as data:
                             data = data.read()
-                        if search(name + '.*?:::Series:Top:::unseen:::\n', data) is None:
+                        if search(
+                                name + '.*?:::Series:Top:::unseen:::\n',
+                                data) is None:
                             self.newseries = True
                             self.renew = False
                         self.seriescount += 1
-                        newdata = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + self.infolist[count][0] + ':::' + self.infolist[count][1] + ':::' + self.infolist[count][2] + ':::' + self.infolist[count][3] + ':::' + self.infolist[count][4] + ':::' + self.infolist[count][5] + ':::' + self.infolist[count][6] + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:::unseen:::'
+                        newdata = self.namelist[count] + ':::' + self.movielist[count] + ':::' + self.datelist[count] + ':::' + self.infolist[count][0] + ':::' + self.infolist[count][1] + ':::' + self.infolist[count][2] + ':::' + self.infolist[count][3] + \
+                            ':::' + self.infolist[count][4] + ':::' + self.infolist[count][5] + ':::' + self.infolist[count][6] + ':::' + self.plotlist[count] + ':::' + self.posterlist[count] + ':::' + self.backdroplist[count] + ':::Series:::unseen:::'
                 except IndexError:
                     newdata = ''
 
@@ -1151,11 +1301,16 @@ class UpdateDatabase():
                 series = sub(r'[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                 series = sub('FIN', '', series)
                 series = transSERIES(series)
-                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
+                url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (
+                    series, self.language)
                 try:
                     self.getTVDbData(url, '0')
                 except RuntimeError:
-                    return (1, self.orphaned, self.moviecount, self.seriescount)
+                    return (
+                        1,
+                        self.orphaned,
+                        self.moviecount,
+                        self.seriescount)
 
             elif self.dbcount < self.dbcountmax:
                 self.dbcount += 1
@@ -1163,33 +1318,45 @@ class UpdateDatabase():
                     self.name = self.namelist[self.dbcount - 1]
                     if search('[Ss][0-9]+[Ee][0-9]+', self.name) is not None:
                         series = self.name + 'FIN'
-                        series = sub(r' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
+                        series = sub(
+                            r' - [Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                         series = sub(r'[Ss][0-9]+[Ee][0-9]+.*?FIN', '', series)
                         series = sub('FIN', '', series)
                         series = transSERIES(series)
-                        url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (series, self.language)
+                        url = 'https://www.thetvdb.com/api/GetSeries.php?seriesname=%s%s' % (
+                            series, self.language)
                         try:
-                            if not hasattr(self, '_in_tmdb_call') or not self._in_tmdb_call:
+                            if not hasattr(
+                                    self, '_in_tmdb_call') or not self._in_tmdb_call:
                                 self.getTMDbData(url, '0', False)
                         except RuntimeError:
-                            return (1, self.orphaned, self.moviecount, self.seriescount)
+                            return (
+                                1, self.orphaned, self.moviecount, self.seriescount)
                     else:
                         movie = transMOVIE(self.name)
                         movie = sub(r'\\+[1-2][0-9][0-9][0-9]', '', movie)
-                        url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (str(tmdb_api), movie, self.language)
+                        url = 'https://api.themoviedb.org/3/search/movie?api_key=%s&include_adult=true&query=%s%s' % (
+                            str(tmdb_api), movie, self.language)
                         try:
-                            if not hasattr(self, '_in_tmdb_call') or not self._in_tmdb_call:
+                            if not hasattr(
+                                    self, '_in_tmdb_call') or not self._in_tmdb_call:
                                 self.getTMDbData(url, '0', False)
                         except RuntimeError:
-                            return (1, self.orphaned, self.moviecount, self.seriescount)
+                            return (
+                                1, self.orphaned, self.moviecount, self.seriescount)
 
                 except IndexError:
-                    self.results = (1, self.orphaned, self.moviecount, self.seriescount)
+                    self.results = (
+                        1, self.orphaned, self.moviecount, self.seriescount)
                     self.showResult(False)
                 finally:
                     self._in_make_data = False
             else:
-                self.results = (1, self.orphaned, self.moviecount, self.seriescount)
+                self.results = (
+                    1,
+                    self.orphaned,
+                    self.moviecount,
+                    self.seriescount)
                 self.showResult(False)
 
             if not self._in_tmdb_data:
@@ -1207,7 +1374,8 @@ class UpdateDatabase():
     def showResult(self, show):
         found, orphaned, moviecount, seriescount = self.results
         endtime = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        result = _('Start time: %s\nEnd time: %s\nTotal scanned files: %s\nTheTVDb Database Requests: %s\nTMDb Database Requests: %s\nOrphaned Movies/Series: %s\nNew Series: %s\nNew Movies: %s\n\n') % (self.starttime, endtime, self.fileCount, self.tvdbCount, self.tmdbCount, orphaned, seriescount, moviecount)
+        result = _('Start time: %s\nEnd time: %s\nTotal scanned files: %s\nTheTVDb Database Requests: %s\nTMDb Database Requests: %s\nOrphaned Movies/Series: %s\nNew Series: %s\nNew Movies: %s\n\n') % (
+            self.starttime, endtime, self.fileCount, self.tvdbCount, self.tmdbCount, orphaned, seriescount, moviecount)
         if found != 0:
             self.sortDatabase()
         if show is False:
@@ -1244,9 +1412,28 @@ class UpdateDatabase():
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         try:
             if self.sortorder == 'name':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower())
+                lines.sort(
+                    key=lambda line: line.split(':::')[0].replace(
+                        'Der ',
+                        '').replace(
+                        'Die ',
+                        '').replace(
+                        'Das ',
+                        '').replace(
+                        'The ',
+                        '').lower())
             elif self.sortorder == 'name_reverse':
-                lines.sort(key=lambda line: line.split(':::')[0].replace('Der ', '').replace('Die ', '').replace('Das ', '').replace('The ', '').lower(), reverse=True)
+                lines.sort(
+                    key=lambda line: line.split(':::')[0].replace(
+                        'Der ',
+                        '').replace(
+                        'Die ',
+                        '').replace(
+                        'Das ',
+                        '').replace(
+                        'The ',
+                        '').lower(),
+                    reverse=True)
             elif self.sortorder == 'rating':
                 lines.sort(key=lambda line: line.split(':::')[4])
             elif self.sortorder == 'rating_reverse':
@@ -1264,13 +1451,22 @@ class UpdateDatabase():
             elif self.sortorder == 'folder_reverse':
                 lines.sort(key=lambda line: line.split(':::')[1], reverse=True)
             elif self.sortorder == 'runtime':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')))
+                lines.sort(
+                    key=lambda line: int(
+                        line.split(':::')[3].replace(
+                            ' min', '')))
             elif self.sortorder == 'runtime_reverse':
-                lines.sort(key=lambda line: int(line.split(':::')[3].replace(' min', '')), reverse=True)
+                lines.sort(
+                    key=lambda line: int(
+                        line.split(':::')[3].replace(
+                            ' min', '')), reverse=True)
         except IndexError:
             pass
         except ValueError:
-            self.session.open(MessageBox, _('\nDatabase Error: Entry without runtime'), MessageBox.TYPE_ERROR)
+            self.session.open(
+                MessageBox,
+                _('\nDatabase Error: Entry without runtime'),
+                MessageBox.TYPE_ERROR)
 
         with open(DATABASE_PATH + '.movies', 'w', encoding='utf-8') as f:
             f.writelines(lines)
@@ -1303,7 +1499,7 @@ class timerUpdate():
 
     def _connect_timer(self, timer, callback):
         """Connect a callback to timer using modern or legacy API.
-        
+
         Args:
             timer: eTimer instance
             callback: Function to call when timer fires
@@ -1317,7 +1513,7 @@ class timerUpdate():
 
     def _disconnect_timer(self, timer, callback):
         """Disconnect a callback from timer using modern or legacy API.
-        
+
         Args:
             timer: eTimer instance
             callback: Function to disconnect
@@ -1334,24 +1530,24 @@ class timerUpdate():
         """Start the initial update timer."""
         # Disconnect any existing callback to prevent duplicates
         self._disconnect_timer(self.startTimer, self.daily)
-        
+
         # Connect the callback using compatible method
         self._connect_timer(self.startTimer, self.daily)
-        
+
         # Calculate initial delay
         now = datetime.datetime.now()
         now_minutes = now.hour * 60 + now.minute
         config_hour, config_minute = config.plugins.moviebrowser.timer.value
         start_time_minutes = config_hour * 60 + config_minute
-        
+
         if now_minutes < start_time_minutes:
             delay_minutes = start_time_minutes - now_minutes
         else:
             delay_minutes = 1440 - now_minutes + start_time_minutes
-        
+
         # Start timer with calculated delay (single shot)
         self.startTimer.start(delay_minutes * 60 * 1000, True)
-        
+
         # Log the timer start
         now_str = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('*******Movie Browser Database Update Timer*******\nInitial Update Timer started: %s\nTimer Value (min): %s\n') % (now_str, str(delay_minutes))
@@ -1368,11 +1564,11 @@ class timerUpdate():
         # Stop and disconnect start timer
         self.startTimer.stop()
         self._disconnect_timer(self.startTimer, self.daily)
-        
+
         # Stop and disconnect daily timer
         self.dailyTimer.stop()
         self._disconnect_timer(self.dailyTimer, self.runUpdate)
-        
+
         # Log the timer stop
         now_str = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('Database Update Timer stopped: %s\n') % now_str
@@ -1384,27 +1580,28 @@ class timerUpdate():
         # Clean up initial timer
         self.startTimer.stop()
         self._disconnect_timer(self.startTimer, self.daily)
-        
+
         # Run first update immediately
         self.runUpdate()
-        
+
         # Set up daily repeating timer
         self._connect_timer(self.dailyTimer, self.runUpdate)
-        
+
         # Start daily timer (24 hours, repeating)
         daily_delay_minutes = 1440
         self.dailyTimer.start(daily_delay_minutes * 60 * 1000, False)
-        
+
         # Log the switch to daily timer
         now_str = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        info = _('Database Update Timer started: %s\nTimer Value (min): %s\n') % (now_str, str(daily_delay_minutes))
+        info = _('Database Update Timer started: %s\nTimer Value (min): %s\n') % (
+            now_str, str(daily_delay_minutes))
         with open(TIMER_LOG_PATH, 'a', encoding='utf-8') as f:
             f.write(info)
 
     def runUpdate(self):
         """Execute the database update process."""
         UpdateDatabase(False, '', '', '').showResult(True)
-        
+
         # Log the update execution
         now_str = str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         info = _('Movie Database Update started: %s\n') % now_str
@@ -1425,7 +1622,7 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         Screen.__init__(self, session)
         self.session = session
         self["Title"] = Label("Movie Browser Setup")
-        
+
         self.onChangedEntry = []
         self.sortorder = config.plugins.moviebrowser.sortorder.value
         self.moviefolder = config.plugins.moviebrowser.moviefolder.value
@@ -1434,13 +1631,13 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         self.timer_update = config.plugins.moviebrowser.timerupdate.value
         self.timer_hour = config.plugins.moviebrowser.timer.value[0]
         self.timer_min = config.plugins.moviebrowser.timer.value[1]
-        
+
         self['save'] = Label(_('Save'))
         self['cancel'] = Label(_('Cancel'))
         self['plugin'] = Pixmap()
         self['status'] = StaticText()
         self.ready = True
-        
+
         list = []
         ConfigListScreen.__init__(
             self,
@@ -2085,20 +2282,21 @@ class movieBrowserConfig(ConfigListScreen, Screen):
         if config.plugins.moviebrowser.showswitch.value is True:
             self.session.openWithCallback(self.close, switchStart, number)
             return
-        
+
         try:
             if number == 2:  # Serie
                 style_config = config.plugins.moviebrowser.seriesstyle.value
             else:  # Film o tutti
                 style_config = config.plugins.moviebrowser.style.value
-            
+
             if style_config == 'metrix':
                 from Plugins.Extensions.MovieBrowser.plugin import movieBrowserMetrix as BrowserClass
             elif style_config == 'backdrop':
                 from Plugins.Extensions.MovieBrowser.plugin import movieBrowserBackdrop as BrowserClass
             else:
                 from Plugins.Extensions.MovieBrowser.plugin import movieBrowserPosterwall as BrowserClass
-            self.session.openWithCallback(lambda ret: self.close(ret), BrowserClass, 0, content_type, content_type)
+            self.session.openWithCallback(lambda ret: self.close(
+                ret), BrowserClass, 0, content_type, content_type)
         except ImportError as e:
             print("[MovieBrowser] Errore import:", e)
             self.close(False)

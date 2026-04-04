@@ -26,8 +26,7 @@ agents = {
 # Headers for JSON APIs (TMDB)
 agents_json = {
     'User-Agent': 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.1.4322; .NET CLR 2.0.50727; .NET CLR 3.0.04506.30)',
-    'Accept': 'application/json'
-}
+    'Accept': 'application/json'}
 
 
 PY3 = version_info.major >= 3
@@ -56,8 +55,10 @@ def isDreamOS():
 
 def quoteEventName(eventName):
     try:
-        text = eventName.decode('utf8').replace(u'\x86', u'').replace(u'\x87', u'').encode('utf8')
-    except:
+        text = eventName.decode('utf8').replace(
+            u'\x86', u'').replace(
+            u'\x87', u'').encode('utf8')
+    except BaseException:
         text = eventName
     return quote_plus(text, safe="+")
 
@@ -89,12 +90,19 @@ def OnclearMem():
         os_system('echo 1 > /proc/sys/vm/drop_caches')
         os_system('echo 2 > /proc/sys/vm/drop_caches')
         os_system('echo 3 > /proc/sys/vm/drop_caches')
-    except:
+    except BaseException:
         pass
 
 
-def threadGetPage(url=None, file=None, key=None, success=None, fail=None, custom_headers=None):
-    print('[MovieBrowser][threadGetPage] url, file, key, success, fail: ', url, "   ", file, "   ", key, "   ", success, "   ", fail)
+def threadGetPage(
+        url=None,
+        file=None,
+        key=None,
+        success=None,
+        fail=None,
+        custom_headers=None):
+    print('[MovieBrowser][threadGetPage] url, file, key, success, fail: ',
+          url, "   ", file, "   ", key, "   ", success, "   ", fail)
     from requests import get
     from requests.exceptions import Timeout, RequestException
 
@@ -103,7 +111,7 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, custom
     if isinstance(url, bytes):
         try:
             url = url.decode('utf-8')
-        except:
+        except BaseException:
             url = url.decode('latin-1')
 
     try:
@@ -118,7 +126,8 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, custom
             success(response.content, file)
 
     except HTTPError as httperror:
-        print(f'[MovieBrowser][threadGetPage] HTTP Error for {url}: {httperror}')
+        print(
+            f'[MovieBrowser][threadGetPage] HTTP Error for {url}: {httperror}')
         if fail:
             fail(str(httperror))
     except Timeout as timeout:
@@ -126,11 +135,13 @@ def threadGetPage(url=None, file=None, key=None, success=None, fail=None, custom
         if fail:
             fail(str(timeout))
     except RequestException as error:
-        print(f'[MovieBrowser][threadGetPage] Request error for {url}: {error}')
+        print(
+            f'[MovieBrowser][threadGetPage] Request error for {url}: {error}')
         if fail:
             fail(str(error))
     except Exception as error:
-        print(f'[MovieBrowser][threadGetPage] General error for {url}: {error}')
+        print(
+            f'[MovieBrowser][threadGetPage] General error for {url}: {error}')
         if fail:
             fail(str(error))
 
@@ -336,9 +347,12 @@ def cleanSeriesName(self, name, language='en'):
             cleaned_name = sub(pattern, '', cleaned_name, flags=IGNORECASE)
 
     # 3. Final cleanup
-    cleaned_name = sub(r'\s+', ' ', cleaned_name)       # Replace multiple spaces with a single one
-    cleaned_name = cleaned_name.strip()                 # Remove leading/trailing spaces
-    cleaned_name = sub(r'[_-]+$', '', cleaned_name)     # Remove trailing underscores or hyphens
+    # Replace multiple spaces with a single one
+    cleaned_name = sub(r'\s+', ' ', cleaned_name)
+    # Remove leading/trailing spaces
+    cleaned_name = cleaned_name.strip()
+    # Remove trailing underscores or hyphens
+    cleaned_name = sub(r'[_-]+$', '', cleaned_name)
 
     print("[DEBUG cleanSeriesName] From: '" + name + "'")
     print("[DEBUG] To: '" + cleaned_name + "' (Language: " + language + ")")
@@ -390,8 +404,7 @@ def clean_for_search(text, search_type='movie'):
         r'\.(ts|avi|divx|flv|iso|m2ts|m4v|mov|mp4|mpg|mpeg|mkv|vob|srt|sub|idx)$',
         '',
         name,
-        flags=IGNORECASE
-    )
+        flags=IGNORECASE)
 
     # 3. Convert to lowercase
     name = name.lower()
@@ -443,10 +456,48 @@ def remove_accents(string):
 
 def cutName(eventName=""):
     if eventName:
-        eventName = eventName.replace('"', '').replace('Х/Ф', '').replace('М/Ф', '').replace('Х/ф', '').replace('.', '').replace(' | ', '')
-        eventName = eventName.replace('(18+)', '').replace('18+', '').replace('(16+)', '').replace('16+', '').replace('(12+)', '')
-        eventName = eventName.replace('12+', '').replace('(7+)', '').replace('7+', '').replace('(6+)', '').replace('6+', '')
-        eventName = eventName.replace('(0+)', '').replace('0+', '').replace('+', '')
+        eventName = eventName.replace(
+            '"',
+            '').replace(
+            'Х/Ф',
+            '').replace(
+            'М/Ф',
+            '').replace(
+                'Х/ф',
+                '').replace(
+                    '.',
+                    '').replace(
+                        ' | ',
+            '')
+        eventName = eventName.replace(
+            '(18+)',
+            '').replace(
+            '18+',
+            '').replace(
+            '(16+)',
+            '').replace(
+                '16+',
+                '').replace(
+                    '(12+)',
+            '')
+        eventName = eventName.replace(
+            '12+',
+            '').replace(
+            '(7+)',
+            '').replace(
+            '7+',
+            '').replace(
+                '(6+)',
+                '').replace(
+                    '6+',
+            '')
+        eventName = eventName.replace(
+            '(0+)',
+            '').replace(
+            '0+',
+            '').replace(
+            '+',
+            '')
         eventName = eventName.replace('episode', '')
         eventName = eventName.replace('مسلسل', '')
         eventName = eventName.replace('فيلم وثائقى', '')
@@ -478,7 +529,13 @@ def convtext(text=''):
             text = getCleanTitle(text)
             if text.endswith("the"):
                 text = "the " + text[:-4]
-            text = text.replace("\xe2\x80\x93", "").replace('\xc2\x86', '').replace('\xc2\x87', '')  # replace special
+            text = text.replace(
+                "\xe2\x80\x93",
+                "").replace(
+                '\xc2\x86',
+                '').replace(
+                '\xc2\x87',
+                '')  # replace special
             text = transMOVIE(text)
             print('transMOVIE: ', text)
             text = quoteEventName(text)

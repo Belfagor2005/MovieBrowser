@@ -1,581 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: moviebrowser\n"
-"POT-Creation-Date: 2025-12-05 11:10+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: lululla\n"
-"Language: it_IT\n"
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-04-19 14:06+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.8\n"
-"X-Poedit-Basepath: ../../..\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: library.py\n"
-"X-Poedit-SearchPath-1: movie_config.py\n"
-"X-Poedit-SearchPath-2: plugin_timer.py\n"
 
-#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Aggiornamento del database del browser dei film*******\n"
+msgstr ""
 
 msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Aggiornamento del database del browser dei film*******\n"
+msgstr ""
 
 msgid "<- -> Button: Go to first letter"
-msgstr "<- -> Pulsante: Vai alla prima lettera"
+msgstr ""
 
 msgid "<List of Movie Folder>"
-msgstr "<Lista Cartella Film>"
+msgstr ""
 
 msgid "Actor Selection"
-msgstr "Selezione Attore"
+msgstr ""
 
 msgid "Actors:"
-msgstr "Attori:"
+msgstr ""
 
 msgid "All /tmp/posters Cleaned"
-msgstr "Tutti i /tmp/posters puliti"
+msgstr ""
 
 msgid "Automatic"
-msgstr "Automatico"
+msgstr ""
 
 msgid "Backup Database:"
-msgstr "Backup Database:"
+msgstr ""
 
 msgid "Blacklist Movie File"
-msgstr "File di Film nella lista nera"
+msgstr ""
 
 msgid "Button 0: Go to end of list"
-msgstr "Pulsante 0: Vai alla fine dell'elenco"
+msgstr ""
 
 msgid "Button 1: CutListEditor/MovieCut/LogView"
-msgstr "Pulsante 1: CutListEditor/MovieCut/LogView"
+msgstr ""
 
 msgid "Button 2: Renew infos on TMDb"
-msgstr "Pulsante 2: Rinnova le informazioni su TMDb"
+msgstr ""
 
 msgid "Button 3: Renew infos on TheTVDb"
-msgstr "Pulsante 3: Rinnova le informazioni su TheTVDb"
+msgstr ""
 
 msgid "Button 4: Hide/show seen movies"
-msgstr "Pulsante 4: Nascondi/mostra i film visti"
+msgstr ""
 
 msgid "Button 5: Toggle Movies/Series view"
-msgstr "Pulsante 5: Attiva/disattiva la visualizzazione Film/Serie"
+msgstr ""
 
 msgid "Button 6: Movie Folder Selection"
-msgstr "Pulsante 6: Selezione cartella film"
+msgstr ""
 
 msgid "Button 7: Movie Director Selection"
-msgstr "Pulsante 7: Selezione del regista del film"
+msgstr ""
 
 msgid "Button 8: Movie Actor Selection"
-msgstr "Pulsante 8: Selezione dell'attore del film"
+msgstr ""
 
 msgid "Button 9: Movie Genre Selection"
-msgstr "Pulsante 9: Selezione del genere del film"
+msgstr ""
 
 msgid "Cache Folder:"
-msgstr "Cartella Cache:"
+msgstr ""
 
 msgid "Cancel"
-msgstr "Annulla"
+msgstr ""
 
 msgid "Choose Directory"
-msgstr "Scegli Percorso Cartella"
+msgstr ""
 
 msgid "Choose Directory:"
-msgstr "Scegli Percorso Cartella:"
+msgstr ""
 
 msgid "Cleanup Cache Folder Log"
-msgstr "Pulisci il registro delle cartelle della cache"
+msgstr ""
 
 msgid "Cleanup Cache Folder:"
-msgstr "Pulizia Cartella Cache:"
+msgstr ""
 
 msgid "Country:"
-msgstr "Paese:"
+msgstr ""
 
 msgid "Database"
-msgstr "Database"
+msgstr ""
 
 msgid "Database Editor:"
-msgstr "Editor del Database:"
+msgstr ""
 
 msgid "Database Timer Log"
-msgstr "Log Timer Database"
+msgstr ""
 
 msgid "Database Update Log"
-msgstr "Aggiornamento Database Log"
+msgstr ""
 
 msgid "Database Update Timer stopped: %s\n"
-msgstr "Timer aggiornamento database interrotto: %s\n"
+msgstr ""
 
 msgid "Delete Movie File"
-msgstr "Elimina file Film"
+msgstr ""
 
 msgid "Director Selection"
-msgstr "Selezione Regista"
+msgstr ""
 
 msgid "Director:"
-msgstr "Regista:"
+msgstr ""
 
 msgid "Download new Backdrops:"
-msgstr "Download nuovi Backdrops:"
+msgstr ""
 
 msgid "EPISODES"
-msgstr "EPISODI"
+msgstr ""
 
 msgid "Error moving cache folder: %s"
-msgstr "Errore durante lo spostamento della cartella cache: %s"
+msgstr ""
 
-#, fuzzy
 msgid "File %s non trovato!"
-msgstr "File %s non trovato!"
+msgstr ""
 
 msgid "File %s not found!"
-msgstr "File %s non trovato!"
+msgstr ""
 
 msgid "Folder Selection"
-msgstr "Seleziona percorso"
+msgstr ""
 
 msgid "Free Space"
-msgstr "Spazio Libero"
+msgstr ""
 
 msgid "Free Space:"
-msgstr "Spazio Libero:"
+msgstr ""
 
 msgid "Genre Selection"
-msgstr "Selezione Genere"
+msgstr ""
 
 msgid "Genres:"
-msgstr "Genere:"
+msgstr ""
 
 msgid "Goto last Movie on Start:"
-msgstr "Vai all'ultimo film all'avvio:"
+msgstr ""
 
 msgid "Help"
-msgstr "Aiuto"
+msgstr ""
 
 msgid "Hide"
-msgstr "Nascondi"
+msgstr ""
 
 msgid "Hide Plugin during Update:"
-msgstr "Nascondi plugin durante l'aggiornamento:"
+msgstr ""
 
 msgid "Info Button"
-msgstr "Pulsante Info"
+msgstr ""
 
 msgid "Info Button: Toggle show/hide infos"
-msgstr "Pulsante Info: mostra/nascondi le informazioni"
+msgstr ""
 
 msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
-msgstr "Carica TMDB Apikey da /tmp/tmdb_api.txt"
+msgstr ""
 
 msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
-msgstr "Carica TheTVDb Apikey da /tmp/thetvdb_api.txt"
+msgstr ""
 
 msgid "Load last Selection/Filter on Start:"
-msgstr "Carica l'ultima Selezione/Filtro all'avvio:"
+msgstr ""
 
 msgid "MOVIES"
-msgstr "FILM"
+msgstr ""
 
 msgid "Manage your Movies & Series V.%s"
-msgstr "Gestisci i tuoi film e serie V.%s"
+msgstr ""
 
 msgid "Metrix List Selection Color:"
-msgstr "Elenco selezione colore Metrix:"
+msgstr ""
 
 msgid "Movie Browser Key Assignment"
-msgstr "Assegnazione dei tasti del browser dei Film"
+msgstr ""
 
 msgid "Movie Creation Date Ascending"
-msgstr "Data di creazione Film Crescente"
+msgstr ""
 
 msgid "Movie Creation Date Descending"
-msgstr "Data di creazione Film Decrescente"
+msgstr ""
 
 msgid "Movie Database Update started: %s\n"
-msgstr "Aggiornamento del database dei film avviato: %s\n"
+msgstr ""
 
 msgid "Movie File Informations"
-msgstr "Informazioni file Film"
+msgstr ""
 
 msgid "Movie Folder"
-msgstr "Cartella Film"
+msgstr ""
 
 msgid "Movie Folder Ascending"
-msgstr "Percorso Film Crescente"
+msgstr ""
 
 msgid "Movie Folder Descending"
-msgstr "Percorso Film Decrescente"
+msgstr ""
 
 msgid "Movie Folder Selection"
-msgstr "Selezione cartella Film"
+msgstr ""
 
 msgid "Movie Folder:"
-msgstr "Cartella Film:"
+msgstr ""
 
 msgid "Movie Rating 0-10"
-msgstr "Valutazione Film 0-10"
+msgstr ""
 
 msgid "Movie Rating 10-0"
-msgstr "Valutazione Film 10-0"
+msgstr ""
 
 msgid "Movie Release Date Ascending"
-msgstr "Data di uscita Film Crescente"
+msgstr ""
 
 msgid "Movie Release Date Descending"
-msgstr "Data di uscita Film Decrescente"
+msgstr ""
 
 msgid "Movie Runtime Ascending"
-msgstr "Durata Film Crescente"
+msgstr ""
 
 msgid "Movie Runtime Descending"
-msgstr "Durata Film Decrescente"
+msgstr ""
 
 msgid "Movie Sort Order:"
-msgstr "Ordinamento Film:"
+msgstr ""
 
 msgid "Movie Title A-Z"
-msgstr "Titolo Film A-Z"
+msgstr ""
 
 msgid "Movie Title Z-A"
-msgstr "Titolo Film Z-A"
+msgstr ""
 
 msgid "Movies"
-msgstr "Film"
+msgstr ""
 
 msgid "Movies & Series"
-msgstr "Film & Serie"
+msgstr ""
 
 msgid "Movies Style:"
-msgstr "Stile Film:"
+msgstr ""
 
 msgid "Movies or Series Selection at Start:"
-msgstr "Selezione Film o Serie all'inizio:"
+msgstr ""
 
 msgid "Movies or Series:"
-msgstr "Film o Serie:"
+msgstr ""
 
 msgid "No"
-msgstr "No"
+msgstr ""
 
 msgid "On Database Update"
-msgstr "Su Aggiornamento del Database"
+msgstr ""
 
 msgid "On First Access"
-msgstr "Al Primo Accesso"
+msgstr ""
 
 msgid "Plugin Transparency:"
-msgstr "Trasparenza Plugin:"
+msgstr ""
 
 msgid "Plugin in Enigma Menu:"
-msgstr "Plugin in Menu Enigma:"
+msgstr ""
 
 msgid "Posterwall/Backdrop Show Plot:"
-msgstr "Mostra Trama Posterwall/Backdrop:"
+msgstr ""
 
 msgid "Radio Button: Delete/Blacklist movie"
-msgstr "Pulsante di scelta: Elimina/Aggiungi film alla lista nera"
+msgstr ""
 
 msgid "Rating:"
-msgstr "Valutazione:"
+msgstr ""
 
 msgid "Really close without saving settings?"
-msgstr "Chiudi davvero senza salvare le impostazioni?"
+msgstr ""
 
 msgid "Reset Database:"
-msgstr "Reset Database:"
+msgstr ""
 
 msgid "Restore Database:"
-msgstr "Ripristino Database:"
+msgstr ""
 
 msgid "Runtime:"
-msgstr "Durata:"
+msgstr ""
 
 msgid "SERIES"
-msgstr "SERIE"
+msgstr ""
 
 msgid "Save"
-msgstr "Salva"
+msgstr ""
 
 msgid "Select skin *Restart GUI Required:"
-msgstr "Seleziona la skin \"Riavvio Necessario\":"
+msgstr ""
 
 msgid "Series"
-msgstr "Serie"
+msgstr ""
 
 msgid "Series Episodes"
-msgstr "Episodi Serie"
+msgstr ""
 
 msgid "Series Folder: No Info possible"
-msgstr "Cartella Serie: nessuna informazione possibile"
+msgstr ""
 
 msgid "Series Style:"
-msgstr "Stile Serie:"
+msgstr ""
 
 msgid "Show"
-msgstr "Mostra"
+msgstr ""
 
 msgid "Show Backdrops:"
-msgstr "Mostra Backdrops:"
+msgstr ""
 
 msgid "Show List of Movie Folder:"
-msgstr "Mostra l'elenco della cartella dei film:"
+msgstr ""
 
 msgid "Show TV in Background (no m1v):"
-msgstr "Mostra TV in Background (no m1v):"
+msgstr ""
 
 msgid "Signup on TMDB and input free personal ApiKey"
-msgstr "Iscriviti su TMDB e inserisci l'ApiKey personale gratuita"
+msgstr ""
 
 msgid "Signup on TheTVDb and input free personal ApiKey"
-msgstr "Iscriviti su TheTVDb e inserisci l'ApiKey personale gratuita"
+msgstr ""
 
 msgid "Start Plugin with Video Button:"
-msgstr "Avvia Plugin con Bottone Video:"
+msgstr ""
 
 msgid "Stop Button: Mark movie as seen"
-msgstr "Pulsante Stop: contrassegna il film come visto"
+msgstr ""
 
 msgid "Style"
-msgstr "Switch Screen"
+msgstr ""
 
 msgid "TMDB API key successfully imported!"
-msgstr "Chiave API TMDB importata correttamente!"
+msgstr ""
 
 msgid "TMDb Results"
-msgstr "Risuktati TMDb"
+msgstr ""
 
 msgid "TMDb/TheTVDb Language:"
-msgstr "Lingua TMDb/TheTVDb:"
+msgstr ""
 
 msgid "Text Button: Edit Database"
-msgstr "Pulsante di testo: Modifica database"
+msgstr ""
 
 msgid "TheTVDb API key successfully imported!"
-msgstr "La chiave API TVDb è stata importata correttamente!"
+msgstr ""
 
 msgid "TheTVDb Results"
-msgstr "Risultati TheTVDb"
+msgstr ""
 
 msgid "Timer Database Update:"
-msgstr "Timer Aggiornamento del Database:"
+msgstr ""
 
 msgid "Toggle Plugin Style"
-msgstr "Attiva/disattiva lo stile del plugin"
+msgstr ""
 
 msgid "Toggle hide/show plugin"
-msgstr "Attiva/disattiva la visualizzazione/nascondi del plugin"
+msgstr ""
 
 msgid "Update"
-msgstr "Aggiorna"
+msgstr ""
 
 msgid "Update Database with Timer:"
-msgstr "Aggiorna database con timer:"
+msgstr ""
 
-#, fuzzy
 msgid "Update Series"
-msgstr "Aggiorna Film/Serie"
+msgstr ""
 
 msgid "Use m1v Backdrops:"
-msgstr "Usa sfondi m1v:"
+msgstr ""
 
 msgid "Video Button: Update Database"
-msgstr "Pulsante video: Aggiorna database"
+msgstr ""
 
 msgid "Years:"
-msgstr "Anno:"
+msgstr ""
 
 msgid "Yes"
-msgstr "Si"
+msgstr ""
 
 msgid "backdrop"
-msgstr "backdrop"
+msgstr ""
 
 msgid "banner"
-msgstr "banner"
+msgstr ""
 
 msgid "movie"
-msgstr "film"
+msgstr ""
 
 msgid "poster"
-msgstr "poster"
+msgstr ""
 
 msgid "series"
-msgstr "serie"
-
-#~ msgid "Error while loading"
-#~ msgstr "Errore durante il caricamento"
-
-#~ msgid "Update Selection"
-#~ msgstr "Aggiorna Seleziona"
-
-#~ msgid "Invalid selection"
-#~ msgstr "Selezione non valida"
-
-#~ msgid "Update error: "
-#~ msgstr "Errore Aggiornamento: "
-
-#~ msgid ""
-#~ "\n"
-#~ "The CutListEditor plugin supports only records with the box."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin CutListEditor supporta solo registrazioni con il box."
-
-#~ msgid ""
-#~ "\n"
-#~ "The CutListEditor plugin is not installed.\n"
-#~ "\n"
-#~ "The plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?"
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin CutListEditor non è installato.\n"
-#~ "\n"
-#~ "Il plugin può essere installato automaticamente se esiste nel feed della tua immagine. Cercare subito il plugin e installarlo se presente nel feed?"
-
-#~ msgid ""
-#~ "\n"
-#~ "The MovieCut plugin supports only records with the box."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin MovieCut supporta solo registrazioni con il box."
-
-#~ msgid ""
-#~ "\n"
-#~ "The MovieCut plugin is not installed.\n"
-#~ "\n"
-#~ "The plugin can be installed automatically if it exists on the feed of your image. Search for the plugin now and install it if present on the feed?"
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin MovieCut non è installato.\n"
-#~ "\n"
-#~ "Il plugin può essere installato automaticamente se esiste nel feed della tua immagine. Cercare subito il plugin e installarlo se presente nel feed?"
-
-#~ msgid ""
-#~ "\n"
-#~ "The CutListEditor plugin was installed.\n"
-#~ "Please restart Enigma."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin CutListEditor è stato installato.\n"
-#~ "Si prega di riavviare Enigma."
-
-#~ msgid ""
-#~ "\n"
-#~ "The CutListEditor plugin is not present on the feed of your image.\n"
-#~ "\n"
-#~ "Please install the CutListEditor plugin manually."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin CutListEditor non è presente nel feed della tua immagine.\n"
-#~ "\n"
-#~ "Si prega di installare manualmente il plugin CutListEditor."
-
-#~ msgid ""
-#~ "\n"
-#~ "The MovieCut plugin was installed.\n"
-#~ "Please restart Enigma."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin MovieCut è stato installato.\n"
-#~ "Si prega di riavviare Enigma."
-
-#~ msgid ""
-#~ "\n"
-#~ "The MovieCut plugin is not present on the feed of your image.\n"
-#~ "\n"
-#~ "Please install the CutListEditor plugin manually."
-#~ msgstr ""
-#~ "\n"
-#~ "Il plugin MovieCut non è presente nel feed della tua immagine.\n"
-#~ "\n"
-#~ "Si prega di installare manualmente il plugin CutListEditor."
-
-#~ msgid ""
-#~ "Update Database\n"
-#~ "Help\n"
-#~ "Toggle Plugin Style\n"
-#~ "Toggle hide/show plugin\n"
-#~ "Info Button: Toggle show/hide infos\n"
-#~ "Video Button: Update Database\n"
-#~ "Text Button: Edit Database\n"
-#~ "Stop Button: Mark movie as seen\n"
-#~ "Radio Button: Delete/Blacklist movie\n"
-#~ "<- -> Button: Go to first letter\n"
-#~ "Button 1: CutListEditor/MovieCut/LogView\n"
-#~ "Button 2: Renew infos on TMDb\n"
-#~ "Button 3: Renew infos on TheTVDb\n"
-#~ "Button 4: Hide/show seen movies\n"
-#~ "Button 5: Toggle Movies/Series view\n"
-#~ "Button 6: Movie Folder Selection\n"
-#~ "Button 7: Movie Director Selection\n"
-#~ "Button 8: Movie Actor Selection\n"
-#~ "Button 9: Movie Genre Selection\n"
-#~ "Button 0: Go to end of list"
-#~ msgstr ""
-#~ "Aggiorna Database\n"
-#~ "Aiuto\n"
-#~ "Scegli lo stile del plug-in\n"
-#~ "Nascondi/Mostra plugin\n"
-#~ "Pulsante Info: mostra/nascondi informazioni\n"
-#~ "Pulsante Video: Aggiorna database\n"
-#~ "Pulsante di testo: Modifica database\n"
-#~ "Pulsante di arresto: contrassegna il film come visto\n"
-#~ "Pulsante di opzione: Elimina/lista nera film\n"
-#~ "<- -> Pulsante: Vai alla prima lettera\n"
-#~ "Pulsante 1: CutListEditor/MovieCut/LogView\n"
-#~ "Pulsante 2: Rinnova le informazioni su TMDb\n"
-#~ "Pulsante 3: Rinnova le informazioni su TheTVDb\n"
-#~ "Pulsante 4: Nascondi/mostra i film visti\n"
-#~ "Pulsante 5: attiva/disattiva la visualizzazione Film/Serie\n"
-#~ "Pulsante 6: Selezione cartella film\n"
-#~ "Pulsante 7: selezione del regista\n"
-#~ "Pulsante 8: selezione dell'attore cinematografico\n"
-#~ "Pulsante 9: selezione del genere di film\n"
-#~ "Pulsante 0: vai alla fine dell'elenco\""
-
-#~ msgid "Posterwall/Backdrop Headline Color:"
-#~ msgstr "Colore del titolo Posterwall/Backdrop:"
-
-#, python-format
-#~ msgid ""
-#~ "Start time: %s\n"
-#~ "End time: %s\n"
-#~ "Orphaned Backdrops/Posters removed: %s\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Ora di inizio: %s\n"
-#~ "Ora di fine: %s\n"
-#~ "Backdrops/Poster orfani rimossi: %s\n"
-#~ "\n"
-
-#~ msgid ""
-#~ "Import Api Key TMDB from\n"
-#~ "/tmp/tmdbapikey.txt?"
-#~ msgstr ""
-#~ "Importa chiave API TMDB da\n"
-#~ "/tmp/tmdbapikey.txt?"
-
-#, python-format
-#~ msgid "Missing %s !"
-#~ msgstr "%s mancante!"
-
-#~ msgid "TMDB ApiKey Imported & Stored!"
-#~ msgstr "TMDB ApiKey importato e memorizzato!"
-
-#~ msgid ""
-#~ "Import Api Key TheTVDb from\n"
-#~ "/tmp/tvdbapikey.txt?"
-#~ msgstr ""
-#~ "Importa la chiave API TheTVDb da\n"
-#~ "/tmp/tvdbapikey.txt?"
-
-#~ msgid "TheTVDb ApiKey Imported & Stored!"
-#~ msgstr "TheTVDb ApiKey importato e memorizzato!"
+msgstr ""

@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-04-19 14:05+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Catalan <ca@dodds.net>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\n"
+msgstr ""
+
+msgid "*******Movie Browser Database Update*******\n"
+msgstr ""
+
+msgid "<- -> Button: Go to first letter"
+msgstr ""
+
+msgid "<List of Movie Folder>"
+msgstr ""
+
+msgid "Actor Selection"
+msgstr ""
+
+msgid "Actors:"
+msgstr ""
+
+msgid "All /tmp/posters Cleaned"
+msgstr ""
+
+msgid "Automatic"
+msgstr ""
+
+msgid "Backup Database:"
+msgstr ""
+
+msgid "Blacklist Movie File"
+msgstr ""
+
+msgid "Button 0: Go to end of list"
+msgstr ""
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr ""
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr ""
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr ""
+
+msgid "Button 4: Hide/show seen movies"
+msgstr ""
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr ""
+
+msgid "Button 6: Movie Folder Selection"
+msgstr ""
+
+msgid "Button 7: Movie Director Selection"
+msgstr ""
+
+msgid "Button 8: Movie Actor Selection"
+msgstr ""
+
+msgid "Button 9: Movie Genre Selection"
+msgstr ""
+
+msgid "Cache Folder:"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Choose Directory"
+msgstr ""
+
+msgid "Choose Directory:"
+msgstr ""
+
+msgid "Cleanup Cache Folder Log"
+msgstr ""
+
+msgid "Cleanup Cache Folder:"
+msgstr ""
+
+msgid "Country:"
+msgstr ""
+
+msgid "Database"
+msgstr ""
+
+msgid "Database Editor:"
+msgstr ""
+
+msgid "Database Timer Log"
+msgstr ""
+
+msgid "Database Update Log"
+msgstr ""
+
+msgid "Database Update Timer stopped: %s\n"
+msgstr ""
+
+msgid "Delete Movie File"
+msgstr ""
+
+msgid "Director Selection"
+msgstr ""
+
+msgid "Director:"
+msgstr ""
+
+msgid "Download new Backdrops:"
+msgstr ""
+
+msgid "EPISODES"
+msgstr ""
+
+msgid "Error moving cache folder: %s"
+msgstr ""
+
+msgid "File %s non trovato!"
+msgstr ""
+
+msgid "File %s not found!"
+msgstr ""
+
+msgid "Folder Selection"
+msgstr ""
+
+msgid "Free Space"
+msgstr ""
+
+msgid "Free Space:"
+msgstr ""
+
+msgid "Genre Selection"
+msgstr ""
+
+msgid "Genres:"
+msgstr ""
+
+msgid "Goto last Movie on Start:"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Hide"
+msgstr ""
+
+msgid "Hide Plugin during Update:"
+msgstr ""
+
+msgid "Info Button"
+msgstr ""
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr ""
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr ""
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr ""
+
+msgid "Load last Selection/Filter on Start:"
+msgstr ""
+
+msgid "MOVIES"
+msgstr ""
+
+msgid "Manage your Movies & Series V.%s"
+msgstr ""
+
+msgid "Metrix List Selection Color:"
+msgstr ""
+
+msgid "Movie Browser Key Assignment"
+msgstr ""
+
+msgid "Movie Creation Date Ascending"
+msgstr ""
+
+msgid "Movie Creation Date Descending"
+msgstr ""
+
+msgid "Movie Database Update started: %s\n"
+msgstr ""
+
+msgid "Movie File Informations"
+msgstr ""
+
+msgid "Movie Folder"
+msgstr ""
+
+msgid "Movie Folder Ascending"
+msgstr ""
+
+msgid "Movie Folder Descending"
+msgstr ""
+
+msgid "Movie Folder Selection"
+msgstr ""
+
+msgid "Movie Folder:"
+msgstr ""
+
+msgid "Movie Rating 0-10"
+msgstr ""
+
+msgid "Movie Rating 10-0"
+msgstr ""
+
+msgid "Movie Release Date Ascending"
+msgstr ""
+
+msgid "Movie Release Date Descending"
+msgstr ""
+
+msgid "Movie Runtime Ascending"
+msgstr ""
+
+msgid "Movie Runtime Descending"
+msgstr ""
+
+msgid "Movie Sort Order:"
+msgstr ""
+
+msgid "Movie Title A-Z"
+msgstr ""
+
+msgid "Movie Title Z-A"
+msgstr ""
+
+msgid "Movies"
+msgstr ""
+
+msgid "Movies & Series"
+msgstr ""
+
+msgid "Movies Style:"
+msgstr ""
+
+msgid "Movies or Series Selection at Start:"
+msgstr ""
+
+msgid "Movies or Series:"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "On Database Update"
+msgstr ""
+
+msgid "On First Access"
+msgstr ""
+
+msgid "Plugin Transparency:"
+msgstr ""
+
+msgid "Plugin in Enigma Menu:"
+msgstr ""
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr ""
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr ""
+
+msgid "Rating:"
+msgstr ""
+
+msgid "Really close without saving settings?"
+msgstr ""
+
+msgid "Reset Database:"
+msgstr ""
+
+msgid "Restore Database:"
+msgstr ""
+
+msgid "Runtime:"
+msgstr ""
+
+msgid "SERIES"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Select skin *Restart GUI Required:"
+msgstr ""
+
+msgid "Series"
+msgstr ""
+
+msgid "Series Episodes"
+msgstr ""
+
+msgid "Series Folder: No Info possible"
+msgstr ""
+
+msgid "Series Style:"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+msgid "Show Backdrops:"
+msgstr ""
+
+msgid "Show List of Movie Folder:"
+msgstr ""
+
+msgid "Show TV in Background (no m1v):"
+msgstr ""
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr ""
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr ""
+
+msgid "Start Plugin with Video Button:"
+msgstr ""
+
+msgid "Stop Button: Mark movie as seen"
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid "TMDB API key successfully imported!"
+msgstr ""
+
+msgid "TMDb Results"
+msgstr ""
+
+msgid "TMDb/TheTVDb Language:"
+msgstr ""
+
+msgid "Text Button: Edit Database"
+msgstr ""
+
+msgid "TheTVDb API key successfully imported!"
+msgstr ""
+
+msgid "TheTVDb Results"
+msgstr ""
+
+msgid "Timer Database Update:"
+msgstr ""
+
+msgid "Toggle Plugin Style"
+msgstr ""
+
+msgid "Toggle hide/show plugin"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Update Database with Timer:"
+msgstr ""
+
+msgid "Update Series"
+msgstr ""
+
+msgid "Use m1v Backdrops:"
+msgstr ""
+
+msgid "Video Button: Update Database"
+msgstr ""
+
+msgid "Years:"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "backdrop"
+msgstr ""
+
+msgid "banner"
+msgstr ""
+
+msgid "movie"
+msgstr ""
+
+msgid "poster"
+msgstr ""
+
+msgid "series"
+msgstr ""

@@ -1,25 +1,42 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import os
+import re
+import subprocess
+from xml.etree import ElementTree as ET
 """
 ###########################################################
-moviebrowser for Enigma2
+Plugin for Enigma2
 Created by: Lululla
 ###########################################################
-Last Updated: 2026-01-31
+Last Updated: 2026-04-19
 Credits: Lululla (modifications)
 Homepage: www.corvoboys.org
           www.linuxsat-support.com
 ###########################################################
 """
-import os
-import re
-import subprocess
-from xml.etree import ElementTree as ET
 
-PLUGIN_NAME = "moviebrowser"
 PLUGIN_DIR = os.path.dirname(os.path.abspath(__file__))
-LOCALE_DIR = os.path.join(PLUGIN_DIR, "locale")
+PLUGIN_NAME = os.path.basename(PLUGIN_DIR)
+LOCALE_DIR = os.path.join(PLUGIN_DIR, "res", "locale")
+
+
+def get_locale_dir(plugin_dir):
+    candidates = [
+        os.path.join(plugin_dir, "locale"),         # es. /plugin/locale
+        os.path.join(plugin_dir, "res", "locale")   # es. /plugin/res/locale
+    ]
+    for candidate in candidates:
+        if os.path.exists(candidate):
+            return candidate
+    # default: verrà creata successivamente
+    return os.path.join(plugin_dir, "locale")
+
+
+LOCALE_DIR = get_locale_dir(PLUGIN_DIR)
 POT_FILE = os.path.join(LOCALE_DIR, "{}.pot".format(PLUGIN_NAME))
+
+
 STANDARD_LANGUAGES = [
     'af',         # Afrikaans
     'am',         # Amharic
@@ -387,8 +404,8 @@ def fix_po_file(po_file):
             if line.strip() == 'msgid ""' and i + \
                     1 < len(lines) and lines[i + 1].strip() == 'msgstr ""':
                 # Check if this is the header (should be only one)
-                if not any(l.strip().startswith('"Project-Id-Version:')
-                           for l in fixed_lines):
+                if not any(ls.strip().startswith('"Project-Id-Version:')
+                           for ls in fixed_lines):
                     # Keep header
                     fixed_lines.append(line)
                     fixed_lines.append(lines[i + 1])

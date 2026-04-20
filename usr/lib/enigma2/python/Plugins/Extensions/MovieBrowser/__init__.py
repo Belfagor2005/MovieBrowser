@@ -10,7 +10,7 @@ import gettext
 from Components.Language import language
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
 __version__ = "3.9-rc0"
-PluginLanguageDomain = "moviebrowser"
+PluginLanguageDomain = "MovieBrowser"
 PluginLanguagePath = "Extensions/MovieBrowser/locale"
 
 isDreambox = exists("/usr/bin/apt-get")

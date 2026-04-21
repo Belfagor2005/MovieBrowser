@@ -7,7 +7,7 @@
 [![Python package](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml/badge.svg)](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/pylint.yml) 
 [![Ruff Status](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/ruff.yml/badge.svg)](https://github.com/Belfagor2005/MovieBrowser/actions/workflows/ruff.yml)
 [![GitHub stars](https://img.shields.io/github/stars/Belfagor2005/MovieBrowser?style=social)](https://github.com/Belfagor2005/MovieBrowser/stargazers)
-[![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](Maintainers.md#maintainers "Donate")
+[![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://ko-fi.com/lululla)
 
 **Advanced movie and series management plugin for Enigma2-based set-top boxes**  
 *Forked from @kashmir's original work, completely rewritten for modern APIs*

@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Pengatur Waktu Pembaruan Basis Data Peramban Film*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Pengatur Waktu Pembaruan Basis Data Peramban Film*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Pembaruan Basis Data Browser Film*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Pembaruan Basis Data Browser Film*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Tombol: Ke huruf pertama"
@@ -109,8 +109,8 @@ msgstr "Log Pengatur Waktu Basis Data"
 msgid "Database Update Log"
 msgstr "Log Pembaruan Basis Data"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Timer Pembaruan Basis Data berhenti: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Timer Pembaruan Basis Data berhenti: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Hapus File Film"
@@ -196,8 +196,8 @@ msgstr "Tanggal Pembuatan Film Meningkat"
 msgid "Movie Creation Date Descending"
 msgstr "Tanggal Pembuatan Film Menurun"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Pembaruan Basis Data Film dimulai: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Pembaruan Basis Data Film dimulai: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informasi File Film"

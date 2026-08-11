@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******* ଚଳଚ୍ଚିତ୍ର ବ୍ରାଉଜର୍ ଡାଟାବେସ୍ ଅପଡେଟ୍ ଟାଇମର୍ ******* \ n |"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* ଚଳଚ୍ଚିତ୍ର ବ୍ରାଉଜର୍ ଡାଟାବେସ୍ ଅପଡେଟ୍ ଟାଇମର୍ ******* \\\\\\\\ n |"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******* ଚଳଚ୍ଚିତ୍ର ବ୍ରାଉଜର୍ ଡାଟାବେସ୍ ଅଦ୍ୟତନ ******* \ n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* ଚଳଚ୍ଚିତ୍ର ବ୍ରାଉଜର୍ ଡାଟାବେସ୍ ଅଦ୍ୟତନ ******* \\\\\\\\ n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> ବଟନ୍: ପ୍ରଥମ ଅକ୍ଷରକୁ ଯାଆନ୍ତୁ |"
@@ -109,8 +109,8 @@ msgstr "ଡାଟାବେସ୍ ଟାଇମର୍ ଲଗ୍ |"
 msgid "Database Update Log"
 msgstr "ଡାଟାବେସ୍ ଅପଡେଟ୍ ଲଗ୍ |"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "ଡାଟାବେସ୍ ଅପଡେଟ୍ ଟାଇମର୍ ବନ୍ଦ ହେଲା:% s \ n |"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ଡାଟାବେସ୍ ଅପଡେଟ୍ ଟାଇମର୍ ବନ୍ଦ ହେଲା:% s \\\\\\\\ n |"
 
 msgid "Delete Movie File"
 msgstr "ଚଳଚ୍ଚିତ୍ର ଫାଇଲ୍ ଡିଲିଟ୍ କରନ୍ତୁ |"
@@ -196,8 +196,8 @@ msgstr "ଚଳଚ୍ଚିତ୍ର ନିର୍ମାଣ ତାରିଖ ଆର
 msgid "Movie Creation Date Descending"
 msgstr "ଚଳଚ୍ଚିତ୍ର ନିର୍ମାଣ ତାରିଖ ଅବତରଣ |"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "ଚଳଚ୍ଚିତ୍ର ଡାଟାବେସ୍ ଅଦ୍ୟତନ ଆରମ୍ଭ ହେଲା:% s \ n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "ଚଳଚ୍ଚିତ୍ର ଡାଟାବେସ୍ ଅଦ୍ୟତନ ଆରମ୍ଭ ହେଲା:% s \\\\\\\\ n"
 
 msgid "Movie File Informations"
 msgstr "ଚଳଚ୍ଚିତ୍ର ଫାଇଲ ସୂଚନା"
@@ -344,10 +344,10 @@ msgid "Style"
 msgstr "ଶ Style ଳୀ"
 
 msgid "TMDB API key successfully imported!"
-msgstr ""
+msgstr "TMDB API କି ସଫଳତାର ସହିତ ଆମଦାନୀ ହୋଇଛି!"
 
 msgid "TMDb Results"
-msgstr ""
+msgstr "TMDb ଫଳାଫଳ |"
 
 msgid "TMDb/TheTVDb Language:"
 msgstr "TMDb / TheTVDb ଭାଷା:"
@@ -380,7 +380,7 @@ msgid "Update Series"
 msgstr "ସିରିଜ୍ ଅପଡେଟ୍ କରନ୍ତୁ |"
 
 msgid "Use m1v Backdrops:"
-msgstr ""
+msgstr "M1v ପୃଷ୍ଠପଟ ବ୍ୟବହାର କରନ୍ତୁ:"
 
 msgid "Video Button: Update Database"
 msgstr "ଭିଡିଓ ବଟନ୍: ଡାଟାବେସ୍ ଅପଡେଟ୍ କରନ୍ତୁ |"
@@ -401,7 +401,7 @@ msgid "movie"
 msgstr "ଚଳଚ୍ଚିତ୍ର"
 
 msgid "poster"
-msgstr ""
+msgstr "ପୋଷ୍ଟର"
 
 msgid "series"
 msgstr "କ୍ରମ"

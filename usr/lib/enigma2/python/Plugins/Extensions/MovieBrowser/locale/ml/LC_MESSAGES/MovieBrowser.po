@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******മൂവി ബ്രൗസർ ഡാറ്റാബേസ് അപ്‌ഡേറ്റ് ടൈമർ*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******മൂവി ബ്രൗസർ ഡാറ്റാബേസ് അപ്‌ഡേറ്റ് ടൈമർ*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******മൂവി ബ്രൗസർ ഡാറ്റാബേസ് അപ്‌ഡേറ്റ്*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******മൂവി ബ്രൗസർ ഡാറ്റാബേസ് അപ്‌ഡേറ്റ്*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> ബട്ടൺ: ആദ്യ അക്ഷരത്തിലേക്ക് പോകുക"
@@ -109,8 +109,8 @@ msgstr "ഡാറ്റാബേസ് ടൈമർ ലോഗ്"
 msgid "Database Update Log"
 msgstr "ഡാറ്റാബേസ് അപ്ഡേറ്റ് ലോഗ്"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "ഡാറ്റാബേസ് അപ്ഡേറ്റ് ടൈമർ നിർത്തി: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ഡാറ്റാബേസ് അപ്ഡേറ്റ് ടൈമർ നിർത്തി: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "മൂവി ഫയൽ ഇല്ലാതാക്കുക"
@@ -196,8 +196,8 @@ msgstr "സിനിമ സൃഷ്‌ടിക്കുന്ന തീയത�
 msgid "Movie Creation Date Descending"
 msgstr "സിനിമ സൃഷ്‌ടിക്കുന്ന തീയതി അവരോഹണം ചെയ്യുന്നു"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "മൂവി ഡാറ്റാബേസ് അപ്ഡേറ്റ് ആരംഭിച്ചു: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "മൂവി ഡാറ്റാബേസ് അപ്ഡേറ്റ് ആരംഭിച്ചു: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "മൂവി ഫയൽ വിവരങ്ങൾ"

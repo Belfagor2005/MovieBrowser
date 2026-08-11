@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Тајмер за ажурирање на базата на податоци на прелистувачот филмови********\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Тајмер за ажурирање на базата на податоци на прелистувачот филмови********\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Ажурирање на базата на податоци на прелистувачот филмови********\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Ажурирање на базата на податоци на прелистувачот филмови********\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Копче: Одете на првата буква"
@@ -109,8 +109,8 @@ msgstr "Дневник на тајмер на база на податоци"
 msgid "Database Update Log"
 msgstr "Дневник за ажурирање на базата на податоци"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Тајмерот за ажурирање на базата на податоци запре: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Тајмерот за ажурирање на базата на податоци запре: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Избришете филмска датотека"
@@ -196,8 +196,8 @@ msgstr "Датум на создавање филм растечки"
 msgid "Movie Creation Date Descending"
 msgstr "Датумот на создавање филм опаѓа"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Започна ажурирањето на базата на податоци за филмови: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Започна ажурирањето на базата на податоци за филмови: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Информации за филмската датотека"

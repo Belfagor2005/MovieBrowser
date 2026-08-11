@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******* ตัวจับเวลาการอัพเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* ตัวจับเวลาการอัพเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******* อัปเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* อัปเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> ปุ่ม: ไปที่ตัวอักษรตัวแรก"
@@ -109,8 +109,8 @@ msgstr "บันทึกตัวจับเวลาฐานข้อมู
 msgid "Database Update Log"
 msgstr "บันทึกการอัพเดตฐานข้อมูล"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "ตัวจับเวลาการอัปเดตฐานข้อมูลหยุดลง: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ตัวจับเวลาการอัปเดตฐานข้อมูลหยุดลง: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "ลบไฟล์ภาพยนตร์"
@@ -196,8 +196,8 @@ msgstr "วันที่สร้างภาพยนตร์จากน้
 msgid "Movie Creation Date Descending"
 msgstr "วันที่สร้างภาพยนตร์จากมากไปน้อย"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "เริ่มต้นการอัพเดตฐานข้อมูลภาพยนตร์: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "เริ่มต้นการอัพเดตฐานข้อมูลภาพยนตร์: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "ข้อมูลไฟล์ภาพยนตร์"

@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Kino brauzeri maʼlumotlar bazasini yangilash taymer*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Kino brauzeri maʼlumotlar bazasini yangilash taymer*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Kino brauzeri maʼlumotlar bazasini yangilash*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Kino brauzeri maʼlumotlar bazasini yangilash*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Tugma: Birinchi harfga o'tish"
@@ -109,8 +109,8 @@ msgstr "Ma'lumotlar bazasi taymer jurnali"
 msgid "Database Update Log"
 msgstr "Ma'lumotlar bazasini yangilash jurnali"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Maʼlumotlar bazasini yangilash taymer toʻxtatildi: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Maʼlumotlar bazasini yangilash taymer toʻxtatildi: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Film faylini o'chirish"
@@ -196,8 +196,8 @@ msgstr "Film yaratilish sanasi ortib bormoqda"
 msgid "Movie Creation Date Descending"
 msgstr "Film yaratilish sanasi kamayishi"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Filmlar bazasini yangilash boshlandi: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Filmlar bazasini yangilash boshlandi: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Film fayl haqida ma'lumot"

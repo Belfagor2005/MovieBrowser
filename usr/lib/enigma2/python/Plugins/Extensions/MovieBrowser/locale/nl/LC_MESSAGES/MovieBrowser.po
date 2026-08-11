@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Filmbrowser Database-updatetimer*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Filmbrowser Database-updatetimer*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Filmbrowserdatabase-update*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Filmbrowserdatabase-update*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Knop: Ga naar de eerste letter"
@@ -110,8 +110,8 @@ msgstr "Databasetimerlogboek"
 msgid "Database Update Log"
 msgstr "Database-updatelogboek"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Database-updatetimer gestopt: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Database-updatetimer gestopt: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Filmbestand verwijderen"
@@ -197,8 +197,8 @@ msgstr "Aanmaakdatum van film oplopend"
 msgid "Movie Creation Date Descending"
 msgstr "Aanmaakdatum van de film loopt af"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Filmdatabase-update gestart: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Filmdatabase-update gestart: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informatie over filmbestanden"

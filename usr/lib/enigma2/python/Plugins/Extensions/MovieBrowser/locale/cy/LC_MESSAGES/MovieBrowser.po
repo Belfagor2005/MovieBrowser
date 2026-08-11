@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Amserydd Diweddaru Cronfa Ddata Porwr Ffilm ***********\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Amserydd Diweddaru Cronfa Ddata Porwr Ffilm ***********\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Diweddariad Cronfa Ddata Porwr Ffilm ***********\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Diweddariad Cronfa Ddata Porwr Ffilm ***********\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Botwm: Ewch i'r llythyren gyntaf"
@@ -109,8 +109,8 @@ msgstr "Log Amserydd Cronfa Ddata"
 msgid "Database Update Log"
 msgstr "Log Diweddaru Cronfa Ddata"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Stopiwyd Amserydd Diweddaru Cronfa Ddata: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Stopiwyd Amserydd Diweddaru Cronfa Ddata: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Dileu Ffeil Ffilm"
@@ -196,8 +196,8 @@ msgstr "Dyddiad Creu Ffilm Esgynnol"
 msgid "Movie Creation Date Descending"
 msgstr "Dyddiad Creu Ffilm yn Disgyn"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Dechreuwyd Diweddariad Cronfa Ddata Ffilm: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Dechreuwyd Diweddariad Cronfa Ddata Ffilm: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Gwybodaeth Ffeil Ffilm"

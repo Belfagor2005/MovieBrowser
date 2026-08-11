@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******* Fliekblaaier-databasisopdateringteller******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* Fliekblaaier-databasisopdateringteller******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******* Fliekblaaier-databasisopdatering*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* Fliekblaaier-databasisopdatering*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Knoppie: Gaan na eerste letter"
@@ -109,8 +109,8 @@ msgstr "Databasis Timer Log"
 msgid "Database Update Log"
 msgstr "Databasisopdateringslogboek"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Databasisopdatering-afteller gestop: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Databasisopdatering-afteller gestop: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Vee flieklêer uit"
@@ -196,8 +196,8 @@ msgstr "Fliekskeppingsdatum stygende"
 msgid "Movie Creation Date Descending"
 msgstr "Fliekskeppingsdatum daal"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Fliekdatabasisopdatering het begin: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Fliekdatabasisopdatering het begin: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Filmlêerinligting"

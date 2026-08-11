@@ -4,20 +4,10 @@
 # [lululla] <ekekaz@gmail.com>, 2025.
 #
 
-
-
-
-
-
-
-
-
-
-
-msgid "*******Movie Browser Database Update Timer*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\n"
 msgstr ""
 
-msgid "*******Movie Browser Database Update*******\n"
+msgid "*******Movie Browser Database Update*******\\n"
 msgstr ""
 
 msgid "<- -> Button: Go to first letter"
@@ -107,7 +97,7 @@ msgstr ""
 msgid "Database Update Log"
 msgstr ""
 
-msgid "Database Update Timer stopped: %s\n"
+msgid "Database Update Timer stopped: %s\\n"
 msgstr ""
 
 msgid "Delete Movie File"
@@ -194,7 +184,7 @@ msgstr ""
 msgid "Movie Creation Date Descending"
 msgstr ""
 
-msgid "Movie Database Update started: %s\n"
+msgid "Movie Database Update started: %s\\n"
 msgstr ""
 
 msgid "Movie File Informations"

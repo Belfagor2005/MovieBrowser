@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******* פֿילם בראַוזער דאַטאַבאַסע אַפּדייט טיימער*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* פֿילם בראַוזער דאַטאַבאַסע אַפּדייט טיימער*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******* פֿילם בראַוזער דאַטאַבאַסע אַפּדייט*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* פֿילם בראַוזער דאַטאַבאַסע אַפּדייט*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> קנעפּל: גיין צו ערשטער בריוו"
@@ -109,8 +109,8 @@ msgstr "דאַטאַבאַסע טימער קלאָץ"
 msgid "Database Update Log"
 msgstr "דאַטאַבאַסע דערהייַנטיקן קלאָץ"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "דאַטאַבאַסע אַפּדייט טיימער סטאַפּט: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "דאַטאַבאַסע אַפּדייט טיימער סטאַפּט: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "ויסמעקן פֿילם טעקע"
@@ -196,8 +196,8 @@ msgstr "פֿילם קרעאַטיאָן טאָג אַסענדינג"
 msgid "Movie Creation Date Descending"
 msgstr "פֿילם קרעאַטיאָן טאָג דעססענדינג"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "פֿילם דאַטאַבאַסע דערהייַנטיקן סטאַרטעד: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "פֿילם דאַטאַבאַסע דערהייַנטיקן סטאַרטעד: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "פֿילם טעקע אינפֿאָרמאַציע"

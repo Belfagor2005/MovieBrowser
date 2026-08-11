@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Temprizador de mesa a jorn de basa de donadas del navigador de filmes*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Temprizador de mesa a jorn de basa de donadas del navigador de filmes*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Mesa a jorn de la basa de donadas del navigador de filmes*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Mesa a jorn de la basa de donadas del navigador de filmes*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Boton : Anar a la primièra letra"
@@ -109,8 +109,8 @@ msgstr "Registre del temporizator de basa de donadas"
 msgid "Database Update Log"
 msgstr "Jornal de mesa a jorn de la basa de donadas"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Temporizator de mesa a jorn de basa de donadas arrestat : %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Temporizator de mesa a jorn de basa de donadas arrestat : %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Suprimir lo fichièr de filme"
@@ -196,8 +196,8 @@ msgstr "Data de creacion del filme en pujada"
 msgid "Movie Creation Date Descending"
 msgstr "Data de creacion del filme en davalada"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Mesa a jorn de la basa de donadas de filmes començada : %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Mesa a jorn de la basa de donadas de filmes començada : %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informacions del fichièr de filme"

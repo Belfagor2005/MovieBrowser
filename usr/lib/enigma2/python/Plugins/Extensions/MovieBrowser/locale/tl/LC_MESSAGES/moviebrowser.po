@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
 msgstr ""
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Pag-update ng Database ng Movie Browser******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Pag-update ng Database ng Movie Browser******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Button: Pumunta sa unang titik"
@@ -109,8 +109,8 @@ msgstr "Log ng Timer ng Database"
 msgid "Database Update Log"
 msgstr "Log ng Pag-update ng Database"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Huminto ang Timer ng Pag-update ng Database: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Huminto ang Timer ng Pag-update ng Database: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Tanggalin ang File ng Pelikula"
@@ -196,8 +196,8 @@ msgstr "Pataas na Petsa ng Paggawa ng Pelikula"
 msgid "Movie Creation Date Descending"
 msgstr "Pababang Petsa ng Paggawa ng Pelikula"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Nagsimula ang Pag-update sa Database ng Pelikula: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Nagsimula ang Pag-update sa Database ng Pelikula: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Mga Impormasyon sa File ng Pelikula"

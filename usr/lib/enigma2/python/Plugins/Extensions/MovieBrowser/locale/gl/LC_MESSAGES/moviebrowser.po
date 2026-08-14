@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "****** Temporizador de actualización da base de datos do navegador de películas*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "****** Temporizador de actualización da base de datos do navegador de películas*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******Actualización da base de datos do navegador de películas*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******Actualización da base de datos do navegador de películas*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Botón <- ->: Ir á primeira letra"
@@ -109,8 +109,8 @@ msgstr "Rexistro do temporizador da base de datos"
 msgid "Database Update Log"
 msgstr "Rexistro de actualización da base de datos"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Temporizador de actualización da base de datos detido: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Temporizador de actualización da base de datos detido: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Eliminar ficheiro de película"
@@ -196,8 +196,8 @@ msgstr "Data de creación da película ascendente"
 msgid "Movie Creation Date Descending"
 msgstr "Data de creación da película descendente"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Comezou a actualización da base de datos de películas: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Comezou a actualización da base de datos de películas: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Información do ficheiro de película"

@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******Фильм шолғышының дерекқорын жаңарту таймері********\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Фильм шолғышының дерекқорын жаңарту таймері********\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******Фильм шолғышының дерекқорын жаңарту*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Фильм шолғышының дерекқорын жаңарту*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Түйме: бірінші әріпке өту"
@@ -109,8 +109,8 @@ msgstr "Деректер базасының таймер журналы"
 msgid "Database Update Log"
 msgstr "Дерекқорды жаңарту журналы"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Дерекқорды жаңарту таймері тоқтады: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Дерекқорды жаңарту таймері тоқтады: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Фильм файлын жою"
@@ -196,8 +196,8 @@ msgstr "Фильмді жасау күні өсу"
 msgid "Movie Creation Date Descending"
 msgstr "Фильмнің жасалу күні азаюы"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Фильм дерекқорын жаңарту басталды: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Фильм дерекқорын жаңарту басталды: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Фильм файлы туралы ақпарат"

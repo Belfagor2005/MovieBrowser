@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******* كىنو توركۆرگۈ ساندان يېڭىلاش ۋاقتى ******* \ n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* كىنو توركۆرگۈ ساندان يېڭىلاش ۋاقتى ******* \\\\\\\\ n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "******* كىنو توركۆرگۈ ساندان يېڭىلاش ******* \ n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* كىنو توركۆرگۈ ساندان يېڭىلاش ******* \\\\\\\\ n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> كۇنۇپكا: بىرىنچى ھەرپكە بېرىڭ"
@@ -109,8 +109,8 @@ msgstr "ساندان ۋاقىت خاتىرىسى"
 msgid "Database Update Log"
 msgstr "ساندان يېڭىلاش خاتىرىسى"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "ساندان يېڭىلاش ۋاقتى توختىدى:% s \ n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ساندان يېڭىلاش ۋاقتى توختىدى:% s \\\\\\\\ n"
 
 msgid "Delete Movie File"
 msgstr "كىنو ھۆججىتىنى ئۆچۈرۈڭ"
@@ -196,8 +196,8 @@ msgstr "كىنو ئىشلەش ۋاقتى ئۆرلەۋاتىدۇ"
 msgid "Movie Creation Date Descending"
 msgstr "كىنو ئىشلەش ۋاقتى تۆۋەنلەش"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "كىنو ساندان يېڭىلاش باشلاندى:% s \ n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "كىنو ساندان يېڭىلاش باشلاندى:% s \\\\\\\\ n"
 
 msgid "Movie File Informations"
 msgstr "كىنو ھۆججىتى ئۇچۇرى"

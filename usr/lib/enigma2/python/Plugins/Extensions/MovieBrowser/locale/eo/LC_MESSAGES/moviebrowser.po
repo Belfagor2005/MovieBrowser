@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "******Datumbaza Retumilo de Filmo-Retumilo Ĝisdatigita Temporizilo*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******Datumbaza Retumilo de Filmo-Retumilo Ĝisdatigita Temporizilo*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "****** Ĝisdatigo pri datumbaza retumilo de Filmoj*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "****** Ĝisdatigo pri datumbaza retumilo de Filmoj*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Butono: Iru al la unua litero"
@@ -110,8 +110,8 @@ msgstr ""
 msgid "Database Update Log"
 msgstr "Protokolo pri Ĝisdatigo de Datumaro"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "Datenbaza Ĝisdatiga Tempigilo ĉesis: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Datenbaza Ĝisdatiga Tempigilo ĉesis: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Forigi Filman Dosieron"
@@ -197,8 +197,8 @@ msgstr "Filma Kreodato Ascendenta"
 msgid "Movie Creation Date Descending"
 msgstr "Filma Kreodato Descendente"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "Ĝisdatigo de Filmdatumbazo komenciĝis: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Ĝisdatigo de Filmdatumbazo komenciĝis: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informoj pri Filmaj Dosieroj"

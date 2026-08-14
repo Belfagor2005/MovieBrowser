@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******चित्रपट ब्राउझर डेटाबेस अपडेट टाइमर*******\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******चित्रपट ब्राउझर डेटाबेस अपडेट टाइमर*******\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******चित्रपट ब्राउझर डेटाबेस अपडेट*******\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******चित्रपट ब्राउझर डेटाबेस अपडेट*******\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> बटण: पहिल्या अक्षरावर जा"
@@ -109,8 +109,8 @@ msgstr "डेटाबेस टाइमर लॉग"
 msgid "Database Update Log"
 msgstr "डेटाबेस अद्यतन लॉग"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "डेटाबेस अपडेट टाइमर थांबला: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "डेटाबेस अपडेट टाइमर थांबला: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "मूव्ही फाइल हटवा"
@@ -196,8 +196,8 @@ msgstr "चित्रपट निर्मितीची तारीख च
 msgid "Movie Creation Date Descending"
 msgstr "चित्रपट निर्मितीची तारीख उतरते"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "मूव्ही डेटाबेस अपडेट सुरू झाले: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "मूव्ही डेटाबेस अपडेट सुरू झाले: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "चित्रपट फाइल माहिती"

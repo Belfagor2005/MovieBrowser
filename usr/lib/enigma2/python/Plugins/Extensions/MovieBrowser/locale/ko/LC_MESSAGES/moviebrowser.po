@@ -17,11 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-msgid "*******Movie Browser Database Update Timer*******\n"
-msgstr "*******영화 브라우저 데이터베이스 업데이트 타이머*********\n"
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******영화 브라우저 데이터베이스 업데이트 타이머*********\\\\\\\\n"
 
-msgid "*******Movie Browser Database Update*******\n"
-msgstr "*******영화 브라우저 데이터베이스 업데이트*********\n"
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******영화 브라우저 데이터베이스 업데이트*********\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> 버튼: 첫 글자로 이동"
@@ -110,8 +110,8 @@ msgstr "데이터베이스 타이머 로그"
 msgid "Database Update Log"
 msgstr "데이터베이스 업데이트 로그"
 
-msgid "Database Update Timer stopped: %s\n"
-msgstr "데이터베이스 업데이트 타이머가 중지되었습니다: %s\n"
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "데이터베이스 업데이트 타이머가 중지되었습니다: %s\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "영화 파일 삭제"
@@ -197,8 +197,8 @@ msgstr "영화 제작일 오름차순"
 msgid "Movie Creation Date Descending"
 msgstr "영화 제작 날짜 내림차순"
 
-msgid "Movie Database Update started: %s\n"
-msgstr "영화 데이터베이스 업데이트 시작됨: %s\n"
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "영화 데이터베이스 업데이트 시작됨: %s\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "영화 파일 정보"

@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Таймери навсозии махзани браузери филм********\\\\\\\\n"
+msgstr "*******Таймери навсозии махзани браузери филм********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******* Навсозии пойгоҳи додаҳои браузери филм********\\\\\\\\n"
+msgstr "******* Навсозии пойгоҳи додаҳои браузери филм********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Тугма: Ба ҳарфи аввал гузаред"
@@ -109,8 +111,9 @@ msgstr "Сабти таймери пойгоҳи додаҳо"
 msgid "Database Update Log"
 msgstr "Сабти навсозии пойгоҳи додаҳо"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Вақтсанҷи навсозии пойгоҳи додаҳо қатъ шуд: %s\\\\\\\\n"
+msgstr "Вақтсанҷи навсозии пойгоҳи додаҳо қатъ шуд: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Файли филмро нест кунед"
@@ -196,8 +199,9 @@ msgstr "Санаи офариниши филм"
 msgid "Movie Creation Date Descending"
 msgstr "Камшавии санаи эҷоди филм"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Навсозии пойгоҳи додаҳои филм оғоз шуд: %s\\\\\\\\n"
+msgstr "Навсозии пойгоҳи додаҳои филм оғоз шуд: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Маълумот дар бораи файли филм"

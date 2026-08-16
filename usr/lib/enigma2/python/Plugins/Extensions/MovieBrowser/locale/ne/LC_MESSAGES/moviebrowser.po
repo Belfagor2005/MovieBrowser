@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******चलचित्र ब्राउजर डाटाबेस अपडेट टाइमर*******\\\\\\\\n"
+msgstr "*******चलचित्र ब्राउजर डाटाबेस अपडेट टाइमर*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******चलचित्र ब्राउजर डाटाबेस अपडेट*******\\\\\\\\n"
+msgstr "*******चलचित्र ब्राउजर डाटाबेस अपडेट*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> बटन: पहिलो अक्षरमा जानुहोस्"
@@ -109,8 +111,9 @@ msgstr "डाटाबेस टाइमर लग"
 msgid "Database Update Log"
 msgstr "डाटाबेस अपडेट लग"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "डाटाबेस अपडेट टाइमर रोकियो: %s\\\\\\\\n"
+msgstr "डाटाबेस अपडेट टाइमर रोकियो: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "चलचित्र फाइल मेटाउनुहोस्"
@@ -196,8 +199,9 @@ msgstr "चलचित्र निर्माण मिति आरोही
 msgid "Movie Creation Date Descending"
 msgstr "चलचित्र निर्माण मिति घट्दै"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "चलचित्र डाटाबेस अद्यावधिक सुरु भयो: %s\\\\\\\\n"
+msgstr "चलचित्र डाटाबेस अद्यावधिक सुरु भयो: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "चलचित्र फाइल जानकारी"

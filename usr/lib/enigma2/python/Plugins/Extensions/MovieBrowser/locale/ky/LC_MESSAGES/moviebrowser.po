@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Кино браузеринин маалымат базасын жаңыртуу таймери********\\\\\\\\n"
+msgstr "*******Кино браузеринин маалымат базасын жаңыртуу таймери********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Кино браузеринин маалымат базасын жаңыртуу*******\\\\\\\\n"
+msgstr "*******Кино браузеринин маалымат базасын жаңыртуу*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Баскыч: Биринчи тамгага өтүү"
@@ -109,8 +111,9 @@ msgstr "Маалыматтар базасынын таймеринин журн�
 msgid "Database Update Log"
 msgstr "Маалымат базасын жаңыртуу журналы"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Маалымат базасын жаңыртуу таймери токтоду: %s\\\\\\\\n"
+msgstr "Маалымат базасын жаңыртуу таймери токтоду: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Кино файлын жок кылуу"
@@ -196,8 +199,9 @@ msgstr "Тасманын жаралуу датасы өсүүдө"
 msgid "Movie Creation Date Descending"
 msgstr "Тасманын жаралуу датасы азаюусу"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Тасма базасын жаңыртуу башталды: %s\\\\\\\\n"
+msgstr "Тасма базасын жаңыртуу башталды: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Movie File Information"

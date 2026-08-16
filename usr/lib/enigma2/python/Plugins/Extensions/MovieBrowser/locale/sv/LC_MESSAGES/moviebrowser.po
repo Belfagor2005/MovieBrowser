@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "******* Uppdateringstimer för filmwebbläsarens databas*******\\\\\\\\n"
+msgstr "******* Uppdateringstimer för filmwebbläsarens databas*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******* Uppdatering av databas för filmwebbläsare*******\\\\\\\\n"
+msgstr "******* Uppdatering av databas för filmwebbläsare*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Knapp: Gå till första bokstaven"
@@ -110,8 +112,9 @@ msgstr "Databastimerlogg"
 msgid "Database Update Log"
 msgstr "Databasuppdateringslogg"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Databasuppdateringstimer stoppad: %s\\\\\\\\n"
+msgstr "Databasuppdateringstimer stoppad: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Ta bort filmfil"
@@ -197,8 +200,9 @@ msgstr "Filmskapande datum Stigande"
 msgid "Movie Creation Date Descending"
 msgstr "Filmskapande datum fallande"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Uppdatering av filmdatabas startade: %s\\\\\\\\n"
+msgstr "Uppdatering av filmdatabas startade: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Information om filmfiler"

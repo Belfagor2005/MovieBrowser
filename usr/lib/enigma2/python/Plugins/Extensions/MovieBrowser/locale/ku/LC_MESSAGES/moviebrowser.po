@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Beroka Fîlmê Demjimêra Nûvekirina Danegeha Fîlmê********\\\\\\\\n"
+msgstr "*******Beroka Fîlmê Demjimêra Nûvekirina Danegeha Fîlmê********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Nûvekirina Databasa Geroka Fîlmê********\\\\\\\\n"
+msgstr "*******Nûvekirina Databasa Geroka Fîlmê********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Bişkok: Biçe tîpa yekem"
@@ -109,8 +111,9 @@ msgstr ""
 msgid "Database Update Log"
 msgstr "Têketinê Nûvekirina Database"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Demjimêra Nûvekirina Databasê rawestiya: %s\\\\\\\\n"
+msgstr "Demjimêra Nûvekirina Databasê rawestiya: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Pelê Fîlmê jêbirin"
@@ -196,8 +199,9 @@ msgstr "Dîroka Çêkirina Fîlmê Çêbûn"
 msgid "Movie Creation Date Descending"
 msgstr "Dîroka Afirandina Fîlmê Dakeve"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Nûvekirina Daneya Fîlmê dest pê kir: %s\\\\\\\\n"
+msgstr "Nûvekirina Daneya Fîlmê dest pê kir: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Agahiyên Pelê Fîlmê"

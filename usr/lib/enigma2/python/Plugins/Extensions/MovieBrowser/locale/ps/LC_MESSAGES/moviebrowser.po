@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******د فلم براوزر ډیټابیس تازه کولو ټایمر*******\\\\\\\\n"
+msgstr "*******د فلم براوزر ډیټابیس تازه کولو ټایمر*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******د فلم براوزر ډیټابیس تازه کول *******\\\\\\\\n"
+msgstr "*******د فلم براوزر ډیټابیس تازه کول *******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<--> تڼۍ: لومړي لیک ته لاړ شئ"
@@ -109,8 +111,9 @@ msgstr "د ډیټابیس ټیمر لاګ"
 msgid "Database Update Log"
 msgstr "د ډیټابیس تازه کولو ننوتل"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "د ډیټابیس تازه کولو ټایمر ودرول شو: %s\\\\\\\\n"
+msgstr "د ډیټابیس تازه کولو ټایمر ودرول شو: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "د فلم فایل ړنګ کړئ"
@@ -196,8 +199,9 @@ msgstr "د فلم جوړیدو نیټه پورته کیدل"
 msgid "Movie Creation Date Descending"
 msgstr "د فلم د جوړیدو نیټه ښکته کیدل"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "د فلم ډیټابیس تازه کول پیل شوي: %s\\\\\\\\n"
+msgstr "د فلم ډیټابیس تازه کول پیل شوي: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "د فلم دوتنې معلومات"

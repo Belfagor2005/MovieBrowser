@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:25+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Thai <(nothing)>\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* ตัวจับเวลาการอัพเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* อัพเดตฐานข้อมูลเบราว์เซอร์ภาพยนตร์ *******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> ปุ่ม: ไปที่ตัวอักษรตัวแรก"
+
+msgid "<List of Movie Folder>"
+msgstr "<รายชื่อโฟลเดอร์ภาพยนตร์>"
+
+msgid "Actor Selection"
+msgstr "การคัดเลือกนักแสดง"
+
+msgid "Actors:"
+msgstr "นักแสดง:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "/tmp/posters ทั้งหมดถูกทำความสะอาดแล้ว"
+
+msgid "Automatic"
+msgstr "อัตโนมัติ"
+
+msgid "Backup Database:"
+msgstr "ฐานข้อมูลสำรอง:"
+
+msgid "Blacklist Movie File"
+msgstr "ไฟล์ภาพยนตร์บัญชีดำ"
+
+msgid "Button 0: Go to end of list"
+msgstr "ปุ่ม 0: ไปที่จุดสิ้นสุดของรายการ"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "ปุ่ม 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "ปุ่ม 2: ต่ออายุข้อมูลเกี่ยวกับ TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "ปุ่ม 3: ต่ออายุข่าวสารบน TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "ปุ่ม 4: ซ่อน/แสดงภาพยนตร์ที่ดู"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "ปุ่ม 5: สลับมุมมองภาพยนตร์/ซีรีส์"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "ปุ่ม 6: การเลือกโฟลเดอร์ภาพยนตร์"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "ปุ่ม 7: การเลือกผู้กำกับภาพยนตร์"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "ปุ่ม 8: การคัดเลือกนักแสดงภาพยนตร์"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "ปุ่ม 9: การเลือกประเภทภาพยนตร์"
+
+msgid "Cache Folder:"
+msgstr "โฟลเดอร์แคช:"
+
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+msgid "Choose Directory"
+msgstr "เลือกไดเรกทอรี"
+
+msgid "Choose Directory:"
+msgstr "เลือกไดเรกทอรี:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "บันทึกโฟลเดอร์แคชการล้างข้อมูล"
+
+msgid "Cleanup Cache Folder:"
+msgstr "โฟลเดอร์แคชการล้างข้อมูล:"
+
+msgid "Country:"
+msgstr "ประเทศ:"
+
+msgid "Database"
+msgstr "ฐานข้อมูล"
+
+msgid "Database Editor:"
+msgstr "ตัวแก้ไขฐานข้อมูล:"
+
+msgid "Database Timer Log"
+msgstr "บันทึกตัวจับเวลาฐานข้อมูล"
+
+msgid "Database Update Log"
+msgstr "บันทึกการอัพเดตฐานข้อมูล"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ตัวจับเวลาการอัปเดตฐานข้อมูลหยุดลง: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "ลบไฟล์ภาพยนตร์"
+
+msgid "Director Selection"
+msgstr "การคัดเลือกกรรมการ"
+
+msgid "Director:"
+msgstr "ผู้อำนวยการ:"
+
+msgid "Download new Backdrops:"
+msgstr "ดาวน์โหลดฉากหลังใหม่:"
+
+msgid "EPISODES"
+msgstr "ตอน"
+
+msgid "Error moving cache folder: %s"
+msgstr "เกิดข้อผิดพลาดในการย้ายโฟลเดอร์แคช: %s"
+
+msgid "File %s non trovato!"
+msgstr "ไม่พบไฟล์ %s!"
+
+msgid "File %s not found!"
+msgstr "ไม่พบไฟล์ %s!"
+
+msgid "Folder Selection"
+msgstr "การเลือกโฟลเดอร์"
+
+msgid "Free Space"
+msgstr "พื้นที่ว่าง"
+
+msgid "Free Space:"
+msgstr "พื้นที่ว่าง:"
+
+msgid "Genre Selection"
+msgstr "การเลือกประเภท"
+
+msgid "Genres:"
+msgstr "แนวเพลง:"
+
+msgid "Goto last Movie on Start:"
+msgstr "ไปที่ภาพยนตร์เรื่องล่าสุดเมื่อเริ่ม:"
+
+msgid "Help"
+msgstr "ช่วย"
+
+msgid "Hide"
+msgstr "ซ่อน"
+
+msgid "Hide Plugin during Update:"
+msgstr "ซ่อนปลั๊กอินระหว่างการอัพเดต:"
+
+msgid "Info Button"
+msgstr "ปุ่มข้อมูล"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "ปุ่มข้อมูล: สลับการแสดง/ซ่อนข้อมูล"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "โหลด TMDB Apikey จาก /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "โหลด TheTVDb Apikey จาก /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "โหลดการเลือก/ตัวกรองล่าสุดเมื่อเริ่มต้น:"
+
+msgid "MOVIES"
+msgstr "ภาพยนตร์"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "จัดการภาพยนตร์และซีรีส์ของคุณ V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "สีการเลือกรายการเมตริกซ์:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "การกำหนดคีย์เบราว์เซอร์ภาพยนตร์"
+
+msgid "Movie Creation Date Ascending"
+msgstr "วันที่สร้างภาพยนตร์จากน้อยไปมาก"
+
+msgid "Movie Creation Date Descending"
+msgstr "วันที่สร้างภาพยนตร์จากมากไปน้อย"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "เริ่มต้นการอัพเดตฐานข้อมูลภาพยนตร์: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "ข้อมูลไฟล์ภาพยนตร์"
+
+msgid "Movie Folder"
+msgstr "โฟลเดอร์ภาพยนตร์"
+
+msgid "Movie Folder Ascending"
+msgstr "โฟลเดอร์ภาพยนตร์จากน้อยไปหามาก"
+
+msgid "Movie Folder Descending"
+msgstr "โฟลเดอร์ภาพยนตร์จากมากไปน้อย"
+
+msgid "Movie Folder Selection"
+msgstr "การเลือกโฟลเดอร์ภาพยนตร์"
+
+msgid "Movie Folder:"
+msgstr "โฟลเดอร์ภาพยนตร์:"
+
+msgid "Movie Rating 0-10"
+msgstr "เรตติ้งภาพยนตร์ 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "เรตติ้งหนัง 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "วันที่ออกฉายภาพยนตร์จากน้อยไปมาก"
+
+msgid "Movie Release Date Descending"
+msgstr "วันที่ออกฉายภาพยนตร์จากมากไปน้อย"
+
+msgid "Movie Runtime Ascending"
+msgstr "รันไทม์ภาพยนตร์จากน้อยไปมาก"
+
+msgid "Movie Runtime Descending"
+msgstr "รันไทม์ภาพยนตร์จากมากไปน้อย"
+
+msgid "Movie Sort Order:"
+msgstr "ลำดับการจัดเรียงภาพยนตร์:"
+
+msgid "Movie Title A-Z"
+msgstr "ชื่อภาพยนตร์ A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "ชื่อภาพยนตร์ Z-A"
+
+msgid "Movies"
+msgstr "ภาพยนตร์"
+
+msgid "Movies & Series"
+msgstr "ภาพยนตร์และซีรีส์"
+
+msgid "Movies Style:"
+msgstr "สไตล์ภาพยนตร์:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "การเลือกภาพยนตร์หรือซีรีส์ตั้งแต่เริ่มต้น:"
+
+msgid "Movies or Series:"
+msgstr "ภาพยนตร์หรือซีรีส์:"
+
+msgid "No"
+msgstr "เลขที่"
+
+msgid "On Database Update"
+msgstr "ในการอัพเดตฐานข้อมูล"
+
+msgid "On First Access"
+msgstr "ในการเข้าถึงครั้งแรก"
+
+msgid "Plugin Transparency:"
+msgstr "ความโปร่งใสของปลั๊กอิน:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "ปลั๊กอินในเมนู Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "โปสเตอร์วอลล์/ฉากหลังแสดง เนื้อเรื่อง:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "ปุ่มตัวเลือก: ลบ/ภาพยนตร์บัญชีดำ"
+
+msgid "Rating:"
+msgstr "คะแนน:"
+
+msgid "Really close without saving settings?"
+msgstr "ปิดโดยไม่บันทึกการตั้งค่าจริงหรือ"
+
+msgid "Reset Database:"
+msgstr "รีเซ็ตฐานข้อมูล:"
+
+msgid "Restore Database:"
+msgstr "กู้คืนฐานข้อมูล:"
+
+msgid "Runtime:"
+msgstr "รันไทม์:"
+
+msgid "SERIES"
+msgstr "ชุด"
+
+msgid "Save"
+msgstr "บันทึก"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "เลือกสกิน *รีสตาร์ท GUI จำเป็น:"
+
+msgid "Series"
+msgstr "ชุด"
+
+msgid "Series Episodes"
+msgstr "ตอนของซีรีส์"
+
+msgid "Series Folder: No Info possible"
+msgstr "โฟลเดอร์ซีรีส์: ไม่มีข้อมูลที่เป็นไปได้"
+
+msgid "Series Style:"
+msgstr "สไตล์ซีรีส์:"
+
+msgid "Show"
+msgstr "แสดง"
+
+msgid "Show Backdrops:"
+msgstr "แสดงฉากหลัง:"
+
+msgid "Show List of Movie Folder:"
+msgstr "แสดงรายการโฟลเดอร์ภาพยนตร์:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "แสดงทีวีในพื้นหลัง (ไม่มี m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "ลงทะเบียนบน TMDB และป้อน ApiKey ส่วนตัวฟรี"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "ลงทะเบียนบน TheTVDb และป้อน ApiKey ส่วนตัวฟรี"
+
+msgid "Start Plugin with Video Button:"
+msgstr "เริ่มปลั๊กอินด้วยปุ่มวิดีโอ:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "ปุ่มหยุด: ทำเครื่องหมายภาพยนตร์ตามที่เห็น"
+
+msgid "Style"
+msgstr "สไตล์"
+
+msgid "TMDB API key successfully imported!"
+msgstr "นำเข้าคีย์ TMDB API สำเร็จแล้ว!"
+
+msgid "TMDb Results"
+msgstr "ผลลัพธ์ TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb ภาษา:"
+
+msgid "Text Button: Edit Database"
+msgstr "ปุ่มข้อความ: แก้ไขฐานข้อมูล"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "นำเข้าคีย์ TheTVDb API สำเร็จแล้ว!"
+
+msgid "TheTVDb Results"
+msgstr "ผลลัพธ์ของ TheTVDb"
+
+msgid "Timer Database Update:"
+msgstr "อัพเดตฐานข้อมูลตัวจับเวลา:"
+
+msgid "Toggle Plugin Style"
+msgstr "สลับสไตล์ปลั๊กอิน"
+
+msgid "Toggle hide/show plugin"
+msgstr "สลับซ่อน/แสดงปลั๊กอิน"
+
+msgid "Update"
+msgstr "อัปเดต"
+
+msgid "Update Database with Timer:"
+msgstr "อัปเดตฐานข้อมูลด้วยตัวจับเวลา:"
+
+msgid "Update Series"
+msgstr "อัพเดตซีรี่ย์"
+
+msgid "Use m1v Backdrops:"
+msgstr "ใช้ฉากหลัง m1v:"
+
+msgid "Video Button: Update Database"
+msgstr "ปุ่มวิดีโอ: อัปเดตฐานข้อมูล"
+
+msgid "Years:"
+msgstr "ปี:"
+
+msgid "Yes"
+msgstr "ใช่"
+
+msgid "backdrop"
+msgstr "ฉากหลัง"
+
+msgid "banner"
+msgstr "แบนเนอร์"
+
+msgid "movie"
+msgstr "ภาพยนตร์"
+
+msgid "poster"
+msgstr "โปสเตอร์"
+
+msgid "series"
+msgstr "ชุด"

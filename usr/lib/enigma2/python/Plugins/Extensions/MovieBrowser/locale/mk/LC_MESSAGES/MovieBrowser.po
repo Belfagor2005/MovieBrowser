@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:37+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Macedonian <ufo@linux.net.mk>\n"
+"Language: mk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Тајмер за ажурирање на базата на податоци на прелистувачот филмови********\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Ажурирање на базата на податоци на прелистувачот филмови********\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> Копче: Оди на првата буква"
+
+msgid "<List of Movie Folder>"
+msgstr "<Список со филмска папка>"
+
+msgid "Actor Selection"
+msgstr "Избор на актер"
+
+msgid "Actors:"
+msgstr "Актери:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Сите /tmp/постери се исчистени"
+
+msgid "Automatic"
+msgstr "Автоматски"
+
+msgid "Backup Database:"
+msgstr "База на податоци за резервна копија:"
+
+msgid "Blacklist Movie File"
+msgstr "Филмска датотека на црната листа"
+
+msgid "Button 0: Go to end of list"
+msgstr "Копче 0: Одете до крајот на листата"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Копче 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Копче 2: Обновете ги информациите на TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Копче 3: Обновете ги информациите на TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "Копче 4: Скриј/прикажи видени филмови"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Копче 5: Вклучете го приказот на филмови/серии"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "Копче 6: Избор на папка за филмови"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "Копче 7: Избор на режисер на филм"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "Копче 8: Избор на филмски актер"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "Копче 9: Избор на жанр на филм"
+
+msgid "Cache Folder:"
+msgstr "Папка за кеш:"
+
+msgid "Cancel"
+msgstr "Откажи"
+
+msgid "Choose Directory"
+msgstr "Изберете Директориум"
+
+msgid "Choose Directory:"
+msgstr "Изберете Директориум:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Чистење на дневникот на папката на кешот"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Чистење на папката за кеш:"
+
+msgid "Country:"
+msgstr "Земја:"
+
+msgid "Database"
+msgstr "База на податоци"
+
+msgid "Database Editor:"
+msgstr "Уредник на база на податоци:"
+
+msgid "Database Timer Log"
+msgstr "Дневник на тајмер на база на податоци"
+
+msgid "Database Update Log"
+msgstr "Дневник за ажурирање на базата на податоци"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Тајмерот за ажурирање на базата на податоци запре: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Избришете филмска датотека"
+
+msgid "Director Selection"
+msgstr "Избор на директор"
+
+msgid "Director:"
+msgstr "Директор:"
+
+msgid "Download new Backdrops:"
+msgstr "Преземете нови заднини:"
+
+msgid "EPISODES"
+msgstr "ЕПИЗОДИ"
+
+msgid "Error moving cache folder: %s"
+msgstr "Грешка при придвижувањето на папката за кешот: %s"
+
+msgid "File %s non trovato!"
+msgstr "Датотеката %s не е пронајдена!"
+
+msgid "File %s not found!"
+msgstr "Датотеката %s не е пронајдена!"
+
+msgid "Folder Selection"
+msgstr "Избор на папка"
+
+msgid "Free Space"
+msgstr "Слободен простор"
+
+msgid "Free Space:"
+msgstr "Слободен простор:"
+
+msgid "Genre Selection"
+msgstr "Избор на жанр"
+
+msgid "Genres:"
+msgstr "Жанрови:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Одете на последниот филм на почеток:"
+
+msgid "Help"
+msgstr "Помош"
+
+msgid "Hide"
+msgstr "Скриј"
+
+msgid "Hide Plugin during Update:"
+msgstr "Сокриј го приклучокот за време на ажурирањето:"
+
+msgid "Info Button"
+msgstr "Копче за информации"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Копче за информации: Вклучете прикажување/сокриј информации"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Вчитајте го TMDB Apikey од /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Вчитајте го TheTVDb Apikey од /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Вчитај го последниот избор/филтер на почеток:"
+
+msgid "MOVIES"
+msgstr "ФИЛМОВИ"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Управувајте со вашите филмови и серии V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Боја за избор на листа на Metrix:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Доделување на клучот на прелистувачот на филмови"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Датум на создавање филм Растечки"
+
+msgid "Movie Creation Date Descending"
+msgstr "Датумот на создавање филм опаѓа"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Започна ажурирањето на базата на податоци за филмови: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Информации за филмската датотека"
+
+msgid "Movie Folder"
+msgstr "Филмска папка"
+
+msgid "Movie Folder Ascending"
+msgstr "Филмската папка расте"
+
+msgid "Movie Folder Descending"
+msgstr "Филмската папка во опаѓање"
+
+msgid "Movie Folder Selection"
+msgstr "Избор на папка за филмови"
+
+msgid "Movie Folder:"
+msgstr "Филмска папка:"
+
+msgid "Movie Rating 0-10"
+msgstr "Оцена на филмови 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Рејтинг на филмот 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Датум на издавање на филмот растечки"
+
+msgid "Movie Release Date Descending"
+msgstr "Датумот на издавање на филмот опаѓа"
+
+msgid "Movie Runtime Ascending"
+msgstr "Филм траење растечки"
+
+msgid "Movie Runtime Descending"
+msgstr "Филм траење опаѓачки"
+
+msgid "Movie Sort Order:"
+msgstr "Редослед на сортирање филмови:"
+
+msgid "Movie Title A-Z"
+msgstr "Наслов на филмот А-З"
+
+msgid "Movie Title Z-A"
+msgstr "Наслов на филмот Z-A"
+
+msgid "Movies"
+msgstr "Филмови"
+
+msgid "Movies & Series"
+msgstr "Филмови и серии"
+
+msgid "Movies Style:"
+msgstr "Стил на филмови:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Избор на филмови или серии на почеток:"
+
+msgid "Movies or Series:"
+msgstr "Филмови или серии:"
+
+msgid "No"
+msgstr "бр"
+
+msgid "On Database Update"
+msgstr "На ажурирање на базата на податоци"
+
+msgid "On First Access"
+msgstr "На прв пристап"
+
+msgid "Plugin Transparency:"
+msgstr "Транспарентност на приклучокот:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Приклучок во менито Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Заплет за прикажување на постерѕид/заднина:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Копче за радио: Избриши/Филм од црната листа"
+
+msgid "Rating:"
+msgstr "Оценка:"
+
+msgid "Really close without saving settings?"
+msgstr "Дали навистина се затвора без зачувување на поставките?"
+
+msgid "Reset Database:"
+msgstr "Ресетирајте ја базата на податоци:"
+
+msgid "Restore Database:"
+msgstr "Враќање на базата на податоци:"
+
+msgid "Runtime:"
+msgstr "Време на траење:"
+
+msgid "SERIES"
+msgstr "СЕРИЈА"
+
+msgid "Save"
+msgstr "Зачувај"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Изберете кожа *Потребно е рестартирање на GUI:"
+
+msgid "Series"
+msgstr "Серии"
+
+msgid "Series Episodes"
+msgstr "Епизоди од серии"
+
+msgid "Series Folder: No Info possible"
+msgstr "Папка за серии: Не се можни информации"
+
+msgid "Series Style:"
+msgstr "Стил на серијата:"
+
+msgid "Show"
+msgstr "Прикажи"
+
+msgid "Show Backdrops:"
+msgstr "Прикажи заднини:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Прикажи список на папка за филмови:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Прикажи ТВ во заднина (без m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Регистрирајте се на TMDB и внесете бесплатен личен ApiKey"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Регистрирајте се на TheTVDb и внесете бесплатен личен ApiKey"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Започнете го приклучокот со копче за видео:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Копче Стоп: Обележете го филмот како што е виден"
+
+msgid "Style"
+msgstr "Стил"
+
+msgid "TMDB API key successfully imported!"
+msgstr "Клучот TMDB API е успешно увезен!"
+
+msgid "TMDb Results"
+msgstr "Резултати од TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb Јазик:"
+
+msgid "Text Button: Edit Database"
+msgstr "Копче за текст: Уреди база на податоци"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "Клучот TVDb API е успешно увезен!"
+
+msgid "TheTVDb Results"
+msgstr "Резултати од ТВДБ"
+
+msgid "Timer Database Update:"
+msgstr "Ажурирање на базата на податоци за тајмер:"
+
+msgid "Toggle Plugin Style"
+msgstr "Вклучете го стилот на приклучокот"
+
+msgid "Toggle hide/show plugin"
+msgstr "Вклучете го приклучокот за скрие/прикажи"
+
+msgid "Update"
+msgstr "Ажурирање"
+
+msgid "Update Database with Timer:"
+msgstr "Ажурирајте ја базата на податоци со тајмер:"
+
+msgid "Update Series"
+msgstr "Ажурирајте ја серијата"
+
+msgid "Use m1v Backdrops:"
+msgstr "Користете m1v заднини:"
+
+msgid "Video Button: Update Database"
+msgstr "Копче за видео: Ажурирајте ја базата на податоци"
+
+msgid "Years:"
+msgstr "Години:"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "backdrop"
+msgstr "позадина"
+
+msgid "banner"
+msgstr "банер"
+
+msgid "movie"
+msgstr "филм"
+
+msgid "poster"
+msgstr "постер"
+
+msgid "series"
+msgstr "серија"

@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:10+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr ""
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Filmböngésző-adatbázis frissítése********\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> Gomb: Ugrás az első betűre"
+
+msgid "<List of Movie Folder>"
+msgstr "<Filmmappa listája>"
+
+msgid "Actor Selection"
+msgstr "Színészválasztás"
+
+msgid "Actors:"
+msgstr "Színészek:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Minden /tmp/plakát megtisztítva"
+
+msgid "Automatic"
+msgstr "Automatikus"
+
+msgid "Backup Database:"
+msgstr "Biztonsági mentési adatbázis:"
+
+msgid "Blacklist Movie File"
+msgstr "Feketelista Filmfájl"
+
+msgid "Button 0: Go to end of list"
+msgstr "0. gomb: Ugrás a lista végére"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "1. gomb: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "2. gomb: Információk megújítása a TMDb-n"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "3. gomb: Információk megújítása a TheTVDb-n"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "4. gomb: Látott filmek elrejtése/megjelenítése"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "5. gomb: Filmek/sorozatok nézetének váltása"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "6. gomb: Filmmappa kiválasztása"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "7. gomb: Filmrendező kiválasztása"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "8. gomb: Filmszínész kiválasztása"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "9. gomb: Filmműfaj kiválasztása"
+
+msgid "Cache Folder:"
+msgstr "Gyorsítótár mappa:"
+
+msgid "Cancel"
+msgstr "Mégse"
+
+msgid "Choose Directory"
+msgstr "Válassza a Címtár lehetőséget"
+
+msgid "Choose Directory:"
+msgstr "Válasszon könyvtárat:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "A gyorsítótár mappanaplójának tisztítása"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Gyorsítótár mappa tisztítása:"
+
+msgid "Country:"
+msgstr "Ország:"
+
+msgid "Database"
+msgstr "Adatbázis"
+
+msgid "Database Editor:"
+msgstr "Adatbázis szerkesztő:"
+
+msgid "Database Timer Log"
+msgstr "Adatbázis időzítő napló"
+
+msgid "Database Update Log"
+msgstr "Adatbázis frissítési napló"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Az adatbázisfrissítés időzítője leállt: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Filmfájl törlése"
+
+msgid "Director Selection"
+msgstr "Rendező kiválasztása"
+
+msgid "Director:"
+msgstr "Igazgató:"
+
+msgid "Download new Backdrops:"
+msgstr "Új hátterek letöltése:"
+
+msgid "EPISODES"
+msgstr "EPISZÓDOK"
+
+msgid "Error moving cache folder: %s"
+msgstr "Hiba a gyorsítótár-mappa áthelyezésekor: %s"
+
+msgid "File %s non trovato!"
+msgstr "%s fájl nem található!"
+
+msgid "File %s not found!"
+msgstr "%s fájl nem található!"
+
+msgid "Folder Selection"
+msgstr "Mappa kiválasztása"
+
+msgid "Free Space"
+msgstr "Szabad hely"
+
+msgid "Free Space:"
+msgstr "Szabad hely:"
+
+msgid "Genre Selection"
+msgstr "Műfaj kiválasztása"
+
+msgid "Genres:"
+msgstr "Műfajok:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Ugrás az utolsó filmhez a kezdéskor:"
+
+msgid "Help"
+msgstr "Segítség"
+
+msgid "Hide"
+msgstr "Elrejt"
+
+msgid "Hide Plugin during Update:"
+msgstr "Plugin elrejtése frissítés közben:"
+
+msgid "Info Button"
+msgstr "Info gomb"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Info gomb: Az információk megjelenítése/elrejtése"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "TMDB Apikey betöltése a /tmp/tmdb_api.txt fájlból"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Töltse be a TheTVDb Apikey-t a /tmp/thetvdb_api.txt fájlból"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Utolsó kijelölés/szűrő betöltése az indításkor:"
+
+msgid "MOVIES"
+msgstr "FILMEK"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Kezelje filmjeit és sorozatait V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Metrix lista kiválasztás színe:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Filmböngésző gomb hozzárendelése"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Filmkészítés dátuma Növekvő sorrendben"
+
+msgid "Movie Creation Date Descending"
+msgstr "Filmkészítés dátuma Csökkenő"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "A filmadatbázis frissítése elindult: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Filmfájlok információi"
+
+msgid "Movie Folder"
+msgstr "Film mappa"
+
+msgid "Movie Folder Ascending"
+msgstr "Filmmappa Növekvő"
+
+msgid "Movie Folder Descending"
+msgstr "Filmmappa csökkenő"
+
+msgid "Movie Folder Selection"
+msgstr "Filmmappa kiválasztása"
+
+msgid "Movie Folder:"
+msgstr "Film mappa:"
+
+msgid "Movie Rating 0-10"
+msgstr "A film értékelése 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "A film értékelése 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Film megjelenési dátuma növekvő sorrendben"
+
+msgid "Movie Release Date Descending"
+msgstr "A film megjelenési dátuma csökkenő sorrendben"
+
+msgid "Movie Runtime Ascending"
+msgstr "Film futásidőben növekvő"
+
+msgid "Movie Runtime Descending"
+msgstr ""
+
+msgid "Movie Sort Order:"
+msgstr "Filmek rendezési sorrendje:"
+
+msgid "Movie Title A-Z"
+msgstr "A film címe A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Film címe Z-A"
+
+msgid "Movies"
+msgstr "Filmek"
+
+msgid "Movies & Series"
+msgstr "Filmek és sorozatok"
+
+msgid "Movies Style:"
+msgstr "Filmstílus:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Filmek vagy sorozatok kiválasztása az elején:"
+
+msgid "Movies or Series:"
+msgstr "Filmek vagy sorozatok:"
+
+msgid "No"
+msgstr "Nem"
+
+msgid "On Database Update"
+msgstr "Adatbázis frissítésről"
+
+msgid "On First Access"
+msgstr "Első hozzáféréskor"
+
+msgid "Plugin Transparency:"
+msgstr "Beépülő modul átlátszósága:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Beépülő modul az Enigma menüben:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Plakátfal/háttérbemutató cselekmény:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Rádiógomb: Film törlése/feketelistás listája"
+
+msgid "Rating:"
+msgstr "Értékelés:"
+
+msgid "Really close without saving settings?"
+msgstr "Tényleg bezárja a beállítások mentése nélkül?"
+
+msgid "Reset Database:"
+msgstr "Adatbázis visszaállítása:"
+
+msgid "Restore Database:"
+msgstr "Adatbázis visszaállítása:"
+
+msgid "Runtime:"
+msgstr "Futásidő:"
+
+msgid "SERIES"
+msgstr "SOROZAT"
+
+msgid "Save"
+msgstr "Megtakarítás"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Felület kiválasztása *GUI újraindítása szükséges:"
+
+msgid "Series"
+msgstr "Sorozat"
+
+msgid "Series Episodes"
+msgstr "Sorozat epizódok"
+
+msgid "Series Folder: No Info possible"
+msgstr "Sorozat mappa: Nincs információ"
+
+msgid "Series Style:"
+msgstr "Sorozat stílusa:"
+
+msgid "Show"
+msgstr "Megmutat"
+
+msgid "Show Backdrops:"
+msgstr "Hátterek megjelenítése:"
+
+msgid "Show List of Movie Folder:"
+msgstr "A filmmappa listájának megjelenítése:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "TV megjelenítése a háttérben (nincs m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Regisztráljon a TMDB-n, és adja meg az ingyenes személyes ApiKey-t"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Regisztráljon a TheTVDb-n, és vigye be az ingyenes személyes ApiKey-t"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Indítsa el a bővítményt a Video gombbal:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Stop gomb: Film megjelölése látottként"
+
+msgid "Style"
+msgstr "Stílus"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API kulcs sikeresen importálva!"
+
+msgid "TMDb Results"
+msgstr "TMDb eredmények"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb nyelv:"
+
+msgid "Text Button: Edit Database"
+msgstr "Szöveg gomb: Adatbázis szerkesztése"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "A TVDb API kulcs sikeresen importálva!"
+
+msgid "TheTVDb Results"
+msgstr "TheTVDb eredmények"
+
+msgid "Timer Database Update:"
+msgstr "Időzítő adatbázis frissítés:"
+
+msgid "Toggle Plugin Style"
+msgstr "Beépülő modul stílusának váltása"
+
+msgid "Toggle hide/show plugin"
+msgstr "Beépülő modul elrejtése/megjelenítése váltása"
+
+msgid "Update"
+msgstr "Frissítés"
+
+msgid "Update Database with Timer:"
+msgstr "Adatbázis frissítése időzítővel:"
+
+msgid "Update Series"
+msgstr "Sorozat frissítése"
+
+msgid "Use m1v Backdrops:"
+msgstr "Az m1v hátterek használata:"
+
+msgid "Video Button: Update Database"
+msgstr "Videó gomb: Adatbázis frissítése"
+
+msgid "Years:"
+msgstr "Évek:"
+
+msgid "Yes"
+msgstr "Igen"
+
+msgid "backdrop"
+msgstr "háttér"
+
+msgid "banner"
+msgstr "transzparens"
+
+msgid "movie"
+msgstr "film"
+
+msgid "poster"
+msgstr "poszter"
+
+msgid "series"
+msgstr "sorozat"

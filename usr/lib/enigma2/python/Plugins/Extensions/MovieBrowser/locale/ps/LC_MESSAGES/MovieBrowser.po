@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:02+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Pashto\n"
+"Language: ps\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******د فلم براوزر ډیټابیس تازه کولو ټایمر*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******د فلم براوزر ډیټابیس تازه کول *******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<--> تڼۍ: لومړي لیک ته لاړ شئ"
+
+msgid "<List of Movie Folder>"
+msgstr "<د فلم فولډر لیست>"
+
+msgid "Actor Selection"
+msgstr "د لوبغاړو انتخاب"
+
+msgid "Actors:"
+msgstr "لوبغاړي:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "ټول /tmp/پوسټرونه پاک شوي"
+
+msgid "Automatic"
+msgstr "اتوماتیک"
+
+msgid "Backup Database:"
+msgstr "بیک اپ ډیټابیس:"
+
+msgid "Blacklist Movie File"
+msgstr "د تور لیست فلم فایل"
+
+msgid "Button 0: Go to end of list"
+msgstr "تڼۍ 0: د لیست پای ته لاړ شئ"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "تڼۍ 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "تڼۍ 2: په TMDb کې معلومات نوي کړئ"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "3 تڼۍ: په TheTVDb کې معلومات نوي کړئ"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "4 تڼۍ: لیدل شوي فلمونه پټ کړئ / ښکاره کړئ"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "تڼۍ 5: د فلمونو / لړۍ لید بدل کړئ"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "تڼۍ 6: د فلم فولډر انتخاب"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "تڼۍ 7: د فلم ډایرکټر انتخاب"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "8 تڼۍ: د فلم اداکار انتخاب"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "9 تڼۍ: د فلم ژانر انتخاب"
+
+msgid "Cache Folder:"
+msgstr "د کیچ فولډر:"
+
+msgid "Cancel"
+msgstr "لغوه کړئ"
+
+msgid "Choose Directory"
+msgstr "لارښود غوره کړئ"
+
+msgid "Choose Directory:"
+msgstr "لارښود غوره کړئ:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "د کیچ فولډر لاګ پاکول"
+
+msgid "Cleanup Cache Folder:"
+msgstr "د کیچ فولډر پاکول:"
+
+msgid "Country:"
+msgstr "هیواد:"
+
+msgid "Database"
+msgstr "ډیټابیس"
+
+msgid "Database Editor:"
+msgstr "د ډیټابیس مدیر:"
+
+msgid "Database Timer Log"
+msgstr "د ډیټابیس ټیمر لاګ"
+
+msgid "Database Update Log"
+msgstr "د ډیټابیس تازه کولو ننوتل"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "د ډیټابیس تازه کولو ټایمر ودرول شو: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "د فلم فایل ړنګ کړئ"
+
+msgid "Director Selection"
+msgstr "د مدیر انتخاب"
+
+msgid "Director:"
+msgstr "ډایرکټر:"
+
+msgid "Download new Backdrops:"
+msgstr "نوي شاليدونه ډاونلوډ کړئ:"
+
+msgid "EPISODES"
+msgstr ""
+
+msgid "Error moving cache folder: %s"
+msgstr "د کیچ فولډر په لیږدولو کې تېروتنه: %s"
+
+msgid "File %s non trovato!"
+msgstr "دوتنه %s ونه موندل شوه!"
+
+msgid "File %s not found!"
+msgstr "دوتنه %s ونه موندل شوه!"
+
+msgid "Folder Selection"
+msgstr "د فولډر انتخاب"
+
+msgid "Free Space"
+msgstr "وړیا ځای"
+
+msgid "Free Space:"
+msgstr "خالي ځای:"
+
+msgid "Genre Selection"
+msgstr "د ژانر انتخاب"
+
+msgid "Genres:"
+msgstr "ژانرونه:"
+
+msgid "Goto last Movie on Start:"
+msgstr "په پیل کې وروستی فلم ته لاړ شه:"
+
+msgid "Help"
+msgstr "مرسته"
+
+msgid "Hide"
+msgstr "پټول"
+
+msgid "Hide Plugin during Update:"
+msgstr "د تازه کولو پرمهال پلگ ان پټ کړئ:"
+
+msgid "Info Button"
+msgstr "د معلوماتو تڼۍ"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "د معلوماتو تڼۍ: د معلوماتو ښودل / پټول بدل کړئ"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "له /tmp/tmdb_api.txt څخه TMDB اپیکی پورته کړئ"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "له /tmp/thetvdb_api.txt څخه TheTVDb اپیکی پورته کړئ"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "په پیل کې وروستی انتخاب / فلټر پورته کړئ:"
+
+msgid "MOVIES"
+msgstr "فلمونه"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "خپل فلمونه او لړۍ V.%s اداره کړئ"
+
+msgid "Metrix List Selection Color:"
+msgstr "د میټریکس لیست انتخاب رنګ:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "د فلم براوزر کلیدي دنده"
+
+msgid "Movie Creation Date Ascending"
+msgstr "د فلم جوړیدو نیټه پورته کیدل"
+
+msgid "Movie Creation Date Descending"
+msgstr "د فلم د جوړیدو نیټه ښکته کیدل"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "د فلم ډیټابیس تازه کول پیل شوي: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "د فلم دوتنې معلومات"
+
+msgid "Movie Folder"
+msgstr "د فلم فولډر"
+
+msgid "Movie Folder Ascending"
+msgstr "د فلم فولډر پورته کیدل"
+
+msgid "Movie Folder Descending"
+msgstr "د فلم فولډر ښکته کول"
+
+msgid "Movie Folder Selection"
+msgstr "د فلم فولډر انتخاب"
+
+msgid "Movie Folder:"
+msgstr "د فلم فولډر:"
+
+msgid "Movie Rating 0-10"
+msgstr "د فلم درجه 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "د فلم درجه 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "د فلم د خپریدو نیټه پورته کیدل"
+
+msgid "Movie Release Date Descending"
+msgstr "د فلم د خپریدو نیټه ښکته کیدل"
+
+msgid "Movie Runtime Ascending"
+msgstr "د فلم چلولو وخت لوړېدل"
+
+msgid "Movie Runtime Descending"
+msgstr "د فلم چلولو وخت ښکته کول"
+
+msgid "Movie Sort Order:"
+msgstr "د فلمونو ترتیب:"
+
+msgid "Movie Title A-Z"
+msgstr "د فلم سرلیک A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "د فلم سرلیک Z-A"
+
+msgid "Movies"
+msgstr "فلمونه"
+
+msgid "Movies & Series"
+msgstr "فلمونه او لړۍ"
+
+msgid "Movies Style:"
+msgstr "د فلم سټایل:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "په پیل کې د فلمونو یا لړۍ انتخاب:"
+
+msgid "Movies or Series:"
+msgstr "فلمونه او لړۍ:"
+
+msgid "No"
+msgstr "نه"
+
+msgid "On Database Update"
+msgstr "د ډیټابیس تازه کولو کې"
+
+msgid "On First Access"
+msgstr "په لومړي لاسرسي کې"
+
+msgid "Plugin Transparency:"
+msgstr "د پلگ ان شفافیت:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "په اینیګما مینو کې پلگ ان:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "د پوستروال / شالید شو پلاټ:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "د راډیو تڼۍ: ړنګول / تور لیست فلم"
+
+msgid "Rating:"
+msgstr "درجه بندي:"
+
+msgid "Really close without saving settings?"
+msgstr "واقعیا د تنظیماتو خوندي کولو پرته تړل؟"
+
+msgid "Reset Database:"
+msgstr "ډیټابیس بیا تنظیم کړئ:"
+
+msgid "Restore Database:"
+msgstr "ډیټابیس بیرته راګرځول:"
+
+msgid "Runtime:"
+msgstr "د چلولو وخت:"
+
+msgid "SERIES"
+msgstr "لړۍ"
+
+msgid "Save"
+msgstr "خوندي کړئ"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "پوټکی غوره کړئ * د GUI بیا پیل کول اړین دي:"
+
+msgid "Series"
+msgstr "لړۍ"
+
+msgid "Series Episodes"
+msgstr "د لړۍ لړۍ"
+
+msgid "Series Folder: No Info possible"
+msgstr "د لړۍ فولډر: هیڅ معلومات امکان نلري"
+
+msgid "Series Style:"
+msgstr "د لړۍ سټایل:"
+
+msgid "Show"
+msgstr "ښودل"
+
+msgid "Show Backdrops:"
+msgstr "شاليدونه ښکاره کړئ:"
+
+msgid "Show List of Movie Folder:"
+msgstr "د فلم فولډر لیست ښکاره کړئ:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "په پس منظر کې تلویزیون ښکاره کړئ (m1v نشته):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "په TMDB کې لاسلیک وکړئ او وړیا شخصي ApiKey داخل کړئ"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "په TheTVDb کې لاسلیک وکړئ او وړیا شخصي ApiKey داخل کړئ"
+
+msgid "Start Plugin with Video Button:"
+msgstr "د ویډیو بټن سره پلگ ان پیل کړئ:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "د بندولو تڼۍ: فلم په نښه کړئ لکه څنګه چې لیدل کیږي"
+
+msgid "Style"
+msgstr "سټایل"
+
+msgid "TMDB API key successfully imported!"
+msgstr "د TMDB API کلید په بریالیتوب سره وارد شو!"
+
+msgid "TMDb Results"
+msgstr "د TMDb پایلې"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb ژبه:"
+
+msgid "Text Button: Edit Database"
+msgstr "د متن تڼۍ: ډیټابیس ایډیټ کړئ"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "دTVDb API کلید په بریالیتوب سره وارد شو!"
+
+msgid "TheTVDb Results"
+msgstr "د TVDb پایلې"
+
+msgid "Timer Database Update:"
+msgstr "د ټایمر ډیټابیس تازه کول:"
+
+msgid "Toggle Plugin Style"
+msgstr "د پلگ ان سټایل بدل کړئ"
+
+msgid "Toggle hide/show plugin"
+msgstr "د پټولو / ښودلو پلگ ان بدل کړئ"
+
+msgid "Update"
+msgstr "تازه کول"
+
+msgid "Update Database with Timer:"
+msgstr "د ټایمر سره ډیټابیس تازه کړئ:"
+
+msgid "Update Series"
+msgstr "تازه لړۍ"
+
+msgid "Use m1v Backdrops:"
+msgstr "د m1v شالیدونه وکاروئ:"
+
+msgid "Video Button: Update Database"
+msgstr "د ویډیو تڼۍ: د ډیټابیس تازه کول"
+
+msgid "Years:"
+msgstr "کلونه:"
+
+msgid "Yes"
+msgstr "هو"
+
+msgid "backdrop"
+msgstr "پس منظر"
+
+msgid "banner"
+msgstr "بینر"
+
+msgid "movie"
+msgstr "فلم"
+
+msgid "poster"
+msgstr "پوسټر"
+
+msgid "series"
+msgstr "لړۍ"

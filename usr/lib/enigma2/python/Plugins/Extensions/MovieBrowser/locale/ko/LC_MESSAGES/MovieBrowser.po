@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:27+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Korean <translation-team-ko@googlegroups.com>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******영화 브라우저 데이터베이스 업데이트 타이머*********\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******영화 브라우저 데이터베이스 업데이트*********\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> 버튼: 첫 글자로 이동"
+
+msgid "<List of Movie Folder>"
+msgstr "<영화 폴더 목록>"
+
+msgid "Actor Selection"
+msgstr "배우 선택"
+
+msgid "Actors:"
+msgstr "배우:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "모든 /tmp/posters 정리됨"
+
+msgid "Automatic"
+msgstr "오토매틱"
+
+msgid "Backup Database:"
+msgstr "백업 데이터베이스:"
+
+msgid "Blacklist Movie File"
+msgstr "블랙리스트 동영상 파일"
+
+msgid "Button 0: Go to end of list"
+msgstr "버튼 0: 목록 끝으로 이동"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "버튼 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "버튼 2: TMDb 정보 갱신"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "버튼 3: TheTVDb의 정보 갱신"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "버튼 4: 본 영화 숨기기/표시"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "버튼 5: 영화/시리즈 보기 전환"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "버튼 6: 영화 폴더 선택"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "버튼 7: 영화 감독 선택"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "버튼 8: 영화 배우 선택"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "버튼 9: 영화 장르 선택"
+
+msgid "Cache Folder:"
+msgstr "캐시 폴더:"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Choose Directory"
+msgstr "디렉토리 선택"
+
+msgid "Choose Directory:"
+msgstr "디렉토리 선택:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "캐시 폴더 로그 정리"
+
+msgid "Cleanup Cache Folder:"
+msgstr "캐시 폴더 정리:"
+
+msgid "Country:"
+msgstr "국가:"
+
+msgid "Database"
+msgstr "데이터 베이스"
+
+msgid "Database Editor:"
+msgstr "데이터베이스 편집기:"
+
+msgid "Database Timer Log"
+msgstr "데이터베이스 타이머 로그"
+
+msgid "Database Update Log"
+msgstr "데이터베이스 업데이트 로그"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "데이터베이스 업데이트 타이머가 중지되었습니다: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "영화 파일 삭제"
+
+msgid "Director Selection"
+msgstr "이사 선정"
+
+msgid "Director:"
+msgstr "감독:"
+
+msgid "Download new Backdrops:"
+msgstr "새로운 배경화면 다운로드:"
+
+msgid "EPISODES"
+msgstr "에피소드"
+
+msgid "Error moving cache folder: %s"
+msgstr "캐시 폴더 이동 오류: %s"
+
+msgid "File %s non trovato!"
+msgstr "%s 파일을 찾을 수 없습니다!"
+
+msgid "File %s not found!"
+msgstr "%s 파일을 찾을 수 없습니다!"
+
+msgid "Folder Selection"
+msgstr "폴더 선택"
+
+msgid "Free Space"
+msgstr "여유 공간"
+
+msgid "Free Space:"
+msgstr "여유 공간:"
+
+msgid "Genre Selection"
+msgstr "장르 선택"
+
+msgid "Genres:"
+msgstr "장르:"
+
+msgid "Goto last Movie on Start:"
+msgstr "시작 시 마지막 영화로 이동:"
+
+msgid "Help"
+msgstr "돕다"
+
+msgid "Hide"
+msgstr "숨다"
+
+msgid "Hide Plugin during Update:"
+msgstr "업데이트 중 플러그인 숨기기:"
+
+msgid "Info Button"
+msgstr "정보 버튼"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "정보 버튼: 정보 표시/숨기기 전환"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "/tmp/tmdb_api.txt에서 TMDB Apikey 로드"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "/tmp/thetvdb_api.txt에서 TheTVDb Apikey를 로드하세요."
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "시작 시 마지막 선택/필터 로드:"
+
+msgid "MOVIES"
+msgstr "영화 산업"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "영화 및 시리즈 V.%s 관리"
+
+msgid "Metrix List Selection Color:"
+msgstr "메트릭 목록 선택 색상:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "영화 브라우저 키 할당"
+
+msgid "Movie Creation Date Ascending"
+msgstr "영화 제작일 오름차순"
+
+msgid "Movie Creation Date Descending"
+msgstr "영화 제작 날짜 내림차순"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "영화 데이터베이스 업데이트 시작됨: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "영화 파일 정보"
+
+msgid "Movie Folder"
+msgstr "영화 폴더"
+
+msgid "Movie Folder Ascending"
+msgstr "영화 폴더 오름차순"
+
+msgid "Movie Folder Descending"
+msgstr "영화 폴더 내림차순"
+
+msgid "Movie Folder Selection"
+msgstr "영화 폴더 선택"
+
+msgid "Movie Folder:"
+msgstr "영화 폴더:"
+
+msgid "Movie Rating 0-10"
+msgstr "영화 등급 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "영화 평점 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "영화 개봉일 오름차순"
+
+msgid "Movie Release Date Descending"
+msgstr "영화 개봉일 내림차순"
+
+msgid "Movie Runtime Ascending"
+msgstr "영화 런타임 오름차순"
+
+msgid "Movie Runtime Descending"
+msgstr "영화 런타임 내림차순"
+
+msgid "Movie Sort Order:"
+msgstr "영화 정렬 순서:"
+
+msgid "Movie Title A-Z"
+msgstr "영화 제목 A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "영화 제목 Z-A"
+
+msgid "Movies"
+msgstr "영화 산업"
+
+msgid "Movies & Series"
+msgstr "영화 및 시리즈"
+
+msgid "Movies Style:"
+msgstr "영화 스타일:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "시작 시 영화 또는 시리즈 선택:"
+
+msgid "Movies or Series:"
+msgstr "영화 또는 시리즈:"
+
+msgid "No"
+msgstr "아니요"
+
+msgid "On Database Update"
+msgstr "데이터베이스 업데이트 시"
+
+msgid "On First Access"
+msgstr "첫 번째 액세스 시"
+
+msgid "Plugin Transparency:"
+msgstr "플러그인 투명성:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "수수께끼 메뉴의 플러그인:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "포스터월/배경 쇼 플롯:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "라디오 버튼: 동영상 삭제/블랙리스트"
+
+msgid "Rating:"
+msgstr "평가:"
+
+msgid "Really close without saving settings?"
+msgstr "설정을 저장하지 않고 닫으시겠습니까?"
+
+msgid "Reset Database:"
+msgstr "데이터베이스 재설정:"
+
+msgid "Restore Database:"
+msgstr "데이터베이스 복원:"
+
+msgid "Runtime:"
+msgstr "실행 시간:"
+
+msgid "SERIES"
+msgstr "시리즈"
+
+msgid "Save"
+msgstr "구하다"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "스킨 선택 *GUI 다시 시작 필요:"
+
+msgid "Series"
+msgstr "시리즈"
+
+msgid "Series Episodes"
+msgstr "시리즈 에피소드"
+
+msgid "Series Folder: No Info possible"
+msgstr "시리즈 폴더: 정보 없음"
+
+msgid "Series Style:"
+msgstr "시리즈 스타일:"
+
+msgid "Show"
+msgstr "보여주다"
+
+msgid "Show Backdrops:"
+msgstr "배경화면 표시:"
+
+msgid "Show List of Movie Folder:"
+msgstr "영화 폴더 목록 표시:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "백그라운드에서 TV 표시(m1v 없음):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "TMDB에 가입하고 무료 개인 ApiKey를 입력하세요"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "TheTVDb에 가입하고 무료 개인 ApiKey를 입력하세요."
+
+msgid "Start Plugin with Video Button:"
+msgstr "비디오 버튼으로 플러그인 시작:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "중지 버튼: 영화를 본 것으로 표시"
+
+msgid "Style"
+msgstr "스타일"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API 키를 성공적으로 가져왔습니다!"
+
+msgid "TMDb Results"
+msgstr "TMDb 결과"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb 언어:"
+
+msgid "Text Button: Edit Database"
+msgstr "텍스트 버튼: 데이터베이스 편집"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TVDb API 키를 성공적으로 가져왔습니다!"
+
+msgid "TheTVDb Results"
+msgstr "TheTVDb 결과"
+
+msgid "Timer Database Update:"
+msgstr "타이머 데이터베이스 업데이트:"
+
+msgid "Toggle Plugin Style"
+msgstr "플러그인 스타일 전환"
+
+msgid "Toggle hide/show plugin"
+msgstr "플러그인 숨기기/표시 전환"
+
+msgid "Update"
+msgstr "업데이트"
+
+msgid "Update Database with Timer:"
+msgstr "타이머로 데이터베이스 업데이트:"
+
+msgid "Update Series"
+msgstr "업데이트 시리즈"
+
+msgid "Use m1v Backdrops:"
+msgstr "m1v 배경화면 사용:"
+
+msgid "Video Button: Update Database"
+msgstr "비디오 버튼: 데이터베이스 업데이트"
+
+msgid "Years:"
+msgstr "연령:"
+
+msgid "Yes"
+msgstr "예"
+
+msgid "backdrop"
+msgstr "배경"
+
+msgid "banner"
+msgstr "기치"
+
+msgid "movie"
+msgstr "영화"
+
+msgid "poster"
+msgstr "포스터"
+
+msgid "series"
+msgstr "시리즈"

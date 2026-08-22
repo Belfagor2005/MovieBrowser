@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:04+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Language pt-BR\n"
+"Language: pt-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Temporizador de atualização do banco de dados do navegador de filmes*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Atualização do banco de dados do navegador de filmes*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> Botão: Ir para a primeira letra"
+
+msgid "<List of Movie Folder>"
+msgstr "<Lista de pastas de filmes>"
+
+msgid "Actor Selection"
+msgstr "Seleção de atores"
+
+msgid "Actors:"
+msgstr "Atores:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Todos /tmp/posters limpos"
+
+msgid "Automatic"
+msgstr "Automático"
+
+msgid "Backup Database:"
+msgstr "Banco de dados de backup:"
+
+msgid "Blacklist Movie File"
+msgstr "Arquivo de filme da lista negra"
+
+msgid "Button 0: Go to end of list"
+msgstr "Botão 0: Ir para o final da lista"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Botão 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Botão 2: Renovar informações no TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Botão 3: Renovar informações no TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "Botão 4: Ocultar/mostrar filmes vistos"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Botão 5: Alternar visualização de filmes/séries"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "Botão 6: Seleção da pasta do filme"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "Botão 7: Seleção do Diretor de Filme"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "Botão 8: Seleção de Ator de Cinema"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "Botão 9: Seleção de gênero de filme"
+
+msgid "Cache Folder:"
+msgstr "Pasta de cache:"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Choose Directory"
+msgstr "Escolha o diretório"
+
+msgid "Choose Directory:"
+msgstr "Escolha Diretório:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Log de pasta de cache de limpeza"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Pasta de cache de limpeza:"
+
+msgid "Country:"
+msgstr "País:"
+
+msgid "Database"
+msgstr "Banco de dados"
+
+msgid "Database Editor:"
+msgstr "Editor de banco de dados:"
+
+msgid "Database Timer Log"
+msgstr "Log do temporizador do banco de dados"
+
+msgid "Database Update Log"
+msgstr "Log de atualização do banco de dados"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Temporizador de atualização do banco de dados interrompido: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Excluir arquivo de filme"
+
+msgid "Director Selection"
+msgstr "Seleção de Diretor"
+
+msgid "Director:"
+msgstr "Diretor:"
+
+msgid "Download new Backdrops:"
+msgstr "Baixe novos cenários:"
+
+msgid "EPISODES"
+msgstr "EPISÓDIOS"
+
+msgid "Error moving cache folder: %s"
+msgstr "Erro ao mover a pasta de cache: %s"
+
+msgid "File %s non trovato!"
+msgstr "Arquivo %s não encontrado!"
+
+msgid "File %s not found!"
+msgstr "Arquivo %s não encontrado!"
+
+msgid "Folder Selection"
+msgstr "Seleção de pasta"
+
+msgid "Free Space"
+msgstr "Espaço Livre"
+
+msgid "Free Space:"
+msgstr "Espaço Livre:"
+
+msgid "Genre Selection"
+msgstr "Seleção de gênero"
+
+msgid "Genres:"
+msgstr "Gêneros:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Vá para o último filme no início:"
+
+msgid "Help"
+msgstr "Ajuda"
+
+msgid "Hide"
+msgstr "Esconder"
+
+msgid "Hide Plugin during Update:"
+msgstr "Ocultar o plugin durante a atualização:"
+
+msgid "Info Button"
+msgstr "Botão Informações"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Botão Informações: Alternar mostrar/ocultar informações"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Carregue o TMDB Apikey de /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Carregue TheTVDb Apikey de /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Carregue a última seleção/filtro no início:"
+
+msgid "MOVIES"
+msgstr "FILMES"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Gerencie seus filmes e séries V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Cor de seleção da lista Metrix:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Atribuição de teclas do navegador de filmes"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Data de criação do filme crescente"
+
+msgid "Movie Creation Date Descending"
+msgstr "Data de criação do filme decrescente"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Atualização do banco de dados de filmes iniciada: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Informações do arquivo de filme"
+
+msgid "Movie Folder"
+msgstr "Pasta de filmes"
+
+msgid "Movie Folder Ascending"
+msgstr "Pasta de filme ascendente"
+
+msgid "Movie Folder Descending"
+msgstr "Pasta de filmes descendente"
+
+msgid "Movie Folder Selection"
+msgstr "Seleção de pasta de filme"
+
+msgid "Movie Folder:"
+msgstr "Pasta do filme:"
+
+msgid "Movie Rating 0-10"
+msgstr "Classificação do filme 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Classificação do filme 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Data de lançamento do filme crescente"
+
+msgid "Movie Release Date Descending"
+msgstr "Data de lançamento do filme decrescente"
+
+msgid "Movie Runtime Ascending"
+msgstr "Tempo de execução do filme crescente"
+
+msgid "Movie Runtime Descending"
+msgstr "Tempo de execução do filme descendente"
+
+msgid "Movie Sort Order:"
+msgstr "Ordem de classificação do filme:"
+
+msgid "Movie Title A-Z"
+msgstr "Título do filme A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Título do filme Z-A"
+
+msgid "Movies"
+msgstr "Filmes"
+
+msgid "Movies & Series"
+msgstr "Filmes e séries"
+
+msgid "Movies Style:"
+msgstr "Estilo de filmes:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Seleção de filmes ou séries no início:"
+
+msgid "Movies or Series:"
+msgstr "Filmes ou séries:"
+
+msgid "No"
+msgstr "Não"
+
+msgid "On Database Update"
+msgstr "Na atualização do banco de dados"
+
+msgid "On First Access"
+msgstr "No primeiro acesso"
+
+msgid "Plugin Transparency:"
+msgstr "Transparência do plug-in:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Plug-in no menu Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Gráfico de exibição de posterwall/pano de fundo:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Botão de opção: Excluir/filme da lista negra"
+
+msgid "Rating:"
+msgstr "Avaliação:"
+
+msgid "Really close without saving settings?"
+msgstr "Realmente fechar sem salvar as configurações?"
+
+msgid "Reset Database:"
+msgstr "Redefinir banco de dados:"
+
+msgid "Restore Database:"
+msgstr "Restaurar banco de dados:"
+
+msgid "Runtime:"
+msgstr "Tempo de execução:"
+
+msgid "SERIES"
+msgstr "SÉRIE"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Selecione skin *Reiniciar GUI Necessário:"
+
+msgid "Series"
+msgstr "Série"
+
+msgid "Series Episodes"
+msgstr "Episódios da série"
+
+msgid "Series Folder: No Info possible"
+msgstr "Pasta da série: nenhuma informação possível"
+
+msgid "Series Style:"
+msgstr "Estilo da série:"
+
+msgid "Show"
+msgstr "Mostrar"
+
+msgid "Show Backdrops:"
+msgstr "Mostrar cenários:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Mostrar lista de pastas de filmes:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Mostrar TV em segundo plano (sem m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Cadastre-se no TMDB e insira ApiKey pessoal gratuitamente"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Cadastre-se no TheTVDb e insira ApiKey pessoal gratuitamente"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Iniciar plug-in com botão de vídeo:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Botão Parar: Marca o filme como visto"
+
+msgid "Style"
+msgstr "Estilo"
+
+msgid "TMDB API key successfully imported!"
+msgstr "Chave API TMDB importada com sucesso!"
+
+msgid "TMDb Results"
+msgstr "Resultados TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "Idioma TMDb/TheTVDb:"
+
+msgid "Text Button: Edit Database"
+msgstr "Botão de texto: Editar banco de dados"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "A chave da API TVDb foi importada com sucesso!"
+
+msgid "TheTVDb Results"
+msgstr "Resultados TheTVDb"
+
+msgid "Timer Database Update:"
+msgstr "Atualização do banco de dados do temporizador:"
+
+msgid "Toggle Plugin Style"
+msgstr "Alternar estilo de plug-in"
+
+msgid "Toggle hide/show plugin"
+msgstr "Alternar ocultar/mostrar plugin"
+
+msgid "Update"
+msgstr "Atualizar"
+
+msgid "Update Database with Timer:"
+msgstr "Atualizar banco de dados com temporizador:"
+
+msgid "Update Series"
+msgstr "Série de atualização"
+
+msgid "Use m1v Backdrops:"
+msgstr "Use cenários m1v:"
+
+msgid "Video Button: Update Database"
+msgstr "Botão de vídeo: Atualizar banco de dados"
+
+msgid "Years:"
+msgstr "Anos:"
+
+msgid "Yes"
+msgstr "Sim"
+
+msgid "backdrop"
+msgstr "pano de fundo"
+
+msgid "banner"
+msgstr "bandeira"
+
+msgid "movie"
+msgstr "filme"
+
+msgid "poster"
+msgstr ""
+
+msgid "series"
+msgstr "série"

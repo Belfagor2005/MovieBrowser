@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:11+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******Movie Browser Database Update Timer********\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Posodobitev zbirke podatkov brskalnika za filme********\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> Gumb: Pojdi na prvo črko"
+
+msgid "<List of Movie Folder>"
+msgstr "<Seznam filmske mape>"
+
+msgid "Actor Selection"
+msgstr "Izbira igralca"
+
+msgid "Actors:"
+msgstr "Igralci:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Vsi /tmp/plakati očiščeni"
+
+msgid "Automatic"
+msgstr "Samodejno"
+
+msgid "Backup Database:"
+msgstr "Varnostna baza podatkov:"
+
+msgid "Blacklist Movie File"
+msgstr "Filmska datoteka črnega seznama"
+
+msgid "Button 0: Go to end of list"
+msgstr "Gumb 0: Pojdi na konec seznama"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Gumb 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Gumb 2: Obnovi informacije na TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Gumb 3: Obnovi informacije na TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "Gumb 4: Skrij/prikaži videne filme"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Gumb 5: Preklop pogleda filmov/serij"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "Gumb 6: Izbira filmske mape"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "Gumb 7: Izbira filmskega režiserja"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "Gumb 8: Izbira filmskega igralca"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "Gumb 9: Izbira žanra filma"
+
+msgid "Cache Folder:"
+msgstr "Mapa predpomnilnika:"
+
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgid "Choose Directory"
+msgstr "Izberite Imenik"
+
+msgid "Choose Directory:"
+msgstr "Izberite imenik:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Čiščenje dnevnika mape predpomnilnika"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Čiščenje mape predpomnilnika:"
+
+msgid "Country:"
+msgstr "država:"
+
+msgid "Database"
+msgstr "Baza podatkov"
+
+msgid "Database Editor:"
+msgstr "Urejevalnik baze podatkov:"
+
+msgid "Database Timer Log"
+msgstr "Dnevnik časovnika baze podatkov"
+
+msgid "Database Update Log"
+msgstr "Dnevnik posodobitev baze podatkov"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Časovnik posodobitve baze podatkov je ustavljen: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Izbriši filmsko datoteko"
+
+msgid "Director Selection"
+msgstr "Izbor direktorja"
+
+msgid "Director:"
+msgstr "Direktor:"
+
+msgid "Download new Backdrops:"
+msgstr "Prenesite nova ozadja:"
+
+msgid "EPISODES"
+msgstr "EPIZODE"
+
+msgid "Error moving cache folder: %s"
+msgstr "Napaka pri premikanju predpomnilniške mape: %s"
+
+msgid "File %s non trovato!"
+msgstr "Datoteke %s ni mogoče najti!"
+
+msgid "File %s not found!"
+msgstr "Datoteke %s ni mogoče najti!"
+
+msgid "Folder Selection"
+msgstr "Izbira mape"
+
+msgid "Free Space"
+msgstr "Prosti prostor"
+
+msgid "Free Space:"
+msgstr "Prosti prostor:"
+
+msgid "Genre Selection"
+msgstr "Izbira žanra"
+
+msgid "Genres:"
+msgstr "Žanri:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Pojdi na zadnji film na začetku:"
+
+msgid "Help"
+msgstr "pomoč"
+
+msgid "Hide"
+msgstr "Skrij se"
+
+msgid "Hide Plugin during Update:"
+msgstr "Skrij vtičnik med posodobitvijo:"
+
+msgid "Info Button"
+msgstr "Gumb za informacije"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Gumb za informacije: Preklop med prikazovanjem in skrivanjem informacij"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Naložite TMDB Apikey iz /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Naložite TheTVDb Apikey iz /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Naloži zadnji izbor/filter ob začetku:"
+
+msgid "MOVIES"
+msgstr "FILMI"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Upravljajte svoje filme in serije V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Barva izbire seznama Metrix:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Dodelitev tipk brskalnika za filme"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Datum ustvarjanja filma naraščajoče"
+
+msgid "Movie Creation Date Descending"
+msgstr "Datum ustvarjanja filma padajoče"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Posodobitev zbirke podatkov filmov se je začela: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Informacije o filmski datoteki"
+
+msgid "Movie Folder"
+msgstr "Filmska mapa"
+
+msgid "Movie Folder Ascending"
+msgstr "Filmska mapa naraščajoče"
+
+msgid "Movie Folder Descending"
+msgstr "Filmska mapa padajoče"
+
+msgid "Movie Folder Selection"
+msgstr "Izbira filmske mape"
+
+msgid "Movie Folder:"
+msgstr "Filmska mapa:"
+
+msgid "Movie Rating 0-10"
+msgstr "Ocena filma 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Ocena filma 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Datum izida filma naraščajoče"
+
+msgid "Movie Release Date Descending"
+msgstr "Datum izida filma padajoče"
+
+msgid "Movie Runtime Ascending"
+msgstr "Naraščajoče trajanje filma"
+
+msgid "Movie Runtime Descending"
+msgstr "Trajanje filma padajoče"
+
+msgid "Movie Sort Order:"
+msgstr "Vrstni red filma:"
+
+msgid "Movie Title A-Z"
+msgstr "Naslov filma A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Naslov filma Z-A"
+
+msgid "Movies"
+msgstr "Filmi"
+
+msgid "Movies & Series"
+msgstr "Filmi in serije"
+
+msgid "Movies Style:"
+msgstr "Filmski slog:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Izbira filmov ali serij na začetku:"
+
+msgid "Movies or Series:"
+msgstr "Filmi ali serije:"
+
+msgid "No"
+msgstr "št"
+
+msgid "On Database Update"
+msgstr "Pri posodobitvi baze podatkov"
+
+msgid "On First Access"
+msgstr "Ob prvem dostopu"
+
+msgid "Plugin Transparency:"
+msgstr "Preglednost vtičnika:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Vtičnik v meniju Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Posterwall/Backdrop Show Zaplet:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Izbirni gumb: Izbriši/film na črnem seznamu"
+
+msgid "Rating:"
+msgstr "Ocena:"
+
+msgid "Really close without saving settings?"
+msgstr "Ali res zaprete brez shranjevanja nastavitev?"
+
+msgid "Reset Database:"
+msgstr "Ponastavi bazo podatkov:"
+
+msgid "Restore Database:"
+msgstr "Obnovi bazo podatkov:"
+
+msgid "Runtime:"
+msgstr "čas izvajanja:"
+
+msgid "SERIES"
+msgstr "SERIJA"
+
+msgid "Save"
+msgstr "Shrani"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Izberite preobleko *Potreben je ponovni zagon GUI:"
+
+msgid "Series"
+msgstr "serija"
+
+msgid "Series Episodes"
+msgstr "Epizode serije"
+
+msgid "Series Folder: No Info possible"
+msgstr "Mapa serije: Informacije niso možne"
+
+msgid "Series Style:"
+msgstr "Slog serije:"
+
+msgid "Show"
+msgstr "Prikaži"
+
+msgid "Show Backdrops:"
+msgstr "Prikaži ozadja:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Pokaži seznam filmske mape:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Prikaži TV v ozadju (brez m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Prijavite se na TMDB in brezplačno vnesite osebni ključ ApiKey"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Prijavite se na TheTVDb in brezplačno vnesite osebni ApiKey"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Zaženite vtičnik z gumbom Video:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Gumb Stop: Označi film kot viden"
+
+msgid "Style"
+msgstr "Slog"
+
+msgid "TMDB API key successfully imported!"
+msgstr "Ključ TMDB API uspešno uvožen!"
+
+msgid "TMDb Results"
+msgstr "Rezultati TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "Jezik TMDb/TheTVDb:"
+
+msgid "Text Button: Edit Database"
+msgstr "Besedilni gumb: Uredi zbirko podatkov"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "Ključ TVDb API je uspešno uvožen!"
+
+msgid "TheTVDb Results"
+msgstr "Rezultati TVDb"
+
+msgid "Timer Database Update:"
+msgstr "Posodobitev zbirke podatkov časovnika:"
+
+msgid "Toggle Plugin Style"
+msgstr "Preklopi slog vtičnika"
+
+msgid "Toggle hide/show plugin"
+msgstr "Preklop skrij/prikaži vtičnik"
+
+msgid "Update"
+msgstr "posodobitev"
+
+msgid "Update Database with Timer:"
+msgstr "Posodobi bazo podatkov s časovnikom:"
+
+msgid "Update Series"
+msgstr "Posodobi serijo"
+
+msgid "Use m1v Backdrops:"
+msgstr "Uporabite ozadja m1v:"
+
+msgid "Video Button: Update Database"
+msgstr "Gumb Video: Posodobi zbirko podatkov"
+
+msgid "Years:"
+msgstr "leta:"
+
+msgid "Yes"
+msgstr "ja"
+
+msgid "backdrop"
+msgstr "ozadje"
+
+msgid "banner"
+msgstr "transparent"
+
+msgid "movie"
+msgstr "film"
+
+msgid "poster"
+msgstr "plakat"
+
+msgid "series"
+msgstr "serije"

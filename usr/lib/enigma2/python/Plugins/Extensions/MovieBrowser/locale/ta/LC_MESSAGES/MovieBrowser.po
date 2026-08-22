@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:21+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Tamil <tamil@systemreboot.net>\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******மூவி உலாவி தரவுத்தள புதுப்பிப்பு டைமர்*****\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******மூவி உலாவி தரவுத்தள புதுப்பிப்பு*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> பொத்தான்: முதல் எழுத்துக்குச் செல்லவும்"
+
+msgid "<List of Movie Folder>"
+msgstr "<மூவி கோப்புறையின் பட்டியல்>"
+
+msgid "Actor Selection"
+msgstr "நடிகர் தேர்வு"
+
+msgid "Actors:"
+msgstr "நடிகர்கள்:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "அனைத்து /tmp/சுவரொட்டிகளும் சுத்தம் செய்யப்பட்டன"
+
+msgid "Automatic"
+msgstr "தானியங்கி"
+
+msgid "Backup Database:"
+msgstr "காப்பு தரவுத்தளம்:"
+
+msgid "Blacklist Movie File"
+msgstr "பிளாக்லிஸ்ட் மூவி கோப்பு"
+
+msgid "Button 0: Go to end of list"
+msgstr "பொத்தான் 0: பட்டியலின் இறுதிக்குச் செல்லவும்"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "பொத்தான் 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "பொத்தான் 2: TMDb பற்றிய தகவலைப் புதுப்பிக்கவும்"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "பொத்தான் 3: TheTVDb இல் தகவலைப் புதுப்பிக்கவும்"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "பொத்தான் 4: பார்த்த திரைப்படங்களை மறை/காட்டு"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "பொத்தான் 5: திரைப்படங்கள்/தொடர் காட்சியை நிலைமாற்று"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "பொத்தான் 6: மூவி கோப்புறை தேர்வு"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "பட்டன் 7: திரைப்பட இயக்குனர் தேர்வு"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "பட்டன் 8: திரைப்பட நடிகர் தேர்வு"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "பட்டன் 9: திரைப்பட வகை தேர்வு"
+
+msgid "Cache Folder:"
+msgstr "தற்காலிக சேமிப்பு கோப்புறை:"
+
+msgid "Cancel"
+msgstr "ரத்து செய்"
+
+msgid "Choose Directory"
+msgstr "கோப்பகத்தைத் தேர்ந்தெடுக்கவும்"
+
+msgid "Choose Directory:"
+msgstr "கோப்பகத்தைத் தேர்வுசெய்க:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Cache Folder Log ஐ சுத்தம் செய்தல்"
+
+msgid "Cleanup Cache Folder:"
+msgstr "துப்புரவு தற்காலிக சேமிப்பு கோப்புறை:"
+
+msgid "Country:"
+msgstr "நாடு:"
+
+msgid "Database"
+msgstr "தரவுத்தளம்"
+
+msgid "Database Editor:"
+msgstr "தரவுத்தள எடிட்டர்:"
+
+msgid "Database Timer Log"
+msgstr "தரவுத்தள டைமர் பதிவு"
+
+msgid "Database Update Log"
+msgstr "தரவுத்தள புதுப்பிப்பு பதிவு"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "தரவுத்தள புதுப்பிப்பு டைமர் நிறுத்தப்பட்டது: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "மூவி கோப்பை நீக்கு"
+
+msgid "Director Selection"
+msgstr "இயக்குனர் தேர்வு"
+
+msgid "Director:"
+msgstr "இயக்குனர்:"
+
+msgid "Download new Backdrops:"
+msgstr "புதிய பின்னணிகளைப் பதிவிறக்கவும்:"
+
+msgid "EPISODES"
+msgstr "எபிசோடுகள்"
+
+msgid "Error moving cache folder: %s"
+msgstr "கேச் கோப்புறையை நகர்த்துவதில் பிழை: %s"
+
+msgid "File %s non trovato!"
+msgstr "கோப்பு %s கிடைக்கவில்லை!"
+
+msgid "File %s not found!"
+msgstr "கோப்பு %s கிடைக்கவில்லை!"
+
+msgid "Folder Selection"
+msgstr "கோப்புறை தேர்வு"
+
+msgid "Free Space"
+msgstr "இலவச இடம்"
+
+msgid "Free Space:"
+msgstr "இலவச இடம்:"
+
+msgid "Genre Selection"
+msgstr "வகை தேர்வு"
+
+msgid "Genres:"
+msgstr "வகைகள்:"
+
+msgid "Goto last Movie on Start:"
+msgstr "தொடக்கத்தில் கடைசி திரைப்படத்தைப் பெறவும்:"
+
+msgid "Help"
+msgstr "உதவி"
+
+msgid "Hide"
+msgstr "மறை"
+
+msgid "Hide Plugin during Update:"
+msgstr "புதுப்பிப்பின் போது செருகுநிரலை மறை:"
+
+msgid "Info Button"
+msgstr "தகவல் பொத்தான்"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "தகவல் பொத்தான்: காட்சி/மறை தகவலை நிலைமாற்று"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "/tmp/tmdb_api.txt இலிருந்து TMDB Apikey ஐ ஏற்றவும்"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "/tmp/thetvdb_api.txt இலிருந்து TheTVDb Apikeyஐ ஏற்றவும்"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "தொடக்கத்தில் கடைசி தேர்வு/வடிப்பானை ஏற்றவும்:"
+
+msgid "MOVIES"
+msgstr "திரைப்படங்கள்"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "உங்கள் திரைப்படங்கள் & தொடர்களை நிர்வகிக்கவும் V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "மெட்ரிக்ஸ் பட்டியல் தேர்வு நிறம்:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "திரைப்பட உலாவி முக்கிய ஒதுக்கீடு"
+
+msgid "Movie Creation Date Ascending"
+msgstr "திரைப்பட உருவாக்கம் தேதி ஏறுமுகம்"
+
+msgid "Movie Creation Date Descending"
+msgstr "திரைப்பட உருவாக்கம் தேதி இறங்குமுகம்"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "மூவி தரவுத்தள புதுப்பிப்பு தொடங்கியது: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "திரைப்பட கோப்பு தகவல்"
+
+msgid "Movie Folder"
+msgstr "மூவி கோப்புறை"
+
+msgid "Movie Folder Ascending"
+msgstr "மூவி கோப்புறை ஏறுவரிசை"
+
+msgid "Movie Folder Descending"
+msgstr "மூவி கோப்புறை இறங்குமுகம்"
+
+msgid "Movie Folder Selection"
+msgstr "திரைப்பட கோப்புறை தேர்வு"
+
+msgid "Movie Folder:"
+msgstr "திரைப்படக் கோப்புறை:"
+
+msgid "Movie Rating 0-10"
+msgstr "திரைப்பட மதிப்பீடு 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "திரைப்பட மதிப்பீடு 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "திரைப்பட வெளியீட்டு தேதி ஏறுமுகம்"
+
+msgid "Movie Release Date Descending"
+msgstr "திரைப்பட வெளியீட்டு தேதி இறங்குமுகம்"
+
+msgid "Movie Runtime Ascending"
+msgstr "திரைப்பட இயக்க நேரம் ஏறுமுகம்"
+
+msgid "Movie Runtime Descending"
+msgstr "திரைப்பட இயக்க நேரம் இறங்குமுகம்"
+
+msgid "Movie Sort Order:"
+msgstr "திரைப்பட வரிசைமுறை:"
+
+msgid "Movie Title A-Z"
+msgstr "படத்தின் தலைப்பு A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "படத்தின் தலைப்பு Z-A"
+
+msgid "Movies"
+msgstr "திரைப்படங்கள்"
+
+msgid "Movies & Series"
+msgstr "திரைப்படங்கள் & தொடர்கள்"
+
+msgid "Movies Style:"
+msgstr "திரைப்பட நடை:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "தொடக்கத்தில் திரைப்படங்கள் அல்லது தொடர் தேர்வு:"
+
+msgid "Movies or Series:"
+msgstr "திரைப்படங்கள் அல்லது தொடர்:"
+
+msgid "No"
+msgstr "இல்லை"
+
+msgid "On Database Update"
+msgstr "தரவுத்தள புதுப்பிப்பில்"
+
+msgid "On First Access"
+msgstr "முதல் அணுகலில்"
+
+msgid "Plugin Transparency:"
+msgstr "செருகுநிரல் வெளிப்படைத்தன்மை:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "எனிக்மா மெனுவில் செருகுநிரல்:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "போஸ்டர்வால்/பின்னணிக் காட்சிக் காட்சி:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "ரேடியோ பட்டன்: திரைப்படத்தை நீக்கு/தடுப்புப்பட்டியல்"
+
+msgid "Rating:"
+msgstr "மதிப்பீடு:"
+
+msgid "Really close without saving settings?"
+msgstr "அமைப்புகளைச் சேமிக்காமல் உண்மையில் மூடவா?"
+
+msgid "Reset Database:"
+msgstr "தரவுத்தளத்தை மீட்டமைக்கவும்:"
+
+msgid "Restore Database:"
+msgstr "தரவுத்தளத்தை மீட்டமை:"
+
+msgid "Runtime:"
+msgstr "இயக்க நேரம்:"
+
+msgid "SERIES"
+msgstr "தொடர்"
+
+msgid "Save"
+msgstr "சேமிக்கவும்"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "தோலைத் தேர்ந்தெடு * GUI ஐ மறுதொடக்கம் தேவை:"
+
+msgid "Series"
+msgstr "தொடர்"
+
+msgid "Series Episodes"
+msgstr "தொடர் அத்தியாயங்கள்"
+
+msgid "Series Folder: No Info possible"
+msgstr "தொடர் கோப்புறை: தகவல் சாத்தியமில்லை"
+
+msgid "Series Style:"
+msgstr "தொடர் நடை:"
+
+msgid "Show"
+msgstr "காட்டு"
+
+msgid "Show Backdrops:"
+msgstr "பின்னணியைக் காட்டு:"
+
+msgid "Show List of Movie Folder:"
+msgstr "மூவி கோப்புறையின் பட்டியலைக் காட்டு:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "டிவியை பின்னணியில் காட்டு (m1v இல்லை):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "TMDB மற்றும் உள்ளீடு இலவச தனிப்பட்ட ApiKey இல் பதிவு செய்யவும்"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "TheTVDb இல் பதிவுசெய்து இலவச தனிப்பட்ட ApiKey ஐ உள்ளிடவும்"
+
+msgid "Start Plugin with Video Button:"
+msgstr "வீடியோ பட்டன் மூலம் செருகுநிரலைத் தொடங்கவும்:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "நிறுத்து பொத்தான்: திரைப்படத்தைப் பார்த்ததாகக் குறிக்கவும்"
+
+msgid "Style"
+msgstr "உடை"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API விசை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது!"
+
+msgid "TMDb Results"
+msgstr "TMDb முடிவுகள்"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb மொழி:"
+
+msgid "Text Button: Edit Database"
+msgstr "உரை பொத்தான்: தரவுத்தளத்தைத் திருத்து"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TheTVDb API விசை வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது!"
+
+msgid "TheTVDb Results"
+msgstr "TheTVDb முடிவுகள்"
+
+msgid "Timer Database Update:"
+msgstr "டைமர் தரவுத்தள புதுப்பிப்பு:"
+
+msgid "Toggle Plugin Style"
+msgstr "செருகுநிரல் பாணியை நிலைமாற்று"
+
+msgid "Toggle hide/show plugin"
+msgstr "செருகுநிரலை மறை/காட்டு"
+
+msgid "Update"
+msgstr "புதுப்பிக்கவும்"
+
+msgid "Update Database with Timer:"
+msgstr "டைமருடன் தரவுத்தளத்தைப் புதுப்பிக்கவும்:"
+
+msgid "Update Series"
+msgstr "புதுப்பிப்பு தொடர்"
+
+msgid "Use m1v Backdrops:"
+msgstr "m1v பின்னணியைப் பயன்படுத்தவும்:"
+
+msgid "Video Button: Update Database"
+msgstr "வீடியோ பொத்தான்: தரவுத்தளத்தைப் புதுப்பிக்கவும்"
+
+msgid "Years:"
+msgstr "ஆண்டுகள்:"
+
+msgid "Yes"
+msgstr "ஆம்"
+
+msgid "backdrop"
+msgstr "பின்னணி"
+
+msgid "banner"
+msgstr "பதாகை"
+
+msgid "movie"
+msgstr "திரைப்படம்"
+
+msgid "poster"
+msgstr "சுவரொட்டி"
+
+msgid "series"
+msgstr "தொடர்"

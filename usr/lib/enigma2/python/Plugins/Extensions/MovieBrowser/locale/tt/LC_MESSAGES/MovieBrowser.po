@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:33+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Tatar\n"
+"Language: tt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******* Кино браузеры мәгълүмат базасын яңарту таймеры ******* \\\\\\\\\\\\\\\\ n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* Кино браузеры базасын яңарту ******* \\\\\\\\\\\\\\\\ n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> төймә: Беренче хәрефкә бар"
+
+msgid "<List of Movie Folder>"
+msgstr "<Кино папкасы исемлеге>"
+
+msgid "Actor Selection"
+msgstr "Актер сайлау"
+
+msgid "Actors:"
+msgstr "Актерлар:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Барлык / tmp / плакатлар чистартылды"
+
+msgid "Automatic"
+msgstr "Автоматик"
+
+msgid "Backup Database:"
+msgstr "Резерв мәгълүмат базасы:"
+
+msgid "Blacklist Movie File"
+msgstr "Кино файл"
+
+msgid "Button 0: Go to end of list"
+msgstr "0 төймәсе: исемлек ахырына бар"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "1 төймә: CutListEditor / MovieCut / LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "2 төймә: TMDb-та инфосны яңарту"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "3 төймә: TheTVDb-та инфосны яңарту"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "4 төймә: Күрелгән киноларны яшерү / күрсәтү"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "5 төймә: Кино / Серия күренеше"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "6 төймә: Кино папкаларын сайлау"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "7 төймә: Кино режиссерын сайлау"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "8 төймә: Кино актерларын сайлау"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "9 төймә: Кино жанрын сайлау"
+
+msgid "Cache Folder:"
+msgstr "Кэш папкасы:"
+
+msgid "Cancel"
+msgstr "Баш тарту"
+
+msgid "Choose Directory"
+msgstr "Белешмәлекне сайлагыз"
+
+msgid "Choose Directory:"
+msgstr "Белешмәлекне сайлагыз:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Кэш папкасы журналын чистарту"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Кэш папкасын чистарту:"
+
+msgid "Country:"
+msgstr "Ил:"
+
+msgid "Database"
+msgstr "Мәгълүматлар базасы"
+
+msgid "Database Editor:"
+msgstr "Мәгълүматлар базасы редакторы:"
+
+msgid "Database Timer Log"
+msgstr "Мәгълүматлар базасы Таймер журналы"
+
+msgid "Database Update Log"
+msgstr "Мәгълүматлар базасын яңарту журналы"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Мәгълүматлар базасын яңарту Таймер туктады:% s \\\\\\\\\\\\\\\\ n"
+
+msgid "Delete Movie File"
+msgstr "Кино файлын бетерегез"
+
+msgid "Director Selection"
+msgstr "Директор сайлау"
+
+msgid "Director:"
+msgstr "Режиссер:"
+
+msgid "Download new Backdrops:"
+msgstr "Яңа фонны йөкләү:"
+
+msgid "EPISODES"
+msgstr ""
+
+msgid "Error moving cache folder: %s"
+msgstr "Кэш папкасын күчерүдә хата:% s"
+
+msgid "File %s non trovato!"
+msgstr "Файл% s табылмады!"
+
+msgid "File %s not found!"
+msgstr "Файл% s табылмады!"
+
+msgid "Folder Selection"
+msgstr "Папка сайлау"
+
+msgid "Free Space"
+msgstr "Буш урын"
+
+msgid "Free Space:"
+msgstr "Буш урын:"
+
+msgid "Genre Selection"
+msgstr "Жанр сайлау"
+
+msgid "Genres:"
+msgstr "Жанрлар:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Старттагы соңгы кино:"
+
+msgid "Help"
+msgstr "Ярдәм"
+
+msgid "Hide"
+msgstr "Яшер"
+
+msgid "Hide Plugin during Update:"
+msgstr "Яңарту вакытында Плагинны яшерегез:"
+
+msgid "Info Button"
+msgstr "Мәгълүмат төймәсе"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Мәгълүмат төймәсе: инфосны күрсәтү / яшерү"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "TMtB Apikey -ны /tmp/tmdb_api.txt-тан йөкләгез"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "/Tmp/thetvdb_api.txt сайтыннан TheTVDb Apikey йөкләгез"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Соңгы сайлау / Фильтрны йөкләү:"
+
+msgid "MOVIES"
+msgstr "Кино"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Сезнең кинолар һәм серияләр белән идарә итү V.% s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Метрикс исемлеген сайлау төсе:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Кино браузеры төп йөкләмә"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Кино ясау датасы"
+
+msgid "Movie Creation Date Descending"
+msgstr "Кино ясау датасы"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Кино мәгълүмат базасын яңарту башланды:% s \\\\\\\\\\\\\\\\ n"
+
+msgid "Movie File Informations"
+msgstr "Кино файллары турында мәгълүмат"
+
+msgid "Movie Folder"
+msgstr "Кино папкасы"
+
+msgid "Movie Folder Ascending"
+msgstr "Кино папкасы күтәрелү"
+
+msgid "Movie Folder Descending"
+msgstr "Кино папкасы төшү"
+
+msgid "Movie Folder Selection"
+msgstr "Кино папкаларын сайлау"
+
+msgid "Movie Folder:"
+msgstr "Кино папкасы:"
+
+msgid "Movie Rating 0-10"
+msgstr "Кино рейтингы 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Кино рейтингы 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Кино чыгару датасы"
+
+msgid "Movie Release Date Descending"
+msgstr "Кино чыгару датасы"
+
+msgid "Movie Runtime Ascending"
+msgstr "Кино эш вакыты"
+
+msgid "Movie Runtime Descending"
+msgstr "Кино Эш вакыты"
+
+msgid "Movie Sort Order:"
+msgstr "Кино сортлау тәртибе:"
+
+msgid "Movie Title A-Z"
+msgstr "Кино исеме A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Кино исеме Z-A"
+
+msgid "Movies"
+msgstr "Кино"
+
+msgid "Movies & Series"
+msgstr "Фильмнар һәм серияләр"
+
+msgid "Movies Style:"
+msgstr "Кино стиле:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Башта кино яки серия сайлау:"
+
+msgid "Movies or Series:"
+msgstr "Фильмнар яки серияләр:"
+
+msgid "No"
+msgstr ".К"
+
+msgid "On Database Update"
+msgstr "Мәгълүматлар базасын яңартуда"
+
+msgid "On First Access"
+msgstr "Беренче рөхсәттә"
+
+msgid "Plugin Transparency:"
+msgstr "Плагинның ачыклыгы:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Энигма менюсындагы плагин:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Постервол / Фонда күрсәтү сюжеты:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Радио төймәсе: Фильмны бетерү / Кара исемлек"
+
+msgid "Rating:"
+msgstr "Рейтинг:"
+
+msgid "Really close without saving settings?"
+msgstr "Чыннан да көйләүләрне сакламыйча ябыкмы?"
+
+msgid "Reset Database:"
+msgstr "Мәгълүматлар базасын яңадан торгызу:"
+
+msgid "Restore Database:"
+msgstr "Мәгълүматлар базасын торгызу:"
+
+msgid "Runtime:"
+msgstr "Эш вакыты:"
+
+msgid "SERIES"
+msgstr ""
+
+msgid "Save"
+msgstr "Саклагыз"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Терене сайлагыз * GUIны яңадан эшләтеп җибәрү кирәк:"
+
+msgid "Series"
+msgstr "Серияләр"
+
+msgid "Series Episodes"
+msgstr "Серия эпизодлары"
+
+msgid "Series Folder: No Info possible"
+msgstr "Серия папкасы: Мәгълүмат юк"
+
+msgid "Series Style:"
+msgstr "Серия стиле:"
+
+msgid "Show"
+msgstr "Шоу"
+
+msgid "Show Backdrops:"
+msgstr "Фоннарны күрсәт:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Кино папкасы исемлеген күрсәтү:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Фонда телевизор күрсәтегез (m1v юк):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "TMDB'ка язылу һәм бушлай ApiKey кертү"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "TheTVDb'ка язылу һәм бушлай ApiKey кертү"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Видео төймәсе белән Плагинны башлау:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Тукта төймәсе: Фильмны күренгәнчә билгеләргә"
+
+msgid "Style"
+msgstr "Стиль"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API ачкычы уңышлы кертелде!"
+
+msgid "TMDb Results"
+msgstr "TMDb нәтиҗәләре"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb / TheTVDb теле:"
+
+msgid "Text Button: Edit Database"
+msgstr "Текст төймәсе: Мәгълүматлар базасын үзгәртү"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TTVDb API ачкычы уңышлы кертелде!"
+
+msgid "TheTVDb Results"
+msgstr "TheTVDb нәтиҗәләре"
+
+msgid "Timer Database Update:"
+msgstr "Таймер мәгълүмат базасын яңарту:"
+
+msgid "Toggle Plugin Style"
+msgstr "Плагин стилен алыштырыгыз"
+
+msgid "Toggle hide/show plugin"
+msgstr "Плагинны яшерү / күрсәтү"
+
+msgid "Update"
+msgstr "Яңарту"
+
+msgid "Update Database with Timer:"
+msgstr "Таймер белән мәгълүмат базасын яңарту:"
+
+msgid "Update Series"
+msgstr "Серияне яңарту"
+
+msgid "Use m1v Backdrops:"
+msgstr "M1v фонын кулланыгыз:"
+
+msgid "Video Button: Update Database"
+msgstr "Видео төймәсе: Мәгълүматлар базасын яңарту"
+
+msgid "Years:"
+msgstr "Еллар:"
+
+msgid "Yes"
+msgstr "Әйе"
+
+msgid "backdrop"
+msgstr "фон"
+
+msgid "banner"
+msgstr "баннер"
+
+msgid "movie"
+msgstr "кино"
+
+msgid "poster"
+msgstr "плакат"
+
+msgid "series"
+msgstr "сериясе"

@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:47+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Burmese\n"
+"Language: my\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******ရုပ်ရှင်ဘရောက်ဆာ ဒေတာဘေ့စ် အပ်ဒိတ်အချိန်တိုင်း*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "******* Movie Browser ဒေတာဘေ့စ် အပ်ဒိတ်*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- --> ခလုတ်- ပထမစာလုံးသို့ သွားပါ။"
+
+msgid "<List of Movie Folder>"
+msgstr "<ရုပ်ရှင်ဖိုင်တွဲစာရင်း>"
+
+msgid "Actor Selection"
+msgstr "သရုပ်ဆောင်ရွေးချယ်မှု"
+
+msgid "Actors:"
+msgstr "သရုပ်ဆောင်များ"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "/tmp/ပိုစတာအားလုံးကို သန့်စင်ပြီးပါပြီ။"
+
+msgid "Automatic"
+msgstr "အလိုအလျောက်"
+
+msgid "Backup Database:"
+msgstr "အရန်ဒေတာဘေ့စ်-"
+
+msgid "Blacklist Movie File"
+msgstr "အမည်ပျက်စာရင်းဝင် ရုပ်ရှင်ဖိုင်"
+
+msgid "Button 0: Go to end of list"
+msgstr "ခလုတ် 0- စာရင်း၏အဆုံးသို့သွားပါ။"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "ခလုတ် 1- CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "ခလုတ် 2- TMDb တွင် အချက်အလက်များကို သက်တမ်းတိုးပါ။"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "ခလုတ် 3- TheTVDb ရှိ အချက်အလက်များကို သက်တမ်းတိုးပါ။"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "ခလုတ် 4- မြင်ဖူးသည့်ရုပ်ရှင်များကို ဖျောက်/ပြပါ။"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "ခလုတ် 5- ရုပ်ရှင်များ/စီးရီးများ ကြည့်ရှုမှုကို ပြောင်းရန်"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "ခလုတ် 6- ရုပ်ရှင်ဖိုင်တွဲ ရွေးချယ်မှု"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "ခလုတ် 7- ရုပ်ရှင်ဒါရိုက်တာ ရွေးချယ်မှု"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "ခလုတ် 8- ရုပ်ရှင်သရုပ်ဆောင် ရွေးချယ်မှု"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "ခလုတ် 9- ရုပ်ရှင်အမျိုးအစား ရွေးချယ်မှု"
+
+msgid "Cache Folder:"
+msgstr "ကက်ရှ်ဖိုင်တွဲ-"
+
+msgid "Cancel"
+msgstr "မလုပ်တော့"
+
+msgid "Choose Directory"
+msgstr "လမ်းညွှန်ကို ရွေးပါ။"
+
+msgid "Choose Directory:"
+msgstr "လမ်းညွှန်ကို ရွေးပါ-"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Cache Folder Log ကိုရှင်းလင်းပါ။"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Cache Folder ကို ရှင်းလင်းခြင်း-"
+
+msgid "Country:"
+msgstr "နိုင်ငံ-"
+
+msgid "Database"
+msgstr "ဒေတာဘေ့စ်"
+
+msgid "Database Editor:"
+msgstr "ဒေတာဘေ့စ်တည်းဖြတ်သူ-"
+
+msgid "Database Timer Log"
+msgstr ""
+
+msgid "Database Update Log"
+msgstr "ဒေတာဘေ့စ် အပ်ဒိတ်မှတ်တမ်း"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "ဒေတာဘေ့စ် အပ်ဒိတ်အချိန်တိုင်းသည် ရပ်သွားသည်- %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "ရုပ်ရှင်ဖိုင်ကိုဖျက်ပါ။"
+
+msgid "Director Selection"
+msgstr "ဒါရိုက်တာရွေးချယ်ရေး"
+
+msgid "Director:"
+msgstr "ဒါရိုက်တာ"
+
+msgid "Download new Backdrops:"
+msgstr "နောက်ခံကားအသစ်များကို ဒေါင်းလုဒ်လုပ်ပါ-"
+
+msgid "EPISODES"
+msgstr "ဇာတ်လမ်းတွဲများ"
+
+msgid "Error moving cache folder: %s"
+msgstr "ကက်ရှ်ဖိုင်တွဲကို ရွှေ့ရာတွင် အမှားအယွင်းရှိသည်- %s"
+
+msgid "File %s non trovato!"
+msgstr "ဖိုင် %s မတွေ့ပါ။"
+
+msgid "File %s not found!"
+msgstr "ဖိုင် %s မတွေ့ပါ။"
+
+msgid "Folder Selection"
+msgstr "ဖိုင်တွဲရွေးချယ်မှု"
+
+msgid "Free Space"
+msgstr "နေရာလွတ်"
+
+msgid "Free Space:"
+msgstr "နေရာလွတ်-"
+
+msgid "Genre Selection"
+msgstr "အမျိုးအစားရွေးချယ်မှု"
+
+msgid "Genres:"
+msgstr "အမျိုးအစားများ"
+
+msgid "Goto last Movie on Start:"
+msgstr "Start တွင်နောက်ဆုံးရုပ်ရှင်သို့သွားပါ"
+
+msgid "Help"
+msgstr "ကူညီကြပါ"
+
+msgid "Hide"
+msgstr "ဖျောက်ပါ။"
+
+msgid "Hide Plugin during Update:"
+msgstr "အပ်ဒိတ်လုပ်နေစဉ်အတွင်း ပလပ်အင်ကို ဝှက်ပါ-"
+
+msgid "Info Button"
+msgstr "အချက်အလက်ခလုတ်"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "အချက်အလက် ခလုတ်- အချက်အလက်များကို ပြသရန်/ဖျောက်ရန်"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "/tmp/tmdb_api.txt မှ TMDB Apikey ကို တင်ပါ။"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "/tmp/thetvdb_api.txt မှ TheTVDb Apikey ကိုဖွင့်ပါ။"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Start တွင် နောက်ဆုံးရွေးချယ်မှု/စစ်ထုတ်မှုကို တင်ပါ-"
+
+msgid "MOVIES"
+msgstr "ရုပ်ရှင်များ"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "သင့်ရုပ်ရှင်များနှင့် ဇာတ်လမ်းတွဲ V.%s ကို စီမံပါ။"
+
+msgid "Metrix List Selection Color:"
+msgstr "Metrix စာရင်း ရွေးချယ်မှု အရောင်-"
+
+msgid "Movie Browser Key Assignment"
+msgstr "ရုပ်ရှင်ဘရောက်ဆာ ကီး တာဝန်"
+
+msgid "Movie Creation Date Ascending"
+msgstr "ရုပ်ရှင်ဖန်တီးသည့်ရက်စွဲ ကြီးလာသည်။"
+
+msgid "Movie Creation Date Descending"
+msgstr "ရုပ်ရှင်ဖန်တီးသည့်ရက်စွဲ ကျဆင်းနေပါသည်။"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "ရုပ်ရှင် ဒေတာဘေ့စ် အပ်ဒိတ် စတင်ပါပြီ- %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "ရုပ်ရှင်ဖိုင်အချက်အလက်"
+
+msgid "Movie Folder"
+msgstr "ရုပ်ရှင်ဖိုင်တွဲ"
+
+msgid "Movie Folder Ascending"
+msgstr "ရုပ်ရှင်ဖိုင်တွဲ တက်လာနေပါသည်။"
+
+msgid "Movie Folder Descending"
+msgstr "ရုပ်ရှင် ဖိုင်တွဲ ဆင်းနေသည်"
+
+msgid "Movie Folder Selection"
+msgstr "ရုပ်ရှင်ဖိုင်တွဲ ရွေးချယ်မှု"
+
+msgid "Movie Folder:"
+msgstr "ရုပ်ရှင်ဖိုင်တွဲ-"
+
+msgid "Movie Rating 0-10"
+msgstr "ရုပ်ရှင်အဆင့်သတ်မှတ်ချက် 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "ရုပ်ရှင် အဆင့်သတ်မှတ်ချက် 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "ရုပ်ရှင် ဖြန့်ချိသည့်ရက်စွဲ တက်လာသည်"
+
+msgid "Movie Release Date Descending"
+msgstr "ရုပ်ရှင် ဖြန့်ချိသည့်ရက်စွဲ ကျဆင်းနေပါသည်။"
+
+msgid "Movie Runtime Ascending"
+msgstr ""
+
+msgid "Movie Runtime Descending"
+msgstr "ရုပ်ရှင် Runtime ကြီးလာ"
+
+msgid "Movie Sort Order:"
+msgstr "ရုပ်ရှင်အမျိုးအစားခွဲခြင်း-"
+
+msgid "Movie Title A-Z"
+msgstr "ရုပ်ရှင် ခေါင်းစဉ် A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "ရုပ်ရှင် ခေါင်းစဉ် Z-A"
+
+msgid "Movies"
+msgstr "ရုပ်ရှင်များ"
+
+msgid "Movies & Series"
+msgstr "ရုပ်ရှင်များနှင့် ဇာတ်လမ်းတွဲများ"
+
+msgid "Movies Style:"
+msgstr "ရုပ်ရှင်ပုံစံ-"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "စတင်ချိန်တွင် ရုပ်ရှင်များ သို့မဟုတ် ဇာတ်လမ်းတွဲများ ရွေးချယ်မှု-"
+
+msgid "Movies or Series:"
+msgstr "ရုပ်ရှင်များ သို့မဟုတ် ဇာတ်လမ်းတွဲများ-"
+
+msgid "No"
+msgstr "မရှိ"
+
+msgid "On Database Update"
+msgstr "Database Update တွင်"
+
+msgid "On First Access"
+msgstr "ပထမဦးစွာဝင်ရောက်ခွင့်"
+
+msgid "Plugin Transparency:"
+msgstr "ပလပ်အင် ပွင့်လင်းမြင်သာမှု-"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Enigma Menu တွင် ပလပ်အင်-"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "ပိုစတာနံရံ/နောက်ခံပြကွက်-"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "ရေဒီယိုခလုတ်- ရုပ်ရှင်ကို ဖျက်ရန်/အမည်ပျက်စာရင်းသွင်းပါ။"
+
+msgid "Rating:"
+msgstr "အဆင့်သတ်မှတ်ခြင်း-"
+
+msgid "Really close without saving settings?"
+msgstr "ဆက်တင်များကို မသိမ်းဘဲ အမှန်တကယ် ပိတ်မလား။"
+
+msgid "Reset Database:"
+msgstr "ဒေတာဘေ့စ်ကို ပြန်လည်သတ်မှတ်ပါ-"
+
+msgid "Restore Database:"
+msgstr "ဒေတာဘေ့စ်ကို ပြန်ယူပါ-"
+
+msgid "Runtime:"
+msgstr "အချိန်-"
+
+msgid "SERIES"
+msgstr "စီးရီးများ"
+
+msgid "Save"
+msgstr "သိမ်းဆည်းပါ။"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "အရေပြားကို ရွေးပါ * GUI ကို ပြန်လည်စတင်ရန် လိုအပ်သည်-"
+
+msgid "Series"
+msgstr "စီးရီး"
+
+msgid "Series Episodes"
+msgstr "ဇာတ်လမ်းတွဲ အပိုင်းများ"
+
+msgid "Series Folder: No Info possible"
+msgstr "စီးရီးဖိုင်တွဲ- အချက်အလက် မဖြစ်နိုင်ပါ။"
+
+msgid "Series Style:"
+msgstr "စီးရီးပုံစံ-"
+
+msgid "Show"
+msgstr "ရှိုး"
+
+msgid "Show Backdrops:"
+msgstr "နောက်ခံကားများကို ပြရန်-"
+
+msgid "Show List of Movie Folder:"
+msgstr "ရုပ်ရှင်ဖိုင်တွဲစာရင်းကို ပြပါ-"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "TV ကို နောက်ခံတွင် ပြပါ (m1v မရှိပါ။)"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "TMDB တွင် စာရင်းသွင်းပြီး အခမဲ့ ကိုယ်ပိုင် ApiKey ထည့်သွင်းပါ။"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "TheTVDb တွင် စာရင်းသွင်းပြီး အခမဲ့ ကိုယ်ပိုင် ApiKey ထည့်သွင်းပါ။"
+
+msgid "Start Plugin with Video Button:"
+msgstr "ဗီဒီယိုခလုတ်ဖြင့် ပလပ်အင်ကို စတင်ပါ။"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Stop Button- ရုပ်ရှင်ကို မြင်သည့်အတိုင်း အမှတ်အသားပြုပါ။"
+
+msgid "Style"
+msgstr "စတိုင်"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API ကီးကို အောင်မြင်စွာ ထည့်သွင်းပြီးပါပြီ။"
+
+msgid "TMDb Results"
+msgstr "TMDb ရလဒ်များ"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb ဘာသာစကား-"
+
+msgid "Text Button: Edit Database"
+msgstr "စာသားခလုတ်- ဒေတာဘေ့စ်ကို တည်းဖြတ်ပါ။"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TheTVDb API ကီးကို အောင်မြင်စွာ ထည့်သွင်းပြီးပါပြီ။"
+
+msgid "TheTVDb Results"
+msgstr "TheTVDb ရလဒ်များ"
+
+msgid "Timer Database Update:"
+msgstr "Timer ဒေတာဘေ့စ် အပ်ဒိတ်-"
+
+msgid "Toggle Plugin Style"
+msgstr "ပလပ်အင်ပုံစံကို ပြောင်းရန်"
+
+msgid "Toggle hide/show plugin"
+msgstr "ပလပ်အင်ကို ဖျောက်/ပြရန် အဖွင့်အပိတ်လုပ်ပါ။"
+
+msgid "Update"
+msgstr "အပ်ဒိတ်"
+
+msgid "Update Database with Timer:"
+msgstr "အချိန်တိုင်းစက်ဖြင့် ဒေတာဘေ့စ်ကို အပ်ဒိတ်လုပ်ပါ-"
+
+msgid "Update Series"
+msgstr "စီးရီးများကို အပ်ဒိတ်လုပ်ပါ။"
+
+msgid "Use m1v Backdrops:"
+msgstr "m1v နောက်ခံကားများကို သုံးပါ-"
+
+msgid "Video Button: Update Database"
+msgstr "ဗီဒီယိုခလုတ်- ဒေတာဘေ့စ်ကို အပ်ဒိတ်လုပ်ပါ။"
+
+msgid "Years:"
+msgstr "နှစ်များ-"
+
+msgid "Yes"
+msgstr "ဟုတ်ကဲ့"
+
+msgid "backdrop"
+msgstr "နောက်ခံကား"
+
+msgid "banner"
+msgstr "နဖူးစည်းစာတမ်း"
+
+msgid "movie"
+msgstr "ရုပ်ရှင်"
+
+msgid "poster"
+msgstr "ပိုစတာ"
+
+msgid "series"
+msgstr "စီးရီး"

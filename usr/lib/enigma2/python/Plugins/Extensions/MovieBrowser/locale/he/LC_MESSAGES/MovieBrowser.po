@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:05+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Hebrew <heb-bugzap@hamakor.org.il>\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******** טיימר עדכון מסד נתונים של דפדפן סרטים*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******עדכון מסד נתונים של דפדפן סרטים*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> כפתור: עבור לאות הראשונה"
+
+msgid "<List of Movie Folder>"
+msgstr "<רשימת תיקיית סרטים>"
+
+msgid "Actor Selection"
+msgstr "בחירת שחקן"
+
+msgid "Actors:"
+msgstr "שחקנים:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "כל /tmp/posters נוקו"
+
+msgid "Automatic"
+msgstr "אוֹטוֹמָטִי"
+
+msgid "Backup Database:"
+msgstr "מסד נתונים גיבוי:"
+
+msgid "Blacklist Movie File"
+msgstr "קובץ סרטים ברשימה שחורה"
+
+msgid "Button 0: Go to end of list"
+msgstr "לחצן 0: עבור לסוף הרשימה"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "לחצן 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "כפתור 2: חידוש מידע על TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "כפתור 3: חידוש מידע על TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "כפתור 4: הסתר/הצג סרטים שנראו"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "לחצן 5: החלף את תצוגת הסרטים/סדרות"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "לחצן 6: בחירת תיקיית סרטים"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "כפתור 7: בחירת במאי סרטים"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "כפתור 8: בחירת שחקן קולנוע"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "כפתור 9: בחירת ז'אנר סרטים"
+
+msgid "Cache Folder:"
+msgstr "תיקיית מטמון:"
+
+msgid "Cancel"
+msgstr "לְבַטֵל"
+
+msgid "Choose Directory"
+msgstr "בחר מדריך"
+
+msgid "Choose Directory:"
+msgstr "בחר ספרייה:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "ניקוי יומן תיקיות מטמון"
+
+msgid "Cleanup Cache Folder:"
+msgstr "תיקיית מטמון ניקוי:"
+
+msgid "Country:"
+msgstr "מְדִינָה:"
+
+msgid "Database"
+msgstr "מסד נתונים"
+
+msgid "Database Editor:"
+msgstr "עורך מסד נתונים:"
+
+msgid "Database Timer Log"
+msgstr "יומן טיימר מסד נתונים"
+
+msgid "Database Update Log"
+msgstr "יומן עדכון מסד נתונים"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "טיימר עדכון מסד הנתונים נעצר: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "מחק את קובץ הסרט"
+
+msgid "Director Selection"
+msgstr "בחירת במאי"
+
+msgid "Director:"
+msgstr "מְנַהֵל:"
+
+msgid "Download new Backdrops:"
+msgstr "הורד תפאורות חדשות:"
+
+msgid "EPISODES"
+msgstr "פרקים"
+
+msgid "Error moving cache folder: %s"
+msgstr "שגיאה בהעברת תיקיית המטמון: %s"
+
+msgid "File %s non trovato!"
+msgstr "הקובץ %s לא נמצא!"
+
+msgid "File %s not found!"
+msgstr "הקובץ %s לא נמצא!"
+
+msgid "Folder Selection"
+msgstr "בחירת תיקיות"
+
+msgid "Free Space"
+msgstr "מקום פנוי"
+
+msgid "Free Space:"
+msgstr "מקום פנוי:"
+
+msgid "Genre Selection"
+msgstr "בחירת ז'אנר"
+
+msgid "Genres:"
+msgstr "ז'אנרים:"
+
+msgid "Goto last Movie on Start:"
+msgstr "עבור לסרט האחרון בהתחלה:"
+
+msgid "Help"
+msgstr "עֶזרָה"
+
+msgid "Hide"
+msgstr "לְהַסתִיר"
+
+msgid "Hide Plugin during Update:"
+msgstr "הסתר תוסף במהלך עדכון:"
+
+msgid "Info Button"
+msgstr "כפתור מידע"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "לחצן מידע: החלף מצב של הצגה/הסתרה של מידע"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "טען את TMDB Apikey מ-/tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "טען את TheTVDb Apikey מ-/tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "טען את הבחירה/מסנן האחרון בהתחלה:"
+
+msgid "MOVIES"
+msgstr "סרטים"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "נהל את הסרטים והסדרות שלך V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "צבע בחירת רשימת מטריקס:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "הקצאת מפתח דפדפן סרטים"
+
+msgid "Movie Creation Date Ascending"
+msgstr "תאריך יצירת הסרט עולה"
+
+msgid "Movie Creation Date Descending"
+msgstr "תאריך יצירת הסרט יורד"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "עדכון מסד הנתונים של הסרטים התחיל: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "מידע על קובץ סרטים"
+
+msgid "Movie Folder"
+msgstr "תיקיית סרטים"
+
+msgid "Movie Folder Ascending"
+msgstr "תיקיית סרטים עולה"
+
+msgid "Movie Folder Descending"
+msgstr "תיקיית סרטים בירידה"
+
+msgid "Movie Folder Selection"
+msgstr "בחירת תיקיות סרטים"
+
+msgid "Movie Folder:"
+msgstr "תיקיית סרטים:"
+
+msgid "Movie Rating 0-10"
+msgstr "דירוג הסרט 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "דירוג הסרט 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "תאריך יציאת הסרט עולה"
+
+msgid "Movie Release Date Descending"
+msgstr "תאריך יציאת הסרט יורד"
+
+msgid "Movie Runtime Ascending"
+msgstr "זמן ריצה של סרט עולה"
+
+msgid "Movie Runtime Descending"
+msgstr "זמן ריצה של סרט יורד"
+
+msgid "Movie Sort Order:"
+msgstr "סדר מיון סרטים:"
+
+msgid "Movie Title A-Z"
+msgstr "שם הסרט א-ז"
+
+msgid "Movie Title Z-A"
+msgstr "שם הסרט Z-A"
+
+msgid "Movies"
+msgstr "סרטים"
+
+msgid "Movies & Series"
+msgstr "סרטים וסדרות"
+
+msgid "Movies Style:"
+msgstr "סגנון סרטים:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "בחירת סרטים או סדרות בהתחלה:"
+
+msgid "Movies or Series:"
+msgstr "סרטים או סדרות:"
+
+msgid "No"
+msgstr "לֹא"
+
+msgid "On Database Update"
+msgstr "על עדכון מסד נתונים"
+
+msgid "On First Access"
+msgstr "בגישה ראשונה"
+
+msgid "Plugin Transparency:"
+msgstr "שקיפות תוסף:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "תוסף בתפריט Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "עלילת הצגת פוסטר/רקע:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "לחצן רדיו: מחק/רשימה שחורה סרט"
+
+msgid "Rating:"
+msgstr "דֵרוּג:"
+
+msgid "Really close without saving settings?"
+msgstr "באמת לסגור בלי לשמור הגדרות?"
+
+msgid "Reset Database:"
+msgstr "אפס מסד נתונים:"
+
+msgid "Restore Database:"
+msgstr "שחזור מסד נתונים:"
+
+msgid "Runtime:"
+msgstr "זמן ריצה:"
+
+msgid "SERIES"
+msgstr "סִדרָה"
+
+msgid "Save"
+msgstr "לְהַצִיל"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "בחר עור *דרוש הפעל מחדש GUI:"
+
+msgid "Series"
+msgstr "סִדרָה"
+
+msgid "Series Episodes"
+msgstr "פרקי סדרה"
+
+msgid "Series Folder: No Info possible"
+msgstr "תיקיית סדרה: אין מידע אפשרי"
+
+msgid "Series Style:"
+msgstr "סגנון סדרה:"
+
+msgid "Show"
+msgstr "לְהַצִיג"
+
+msgid "Show Backdrops:"
+msgstr "הצג תפאורות:"
+
+msgid "Show List of Movie Folder:"
+msgstr "הצג רשימת תיקיית סרטים:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "הצג טלוויזיה ברקע (ללא m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "הירשם ל-TMDB והזן ApiKey אישי בחינם"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "הירשם ל-TheTVDb והזן ApiKey אישי בחינם"
+
+msgid "Start Plugin with Video Button:"
+msgstr "התחל פלאגין עם לחצן וידאו:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "כפתור עצור: סמן את הסרט כפי שנראה"
+
+msgid "Style"
+msgstr "סִגְנוֹן"
+
+msgid "TMDB API key successfully imported!"
+msgstr "מפתח TMDB API יובא בהצלחה!"
+
+msgid "TMDb Results"
+msgstr "תוצאות TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "שפת TMDb/TheTVDb:"
+
+msgid "Text Button: Edit Database"
+msgstr "לחצן טקסט: ערוך מסד נתונים"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "מפתח ה-API של TVDb יובא בהצלחה!"
+
+msgid "TheTVDb Results"
+msgstr "תוצאות TheTVDb"
+
+msgid "Timer Database Update:"
+msgstr "עדכון מסד נתונים טיימר:"
+
+msgid "Toggle Plugin Style"
+msgstr "החלף את סגנון הפלאגין"
+
+msgid "Toggle hide/show plugin"
+msgstr "החלף את הסתר/הצג תוסף"
+
+msgid "Update"
+msgstr "לְעַדְכֵּן"
+
+msgid "Update Database with Timer:"
+msgstr "עדכן מסד נתונים עם טיימר:"
+
+msgid "Update Series"
+msgstr "עדכון סדרה"
+
+msgid "Use m1v Backdrops:"
+msgstr "השתמש בתפאורות m1v:"
+
+msgid "Video Button: Update Database"
+msgstr "לחצן וידאו: עדכן מסד נתונים"
+
+msgid "Years:"
+msgstr "שנים:"
+
+msgid "Yes"
+msgstr "כֵּן"
+
+msgid "backdrop"
+msgstr "רקע"
+
+msgid "banner"
+msgstr "דֶגֶל"
+
+msgid "movie"
+msgstr "סֶרֶט"
+
+msgid "poster"
+msgstr "פּוֹסטֵר"
+
+msgid "series"
+msgstr "סִדרָה"

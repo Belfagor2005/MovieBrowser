@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:05+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "****** Temporizator de actualizare a bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******Actualizarea bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "Buton <- ->: Accesați prima literă"
+
+msgid "<List of Movie Folder>"
+msgstr "<Lista folderelor de filme>"
+
+msgid "Actor Selection"
+msgstr "Selectia actorilor"
+
+msgid "Actors:"
+msgstr "Actori:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Toate /tmp/posters Curățate"
+
+msgid "Automatic"
+msgstr "Automat"
+
+msgid "Backup Database:"
+msgstr "Backup baze de date:"
+
+msgid "Blacklist Movie File"
+msgstr "Fișier de film pe lista neagră"
+
+msgid "Button 0: Go to end of list"
+msgstr "Butonul 0: Mergeți la sfârșitul listei"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Butonul 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Butonul 2: Reînnoiește informațiile pe TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Butonul 3: Reînnoiește informațiile pe TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "Butonul 4: Ascunde/afișează filmele văzute"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Butonul 5: Comutați vizualizarea Filme/Serii"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "Butonul 6: Selectarea folderului filmului"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "Butonul 7: Selectarea regizorului de film"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "Butonul 8: Selectare actor de film"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "Butonul 9: Selectarea genului de film"
+
+msgid "Cache Folder:"
+msgstr "Dosarul cache:"
+
+msgid "Cancel"
+msgstr "Anula"
+
+msgid "Choose Directory"
+msgstr "Alegeți Director"
+
+msgid "Choose Directory:"
+msgstr "Alegeți directorul:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Curățați jurnalul folderului cache"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Curățați folderul cache:"
+
+msgid "Country:"
+msgstr "Ţară:"
+
+msgid "Database"
+msgstr "Baza de date"
+
+msgid "Database Editor:"
+msgstr "Editor baze de date:"
+
+msgid "Database Timer Log"
+msgstr "Jurnalul de cronometru al bazei de date"
+
+msgid "Database Update Log"
+msgstr "Jurnal de actualizare a bazei de date"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Temporizator de actualizare a bazei de date oprit: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Ștergeți fișierul film"
+
+msgid "Director Selection"
+msgstr "Selectia directorului"
+
+msgid "Director:"
+msgstr ""
+
+msgid "Download new Backdrops:"
+msgstr "Descărcați fundaluri noi:"
+
+msgid "EPISODES"
+msgstr "EPISODE"
+
+msgid "Error moving cache folder: %s"
+msgstr "Eroare la mutarea dosarului cache: %s"
+
+msgid "File %s non trovato!"
+msgstr "Fișierul %s nu a fost găsit!"
+
+msgid "File %s not found!"
+msgstr "Fișierul %s nu a fost găsit!"
+
+msgid "Folder Selection"
+msgstr "Selectarea folderului"
+
+msgid "Free Space"
+msgstr "Spațiu liber"
+
+msgid "Free Space:"
+msgstr "Spațiu liber:"
+
+msgid "Genre Selection"
+msgstr "Selectarea genului"
+
+msgid "Genres:"
+msgstr "Genuri:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Du-te la ultimul film la Start:"
+
+msgid "Help"
+msgstr "Ajutor"
+
+msgid "Hide"
+msgstr "Ascunde"
+
+msgid "Hide Plugin during Update:"
+msgstr "Ascundeți pluginul în timpul actualizării:"
+
+msgid "Info Button"
+msgstr "Butonul Info"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Buton Informații: Comută afișarea/ascunderea informațiilor"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Încărcați TMDB Apikey de pe /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Încărcați TheTVDb Apikey de pe /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Încărcați ultima selecție/filtru la pornire:"
+
+msgid "MOVIES"
+msgstr "FILME"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Gestionați-vă filmele și serialele V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Culoarea selecției listei Metrix:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Alocarea tastelor pentru browserul de filme"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Data creării filmului Crescător"
+
+msgid "Movie Creation Date Descending"
+msgstr "Data creării filmului descrescătoare"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Actualizarea bazei de date de filme a început: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Informații despre fișierul filmului"
+
+msgid "Movie Folder"
+msgstr "Folder film"
+
+msgid "Movie Folder Ascending"
+msgstr "Folder de film Crescător"
+
+msgid "Movie Folder Descending"
+msgstr "Folder de film descendent"
+
+msgid "Movie Folder Selection"
+msgstr "Selectarea folderului filmului"
+
+msgid "Movie Folder:"
+msgstr "Folder film:"
+
+msgid "Movie Rating 0-10"
+msgstr "Evaluare film 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Evaluare film 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Data lansării filmului Crescător"
+
+msgid "Movie Release Date Descending"
+msgstr "Data lansării filmului descrescătoare"
+
+msgid "Movie Runtime Ascending"
+msgstr "Timp de rulare a filmului în creștere"
+
+msgid "Movie Runtime Descending"
+msgstr "Timp de rulare a filmului Descendent"
+
+msgid "Movie Sort Order:"
+msgstr "Ordinea de sortare a filmelor:"
+
+msgid "Movie Title A-Z"
+msgstr "Titlul filmului A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Titlul filmului Z-A"
+
+msgid "Movies"
+msgstr "Filme"
+
+msgid "Movies & Series"
+msgstr "Filme și seriale"
+
+msgid "Movies Style:"
+msgstr "Stilul filmelor:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Filme sau seriale la început:"
+
+msgid "Movies or Series:"
+msgstr "Filme sau seriale:"
+
+msgid "No"
+msgstr "Nu"
+
+msgid "On Database Update"
+msgstr "La Actualizarea bazei de date"
+
+msgid "On First Access"
+msgstr "La primul acces"
+
+msgid "Plugin Transparency:"
+msgstr "Transparența pluginului:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Plugin în meniul Enigma:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Posterwall/Backdrop Show Intreg:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Buton radio: Șterge/lista neagră film"
+
+msgid "Rating:"
+msgstr "Evaluare:"
+
+msgid "Really close without saving settings?"
+msgstr "Chiar se închide fără a salva setările?"
+
+msgid "Reset Database:"
+msgstr "Resetați baza de date:"
+
+msgid "Restore Database:"
+msgstr "Restaurare baza de date:"
+
+msgid "Runtime:"
+msgstr "Timp de rulare:"
+
+msgid "SERIES"
+msgstr "SERIE"
+
+msgid "Save"
+msgstr "Salva"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Selectați pielea *Reporniți GUI Necesar:"
+
+msgid "Series"
+msgstr "Serie"
+
+msgid "Series Episodes"
+msgstr "Episoade din seriale"
+
+msgid "Series Folder: No Info possible"
+msgstr "Dosar serie: Nu sunt posibile informații"
+
+msgid "Series Style:"
+msgstr "Stil serie:"
+
+msgid "Show"
+msgstr "Spectacol"
+
+msgid "Show Backdrops:"
+msgstr "Afișați fundaluri:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Afișați lista folderelor de filme:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Afișați TV în fundal (fără m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Înregistrați-vă pe TMDB și introduceți ApiKey personală gratuită"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Înregistrați-vă pe TheTVDb și introduceți ApiKey personală gratuită"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Porniți pluginul cu butonul Video:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Buton Stop: Marcați filmul ca văzut"
+
+msgid "Style"
+msgstr "Stil"
+
+msgid "TMDB API key successfully imported!"
+msgstr "Cheia API TMDB a fost importată cu succes!"
+
+msgid "TMDb Results"
+msgstr "Rezultate TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "Limba TMDb/TheTVDb:"
+
+msgid "Text Button: Edit Database"
+msgstr "Buton text: Editați baza de date"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "Cheia API TVDb a fost importată cu succes!"
+
+msgid "TheTVDb Results"
+msgstr "Rezultatele TVDb"
+
+msgid "Timer Database Update:"
+msgstr "Actualizarea bazei de date a temporizatorului:"
+
+msgid "Toggle Plugin Style"
+msgstr "Comutați stilul pluginului"
+
+msgid "Toggle hide/show plugin"
+msgstr "Comutați ascunde/afișați pluginul"
+
+msgid "Update"
+msgstr "Actualizare"
+
+msgid "Update Database with Timer:"
+msgstr "Actualizați baza de date cu temporizator:"
+
+msgid "Update Series"
+msgstr "Seria de actualizare"
+
+msgid "Use m1v Backdrops:"
+msgstr "Utilizați fundalurile m1v:"
+
+msgid "Video Button: Update Database"
+msgstr "Butonul Video: Actualizați baza de date"
+
+msgid "Years:"
+msgstr "ani:"
+
+msgid "Yes"
+msgstr "Da"
+
+msgid "backdrop"
+msgstr "fundal"
+
+msgid "banner"
+msgstr ""
+
+msgid "movie"
+msgstr "film"
+
+msgid "poster"
+msgstr ""
+
+msgid "series"
+msgstr "serie"

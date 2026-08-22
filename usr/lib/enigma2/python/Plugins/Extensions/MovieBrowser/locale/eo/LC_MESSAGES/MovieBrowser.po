@@ -1,0 +1,408 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 11:44+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "******Datumbaza Retumilo de Filmo-Retumilo Ĝisdatigita Temporizilo*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "****** Ĝisdatigo pri datumbaza retumilo de Filmoj*******\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> Butono: Iru al la unua litero"
+
+msgid "<List of Movie Folder>"
+msgstr "<Listo de Filmaj Dosierujoj>"
+
+msgid "Actor Selection"
+msgstr "Aktora Elekto"
+
+msgid "Actors:"
+msgstr "Aktoroj:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "Ĉiuj /tmp/afiŝoj Purigitaj"
+
+msgid "Automatic"
+msgstr "Aŭtomata"
+
+msgid "Backup Database:"
+msgstr "Rezerva datumbazo:"
+
+msgid "Blacklist Movie File"
+msgstr "Nigra Listo Filmdosiero"
+
+msgid "Button 0: Go to end of list"
+msgstr "Butono 0: Iru al fino de listo"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "Butono 1: CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "Butono 2: Renovigi informojn pri TMDb"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "Butono 3: Renovigi informojn pri TheTVDb"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "Butono 4: Kaŝi/montri viditajn filmojn"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "Butono 5: Ŝanĝi Filmojn/Seriojn"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "Butono 6: Elekto de Filmaj Dosierujoj"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "Butono 7: Selektado de Filmdirektoro"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "Butono 8: Selektado de Filmaj Aktoroj"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "Butono 9: Elekto de Filmo-Ĝenro"
+
+msgid "Cache Folder:"
+msgstr "Cache Dosierujo:"
+
+msgid "Cancel"
+msgstr "Nuligi"
+
+msgid "Choose Directory"
+msgstr "Elektu Dosierujon"
+
+msgid "Choose Directory:"
+msgstr "Elektu Dosierujon:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "Puriga kaŝmemoro Dosierujo Protokolo"
+
+msgid "Cleanup Cache Folder:"
+msgstr "Puriga Kaŝdosierujo:"
+
+msgid "Country:"
+msgstr "Lando:"
+
+msgid "Database"
+msgstr "Datumbazo"
+
+msgid "Database Editor:"
+msgstr "Datumbaza Redaktoro:"
+
+msgid "Database Timer Log"
+msgstr ""
+
+msgid "Database Update Log"
+msgstr "Protokolo pri Ĝisdatigo de Datumaro"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "Datenbaza Ĝisdatiga Tempigilo ĉesis: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "Forigi Filman Dosieron"
+
+msgid "Director Selection"
+msgstr "Selektado de Direktoro"
+
+msgid "Director:"
+msgstr "Direktoro:"
+
+msgid "Download new Backdrops:"
+msgstr "Elŝutu novajn Fonojn:"
+
+msgid "EPISODES"
+msgstr "EPISODOJ"
+
+msgid "Error moving cache folder: %s"
+msgstr "Eraro dum movo de kaŝmemoro dosierujo: %s"
+
+msgid "File %s non trovato!"
+msgstr "Dosiero %s ne trovita!"
+
+msgid "File %s not found!"
+msgstr "Dosiero %s ne trovita!"
+
+msgid "Folder Selection"
+msgstr "Dosierujo Elekto"
+
+msgid "Free Space"
+msgstr "Libera Spaco"
+
+msgid "Free Space:"
+msgstr "Libera Spaco:"
+
+msgid "Genre Selection"
+msgstr "Selektado de varo"
+
+msgid "Genres:"
+msgstr "Ĝenroj:"
+
+msgid "Goto last Movie on Start:"
+msgstr "Iru al la lasta Filmo ĉe Komenco:"
+
+msgid "Help"
+msgstr "Helpu"
+
+msgid "Hide"
+msgstr "Kaŝi"
+
+msgid "Hide Plugin during Update:"
+msgstr "Kaŝi Kromprogramon dum Ĝisdatigo:"
+
+msgid "Info Button"
+msgstr "Info Butono"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "Info Butono: Ŝaltu montri/kaŝi informojn"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "Ŝarĝu TMDB Apikey de /tmp/tmdb_api.txt"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "Ŝarĝu TheTVDb Apikey de /tmp/thetvdb_api.txt"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "Ŝarĝu la lastan Elekton/Filtrilon ĉe Komenco:"
+
+msgid "MOVIES"
+msgstr "FILMOJ"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "Administri viajn Filmojn & Seriojn V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "Koloro de Elekto de Metrix Listo:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "Ŝlosilo de Filma Foliumilo"
+
+msgid "Movie Creation Date Ascending"
+msgstr "Filma Kreodato Ascendenta"
+
+msgid "Movie Creation Date Descending"
+msgstr "Filma Kreodato Descendente"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "Ĝisdatigo de Filmdatumbazo komenciĝis: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "Informoj pri Filmaj Dosieroj"
+
+msgid "Movie Folder"
+msgstr "Filma Dosierujo"
+
+msgid "Movie Folder Ascending"
+msgstr "Filma Dosierujo Ascendenta"
+
+msgid "Movie Folder Descending"
+msgstr "Filma Dosierujo Descendente"
+
+msgid "Movie Folder Selection"
+msgstr "Elekto de Filmaj Dosierujoj"
+
+msgid "Movie Folder:"
+msgstr "Filma dosierujo:"
+
+msgid "Movie Rating 0-10"
+msgstr "Filma Taksado 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "Filma Taksado 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "Filma Eldondato Ascending"
+
+msgid "Movie Release Date Descending"
+msgstr "Filma Eldondato Malkreskanta"
+
+msgid "Movie Runtime Ascending"
+msgstr "Filmo Runtime Ascending"
+
+msgid "Movie Runtime Descending"
+msgstr "Filmo Runtime Descending"
+
+msgid "Movie Sort Order:"
+msgstr "Ordo de Filmo:"
+
+msgid "Movie Title A-Z"
+msgstr "Filma Titolo A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "Filma Titolo Z-A"
+
+msgid "Movies"
+msgstr "Filmoj"
+
+msgid "Movies & Series"
+msgstr "Filmoj kaj Serioj"
+
+msgid "Movies Style:"
+msgstr "Filma Stilo:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "Filmoj aŭ Seriolektado ĉe Komenco:"
+
+msgid "Movies or Series:"
+msgstr "Filmoj aŭ Serioj:"
+
+msgid "No"
+msgstr "Ne"
+
+msgid "On Database Update"
+msgstr "Sur Database Update"
+
+msgid "On First Access"
+msgstr "Sur Unua Aliro"
+
+msgid "Plugin Transparency:"
+msgstr "Kroma Travidebleco:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Kromaĵo en Enigma Menuo:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "Afiŝmuro/Fona Spektaklo Intrigo:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "Radio-Butono: Forigi/Nigralisto filmo"
+
+msgid "Rating:"
+msgstr "Taksado:"
+
+msgid "Really close without saving settings?"
+msgstr "Ĉu vere fermi sen konservi agordojn?"
+
+msgid "Reset Database:"
+msgstr "Restarigi datumbazon:"
+
+msgid "Restore Database:"
+msgstr "Restarigi datumbazon:"
+
+msgid "Runtime:"
+msgstr "Rultempo:"
+
+msgid "SERIES"
+msgstr "SERIO"
+
+msgid "Save"
+msgstr "Konservu"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "Elektu haŭton *Rekomenci GUI Bezonata:"
+
+msgid "Series"
+msgstr "Serio"
+
+msgid "Series Episodes"
+msgstr "Serio Epizodoj"
+
+msgid "Series Folder: No Info possible"
+msgstr "Seria Dosierujo: Neniu informo ebla"
+
+msgid "Series Style:"
+msgstr "Seriostilo:"
+
+msgid "Show"
+msgstr "Montru"
+
+msgid "Show Backdrops:"
+msgstr "Montru Fonojn:"
+
+msgid "Show List of Movie Folder:"
+msgstr "Montru Listo de Filmaj Dosierujoj:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "Montru televidon fone (ne m1v):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "Aliĝu ĉe TMDB kaj enigu senpagan personan ApiKey"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "Aliĝu ĉe TheTVDb kaj enigu senpagan personan ApiKey"
+
+msgid "Start Plugin with Video Button:"
+msgstr "Komencu Kromprogramon per Video Butono:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "Stop Butono: Marki filmon kiel vidita"
+
+msgid "Style"
+msgstr "Stilo"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB-API-ŝlosilo sukcese importita!"
+
+msgid "TMDb Results"
+msgstr "Rezultoj de TMDb"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb Lingvo:"
+
+msgid "Text Button: Edit Database"
+msgstr "Teksta Butono: Redaktu datumbazon"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "La TVDb API-ŝlosilo sukcese importita!"
+
+msgid "TheTVDb Results"
+msgstr "La TVDb-Rezultoj"
+
+msgid "Timer Database Update:"
+msgstr "Ĝisdatigo de Database de Timer:"
+
+msgid "Toggle Plugin Style"
+msgstr "Baskuligi Kromstilon"
+
+msgid "Toggle hide/show plugin"
+msgstr "Ŝaltu kaŝi/montri kromaĵon"
+
+msgid "Update"
+msgstr "Ĝisdatigo"
+
+msgid "Update Database with Timer:"
+msgstr "Ĝisdatigu datumbazon per tempigilo:"
+
+msgid "Update Series"
+msgstr "Ĝisdatiga Serio"
+
+msgid "Use m1v Backdrops:"
+msgstr "Uzu m1v Fonojn:"
+
+msgid "Video Button: Update Database"
+msgstr "Vid-butono: Ĝisdatigu Datumbazo"
+
+msgid "Years:"
+msgstr "Jaroj:"
+
+msgid "Yes"
+msgstr "Jes"
+
+msgid "backdrop"
+msgstr "fono"
+
+msgid "banner"
+msgstr "standardo"
+
+msgid "movie"
+msgstr "filmo"
+
+msgid "poster"
+msgstr "afiŝo"
+
+msgid "series"
+msgstr "serio"

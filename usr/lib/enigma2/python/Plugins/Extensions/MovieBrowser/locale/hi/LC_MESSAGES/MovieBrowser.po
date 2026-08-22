@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 12:07+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Hindi <fedora-trans-hi@redhat.com>\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*******मूवी ब्राउज़र डेटाबेस अपडेट टाइमर*******\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*******मूवी ब्राउज़र डेटाबेस अपडेट****\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> बटन: पहले अक्षर पर जाएं"
+
+msgid "<List of Movie Folder>"
+msgstr "<मूवी फ़ोल्डर की सूची>"
+
+msgid "Actor Selection"
+msgstr "अभिनेता चयन"
+
+msgid "Actors:"
+msgstr "अभिनेता:"
+
+msgid "All /tmp/posters Cleaned"
+msgstr "सभी /tmp/पोस्टर साफ किये गये"
+
+msgid "Automatic"
+msgstr "स्वचालित"
+
+msgid "Backup Database:"
+msgstr "बैकअप डेटाबेस:"
+
+msgid "Blacklist Movie File"
+msgstr "ब्लैकलिस्ट मूवी फ़ाइल"
+
+msgid "Button 0: Go to end of list"
+msgstr "बटन 0: सूची के अंत पर जाएँ"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "बटन 1: कटलिस्टएडिटर/मूवीकट/लॉगव्यू"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "बटन 2: टीएमडीबी पर जानकारी नवीनीकृत करें"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "बटन 3: TheTVDb पर जानकारी नवीनीकृत करें"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "बटन 4: देखी गई फिल्में छिपाएँ/दिखाएँ"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "बटन 5: मूवी/श्रृंखला दृश्य टॉगल करें"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "बटन 6: मूवी फ़ोल्डर चयन"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "बटन 7: मूवी निर्देशक चयन"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "बटन 8: मूवी अभिनेता चयन"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "बटन 9: मूवी शैली चयन"
+
+msgid "Cache Folder:"
+msgstr "कैश फ़ोल्डर:"
+
+msgid "Cancel"
+msgstr "रद्द करना"
+
+msgid "Choose Directory"
+msgstr "निर्देशिका चुनें"
+
+msgid "Choose Directory:"
+msgstr "निर्देशिका चुनें:"
+
+msgid "Cleanup Cache Folder Log"
+msgstr "क्लीनअप कैश फ़ोल्डर लॉग"
+
+msgid "Cleanup Cache Folder:"
+msgstr "कैश फ़ोल्डर साफ़ करें:"
+
+msgid "Country:"
+msgstr "देश:"
+
+msgid "Database"
+msgstr "डेटाबेस"
+
+msgid "Database Editor:"
+msgstr "डेटाबेस संपादक:"
+
+msgid "Database Timer Log"
+msgstr "डेटाबेस टाइमर लॉग"
+
+msgid "Database Update Log"
+msgstr "डेटाबेस अद्यतन लॉग"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "डेटाबेस अपडेट टाइमर बंद हो गया: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "मूवी फ़ाइल हटाएँ"
+
+msgid "Director Selection"
+msgstr "निदेशक चयन"
+
+msgid "Director:"
+msgstr "निदेशक:"
+
+msgid "Download new Backdrops:"
+msgstr "नई पृष्ठभूमि डाउनलोड करें:"
+
+msgid "EPISODES"
+msgstr "एपिसोड"
+
+msgid "Error moving cache folder: %s"
+msgstr "कैश फ़ोल्डर ले जाने में त्रुटि: %s"
+
+msgid "File %s non trovato!"
+msgstr "फ़ाइल %s नहीं मिली!"
+
+msgid "File %s not found!"
+msgstr "फ़ाइल %s नहीं मिली!"
+
+msgid "Folder Selection"
+msgstr "फ़ोल्डर चयन"
+
+msgid "Free Space"
+msgstr "मुक्त स्थान"
+
+msgid "Free Space:"
+msgstr "मुक्त स्थान:"
+
+msgid "Genre Selection"
+msgstr "शैली चयन"
+
+msgid "Genres:"
+msgstr "शैलियाँ:"
+
+msgid "Goto last Movie on Start:"
+msgstr "प्रारंभ में अंतिम मूवी पर जाएं:"
+
+msgid "Help"
+msgstr "मदद"
+
+msgid "Hide"
+msgstr "छिपाना"
+
+msgid "Hide Plugin during Update:"
+msgstr "अद्यतन के दौरान प्लगइन छिपाएँ:"
+
+msgid "Info Button"
+msgstr "जानकारी बटन"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "जानकारी बटन: जानकारी दिखाने/छिपाने का टॉगल करें"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "/tmp/tmdb_api.txt से TMDB Apikey लोड करें"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "TheTVDb Apikey को /tmp/thetvdb_api.txt से लोड करें"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "प्रारंभ पर अंतिम चयन/फ़िल्टर लोड करें:"
+
+msgid "MOVIES"
+msgstr "फिल्में"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "अपनी फिल्में और श्रृंखला V.%s प्रबंधित करें"
+
+msgid "Metrix List Selection Color:"
+msgstr "मेट्रिक्स सूची चयन रंग:"
+
+msgid "Movie Browser Key Assignment"
+msgstr "मूवी ब्राउज़र कुंजी असाइनमेंट"
+
+msgid "Movie Creation Date Ascending"
+msgstr "मूवी निर्माण तिथि बढ़ती जा रही है"
+
+msgid "Movie Creation Date Descending"
+msgstr "मूवी निर्माण तिथि घटती जा रही है"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "मूवी डेटाबेस अद्यतन प्रारंभ: %s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "मूवी फ़ाइल जानकारी"
+
+msgid "Movie Folder"
+msgstr "मूवी फ़ोल्डर"
+
+msgid "Movie Folder Ascending"
+msgstr "मूवी फ़ोल्डर आरोही"
+
+msgid "Movie Folder Descending"
+msgstr "मूवी फ़ोल्डर अवरोही"
+
+msgid "Movie Folder Selection"
+msgstr "मूवी फ़ोल्डर चयन"
+
+msgid "Movie Folder:"
+msgstr "मूवी फ़ोल्डर:"
+
+msgid "Movie Rating 0-10"
+msgstr "मूवी रेटिंग 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "मूवी रेटिंग 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "मूवी रिलीज़ की तारीख बढ़ती जा रही है"
+
+msgid "Movie Release Date Descending"
+msgstr "मूवी रिलीज की तारीख घटती जा रही है"
+
+msgid "Movie Runtime Ascending"
+msgstr "मूवी रनटाइम आरोही"
+
+msgid "Movie Runtime Descending"
+msgstr "मूवी रनटाइम अवरोही"
+
+msgid "Movie Sort Order:"
+msgstr "मूवी सॉर्ट क्रम:"
+
+msgid "Movie Title A-Z"
+msgstr "मूवी का शीर्षक A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "मूवी का शीर्षक Z-A"
+
+msgid "Movies"
+msgstr "चलचित्र"
+
+msgid "Movies & Series"
+msgstr "फ़िल्में और श्रृंखला"
+
+msgid "Movies Style:"
+msgstr "फ़िल्म शैली:"
+
+msgid "Movies or Series Selection at Start:"
+msgstr "प्रारंभ में फ़िल्में या श्रृंखला चयन:"
+
+msgid "Movies or Series:"
+msgstr "फ़िल्में या श्रृंखला:"
+
+msgid "No"
+msgstr "नहीं"
+
+msgid "On Database Update"
+msgstr "डेटाबेस अद्यतन पर"
+
+msgid "On First Access"
+msgstr "प्रथम प्रवेश पर"
+
+msgid "Plugin Transparency:"
+msgstr "प्लगइन पारदर्शिता:"
+
+msgid "Plugin in Enigma Menu:"
+msgstr "एनिग्मा मेनू में प्लगइन:"
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "पोस्टरवॉल/बैकड्रॉप शो प्लॉट:"
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "रेडियो बटन: मूवी हटाएँ/ब्लैकलिस्ट करें"
+
+msgid "Rating:"
+msgstr "रेटिंग:"
+
+msgid "Really close without saving settings?"
+msgstr "सेटिंग्स सहेजे बिना वास्तव में बंद करें?"
+
+msgid "Reset Database:"
+msgstr "डेटाबेस रीसेट करें:"
+
+msgid "Restore Database:"
+msgstr "डेटाबेस पुनर्स्थापित करें:"
+
+msgid "Runtime:"
+msgstr "रनटाइम:"
+
+msgid "SERIES"
+msgstr "शृंखला"
+
+msgid "Save"
+msgstr "बचाना"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "त्वचा का चयन करें *जीयूआई पुनः आरंभ करना आवश्यक:"
+
+msgid "Series"
+msgstr "शृंखला"
+
+msgid "Series Episodes"
+msgstr "श्रृंखला के एपिसोड"
+
+msgid "Series Folder: No Info possible"
+msgstr "श्रृंखला फ़ोल्डर: कोई जानकारी संभव नहीं"
+
+msgid "Series Style:"
+msgstr "शृंखला शैली:"
+
+msgid "Show"
+msgstr "दिखाओ"
+
+msgid "Show Backdrops:"
+msgstr "पृष्ठभूमि दिखाएँ:"
+
+msgid "Show List of Movie Folder:"
+msgstr "मूवी फ़ोल्डर की सूची दिखाएँ:"
+
+msgid "Show TV in Background (no m1v):"
+msgstr "पृष्ठभूमि में टीवी दिखाएं (कोई m1v नहीं):"
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "टीएमडीबी पर साइनअप करें और निःशुल्क व्यक्तिगत ApiKey इनपुट करें"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "TheTVDb पर साइनअप करें और निःशुल्क व्यक्तिगत ApiKey इनपुट करें"
+
+msgid "Start Plugin with Video Button:"
+msgstr "वीडियो बटन के साथ प्लगइन प्रारंभ करें:"
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "स्टॉप बटन: मूवी को देखा हुआ चिह्नित करें"
+
+msgid "Style"
+msgstr "शैली"
+
+msgid "TMDB API key successfully imported!"
+msgstr "टीएमडीबी एपीआई कुंजी सफलतापूर्वक आयात की गई!"
+
+msgid "TMDb Results"
+msgstr "टीएमडीबी परिणाम"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "टीएमडीबी/दटीवीडीबी भाषा:"
+
+msgid "Text Button: Edit Database"
+msgstr "टेक्स्ट बटन: डेटाबेस संपादित करें"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TVDb API कुंजी सफलतापूर्वक आयात की गई!"
+
+msgid "TheTVDb Results"
+msgstr "टीवीडीबी परिणाम"
+
+msgid "Timer Database Update:"
+msgstr "टाइमर डेटाबेस अद्यतन:"
+
+msgid "Toggle Plugin Style"
+msgstr "प्लगइन शैली टॉगल करें"
+
+msgid "Toggle hide/show plugin"
+msgstr "छिपाएँ/दिखाएँ प्लगइन टॉगल करें"
+
+msgid "Update"
+msgstr "अद्यतन"
+
+msgid "Update Database with Timer:"
+msgstr "टाइमर के साथ डेटाबेस अपडेट करें:"
+
+msgid "Update Series"
+msgstr "अद्यतन शृंखला"
+
+msgid "Use m1v Backdrops:"
+msgstr "m1v पृष्ठभूमि का उपयोग करें:"
+
+msgid "Video Button: Update Database"
+msgstr "वीडियो बटन: डेटाबेस अपडेट करें"
+
+msgid "Years:"
+msgstr "साल:"
+
+msgid "Yes"
+msgstr "हाँ"
+
+msgid "backdrop"
+msgstr "पृष्ठभूमि"
+
+msgid "banner"
+msgstr "बैनर"
+
+msgid "movie"
+msgstr "चलचित्र"
+
+msgid "poster"
+msgstr "पोस्टर"
+
+msgid "series"
+msgstr "शृंखला"

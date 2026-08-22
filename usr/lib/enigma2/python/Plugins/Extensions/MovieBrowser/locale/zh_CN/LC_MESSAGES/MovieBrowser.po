@@ -1,0 +1,407 @@
+# MovieBrowser translations
+# Copyright (C) 2025 Lululla Team
+# This file is distributed under the same license as the Lululla package.
+# [lululla] <ekekaz@gmail.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: MovieBrowser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-08-22 13:48+0000\n"
+"Last-Translator:  <EMAIL@ADDRESS>\n"
+"Language-Team: Language zh-CN\n"
+"Language: zh-CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
+msgstr "*****电影浏览器数据库更新计时器********\\\\\\\\\\\\\\\\n"
+
+msgid "*******Movie Browser Database Update*******\\\\\\\\n"
+msgstr "*****电影浏览器数据库更新********\\\\\\\\\\\\\\\\n"
+
+msgid "<- -> Button: Go to first letter"
+msgstr "<- -> 按钮：转到第一个字母"
+
+msgid "<List of Movie Folder>"
+msgstr "<电影文件夹列表>"
+
+msgid "Actor Selection"
+msgstr "演员选择"
+
+msgid "Actors:"
+msgstr "演员："
+
+msgid "All /tmp/posters Cleaned"
+msgstr "所有/tmp/海报已清理"
+
+msgid "Automatic"
+msgstr "自动的"
+
+msgid "Backup Database:"
+msgstr "备份数据库："
+
+msgid "Blacklist Movie File"
+msgstr "黑名单电影文件"
+
+msgid "Button 0: Go to end of list"
+msgstr "按钮 0：转到列表末尾"
+
+msgid "Button 1: CutListEditor/MovieCut/LogView"
+msgstr "按钮 1：CutListEditor/MovieCut/LogView"
+
+msgid "Button 2: Renew infos on TMDb"
+msgstr "按钮 2：更新 TMDb 上的信息"
+
+msgid "Button 3: Renew infos on TheTVDb"
+msgstr "按钮 3：更新 TheTVDb 上的信息"
+
+msgid "Button 4: Hide/show seen movies"
+msgstr "按钮 4：隐藏/显示看过的电影"
+
+msgid "Button 5: Toggle Movies/Series view"
+msgstr "按钮 5：切换电影/系列视图"
+
+msgid "Button 6: Movie Folder Selection"
+msgstr "按钮 6：电影文件夹选择"
+
+msgid "Button 7: Movie Director Selection"
+msgstr "按钮7：电影导演选择"
+
+msgid "Button 8: Movie Actor Selection"
+msgstr "按钮8：电影演员选择"
+
+msgid "Button 9: Movie Genre Selection"
+msgstr "按钮 9：电影类型选择"
+
+msgid "Cache Folder:"
+msgstr "缓存文件夹："
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Choose Directory"
+msgstr "选择目录"
+
+msgid "Choose Directory:"
+msgstr "选择目录："
+
+msgid "Cleanup Cache Folder Log"
+msgstr "清理缓存文件夹日志"
+
+msgid "Cleanup Cache Folder:"
+msgstr "清理缓存文件夹："
+
+msgid "Country:"
+msgstr "国家："
+
+msgid "Database"
+msgstr "数据库"
+
+msgid "Database Editor:"
+msgstr "数据库编辑器："
+
+msgid "Database Timer Log"
+msgstr "数据库定时器日志"
+
+msgid "Database Update Log"
+msgstr "数据库更新日志"
+
+msgid "Database Update Timer stopped: %s\\\\\\\\n"
+msgstr "数据库更新计时器已停止：%s\\\\\\\\\\\\\\\\n"
+
+msgid "Delete Movie File"
+msgstr "删除电影文件"
+
+msgid "Director Selection"
+msgstr "导演选拔"
+
+msgid "Director:"
+msgstr "导演："
+
+msgid "Download new Backdrops:"
+msgstr "下载新背景："
+
+msgid "EPISODES"
+msgstr "剧集"
+
+msgid "Error moving cache folder: %s"
+msgstr "移动缓存文件夹时出错：%s"
+
+msgid "File %s non trovato!"
+msgstr "未找到文件 %s！"
+
+msgid "File %s not found!"
+msgstr "未找到文件 %s！"
+
+msgid "Folder Selection"
+msgstr "文件夹选择"
+
+msgid "Free Space"
+msgstr "自由空间"
+
+msgid "Free Space:"
+msgstr "可用空间："
+
+msgid "Genre Selection"
+msgstr "类型选择"
+
+msgid "Genres:"
+msgstr "流派："
+
+msgid "Goto last Movie on Start:"
+msgstr "转到开始时的最后一部电影："
+
+msgid "Help"
+msgstr "帮助"
+
+msgid "Hide"
+msgstr "隐藏"
+
+msgid "Hide Plugin during Update:"
+msgstr "更新期间隐藏插件："
+
+msgid "Info Button"
+msgstr "信息按钮"
+
+msgid "Info Button: Toggle show/hide infos"
+msgstr "信息按钮：切换显示/隐藏信息"
+
+msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
+msgstr "从 /tmp/tmdb_api.txt 加载 TMDB Apikey"
+
+msgid "Load TheTVDb Apikey from /tmp/thetvdb_api.txt"
+msgstr "从 /tmp/thetvdb_api.txt 加载 TheTVDb Apikey"
+
+msgid "Load last Selection/Filter on Start:"
+msgstr "开始时加载最后的选择/过滤器："
+
+msgid "MOVIES"
+msgstr "电影"
+
+msgid "Manage your Movies & Series V.%s"
+msgstr "管理您的电影和系列 V.%s"
+
+msgid "Metrix List Selection Color:"
+msgstr "矩阵列表选择颜色："
+
+msgid "Movie Browser Key Assignment"
+msgstr "电影浏览器按键分配"
+
+msgid "Movie Creation Date Ascending"
+msgstr "电影创建日期升序"
+
+msgid "Movie Creation Date Descending"
+msgstr "电影创建日期降序"
+
+msgid "Movie Database Update started: %s\\\\\\\\n"
+msgstr "电影数据库更新已开始：%s\\\\\\\\\\\\\\\\n"
+
+msgid "Movie File Informations"
+msgstr "电影文件信息"
+
+msgid "Movie Folder"
+msgstr "电影文件夹"
+
+msgid "Movie Folder Ascending"
+msgstr "电影文件夹升序"
+
+msgid "Movie Folder Descending"
+msgstr "电影文件夹降序"
+
+msgid "Movie Folder Selection"
+msgstr "电影文件夹选择"
+
+msgid "Movie Folder:"
+msgstr "电影文件夹："
+
+msgid "Movie Rating 0-10"
+msgstr "电影评级 0-10"
+
+msgid "Movie Rating 10-0"
+msgstr "电影评分 10-0"
+
+msgid "Movie Release Date Ascending"
+msgstr "电影上映日期升序"
+
+msgid "Movie Release Date Descending"
+msgstr "电影上映日期降序"
+
+msgid "Movie Runtime Ascending"
+msgstr "电影运行时间升序"
+
+msgid "Movie Runtime Descending"
+msgstr "电影运行时间降序"
+
+msgid "Movie Sort Order:"
+msgstr "电影排序顺序："
+
+msgid "Movie Title A-Z"
+msgstr "电影名称 A-Z"
+
+msgid "Movie Title Z-A"
+msgstr "电影名称 Z-A"
+
+msgid "Movies"
+msgstr "电影"
+
+msgid "Movies & Series"
+msgstr "电影和连续剧"
+
+msgid "Movies Style:"
+msgstr "电影风格："
+
+msgid "Movies or Series Selection at Start:"
+msgstr "开始时选择的电影或连续剧："
+
+msgid "Movies or Series:"
+msgstr "电影或连续剧："
+
+msgid "No"
+msgstr "不"
+
+msgid "On Database Update"
+msgstr "关于数据库更新"
+
+msgid "On First Access"
+msgstr "首次访问时"
+
+msgid "Plugin Transparency:"
+msgstr "插件透明度："
+
+msgid "Plugin in Enigma Menu:"
+msgstr "Enigma 菜单中的插件："
+
+msgid "Posterwall/Backdrop Show Plot:"
+msgstr "海报墙/背景展示情节："
+
+msgid "Radio Button: Delete/Blacklist movie"
+msgstr "单选按钮：删除/黑名单电影"
+
+msgid "Rating:"
+msgstr "等级："
+
+msgid "Really close without saving settings?"
+msgstr "真的关闭而不保存设置吗？"
+
+msgid "Reset Database:"
+msgstr "重置数据库："
+
+msgid "Restore Database:"
+msgstr "恢复数据库："
+
+msgid "Runtime:"
+msgstr "运行时间："
+
+msgid "SERIES"
+msgstr "系列"
+
+msgid "Save"
+msgstr "节省"
+
+msgid "Select skin *Restart GUI Required:"
+msgstr "选择皮肤 *需要重新启动 GUI："
+
+msgid "Series"
+msgstr "系列"
+
+msgid "Series Episodes"
+msgstr "系列剧集"
+
+msgid "Series Folder: No Info possible"
+msgstr "系列文件夹：无可用信息"
+
+msgid "Series Style:"
+msgstr "系列风格："
+
+msgid "Show"
+msgstr "展示"
+
+msgid "Show Backdrops:"
+msgstr "显示背景："
+
+msgid "Show List of Movie Folder:"
+msgstr "显示电影文件夹列表："
+
+msgid "Show TV in Background (no m1v):"
+msgstr "在后台显示电视（无 m1v）："
+
+msgid "Signup on TMDB and input free personal ApiKey"
+msgstr "注册TMDB并输入免费的个人ApiKey"
+
+msgid "Signup on TheTVDb and input free personal ApiKey"
+msgstr "注册 TheTVDb 并输入免费的个人 ApiKey"
+
+msgid "Start Plugin with Video Button:"
+msgstr "使用视频按钮启动插件："
+
+msgid "Stop Button: Mark movie as seen"
+msgstr "停止按钮：将电影标记为已观看"
+
+msgid "Style"
+msgstr "风格"
+
+msgid "TMDB API key successfully imported!"
+msgstr "TMDB API 密钥已成功导入！"
+
+msgid "TMDb Results"
+msgstr "TMDb 结果"
+
+msgid "TMDb/TheTVDb Language:"
+msgstr "TMDb/TheTVDb 语言："
+
+msgid "Text Button: Edit Database"
+msgstr "文本按钮：编辑数据库"
+
+msgid "TheTVDb API key successfully imported!"
+msgstr "TVDb API 密钥已成功导入！"
+
+msgid "TheTVDb Results"
+msgstr "TVDb 结果"
+
+msgid "Timer Database Update:"
+msgstr "定时器数据库更新："
+
+msgid "Toggle Plugin Style"
+msgstr "切换插件样式"
+
+msgid "Toggle hide/show plugin"
+msgstr "切换隐藏/显示插件"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Update Database with Timer:"
+msgstr "使用计时器更新数据库："
+
+msgid "Update Series"
+msgstr "更新系列"
+
+msgid "Use m1v Backdrops:"
+msgstr "使用 m1v 背景："
+
+msgid "Video Button: Update Database"
+msgstr "视频按钮：更新数据库"
+
+msgid "Years:"
+msgstr "年："
+
+msgid "Yes"
+msgstr "是的"
+
+msgid "backdrop"
+msgstr "背景"
+
+msgid "banner"
+msgstr "横幅"
+
+msgid "movie"
+msgstr "电影"
+
+msgid "poster"
+msgstr "海报"
+
+msgid "series"
+msgstr "系列"

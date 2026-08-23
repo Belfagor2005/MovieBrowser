@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "******* Ùrachadh stòr-dàta brabhsair film *********** \\\\\\\\\\\\n"
+msgstr "******* Ùrachadh stòr-dàta brabhsair film *********** \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******* Ùrachadh stòr-dàta brabhsair film ***********\\\\\\\\\\\\\\\\n"
+msgstr "******* Ùrachadh stòr-dàta brabhsair film ***********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Putan: Rach don chiad litir"
@@ -109,8 +111,9 @@ msgstr "Stòr-dàta Timer Log"
 msgid "Database Update Log"
 msgstr "Clàr stòr-dàta a ' luchdadh a-nuas"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Sguir uaireadair ùrachadh an stòr-dàta: %s\\\\\\\\\\\\\\\\n"
+msgstr "Sguir uaireadair ùrachadh an stòr-dàta: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Sguab às Movie File"
@@ -196,8 +199,9 @@ msgstr "Ceann-latha cruthachadh film a’ dìreadh"
 msgid "Movie Creation Date Descending"
 msgstr "Ceann-latha cruthachadh film a’ teàrnadh"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Thòisich ùrachadh stòr-dàta nam film: %s\\\\\\\\\\\\\\\\n"
+msgstr "Thòisich ùrachadh stòr-dàta nam film: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Fiosrachadh faidhle film"

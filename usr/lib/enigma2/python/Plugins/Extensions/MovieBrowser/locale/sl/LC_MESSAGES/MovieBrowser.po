@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Movie Browser Database Update Timer********\\\\\\\\\\\\\\\\n"
+msgstr "*******Movie Browser Database Update Timer********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Posodobitev zbirke podatkov brskalnika za filme********\\\\\\\\\\\\\\\\n"
+msgstr "*******Posodobitev zbirke podatkov brskalnika za filme********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Gumb: Pojdi na prvo črko"
@@ -110,8 +112,9 @@ msgstr "Dnevnik časovnika baze podatkov"
 msgid "Database Update Log"
 msgstr "Dnevnik posodobitev baze podatkov"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Časovnik posodobitve baze podatkov je ustavljen: %s\\\\\\\\\\\\\\\\n"
+msgstr "Časovnik posodobitve baze podatkov je ustavljen: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Izbriši filmsko datoteko"
@@ -197,8 +200,9 @@ msgstr "Datum ustvarjanja filma naraščajoče"
 msgid "Movie Creation Date Descending"
 msgstr "Datum ustvarjanja filma padajoče"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Posodobitev zbirke podatkov filmov se je začela: %s\\\\\\\\\\\\\\\\n"
+msgstr "Posodobitev zbirke podatkov filmov se je začela: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informacije o filmski datoteki"

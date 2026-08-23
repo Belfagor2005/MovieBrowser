@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "******* Uppfærslutími kvikmyndavafragagnagrunns*******\\\\\\\\\\\\\\\\n"
+msgstr "******* Uppfærslutími kvikmyndavafragagnagrunns*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******* Uppfærsla á gagnagrunni kvikmyndavafra*******\\\\\\\\\\\\\\\\n"
+msgstr "******* Uppfærsla á gagnagrunni kvikmyndavafra*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Hnappur: Farðu í fyrsta staf"
@@ -109,8 +111,9 @@ msgstr "Tímamælaskrá gagnagrunns"
 msgid "Database Update Log"
 msgstr "Uppfærsluskrá gagnagrunns"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Uppfærslutímamælir gagnagrunns stöðvaður: %s\\\\\\\\\\\\\\\\n"
+msgstr "Uppfærslutímamælir gagnagrunns stöðvaður: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Eyða kvikmyndaskrá"
@@ -196,8 +199,9 @@ msgstr "Dagsetning kvikmyndagerðar fer hækkandi"
 msgid "Movie Creation Date Descending"
 msgstr "Dagsetning kvikmyndagerðar á niðurleið"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Uppfærsla á kvikmyndagagnagrunni hófst: %s\\\\\\\\\\\\\\\\n"
+msgstr "Uppfærsla á kvikmyndagagnagrunni hófst: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Upplýsingar um kvikmyndaskrár"

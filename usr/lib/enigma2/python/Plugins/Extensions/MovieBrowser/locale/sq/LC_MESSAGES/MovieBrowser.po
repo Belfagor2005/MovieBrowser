@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Kohëmatësi i përditësimit të bazës së të dhënave të shfletuesit të filmit********\\\\\\\\\\\\\\\\n"
+msgstr "*******Kohëmatësi i përditësimit të bazës së të dhënave të shfletuesit të filmit********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Përditësimi i bazës së të dhënave të shfletuesit të filmit********\\\\\\\\\\\\\\\\n"
+msgstr "*******Përditësimi i bazës së të dhënave të shfletuesit të filmit********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Butoni <- ->: Shkoni te shkronja e parë"
@@ -109,8 +111,9 @@ msgstr "Regjistri i kohëmatësit të bazës së të dhënave"
 msgid "Database Update Log"
 msgstr "Regjistri i përditësimit të bazës së të dhënave"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Kohëmatësi i përditësimit të bazës së të dhënave u ndal: %s\\\\\\\\\\\\\\\\n"
+msgstr "Kohëmatësi i përditësimit të bazës së të dhënave u ndal: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Fshi skedarin e filmit"
@@ -196,8 +199,9 @@ msgstr "Data e krijimit të filmit në rritje"
 msgid "Movie Creation Date Descending"
 msgstr "Data e krijimit të filmit në rënie"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Filloi përditësimi i bazës së të dhënave të filmit: %s\\\\\\\\\\\\\\\\n"
+msgstr "Filloi përditësimi i bazës së të dhënave të filmit: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informacioni i skedarit të filmit"
@@ -368,7 +372,7 @@ msgid "Toggle Plugin Style"
 msgstr "Ndrysho stilin e shtojcave"
 
 msgid "Toggle hide/show plugin"
-msgstr "Ndrysho shtojcën \\\"fshih/shfaq\\\"."
+msgstr "Ndrysho shtojcën \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"fshih/shfaq\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"."
 
 msgid "Update"
 msgstr "Përditëso"

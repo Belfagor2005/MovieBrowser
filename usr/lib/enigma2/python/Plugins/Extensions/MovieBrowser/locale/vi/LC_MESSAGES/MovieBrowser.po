@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Bộ hẹn giờ cập nhật cơ sở dữ liệu trình duyệt phim*********\\\\\\\\\\\\\\\\n"
+msgstr "*******Bộ hẹn giờ cập nhật cơ sở dữ liệu trình duyệt phim*********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Cập nhật cơ sở dữ liệu trình duyệt phim*********\\\\\\\\\\\\\\\\n"
+msgstr "*******Cập nhật cơ sở dữ liệu trình duyệt phim*********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Nút: Đi tới chữ cái đầu tiên"
@@ -110,8 +112,9 @@ msgstr "Nhật ký hẹn giờ cơ sở dữ liệu"
 msgid "Database Update Log"
 msgstr "Nhật ký cập nhật cơ sở dữ liệu"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Bộ hẹn giờ cập nhật cơ sở dữ liệu đã dừng: %s\\\\\\\\\\\\\\\\n"
+msgstr "Bộ hẹn giờ cập nhật cơ sở dữ liệu đã dừng: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Xóa tập tin phim"
@@ -197,8 +200,9 @@ msgstr "Ngày tạo phim tăng dần"
 msgid "Movie Creation Date Descending"
 msgstr "Ngày tạo phim giảm dần"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Đã bắt đầu cập nhật cơ sở dữ liệu phim: %s\\\\\\\\\\\\\\\\n"
+msgstr "Đã bắt đầu cập nhật cơ sở dữ liệu phim: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Thông tin tập tin phim"

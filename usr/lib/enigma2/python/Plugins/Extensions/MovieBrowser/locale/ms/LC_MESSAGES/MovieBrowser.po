@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Pemasa Kemas Kini Pangkalan Data Pelayar Filem*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Pemasa Kemas Kini Pangkalan Data Pelayar Filem*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Kemas Kini Pangkalan Data Pelayar Filem******\\\\\\\\\\\\\\\\n"
+msgstr "*******Kemas Kini Pangkalan Data Pelayar Filem******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Butang: Pergi ke huruf pertama"
@@ -109,8 +111,9 @@ msgstr "Log Pemasa Pangkalan Data"
 msgid "Database Update Log"
 msgstr "Log Kemas Kini Pangkalan Data"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Pemasa Kemas Kini Pangkalan Data berhenti: %s\\\\\\\\\\\\\\\\n"
+msgstr "Pemasa Kemas Kini Pangkalan Data berhenti: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Padam Fail Filem"
@@ -196,8 +199,9 @@ msgstr "Tarikh Penciptaan Filem Menaik"
 msgid "Movie Creation Date Descending"
 msgstr "Tarikh Penciptaan Filem Menurun"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Kemas Kini Pangkalan Data Filem bermula: %s\\\\\\\\\\\\\\\\n"
+msgstr "Kemas Kini Pangkalan Data Filem bermula: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Maklumat Fail Filem"

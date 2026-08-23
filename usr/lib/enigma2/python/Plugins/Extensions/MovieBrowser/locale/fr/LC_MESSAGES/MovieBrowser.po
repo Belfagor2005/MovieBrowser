@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Minuterie de mise à jour de la base de données du navigateur de films******\\\\\\\\\\\\\\\\n"
+msgstr "*******Minuterie de mise à jour de la base de données du navigateur de films******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Mise à jour de la base de données du navigateur de films*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Mise à jour de la base de données du navigateur de films*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Bouton <- -> : Aller à la première lettre"
@@ -110,8 +112,9 @@ msgstr "Journal du minuteur de base de données"
 msgid "Database Update Log"
 msgstr "Journal de mise à jour de la base de données"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Le minuteur de mise à jour de la base de données s'est arrêté : %s\\\\\\\\\\\\\\\\n"
+msgstr "Le minuteur de mise à jour de la base de données s'est arrêté : %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Supprimer le fichier vidéo"
@@ -197,8 +200,9 @@ msgstr "Date de création du film par ordre croissant"
 msgid "Movie Creation Date Descending"
 msgstr "Date de création du film par ordre décroissant"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "La mise à jour de la base de données de films a démarré : %s\\\\\\\\\\\\\\\\n"
+msgstr "La mise à jour de la base de données de films a démarré : %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informations sur les fichiers de films"

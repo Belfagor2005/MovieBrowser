@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Filmu pārlūkprogrammas datu bāzes atjaunināšanas taimeris*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Filmu pārlūkprogrammas datu bāzes atjaunināšanas taimeris*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Filmu pārlūkprogrammas datu bāzes atjauninājums********\\\\\\\\\\\\\\\\n"
+msgstr "*******Filmu pārlūkprogrammas datu bāzes atjauninājums********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Poga: pāriet uz pirmo burtu"
@@ -110,8 +112,9 @@ msgstr "Datu bāzes taimera žurnāls"
 msgid "Database Update Log"
 msgstr "Datu bāzes atjaunināšanas žurnāls"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Datu bāzes atjaunināšanas taimeris apturēts: %s\\\\\\\\\\\\\\\\n"
+msgstr "Datu bāzes atjaunināšanas taimeris apturēts: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Dzēst filmas failu"
@@ -197,8 +200,9 @@ msgstr "Filmas izveides datums augošā secībā"
 msgid "Movie Creation Date Descending"
 msgstr "Filmas izveides datums dilstošā secībā"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Sākta filmu datu bāzes atjaunināšana: %s\\\\\\\\\\\\\\\\n"
+msgstr "Sākta filmu datu bāzes atjaunināšana: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Filmas faila informācija"

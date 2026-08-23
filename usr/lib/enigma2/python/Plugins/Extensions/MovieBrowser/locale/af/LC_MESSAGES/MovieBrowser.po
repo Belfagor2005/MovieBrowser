@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "******* Fliekblaaier-databasisopdateringteller*******\\\\\\\\\\\\\\\\n"
+msgstr "******* Fliekblaaier-databasisopdateringteller*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******* Filmblaaier-databasisopdatering*******\\\\\\\\\\\\\\\\n"
+msgstr "******* Filmblaaier-databasisopdatering*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Knoppie: Gaan na eerste letter"
@@ -109,8 +111,9 @@ msgstr "Databasis Timer Log"
 msgid "Database Update Log"
 msgstr "Databasisopdateringslogboek"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Databasisopdatering-afteller gestop: %s\\\\\\\\\\\\\\\\n"
+msgstr "Databasisopdatering-afteller gestop: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Vee flieklêer uit"
@@ -188,7 +191,7 @@ msgid "Metrix List Selection Color:"
 msgstr "Metrix Lys Keuse Kleur:"
 
 msgid "Movie Browser Key Assignment"
-msgstr ""
+msgstr "Filmblaaiersleutelopdrag"
 
 msgid "Movie Creation Date Ascending"
 msgstr "Fliekskeppingsdatum stygende"
@@ -196,8 +199,9 @@ msgstr "Fliekskeppingsdatum stygende"
 msgid "Movie Creation Date Descending"
 msgstr "Fliekskeppingsdatum daal"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Fliekdatabasisopdatering het begin: %s\\\\\\\\\\\\\\\\n"
+msgstr "Fliekdatabasisopdatering het begin: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Filmlêerinligting"

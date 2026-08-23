@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr ""
+msgstr "*******Filmibrauseri andmebaasi värskendus********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Filmibrauseri andmebaasi värskendus********\\\\\\\\\\\\\\\\n"
+msgstr "*******Filmibrauseri andmebaasi värskendus********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Nupp: minge esimese tähe juurde"
@@ -110,8 +112,9 @@ msgstr "Andmebaasi taimeri logi"
 msgid "Database Update Log"
 msgstr "Andmebaasi värskenduste logi"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Andmebaasi värskenduse taimer peatatud: %s\\\\\\\\\\\\\\\\n"
+msgstr "Andmebaasi värskenduse taimer peatatud: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Kustuta filmifail"
@@ -197,8 +200,9 @@ msgstr "Filmi loomise kuupäev kasvavalt"
 msgid "Movie Creation Date Descending"
 msgstr "Filmi loomise kuupäev kahanevalt"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Filmide andmebaasi värskendamine algas: %s\\\\\\\\\\\\\\\\n"
+msgstr "Filmide andmebaasi värskendamine algas: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Teave filmifailide kohta"
@@ -303,7 +307,7 @@ msgid "Save"
 msgstr "Salvesta"
 
 msgid "Select skin *Restart GUI Required:"
-msgstr ""
+msgstr "Valige nahk *Nõutav on taaskäivitada GUI:"
 
 msgid "Series"
 msgstr "seeria"

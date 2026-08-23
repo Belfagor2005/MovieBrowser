@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*****電影瀏覽器資料庫更新計時器********\\\\\\\\\\\\\\\\n"
+msgstr "*****電影瀏覽器資料庫更新計時器********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*****電影瀏覽器資料庫更新********\\\\\\\\\\\\\\\\n"
+msgstr "*****電影瀏覽器資料庫更新********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> 按鈕：轉到第一個字母"
@@ -41,7 +43,7 @@ msgid "Automatic"
 msgstr "自動的"
 
 msgid "Backup Database:"
-msgstr ""
+msgstr "備份資料庫："
 
 msgid "Blacklist Movie File"
 msgstr "黑名單電影文件"
@@ -77,7 +79,7 @@ msgid "Button 9: Movie Genre Selection"
 msgstr "按鈕 9：電影類型選擇"
 
 msgid "Cache Folder:"
-msgstr ""
+msgstr "快取資料夾："
 
 msgid "Cancel"
 msgstr "取消"
@@ -109,8 +111,9 @@ msgstr "資料庫定時器日誌"
 msgid "Database Update Log"
 msgstr "資料庫更新日誌"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "資料庫更新計時器已停止：%s\\\\\\\\\\\\\\\\n"
+msgstr "資料庫更新計時器已停止：%s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "刪除電影文件"
@@ -149,10 +152,10 @@ msgid "Genre Selection"
 msgstr "類型選擇"
 
 msgid "Genres:"
-msgstr ""
+msgstr "流派："
 
 msgid "Goto last Movie on Start:"
-msgstr ""
+msgstr "轉到開始時的最後一部電影："
 
 msgid "Help"
 msgstr "幫助"
@@ -167,7 +170,7 @@ msgid "Info Button"
 msgstr "資訊按鈕"
 
 msgid "Info Button: Toggle show/hide infos"
-msgstr ""
+msgstr "訊息按鈕：切換顯示/隱藏訊息"
 
 msgid "Load TMDB Apikey from /tmp/tmdb_api.txt"
 msgstr "從 /tmp/tmdb_api.txt 載入 TMDB Apikey"
@@ -196,8 +199,9 @@ msgstr "電影創建日期升序"
 msgid "Movie Creation Date Descending"
 msgstr "電影創作日期降序"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "電影資料庫更新已開始：%s\\\\\\\\\\\\\\\\n"
+msgstr "電影資料庫更新已開始：%s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "電影文件訊息"
@@ -254,7 +258,7 @@ msgid "Movies Style:"
 msgstr "電影風格："
 
 msgid "Movies or Series Selection at Start:"
-msgstr ""
+msgstr "開始時選擇的電影或連續劇："
 
 msgid "Movies or Series:"
 msgstr "電影或連續劇："

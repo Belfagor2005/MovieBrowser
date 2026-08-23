@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Licznik aktualizacji bazy danych przeglądarki filmów**********\\\\\\\\\\\\\\\\n"
+msgstr "*******Licznik aktualizacji bazy danych przeglądarki filmów**********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Aktualizacja bazy danych przeglądarki filmów**********\\\\\\\\\\\\\\\\n"
+msgstr "*******Aktualizacja bazy danych przeglądarki filmów**********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Przycisk: Przejdź do pierwszej litery"
@@ -110,8 +112,9 @@ msgstr "Dziennik licznika czasu bazy danych"
 msgid "Database Update Log"
 msgstr "Dziennik aktualizacji bazy danych"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Zatrzymano licznik czasu aktualizacji bazy danych: %s\\\\\\\\\\\\\\\\n"
+msgstr "Zatrzymano licznik czasu aktualizacji bazy danych: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Usuń plik filmowy"
@@ -197,8 +200,9 @@ msgstr "Data utworzenia filmu rosnąca"
 msgid "Movie Creation Date Descending"
 msgstr "Data utworzenia filmu malejąco"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Rozpoczęto aktualizację bazy danych filmów: %s\\\\\\\\\\\\\\\\n"
+msgstr "Rozpoczęto aktualizację bazy danych filmów: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informacje o pliku filmowym"

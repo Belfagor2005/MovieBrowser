@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "****** Temporitzador d'actualització de la base de dades del navegador de pel·lícules*******\\\\\\\\\\\\\\\\n"
+msgstr "****** Temporitzador d'actualització de la base de dades del navegador de pel·lícules*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Actualització de la base de dades del navegador de pel·lícules*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Actualització de la base de dades del navegador de pel·lícules*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Botó <- ->: Anar a la primera lletra"
@@ -109,8 +111,9 @@ msgstr "Registre del temporitzador de la base de dades"
 msgid "Database Update Log"
 msgstr "Registre d'actualització de la base de dades"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "El temporitzador d'actualització de la base de dades s'ha aturat: %s\\\\\\\\\\\\\\\\n"
+msgstr "El temporitzador d'actualització de la base de dades s'ha aturat: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Suprimeix el fitxer de pel·lícula"
@@ -196,8 +199,9 @@ msgstr "Data de creació de la pel·lícula ascendent"
 msgid "Movie Creation Date Descending"
 msgstr "Data de creació de la pel·lícula descendent"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "S'ha iniciat l'actualització de la base de dades de pel·lícules: %s\\\\\\\\\\\\\\\\n"
+msgstr "S'ha iniciat l'actualització de la base de dades de pel·lícules: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informació del fitxer de pel·lícula"

@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "******** Časovač aktualizácie databázy prehliadača filmov********\\\\\\\\\\\\\\\\n"
+msgstr "******** Časovač aktualizácie databázy prehliadača filmov********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "******** Aktualizácia databázy prehliadača filmov********\\\\\\\\\\\\\\\\n"
+msgstr "******** Aktualizácia databázy prehliadača filmov********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Tlačidlo <- ->: Prejsť na prvé písmeno"
@@ -110,8 +112,9 @@ msgstr "Denník časovača databázy"
 msgid "Database Update Log"
 msgstr "Denník aktualizácie databázy"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Časovač aktualizácie databázy zastavený: %s\\\\\\\\\\\\\\\\n"
+msgstr "Časovač aktualizácie databázy zastavený: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Odstrániť filmový súbor"
@@ -197,8 +200,9 @@ msgstr "Dátum vytvorenia filmu vzostupne"
 msgid "Movie Creation Date Descending"
 msgstr "Dátum vytvorenia filmu zostupne"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Spustila sa aktualizácia filmovej databázy: %s\\\\\\\\\\\\\\\\n"
+msgstr "Spustila sa aktualizácia filmovej databázy: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informácie o súbore filmu"
@@ -333,10 +337,10 @@ msgid "Signup on TMDB and input free personal ApiKey"
 msgstr "Zaregistrujte sa na TMDB a zadajte bezplatný osobný kľúč ApiKey"
 
 msgid "Signup on TheTVDb and input free personal ApiKey"
-msgstr ""
+msgstr "Zaregistrujte sa na TheTVDb a zadajte bezplatný osobný kľúč ApiKey"
 
 msgid "Start Plugin with Video Button:"
-msgstr ""
+msgstr "Spustite doplnok pomocou tlačidla videa:"
 
 msgid "Stop Button: Mark movie as seen"
 msgstr "Tlačidlo Stop: Označí film ako videný"

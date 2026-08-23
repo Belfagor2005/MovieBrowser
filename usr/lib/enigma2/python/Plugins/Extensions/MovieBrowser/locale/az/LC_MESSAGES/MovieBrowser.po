@@ -16,11 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "*******Film Brauzeri Verilənlər Bazasının Yeniləmə Taymeri********\\\\\\\\\\\\\\\\n"
+msgstr "*******Film Brauzeri Verilənlər Bazasının Yeniləmə Taymeri********\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Film Brauzerinin Verilənlər Bazasının Yenilənməsi*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Film Brauzerinin Verilənlər Bazasının Yenilənməsi*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "<- -> Düymə: Birinci hərfə keçin"
@@ -109,8 +111,9 @@ msgstr ""
 msgid "Database Update Log"
 msgstr "Verilənlər Bazası Yeniləmə Qeydiyyatı"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Databaza Yeniləmə Taymeri dayandı: %s\\\\\\\\\\\\\\\\n"
+msgstr "Databaza Yeniləmə Taymeri dayandı: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Film faylını silin"
@@ -196,8 +199,9 @@ msgstr "Filmin Yaradılma Tarixi Artan"
 msgid "Movie Creation Date Descending"
 msgstr "Filmin Yaradılma Tarixi Azalan"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Film Databazasının Güncəllənməsi başladı: %s\\\\\\\\\\\\\\\\n"
+msgstr "Film Databazasının Güncəllənməsi başladı: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Film Fayl Məlumatları"

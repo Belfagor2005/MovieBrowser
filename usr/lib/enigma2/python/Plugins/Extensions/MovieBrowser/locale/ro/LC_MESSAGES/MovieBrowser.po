@@ -17,11 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2;\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update Timer*******\\\\\\\\n"
-msgstr "****** Temporizator de actualizare a bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\n"
+msgstr "****** Temporizator de actualizare a bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
+#, fuzzy
 msgid "*******Movie Browser Database Update*******\\\\\\\\n"
-msgstr "*******Actualizarea bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\n"
+msgstr "*******Actualizarea bazei de date a browserului de filme*******\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "<- -> Button: Go to first letter"
 msgstr "Buton <- ->: Accesați prima literă"
@@ -110,8 +112,9 @@ msgstr "Jurnalul de cronometru al bazei de date"
 msgid "Database Update Log"
 msgstr "Jurnal de actualizare a bazei de date"
 
+#, fuzzy
 msgid "Database Update Timer stopped: %s\\\\\\\\n"
-msgstr "Temporizator de actualizare a bazei de date oprit: %s\\\\\\\\\\\\\\\\n"
+msgstr "Temporizator de actualizare a bazei de date oprit: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Delete Movie File"
 msgstr "Ștergeți fișierul film"
@@ -197,8 +200,9 @@ msgstr "Data creării filmului Crescător"
 msgid "Movie Creation Date Descending"
 msgstr "Data creării filmului descrescătoare"
 
+#, fuzzy
 msgid "Movie Database Update started: %s\\\\\\\\n"
-msgstr "Actualizarea bazei de date de filme a început: %s\\\\\\\\\\\\\\\\n"
+msgstr "Actualizarea bazei de date de filme a început: %s\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n"
 
 msgid "Movie File Informations"
 msgstr "Informații despre fișierul filmului"
